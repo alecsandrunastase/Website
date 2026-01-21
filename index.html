@@ -99,18 +99,64 @@
             const [isMenuOpen, setIsMenuOpen] = useState(false);
             const [scrolled, setScrolled] = useState(false);
 
+            // Definirea rutelor URL
+            const routes = {
+                'home': '/',
+                'about': '/despre-noi',
+                'implantology': '/implantologie',
+                'pricing': '/servicii-si-preturi',
+                'contact': '/contact'
+            };
+
+            // Funcție pentru a determina pagina curentă din URL
+            const getPageFromPath = () => {
+                const path = window.location.pathname;
+                // Găsește cheia rutei care se potrivește cu path-ul curent
+                const routeEntry = Object.entries(routes).find(([key, route]) => {
+                    if (route === '/') return path === '/' || path === '/index.html'; // Home match
+                    return path.startsWith(route);
+                });
+                return routeEntry ? routeEntry[0] : 'home';
+            };
+
+            // Funcție de navigare care schimbă URL-ul
+            const navigate = (pageId) => {
+                setActivePage(pageId);
+                setIsMenuOpen(false);
+                window.scrollTo(0, 0);
+                
+                // Actualizare URL fără reload
+                const path = routes[pageId];
+                window.history.pushState({ page: pageId }, '', path);
+            };
+
             useEffect(() => {
+                // Setare inițială
+                setActivePage(getPageFromPath());
+
+                // Ascultător pentru butoanele Back/Forward ale browserului
+                const handlePopState = () => {
+                    setActivePage(getPageFromPath());
+                };
+                window.addEventListener('popstate', handlePopState);
+
+                // Scroll listener pentru navbar
                 const handleScroll = () => setScrolled(window.scrollY > 50);
                 window.addEventListener('scroll', handleScroll);
+                
                 if (window.lucide) window.lucide.createIcons();
-                return () => window.removeEventListener('scroll', handleScroll);
+
+                return () => {
+                    window.removeEventListener('popstate', handlePopState);
+                    window.removeEventListener('scroll', handleScroll);
+                };
             }, []);
 
             const navItems = [
                 { id: 'home', label: 'Acasă' },
                 { id: 'about', label: 'Despre noi' },
                 { id: 'implantology', label: 'Implantologie' },
-                { id: 'pricing', label: 'Servicii & Prețuri' }, // Updated Name
+                { id: 'pricing', label: 'Servicii & Prețuri' },
                 { id: 'contact', label: 'Contact' }
             ];
 
@@ -139,8 +185,8 @@
                                     Vă așteptăm în locația noastră din Mioveni pentru tratamente stomatologice la cele mai înalte standarde.
                                 </p>
                                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                                    <button onClick={() => setActivePage('contact')} className="px-8 py-4 bg-[#5a1018] text-white font-semibold rounded shadow-lg hover:bg-opacity-90 transition-all transform hover:-translate-y-1">Programează-te</button>
-                                    <button onClick={() => setActivePage('pricing')} className="px-8 py-4 bg-transparent border-2 border-[#1a1a1a] text-[#1a1a1a] font-semibold rounded hover:bg-[#1a1a1a] hover:text-white transition-all transform hover:-translate-y-1">Vezi Prețuri</button>
+                                    <button onClick={() => navigate('contact')} className="px-8 py-4 bg-[#5a1018] text-white font-semibold rounded shadow-lg hover:bg-opacity-90 transition-all transform hover:-translate-y-1">Programează-te</button>
+                                    <button onClick={() => navigate('pricing')} className="px-8 py-4 bg-transparent border-2 border-[#1a1a1a] text-[#1a1a1a] font-semibold rounded hover:bg-[#1a1a1a] hover:text-white transition-all transform hover:-translate-y-1">Vezi Prețuri</button>
                                 </div>
                             </div>
                         </div>
@@ -173,7 +219,7 @@
             const Pricing = () => {
                 const [searchTerm, setSearchTerm] = useState('');
                 
-                // Complete Price List Data from User Request
+                // Complete Price List Data Updated
                 const priceListData = [
                     {
                         category: "CONSULTAȚIE",
@@ -429,7 +475,7 @@
                     <nav className={`sticky top-0 z-50 w-full transition-all duration-300 ${scrolled ? 'bg-white shadow-md' : 'bg-white'}`}>
                         <div className="max-w-7xl mx-auto px-6 main-nav justify-between">
                             {/* Logo Wrapper cu poziționare absolută pentru a nu împinge meniul */}
-                            <div className="logo-wrapper cursor-pointer" onClick={() => setActivePage('home')}>
+                            <div className="logo-wrapper cursor-pointer" onClick={() => navigate('home')}>
                                 <img 
                                     src="logodrnastase.png" 
                                     alt="Clinica Dr. Alexandru Năstase" 
@@ -448,7 +494,7 @@
                                 {navItems.map(item => (
                                     <button 
                                         key={item.id} 
-                                        onClick={() => setActivePage(item.id)}
+                                        onClick={() => navigate(item.id)}
                                         className={`font-semibold text-lg hover:text-[#5a1018] transition-colors ${activePage === item.id ? 'text-[#5a1018]' : 'text-gray-700'}`}
                                     >
                                         {item.label}
@@ -463,10 +509,7 @@
                                 {navItems.map((item) => (
                                     <button
                                         key={item.id}
-                                        onClick={() => {
-                                            setActivePage(item.id);
-                                            setIsMenuOpen(false);
-                                        }}
+                                        onClick={() => navigate(item.id)}
                                         className={`text-left text-lg font-medium ${activePage === item.id ? 'text-[#5a1018]' : 'text-[#1a1a1a]'}`}
                                     >
                                         {item.label}
