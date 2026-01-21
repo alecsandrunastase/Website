@@ -57,7 +57,7 @@
             position: absolute;
             top: -55px; 
             left: 0;
-            height: 180px; /* Dimensiune fixă mare */
+            height: 180px; /* Dimensiune fixă mare Desktop */
             width: auto;
             object-fit: contain;
             z-index: 60;
@@ -85,14 +85,15 @@
             border: 0;
         }
 
+        /* AJUSTĂRI MOBILE - LOGO MĂRIT */
         @media (max-width: 768px) {
             .logo-wrapper {
-                width: 160px;
+                width: 180px; /* Am mărit lățimea containerului */
                 height: 50px;
             }
             .logo-nav {
-                height: 85px;
-                top: -15px;
+                height: 125px; /* Am mărit considerabil înălțimea logo-ului pe mobil (era 85px) */
+                top: -20px;    /* Ajustare poziție verticală pentru overlap */
             }
         }
     </style>
@@ -103,14 +104,13 @@
     <script type="text/babel">
         const { useState, useEffect } = React;
         
-        // Componentă Icon actualizată pentru a accepta props suplimentare (ex: fill)
-        const Icon = ({ name, size = 24, className = "", ...props }) => {
+        const Icon = ({ name, size = 24, className = "" }) => {
             useEffect(() => {
                 if (window.lucide) {
                     window.lucide.createIcons();
                 }
             }, [name]);
-            return <i data-lucide={name} style={{ width: size, height: size }} className={className} {...props}></i>;
+            return <i data-lucide={name} style={{ width: size, height: size }} className={className}></i>;
         };
 
         const App = () => {
@@ -173,6 +173,7 @@
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                            {/* Dr. Alexandru Năstase */}
                             <div className="space-y-6 group text-center cursor-pointer">
                                 <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-lg relative">
                                     <div className="absolute inset-0 bg-[#5a1018] opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
@@ -188,6 +189,7 @@
                                 </div>
                             </div>
 
+                            {/* Asistent 1 */}
                             <div className="space-y-6 group text-center cursor-pointer">
                                 <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-lg relative">
                                     <div className="absolute inset-0 bg-[#5a1018] opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
@@ -203,6 +205,7 @@
                                 </div>
                             </div>
 
+                            {/* Asistent 2 */}
                             <div className="space-y-6 group text-center cursor-pointer">
                                 <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-lg relative">
                                     <div className="absolute inset-0 bg-[#5a1018] opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
@@ -355,6 +358,8 @@
                     </div>
                 </section>
             );
+
+            // --- Componente Pagini ---
 
             const Home = () => (
                 <div>
@@ -585,7 +590,7 @@
                                     <input 
                                         type="text" 
                                         placeholder="Caută serviciul dorit..." 
-                                        className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-full focus:ring-2 focus:ring-[#5a1018] outline-none"
+                                        className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-full focus:ring-2 focus:ring-[#5a1018] outline-none transition-all"
                                         value={searchTerm}
                                         onChange={(e) => setSearchTerm(e.target.value)}
                                     />
@@ -599,7 +604,7 @@
                                         </div>
                                         <div className="divide-y divide-gray-50">
                                             {cat.items.map((item, i) => (
-                                                <div key={i} className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-6 py-4 hover:bg-gray-50">
+                                                <div key={i} className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-6 py-4 hover:bg-gray-50 transition-colors">
                                                     <span className="text-[#1a1a1a] font-medium text-sm sm:text-base">{item.name}</span>
                                                     <span className="text-[#5a1018] font-bold bg-[#5a1018]/5 px-3 py-1 rounded-full whitespace-nowrap mt-2 sm:mt-0">{item.price}</span>
                                                 </div>
