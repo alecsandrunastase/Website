@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dr. Alexandru Năstase - Clinică Stomatologică Mioveni</title>
+
+    <!-- SPA Routing Fix (pentru GitHub Pages refresh) -->
+    <script>
+      (function () {
+        const redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -106,7 +117,7 @@
             const [activePage, setActivePage] = useState('home');
             const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-            // Definirea rutelor URL
+            // Definirea rutelor URL (CLEAN URLS)
             const routes = {
                 'home': '/',
                 'about': '/despre-noi',
@@ -117,28 +128,38 @@
 
             const getPageFromPath = () => {
                 const path = window.location.pathname;
+                
+                // Tratare specială pentru Home
+                if (path === '/' || path === '/index.html') return 'home';
+
                 const routeEntry = Object.entries(routes).find(([key, route]) => {
-                    if (route === '/') return path === '/' || path === '/index.html'; 
-                    return path.startsWith(route);
+                    return route !== '/' && path.startsWith(route);
                 });
                 return routeEntry ? routeEntry[0] : 'home';
             };
 
             const navigate = (pageId) => {
+                // Prevent default behavior if needed
                 setActivePage(pageId);
                 setIsMenuOpen(false);
                 window.scrollTo(0, 0);
+                
                 const path = routes[pageId];
                 window.history.pushState({ page: pageId }, '', path);
             };
 
             useEffect(() => {
+                // Initial load
                 setActivePage(getPageFromPath());
+
+                // Handle Back/Forward buttons
                 const handlePopState = () => {
                     setActivePage(getPageFromPath());
                 };
                 window.addEventListener('popstate', handlePopState);
+                
                 if (window.lucide) window.lucide.createIcons();
+
                 return () => {
                     window.removeEventListener('popstate', handlePopState);
                 };
@@ -575,16 +596,14 @@
 
             return (
                 <div className="min-h-screen bg-white">
-                    {/* Top Bar - Corijat: adăugat container pentru centrare */}
-                    <div className="hidden md:block bg-[#5a1018] text-white text-sm">
-                        <div className="max-w-7xl mx-auto px-6 h-10 flex justify-between items-center">
-                            <div className="flex gap-6">
-                                <span className="flex items-center gap-2"><Icon name="phone" size={14} /> 0771 292 813</span>
-                                <span className="flex items-center gap-2"><Icon name="mail" size={14} /> contact@dr-alexandrunastase.ro</span>
-                            </div>
-                            <div className="flex gap-4">
-                                <span className="flex items-center gap-2"><Icon name="map-pin" size={14} /> Mioveni, Argeș</span>
-                            </div>
+                    {/* Top Bar - Static */}
+                    <div className="hidden md:flex justify-between items-center px-8 py-2 bg-[#5a1018] text-white text-sm h-10">
+                        <div className="flex gap-6">
+                            <span className="flex items-center gap-2"><Icon name="phone" size={14} /> 0771 292 813</span>
+                            <span className="flex items-center gap-2"><Icon name="mail" size={14} /> contact@dr-alexandrunastase.ro</span>
+                        </div>
+                        <div className="flex gap-4">
+                            <span className="flex items-center gap-2"><Icon name="map-pin" size={14} /> Mioveni, Argeș</span>
                         </div>
                     </div>
 
