@@ -35,10 +35,24 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .logo-container img {
-            height: 55px; /* Ajustează dimensiunea logo-ului aici */
+        /* Stiluri pentru Logo - Mărite pentru vizibilitate optimă */
+        .logo-nav {
+            height: 90px; /* Dimensiune mărită conform solicitării */
             width: auto;
             object-fit: contain;
+            transition: height 0.3s ease;
+        }
+
+        .logo-footer {
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        @media (max-width: 768px) {
+            .logo-nav {
+                height: 60px;
+            }
         }
     </style>
 </head>
@@ -48,7 +62,6 @@
     <script type="text/babel">
         const { useState, useEffect } = React;
         
-        // Componentă pentru pictograme Lucide
         const Icon = ({ name, size = 24, className = "" }) => {
             useEffect(() => {
                 if (window.lucide) {
@@ -128,7 +141,7 @@
                             </p>
                         </div>
                         <div className="relative">
-                            <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1480&auto=format&fit=crop" alt="[Echipa Medicală]" className="rounded-lg shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"/>
+                            <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1480&auto=format&fit=crop" alt="[Echipă Medicală]" className="rounded-lg shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"/>
                         </div>
                     </div>
                 </section>
@@ -326,7 +339,7 @@
             return (
                 <div className="min-h-screen bg-white">
                     {/* Top Bar */}
-                    <div className={`hidden md:flex justify-between items-center px-8 py-2 bg-[#5a1018] text-white text-sm transition-all ${scrolled ? 'h-0 py-0 overflow-hidden' : 'h-10'}`}>
+                    <div className={`hidden md:flex justify-between items-center px-8 py-2 bg-[#5a1018] text-white text-sm transition-all duration-300 ${scrolled ? 'h-0 py-0 overflow-hidden opacity-0' : 'h-10'}`}>
                         <div className="flex gap-6">
                             <span className="flex items-center gap-2"><Icon name="phone" size={14} /> 0771 292 813</span>
                             <span className="flex items-center gap-2"><Icon name="mail" size={14} /> contact@dr-alexandrunastase.ro</span>
@@ -337,11 +350,15 @@
                     </div>
 
                     {/* Nav */}
-                    <nav className={`sticky top-0 z-50 w-full transition-all ${scrolled ? 'bg-white shadow-md py-2' : 'bg-white py-4'}`}>
+                    <nav className={`sticky top-0 z-50 w-full transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-2' : 'bg-white py-4'}`}>
                         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-                            {/* Logo principal schimbat cu imaginea */}
-                            <div className="flex items-center cursor-pointer logo-container" onClick={() => setActivePage('home')}>
-                                <img src="logodrnastase.png" alt="Clinica Dr. Alexandru Năstase" />
+                            {/* Logo principal - Light Mode (Light BG) */}
+                            <div className="flex items-center cursor-pointer" onClick={() => setActivePage('home')}>
+                                <img 
+                                    src="logodrnastase.png" 
+                                    alt="Clinica Dr. Alexandru Năstase" 
+                                    className="logo-nav"
+                                />
                             </div>
                             
                             {/* Mobile Menu Toggle */}
@@ -349,12 +366,12 @@
                                 <Icon name={isMenuOpen ? "x" : "menu"} />
                             </button>
 
-                            <div className="hidden md:flex gap-8">
+                            <div className="hidden md:flex gap-8 items-center">
                                 {navItems.map(item => (
                                     <button 
                                         key={item.id} 
                                         onClick={() => setActivePage(item.id)}
-                                        className={`font-semibold hover:text-[#5a1018] transition-colors ${activePage === item.id ? 'text-[#5a1018]' : 'text-gray-700'}`}
+                                        className={`font-semibold text-lg hover:text-[#5a1018] transition-colors ${activePage === item.id ? 'text-[#5a1018]' : 'text-gray-700'}`}
                                     >
                                         {item.label}
                                     </button>
@@ -391,13 +408,16 @@
                         )}
                     </main>
 
+                    {/* Footer - Dark BG */}
                     <footer className="bg-[#1a1a1a] text-white py-16 px-6">
-                        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
-                            <div className="space-y-4">
-                                {/* Logo în footer */}
-                                <div className="logo-container brightness-0 invert opacity-90">
-                                    <img src="logodrnastase.png" alt="Logo Dr. Alexandru Năstase" style={{ height: '45px' }} />
-                                </div>
+                        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-center md:items-start">
+                            <div className="space-y-6">
+                                {/* Logo alb pentru footer (Dark BG) */}
+                                <img 
+                                    src="clinicadrnastaselogowhite.png" 
+                                    alt="Logo Dr. Alexandru Năstase" 
+                                    className="logo-footer"
+                                />
                                 <p className="text-gray-400 text-sm">Zâmbetul tău, misiunea noastră. Tratamente moderne în Mioveni.</p>
                             </div>
                             <div>
