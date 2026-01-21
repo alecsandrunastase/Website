@@ -26,15 +26,6 @@
             scroll-behavior: smooth;
         }
 
-        .animate-fade-in {
-            animation: fadeIn 0.5s ease-out forwards;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         /* LOGO FIX: DIMENSIUNE CONSTANTĂ */
         .logo-wrapper {
             position: relative;
@@ -50,7 +41,6 @@
             width: auto;
             object-fit: contain;
             z-index: 60;
-            transition: all 0.3s ease; 
             filter: drop-shadow(0 4px 6px rgba(0,0,0,0.08));
         }
 
@@ -97,7 +87,6 @@
         const App = () => {
             const [activePage, setActivePage] = useState('home');
             const [isMenuOpen, setIsMenuOpen] = useState(false);
-            const [scrolled, setScrolled] = useState(false);
 
             // Definirea rutelor URL
             const routes = {
@@ -111,9 +100,8 @@
             // Funcție pentru a determina pagina curentă din URL
             const getPageFromPath = () => {
                 const path = window.location.pathname;
-                // Găsește cheia rutei care se potrivește cu path-ul curent
                 const routeEntry = Object.entries(routes).find(([key, route]) => {
-                    if (route === '/') return path === '/' || path === '/index.html'; // Home match
+                    if (route === '/') return path === '/' || path === '/index.html'; 
                     return path.startsWith(route);
                 });
                 return routeEntry ? routeEntry[0] : 'home';
@@ -125,30 +113,22 @@
                 setIsMenuOpen(false);
                 window.scrollTo(0, 0);
                 
-                // Actualizare URL fără reload
                 const path = routes[pageId];
                 window.history.pushState({ page: pageId }, '', path);
             };
 
             useEffect(() => {
-                // Setare inițială
                 setActivePage(getPageFromPath());
 
-                // Ascultător pentru butoanele Back/Forward ale browserului
                 const handlePopState = () => {
                     setActivePage(getPageFromPath());
                 };
                 window.addEventListener('popstate', handlePopState);
-
-                // Scroll listener pentru navbar
-                const handleScroll = () => setScrolled(window.scrollY > 50);
-                window.addEventListener('scroll', handleScroll);
                 
                 if (window.lucide) window.lucide.createIcons();
 
                 return () => {
                     window.removeEventListener('popstate', handlePopState);
-                    window.removeEventListener('scroll', handleScroll);
                 };
             }, []);
 
@@ -161,7 +141,7 @@
             ];
 
             const Home = () => (
-                <div className="animate-fade-in">
+                <div>
                     <section className="relative h-[80vh] flex items-center overflow-hidden bg-white">
                         <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
                         <div className="absolute right-0 top-0 w-1/2 h-full hidden lg:block">
@@ -185,8 +165,8 @@
                                     Vă așteptăm în locația noastră din Mioveni pentru tratamente stomatologice la cele mai înalte standarde.
                                 </p>
                                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                                    <button onClick={() => navigate('contact')} className="px-8 py-4 bg-[#5a1018] text-white font-semibold rounded shadow-lg hover:bg-opacity-90 transition-all transform hover:-translate-y-1">Programează-te</button>
-                                    <button onClick={() => navigate('pricing')} className="px-8 py-4 bg-transparent border-2 border-[#1a1a1a] text-[#1a1a1a] font-semibold rounded hover:bg-[#1a1a1a] hover:text-white transition-all transform hover:-translate-y-1">Vezi Prețuri</button>
+                                    <button onClick={() => navigate('contact')} className="px-8 py-4 bg-[#5a1018] text-white font-semibold rounded shadow-lg hover:bg-opacity-90">Programează-te</button>
+                                    <button onClick={() => navigate('pricing')} className="px-8 py-4 bg-transparent border-2 border-[#1a1a1a] text-[#1a1a1a] font-semibold rounded hover:bg-[#1a1a1a] hover:text-white">Vezi Prețuri</button>
                                 </div>
                             </div>
                         </div>
@@ -195,7 +175,7 @@
             );
 
             const About = () => (
-                <section className="py-24 px-6 max-w-7xl mx-auto animate-fade-in">
+                <section className="py-24 px-6 max-w-7xl mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <div className="space-y-8">
                             <div>
@@ -210,7 +190,7 @@
                             </p>
                         </div>
                         <div className="relative">
-                            <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1480&auto=format&fit=crop" alt="[Echipă Medicală]" className="rounded-lg shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"/>
+                            <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1480&auto=format&fit=crop" alt="[Echipă Medicală]" className="rounded-lg shadow-2xl"/>
                         </div>
                     </div>
                 </section>
@@ -219,7 +199,6 @@
             const Pricing = () => {
                 const [searchTerm, setSearchTerm] = useState('');
                 
-                // Complete Price List Data Updated
                 const priceListData = [
                     {
                         category: "CONSULTAȚIE",
@@ -377,7 +356,7 @@
                 })).filter(category => category.items.length > 0);
 
                 return (
-                    <section className="py-24 bg-white animate-fade-in min-h-screen">
+                    <section className="py-24 bg-white min-h-screen">
                         <div className="max-w-5xl mx-auto px-6">
                             <div className="text-center mb-12">
                                 <h2 className="text-4xl font-bold text-[#1a1a1a] mb-4">Servicii & Prețuri</h2>
@@ -387,7 +366,7 @@
                                     <input 
                                         type="text" 
                                         placeholder="Caută serviciul dorit..." 
-                                        className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-full focus:ring-2 focus:ring-[#5a1018] outline-none transition-all"
+                                        className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-full focus:ring-2 focus:ring-[#5a1018] outline-none"
                                         value={searchTerm}
                                         onChange={(e) => setSearchTerm(e.target.value)}
                                     />
@@ -401,7 +380,7 @@
                                         </div>
                                         <div className="divide-y divide-gray-50">
                                             {cat.items.map((item, i) => (
-                                                <div key={i} className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-6 py-4 hover:bg-gray-50 transition-colors">
+                                                <div key={i} className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-6 py-4 hover:bg-gray-50">
                                                     <span className="text-[#1a1a1a] font-medium text-sm sm:text-base">{item.name}</span>
                                                     <span className="text-[#5a1018] font-bold bg-[#5a1018]/5 px-3 py-1 rounded-full whitespace-nowrap mt-2 sm:mt-0">{item.price}</span>
                                                 </div>
@@ -416,7 +395,7 @@
             };
 
             const Contact = () => (
-                <section className="py-24 bg-white animate-fade-in">
+                <section className="py-24 bg-white">
                     <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16">
                         <div className="space-y-8">
                             <h2 className="text-4xl font-bold text-[#1a1a1a]">Contact & Localizare</h2>
@@ -451,7 +430,7 @@
                                 <input type="text" placeholder="Nume Complet" className="w-full p-4 bg-[#2a2a2a] text-white rounded border border-gray-700 outline-none focus:border-[#5a1018]" />
                                 <input type="tel" placeholder="Telefon" className="w-full p-4 bg-[#2a2a2a] text-white rounded border border-gray-700 outline-none focus:border-[#5a1018]" />
                                 <textarea placeholder="Mesaj..." rows="3" className="w-full p-4 bg-[#2a2a2a] text-white rounded border border-gray-700 outline-none focus:border-[#5a1018]"></textarea>
-                                <button type="button" className="w-full py-4 bg-[#5a1018] text-white font-bold rounded hover:bg-opacity-80 transition-all uppercase tracking-widest">Trimite Cererea</button>
+                                <button type="button" className="w-full py-4 bg-[#5a1018] text-white font-bold rounded hover:bg-opacity-80">Trimite Cererea</button>
                             </form>
                         </div>
                     </div>
@@ -459,9 +438,9 @@
             );
 
             return (
-                <div className={`min-h-screen bg-white ${scrolled ? 'nav-scrolled' : ''}`}>
-                    {/* Top Bar */}
-                    <div className={`hidden md:flex justify-between items-center px-8 py-2 bg-[#5a1018] text-white text-sm transition-all duration-300 ${scrolled ? 'h-0 py-0 overflow-hidden opacity-0' : 'h-10'}`}>
+                <div className="min-h-screen bg-white">
+                    {/* Top Bar - Static */}
+                    <div className="hidden md:flex justify-between items-center px-8 py-2 bg-[#5a1018] text-white text-sm h-10">
                         <div className="flex gap-6">
                             <span className="flex items-center gap-2"><Icon name="phone" size={14} /> 0771 292 813</span>
                             <span className="flex items-center gap-2"><Icon name="mail" size={14} /> contact@dr-alexandrunastase.ro</span>
@@ -471,10 +450,10 @@
                         </div>
                     </div>
 
-                    {/* Nav - Înălțime fixă (main-nav) */}
-                    <nav className={`sticky top-0 z-50 w-full transition-all duration-300 ${scrolled ? 'bg-white shadow-md' : 'bg-white'}`}>
+                    {/* Nav - Static shadow */}
+                    <nav className="sticky top-0 z-50 w-full bg-white shadow-md">
                         <div className="max-w-7xl mx-auto px-6 main-nav justify-between">
-                            {/* Logo Wrapper cu poziționare absolută pentru a nu împinge meniul */}
+                            {/* Logo Wrapper */}
                             <div className="logo-wrapper cursor-pointer" onClick={() => navigate('home')}>
                                 <img 
                                     src="logodrnastase.png" 
@@ -505,7 +484,7 @@
 
                         {/* Meniu Mobil */}
                         {isMenuOpen && (
-                            <div className="absolute top-full left-0 w-full bg-white shadow-xl border-t md:hidden flex flex-col p-6 gap-4 animate-fade-in">
+                            <div className="absolute top-full left-0 w-full bg-white shadow-xl border-t md:hidden flex flex-col p-6 gap-4">
                                 {navItems.map((item) => (
                                     <button
                                         key={item.id}
@@ -525,7 +504,7 @@
                         {activePage === 'pricing' && <Pricing />}
                         {activePage === 'contact' && <Contact />}
                         {activePage === 'implantology' && (
-                            <div className="py-24 text-center font-bold text-2xl animate-fade-in">Pagina Implantologie în curs de actualizare...</div>
+                            <div className="py-24 text-center font-bold text-2xl">Pagina Implantologie în curs de actualizare...</div>
                         )}
                     </main>
 
