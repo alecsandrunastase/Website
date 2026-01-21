@@ -50,11 +50,9 @@
             width: auto;
             object-fit: contain;
             z-index: 60;
-            transition: all 0.3s ease; /* Păstrăm tranziția pentru alte efecte posibile */
+            transition: all 0.3s ease; 
             filter: drop-shadow(0 4px 6px rgba(0,0,0,0.08));
         }
-
-        /* Am eliminat regula .nav-scrolled .logo-nav care micșora logo-ul */
 
         .logo-footer {
             height: 90px;
@@ -112,7 +110,7 @@
                 { id: 'home', label: 'Acasă' },
                 { id: 'about', label: 'Despre noi' },
                 { id: 'implantology', label: 'Implantologie' },
-                { id: 'pricing', label: 'Tarife' },
+                { id: 'pricing', label: 'Servicii & Prețuri' }, // Updated Name
                 { id: 'contact', label: 'Contact' }
             ];
 
@@ -142,7 +140,7 @@
                                 </p>
                                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
                                     <button onClick={() => setActivePage('contact')} className="px-8 py-4 bg-[#5a1018] text-white font-semibold rounded shadow-lg hover:bg-opacity-90 transition-all transform hover:-translate-y-1">Programează-te</button>
-                                    <button onClick={() => setActivePage('pricing')} className="px-8 py-4 bg-transparent border-2 border-[#1a1a1a] text-[#1a1a1a] font-semibold rounded hover:bg-[#1a1a1a] hover:text-white transition-all transform hover:-translate-y-1">Tarife Servicii</button>
+                                    <button onClick={() => setActivePage('pricing')} className="px-8 py-4 bg-transparent border-2 border-[#1a1a1a] text-[#1a1a1a] font-semibold rounded hover:bg-[#1a1a1a] hover:text-white transition-all transform hover:-translate-y-1">Vezi Prețuri</button>
                                 </div>
                             </div>
                         </div>
@@ -174,100 +172,153 @@
 
             const Pricing = () => {
                 const [searchTerm, setSearchTerm] = useState('');
+                
+                // Complete Price List Data from User Request
                 const priceListData = [
                     {
-                        category: "I. Profilaxie & Diagnostic",
+                        category: "CONSULTAȚIE",
                         items: [
-                            { name: "Consultație medic specialist (include plan de tratament)", price: "200 RON" },
-                            { name: "Pachet igienizare (Detartraj + Airflow + Periaj)", price: "400 RON" },
-                            { name: "Control periodic / Evaluare post-operatorie", price: "100 RON" },
-                            { name: "Model de studiu (pereche)", price: "200 RON" },
-                            { name: "Radiografie digitală retroalveolară", price: "70 RON" },
-                            { name: "Sedare inhalatorie (per ședință)", price: "300 RON" },
-                            { name: "Scanare digitală (intraorală)", price: "250 RON" }
+                            { name: "Consultație, plan de tratament + deviz estimativ", price: "250 lei" }
                         ]
                     },
                     {
-                        category: "II. Terapie Restauratoare (Odontoterapie)",
+                        category: "PROFILAXIE",
                         items: [
-                            { name: "Obturație fotopolimerizabilă (plombă) suprafață mică", price: "250 RON" },
-                            { name: "Obturație fotopolimerizabilă suprafață medie", price: "350 RON" },
-                            { name: "Obturație fotopolimerizabilă suprafață mare (reconstrucție)", price: "450 RON" },
-                            { name: "Coafaj direct / indirect", price: "100 RON" },
-                            { name: "Aplicare pivot fibră de sticlă + Reconstrucție bondat", price: "400 RON" },
-                            { name: "Tratament desensibilizare (per dinte)", price: "100 RON" },
-                            { name: "Sigilare șanțuri și fosete", price: "200 RON" }
+                            { name: "Igienizare profesională (detartraj + periaj profesional + airflow – ambele arcade)", price: "350–400 lei" },
+                            { name: "Fluorizare dentară/dinte", price: "30 lei" }
                         ]
                     },
                     {
-                        category: "III. Endodonție (Tratamente de canal)",
+                        category: "TRATAMENTUL ODONTAL",
                         items: [
-                            { name: "Tratament canal monoradicular (complet)", price: "450 RON" },
-                            { name: "Tratament canal pluriradicular (complet)", price: "650 - 850 RON" },
-                            { name: "Retratament canal (per canal)", price: "550 RON" },
-                            { name: "Extirpare vitală și pansament antiseptic", price: "200 RON" },
-                            { name: "Îndepărtare corp străin / pivot din canal", price: "250 RON" },
-                            { name: "Obturație de canal retrogradă", price: "400 RON" }
+                            { name: "Obturație foto (PLOMBĂ) 1 suprafață", price: "250 lei" },
+                            { name: "Obturație foto (PLOMBĂ) 2 suprafețe", price: "300 lei" },
+                            { name: "Obturație foto (PLOMBĂ) 3 suprafețe", price: "350 lei" },
+                            { name: "Reconstrucție coronară mare", price: "400 lei" }
                         ]
                     },
                     {
-                        category: "IV. Chirurgie Orală",
+                        category: "TRATAMENTUL AFECȚIUNILOR PULPARE",
                         items: [
-                            { name: "Extracție dinte monoradicular", price: "250 RON" },
-                            { name: "Extracție dinte pluriradicular", price: "350 RON" },
-                            { name: "Extracție molar de minte erupt", price: "450 RON" },
-                            { name: "Extracție molar de minte semi-inclus", price: "650 RON" },
-                            { name: "Extracție molar de minte inclus", price: "900 RON" },
-                            { name: "Decapușonare", price: "200 RON" },
-                            { name: "Rezecție apicală (incisiv/canin)", price: "650 RON" },
-                            { name: "Rezecție apicală (premolar/molar)", price: "850 RON" },
-                            { name: "Frenectomie / Gingivectomie (per dinte)", price: "250 RON" },
-                            { name: "Sutură plagă chirurgicală", price: "100 RON" },
-                            { name: "Regularizare creastă (per arcadă)", price: "600 RON" }
+                            { name: "Extirpare (scoatere nerv) – monoradiculari + pluriradiculari", price: "300 lei" },
+                            { name: "Obturație canal definitivă (inclusiv plombă sau/și pivot fibră) – monoradiculari (inclusiv premolari)", price: "700 lei" },
+                            { name: "Obturație canal definitivă (inclusiv plombă sau/și pivot fibră) – pluriradiculari (molari)", price: "850 lei" },
+                            { name: "Pivot fibră de sticlă", price: "200 lei" }
                         ]
                     },
                     {
-                        category: "V. Implantologie & Regenerare",
+                        category: "PEDODONȚIE (tratamente copii)",
                         items: [
-                            { name: "Implant Dentar Bredent (Germania)", price: "3000 RON" },
-                            { name: "Implant Dentar Straumann (Elveția)", price: "4000 RON" },
-                            { name: "Implant Dentar Nobel Biocare", price: "4500 RON" },
-                            { name: "Sinus Lift Intern", price: "2500 RON" },
-                            { name: "Sinus Lift Extern (include materiale)", price: "4500 - 6000 RON" },
-                            { name: "Adiție osoasă (mică/medie)", price: "1500 - 2500 RON" },
-                            { name: "Descoperire implant și aplicare șurub vindecare", price: "250 RON" },
-                            { name: "Ghid chirurgical (CAD/CAM)", price: "800 RON" }
+                            { name: "Extracție dinte temporar (mobil)", price: "150 lei" },
+                            { name: "Extracție dinte temporar fără rizaliză (fără mobilitate)", price: "200 lei" },
+                            { name: "Sigilare dentară dinte definitiv", price: "250 lei" },
+                            { name: "Obturație dinte temporar", price: "250 lei" },
+                            { name: "Tratament endodontic dinți temporari", price: "350 lei" }
                         ]
                     },
                     {
-                        category: "VI. Protetică Fixă (Coroane)",
+                        category: "TRATAMENTUL AFECȚIUNILOR PARODONȚIULUI MARGINAL",
                         items: [
-                            { name: "Coroană metalo-ceramică (integral fizionomică)", price: "1000 RON" },
-                            { name: "Coroană ceramică pe suport zirconiu (CAD/CAM)", price: "1600 RON" },
-                            { name: "Coroană ceramică E-max (Integrală)", price: "1800 RON" },
-                            { name: "Coroană zirconiu pe implant (include bont)", price: "2200 RON" },
-                            { name: "Coroană provizorie (cabinet/laborator)", price: "150 - 400 RON" },
-                            { name: "Fațetă ceramică E-max (Premium)", price: "2200 RON" },
-                            { name: "Inlay / Onlay ceramic", price: "1500 RON" },
-                            { name: "Cimentare coroană (per dinte)", price: "100 RON" }
+                            { name: "Chiuretaj parodontal în câmp închis/dinte", price: "100 lei" },
+                            { name: "Imobilizare prin bandă de fibră de sticlă/dinte", price: "150 lei" }
                         ]
                     },
                     {
-                        category: "VII. Protetică Mobilă",
+                        category: "CHIRURGIE",
                         items: [
-                            { name: "Proteză totală / parțială acrilică (per arcadă)", price: "2500 RON" },
-                            { name: "Proteză scheletată cu sisteme speciale", price: "4500 RON" },
-                            { name: "Reparație proteză / Rebazare", price: "350 RON" },
-                            { name: "Proteză Kemmeny (1-2 dinți)", price: "600 RON" }
+                            { name: "Extracție dinte parodontotic (mobil)", price: "150 lei" },
+                            { name: "Extracție dinte monoradicular (frontal)", price: "250 lei" },
+                            { name: "Extracție dinte pluriradicular (molar, premolar)", price: "250–350 lei" },
+                            { name: "Extracție molar de minte", price: "300–450 lei" },
+                            { name: "Grefă liberă țesut keratinizat (recoltare de pe cerul gurii)", price: "2500 lei" },
+                            { name: "Rezecție apicală", price: "1000 lei" },
+                            { name: "Extracție dinte inclus (în funcție de dificultate)", price: "500–800 lei" },
+                            { name: "Extracție dinte semi-inclus (în funcție de dificultate)", price: "400–600 lei" },
+                            { name: "Gingivectomie / arcadă", price: "800 lei" }
                         ]
                     },
                     {
-                        category: "VIII. Estetică Dentară",
+                        category: "IMPLANT – ETAPE INTERMEDIARE",
                         items: [
-                            { name: "Albire profesională Lampa LED Zoom (în cabinet)", price: "1500 RON" },
-                            { name: "Albire la domiciliu (gutiere + gel)", price: "1000 RON" },
-                            { name: "Bijuterie dentară (Skyce)", price: "350 RON" },
-                            { name: "Gutieră bruxism (per arcadă)", price: "400 RON" }
+                            { name: "Descoperire sau montare în timpul intervenției capac de vindecare implant", price: "250 lei" },
+                            { name: "Descoperire sau montare în timpul intervenției MUA (bont protetic multi-unit) implant + capac", price: "450 lei" }
+                        ]
+                    },
+                    {
+                        category: "PROTETICĂ",
+                        items: [
+                            { name: "Șlefuire (pilire) / dinte", price: "80–100 lei" },
+                            { name: "Coroană metalo-ceramică total fizionomică", price: "650 lei" },
+                            { name: "Coroană metalo-ceramică parțial fizionomică (3/4)", price: "550 lei" },
+                            { name: "Coroană ZIRCONIU pe dinte", price: "950 lei" },
+                            { name: "Coroană ZIRCONIU pe implant (inclusiv bontul protetic T-base)", price: "1350 lei" },
+                            { name: "Bont implant custom ZIRCONIU", price: "500 lei" },
+                            { name: "Coroană acrilică provizorie (laborator)", price: "200 lei" },
+                            { name: "Dinte provizoriu pe implant (inclus bont protetic)", price: "500 lei" },
+                            { name: "Intermediari (cei care sunt în aer) / buc", price: "200 lei" },
+                            { name: "Coroană acrilică provizorie (cabinet)", price: "150 lei" },
+                            { name: "Fațete dentare E-MAX", price: "1250 lei" },
+                            { name: "RCR (pivot metalic)", price: "200 lei" },
+                            { name: "Proteză acrilică totală/parțială CLASICĂ / arcadă", price: "2500 lei" },
+                            { name: "Proteză totală/parțială ELASTICĂ / arcadă", price: "3000 lei" },
+                            { name: "Proteză scheletată (include sisteme speciale) / arcadă", price: "5000 lei" },
+                            { name: "Proteză Kemeny (1 dinte)", price: "300 lei" },
+                            { name: "Adăugare dinte în proteză (se adaugă câte 100 lei pt fiecare dinte extra)", price: "100 lei + 100/extra" },
+                            { name: "Ablație coroană dentară (îndepărtare-tăiere)/bucată", price: "100 lei" },
+                            { name: "Ablație RCR (pivot)", price: "250 lei" },
+                            { name: "Gutieră pentru bruxism, albire, contenție / arcadă", price: "500 lei" },
+                            { name: "Rebazăre proteză", price: "400 lei" },
+                            { name: "Reparație proteză", price: "400 lei" },
+                            { name: "Lucrare pe implanturi (THIMBLE) – TITAN COMPOZIT", price: "13.500 lei" },
+                            { name: "Lucrare pe implanturi (THIMBLE) – TITAN ZIRCONIU", price: "16.000 lei" }
+                        ]
+                    },
+                    {
+                        category: "IMPLANTOLOGIE",
+                        items: [
+                            { name: "Implant (doar șurub) - JD sau INNO", price: "2000 lei" },
+                            { name: "Adiție osoasă / implant", price: "2000 lei" },
+                            { name: "Sinus lifting + adiție osoasă", price: "4000–5000 lei" },
+                            { name: "Sistem FAST & FIXED (4 implanturi, dinți provizorii incluși)", price: "12.500 lei" },
+                            { name: "Sistem FAST & FIXED (5 implanturi, dinți provizorii incluși)", price: "14.500 lei" },
+                            { name: "Sistem FAST & FIXED (6 implanturi, dinți provizorii incluși)", price: "16.500 lei" }
+                        ]
+                    },
+                    {
+                        category: "ESTETICĂ",
+                        items: [
+                            { name: "Aplicare bijuterii dentare (bijuterie inclusă)", price: "350 lei" },
+                            { name: "Albire profesională cu lampă", price: "1300 lei" },
+                            { name: "Albire endo/dinte", price: "300 lei" }
+                        ]
+                    },
+                    {
+                        category: "ORTODONȚIE",
+                        items: [
+                            { name: "Consultație medic ortodont", price: "100 lei" },
+                            { name: "Model studiu și plan de tratament", price: "150 lei" },
+                            { name: "Fotografii intraorale și de portret", price: "100 lei" },
+                            { name: "Aparat fix metalic (clasic) / arcadă", price: "2300 lei" },
+                            { name: "Aparat fix metalic (Damon) / arcadă", price: "4000 lei" },
+                            { name: "Aparat fix Damon Clear / arcadă", price: "5000 lei" },
+                            { name: "Aparat fix ceramic / arcadă", price: "3500 lei" },
+                            { name: "Aparat fix safir / arcadă", price: "4000 lei" },
+                            { name: "Aparat fix segmentar metalic / arcadă", price: "1300 lei" },
+                            { name: "Aparat fix segmentar ceramic / arcadă", price: "1800 lei" },
+                            { name: "Aparat fix segmentar safir / arcadă", price: "2000 lei" },
+                            { name: "Control lunar aparat fix / arcadă", price: "100 lei" },
+                            { name: "Control lunar aparat fix (ambele arcade)", price: "200 lei" },
+                            { name: "Aparat mobil / arcadă", price: "800 lei" },
+                            { name: "Aparat mobil twin-block", price: "1200 lei" },
+                            { name: "Control aparat mobil / arcadă", price: "50 lei" },
+                            { name: "Bară linguală", price: "500 lei" },
+                            { name: "Disjunctor", price: "1500 lei" },
+                            { name: "Pendulum", price: "700 lei" },
+                            { name: "Retainer fix colat", price: "500 lei" },
+                            { name: "Headgear", price: "400 lei" },
+                            { name: "Aparat contenție", price: "400 lei" },
+                            { name: "Masca Delaire", price: "1000 lei" },
+                            { name: "Gutieră contenție", price: "500 lei" }
                         ]
                     }
                 ];
@@ -283,7 +334,7 @@
                     <section className="py-24 bg-white animate-fade-in min-h-screen">
                         <div className="max-w-5xl mx-auto px-6">
                             <div className="text-center mb-12">
-                                <h2 className="text-4xl font-bold text-[#1a1a1a] mb-4">Lista Completă de Tarife</h2>
+                                <h2 className="text-4xl font-bold text-[#1a1a1a] mb-4">Servicii & Prețuri</h2>
                                 <p className="text-gray-500 mb-8 italic">Transparență totală în investiția pentru sănătatea dumneavoastră orală.</p>
                                 <div className="relative max-w-md mx-auto">
                                     <Icon name="search" size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
@@ -305,8 +356,8 @@
                                         <div className="divide-y divide-gray-50">
                                             {cat.items.map((item, i) => (
                                                 <div key={i} className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-6 py-4 hover:bg-gray-50 transition-colors">
-                                                    <span className="text-[#1a1a1a] font-medium">{item.name}</span>
-                                                    <span className="text-[#5a1018] font-bold bg-[#5a1018]/5 px-3 py-1 rounded-full">{item.price}</span>
+                                                    <span className="text-[#1a1a1a] font-medium text-sm sm:text-base">{item.name}</span>
+                                                    <span className="text-[#5a1018] font-bold bg-[#5a1018]/5 px-3 py-1 rounded-full whitespace-nowrap mt-2 sm:mt-0">{item.price}</span>
                                                 </div>
                                             ))}
                                         </div>
