@@ -8,11 +8,8 @@
     <!-- SPA Routing Fix (pentru GitHub Pages refresh cu 404.html) -->
     <script>
       (function () {
-        // Verificăm dacă există un redirect salvat de 404.html
         const redirect = sessionStorage.redirect;
-        // Curățăm sesiunea
         delete sessionStorage.redirect;
-        // Dacă există și e diferit de locația curentă, actualizăm URL-ul instantaneu
         if (redirect && redirect !== location.href) {
           history.replaceState(null, null, redirect);
         }
@@ -127,18 +124,13 @@
 
             const getPageFromPath = () => {
                 const path = window.location.pathname;
-                
-                // Tratare specială pentru Home
                 if (path === '/' || path === '/index.html') return 'home';
-
                 const routeEntry = Object.entries(routes).find(([key, route]) => {
                     return route !== '/' && path.startsWith(route);
                 });
                 return routeEntry ? routeEntry[0] : 'home';
             };
 
-            // 2. Inițializăm starea folosind funcția (Lazy Initialization)
-            // Astfel, React știe PE CE PAGINĂ SUNTEM chiar de la prima randare
             const [activePage, setActivePage] = useState(getPageFromPath); 
             const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -146,20 +138,16 @@
                 setActivePage(pageId);
                 setIsMenuOpen(false);
                 window.scrollTo(0, 0);
-                
                 const path = routes[pageId];
                 window.history.pushState({ page: pageId }, '', path);
             };
 
             useEffect(() => {
-                // Ascultător pentru butoanele Back/Forward
                 const handlePopState = () => {
                     setActivePage(getPageFromPath());
                 };
                 window.addEventListener('popstate', handlePopState);
-                
                 if (window.lucide) window.lucide.createIcons();
-
                 return () => {
                     window.removeEventListener('popstate', handlePopState);
                 };
@@ -173,7 +161,71 @@
                 { id: 'contact', label: 'Contact' }
             ];
 
-            // --- Componente ---
+            // --- Componente Noi ---
+
+            const TeamSection = () => (
+                <section className="py-24 bg-white border-b border-gray-50">
+                    <div className="max-w-7xl mx-auto px-6">
+                        <div className="text-center mb-16">
+                            <div className="flex justify-center items-center gap-2 mb-4">
+                                <span className="text-[#5a1018] font-bold text-sm tracking-widest uppercase">Echipa Noastră</span>
+                            </div>
+                            <h2 className="text-4xl font-bold text-[#1a1a1a] mb-6">Profesioniști Dedicați</h2>
+                            <p className="text-gray-500 font-medium">Experiență și grijă pentru fiecare pacient</p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                            {/* Dr. Alexandru Năstase */}
+                            <div className="space-y-6 group text-center cursor-pointer">
+                                <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-lg relative">
+                                    <div className="absolute inset-0 bg-[#5a1018] opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
+                                    <img 
+                                        src="drnastase.jpg" 
+                                        alt="Dr. Alexandru Năstase" 
+                                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105" 
+                                    />
+                                </div>
+                                <div>
+                                    <h4 className="text-2xl font-bold text-[#1a1a1a] mb-1">Dr. Alexandru Năstase</h4>
+                                    <p className="text-[#5a1018] font-bold text-xs uppercase tracking-widest">Chirurgie & Implantologie</p>
+                                </div>
+                            </div>
+
+                            {/* Asistent 1 */}
+                            <div className="space-y-6 group text-center cursor-pointer">
+                                <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-lg relative">
+                                    <div className="absolute inset-0 bg-[#5a1018] opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
+                                    <img 
+                                        src="asistent.jpg" 
+                                        alt="Asistent Medical" 
+                                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105" 
+                                    />
+                                </div>
+                                <div>
+                                    <h4 className="text-2xl font-bold text-[#1a1a1a] mb-1">Elena Popescu</h4>
+                                    <p className="text-gray-400 font-bold text-xs uppercase tracking-widest">Asistent Medical</p>
+                                </div>
+                            </div>
+
+                            {/* Asistent 2 */}
+                            <div className="space-y-6 group text-center cursor-pointer">
+                                <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-lg relative">
+                                    <div className="absolute inset-0 bg-[#5a1018] opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
+                                    <img 
+                                        src="asitent2.jpg" 
+                                        alt="Asistent Medical" 
+                                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105" 
+                                    />
+                                </div>
+                                <div>
+                                    <h4 className="text-2xl font-bold text-[#1a1a1a] mb-1">Andreea Dumitru</h4>
+                                    <p className="text-gray-400 font-bold text-xs uppercase tracking-widest">Asistent Medical</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
 
             const ReviewsSection = () => (
                 <section className="py-24 bg-gray-50">
@@ -343,6 +395,7 @@
                         </div>
                     </section>
 
+                    <TeamSection />
                     <ReviewsSection />
                     <MapSection />
                 </div>
