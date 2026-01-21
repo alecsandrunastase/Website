@@ -35,29 +35,31 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* LOGO FIX: Mărit fără a afecta înălțimea meniului */
+        /* LOGO FIX: MODIFICAT PENTRU DIMENSIUNE MAI MARE */
         .logo-wrapper {
             position: relative;
-            height: 60px; /* Aceasta controlează spațiul alocat în meniu */
-            width: 220px; /* Lățime fixă pentru rezervare spațiu */
+            height: 60px; 
+            width: 280px; /* Am mărit lățimea containerului pentru a acomoda logo-ul mai mare */
         }
 
         .logo-nav {
             position: absolute;
-            top: -25px; /* Îl ridicăm puțin ca să pară centrat vertical în bară */
+            /* Ajustare poziție pentru a centra logo-ul mărit pe verticală față de bară */
+            top: -55px; 
             left: 0;
-            height: 120px; /* Dimensiune foarte mare și vizibilă */
+            /* MODIFICARE: Dimensiune crescută semnificativ */
+            height: 180px; 
             width: auto;
             object-fit: contain;
             z-index: 60;
             transition: all 0.3s ease;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.08));
         }
 
-        /* Când dăm scroll, micșorăm logo-ul subtil dar rămâne mai mare decât meniul */
+        /* La scroll, logo-ul se micșorează pentru a nu ocupa tot ecranul */
         .nav-scrolled .logo-nav {
-            height: 90px;
-            top: -15px;
+            height: 110px;
+            top: -20px;
         }
 
         .logo-footer {
@@ -66,7 +68,7 @@
             object-fit: contain;
         }
 
-        /* Menținem bara de meniu la o înălțime fixă */
+        /* Bara de meniu rămâne la fel */
         .main-nav {
             height: 85px; 
             display: flex;
@@ -75,12 +77,12 @@
 
         @media (max-width: 768px) {
             .logo-wrapper {
-                width: 150px;
+                width: 160px;
                 height: 50px;
             }
             .logo-nav {
-                height: 70px;
-                top: -10px;
+                height: 85px;
+                top: -15px;
             }
         }
     </style>
