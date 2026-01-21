@@ -113,7 +113,6 @@
         };
 
         const App = () => {
-            // 1. Definim rutele și funcția de detectare ÎNAINTE de a inițializa starea
             const routes = {
                 'home': '/',
                 'about': '/despre-noi',
@@ -161,8 +160,6 @@
                 { id: 'contact', label: 'Contact' }
             ];
 
-            // --- Componente Noi ---
-
             const TeamSection = () => (
                 <section className="py-24 bg-white border-b border-gray-50">
                     <div className="max-w-7xl mx-auto px-6">
@@ -180,7 +177,7 @@
                                 <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-lg relative">
                                     <div className="absolute inset-0 bg-[#5a1018] opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
                                     <img 
-                                        src="drnastase.jpg" 
+                                        src="drnastase.png" 
                                         alt="Dr. Alexandru Năstase" 
                                         className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105" 
                                     />
@@ -196,7 +193,7 @@
                                 <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-lg relative">
                                     <div className="absolute inset-0 bg-[#5a1018] opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
                                     <img 
-                                        src="asistent.jpg" 
+                                        src="asistent.png" 
                                         alt="Asistent Medical" 
                                         className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105" 
                                     />
@@ -212,7 +209,7 @@
                                 <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-lg relative">
                                     <div className="absolute inset-0 bg-[#5a1018] opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
                                     <img 
-                                        src="asitent2.jpg" 
+                                        src="asitent2.png" 
                                         alt="Asistent Medical" 
                                         className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105" 
                                     />
@@ -592,7 +589,7 @@
                                     <input 
                                         type="text" 
                                         placeholder="Caută serviciul dorit..." 
-                                        className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-full focus:ring-2 focus:ring-[#5a1018] outline-none"
+                                        className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-full focus:ring-2 focus:ring-[#5a1018] outline-none transition-all"
                                         value={searchTerm}
                                         onChange={(e) => setSearchTerm(e.target.value)}
                                     />
@@ -606,7 +603,7 @@
                                         </div>
                                         <div className="divide-y divide-gray-50">
                                             {cat.items.map((item, i) => (
-                                                <div key={i} className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-6 py-4 hover:bg-gray-50">
+                                                <div key={i} className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-6 py-4 hover:bg-gray-50 transition-colors">
                                                     <span className="text-[#1a1a1a] font-medium text-sm sm:text-base">{item.name}</span>
                                                     <span className="text-[#5a1018] font-bold bg-[#5a1018]/5 px-3 py-1 rounded-full whitespace-nowrap mt-2 sm:mt-0">{item.price}</span>
                                                 </div>
