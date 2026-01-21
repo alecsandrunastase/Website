@@ -35,32 +35,26 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* LOGO FIX: MODIFICAT PENTRU DIMENSIUNE MAI MARE */
+        /* LOGO FIX: DIMENSIUNE CONSTANTĂ */
         .logo-wrapper {
             position: relative;
             height: 60px; 
-            width: 280px; /* Am mărit lățimea containerului pentru a acomoda logo-ul mai mare */
+            width: 280px; 
         }
 
         .logo-nav {
             position: absolute;
-            /* Ajustare poziție pentru a centra logo-ul mărit pe verticală față de bară */
             top: -55px; 
             left: 0;
-            /* MODIFICARE: Dimensiune crescută semnificativ */
-            height: 180px; 
+            height: 180px; /* Dimensiune fixă mare */
             width: auto;
             object-fit: contain;
             z-index: 60;
-            transition: all 0.3s ease;
+            transition: all 0.3s ease; /* Păstrăm tranziția pentru alte efecte posibile */
             filter: drop-shadow(0 4px 6px rgba(0,0,0,0.08));
         }
 
-        /* La scroll, logo-ul se micșorează pentru a nu ocupa tot ecranul */
-        .nav-scrolled .logo-nav {
-            height: 110px;
-            top: -20px;
-        }
+        /* Am eliminat regula .nav-scrolled .logo-nav care micșora logo-ul */
 
         .logo-footer {
             height: 90px;
@@ -81,7 +75,7 @@
                 height: 50px;
             }
             .logo-nav {
-                height: 85px;
+                height: 85px; /* Pe mobil păstrăm dimensiunea ajustată */
                 top: -15px;
             }
         }
