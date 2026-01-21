@@ -34,6 +34,12 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        .logo-container img {
+            height: 55px; /* Ajustează dimensiunea logo-ului aici */
+            width: auto;
+            object-fit: contain;
+        }
     </style>
 </head>
 <body>
@@ -42,10 +48,12 @@
     <script type="text/babel">
         const { useState, useEffect } = React;
         
-        // Mocking Lucide components for standalone HTML use
+        // Componentă pentru pictograme Lucide
         const Icon = ({ name, size = 24, className = "" }) => {
             useEffect(() => {
-                lucide.createIcons();
+                if (window.lucide) {
+                    window.lucide.createIcons();
+                }
             }, [name]);
             return <i data-lucide={name} style={{ width: size, height: size }} className={className}></i>;
         };
@@ -58,7 +66,7 @@
             useEffect(() => {
                 const handleScroll = () => setScrolled(window.scrollY > 50);
                 window.addEventListener('scroll', handleScroll);
-                lucide.createIcons();
+                if (window.lucide) window.lucide.createIcons();
                 return () => window.removeEventListener('scroll', handleScroll);
             }, []);
 
@@ -302,13 +310,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div className="bg-[#1a1a1a] p-10 rounded-2xl">
+                        <div className="bg-[#1a1a1a] p-10 rounded-2xl shadow-2xl">
                             <h4 className="text-white text-xl font-bold mb-6">Solicită o Programare</h4>
                             <form className="space-y-4">
                                 <input type="text" placeholder="Nume Complet" className="w-full p-4 bg-[#2a2a2a] text-white rounded border border-gray-700 outline-none focus:border-[#5a1018]" />
                                 <input type="tel" placeholder="Telefon" className="w-full p-4 bg-[#2a2a2a] text-white rounded border border-gray-700 outline-none focus:border-[#5a1018]" />
                                 <textarea placeholder="Mesaj..." rows="3" className="w-full p-4 bg-[#2a2a2a] text-white rounded border border-gray-700 outline-none focus:border-[#5a1018]"></textarea>
-                                <button type="button" className="w-full py-4 bg-[#5a1018] text-white font-bold rounded hover:bg-opacity-80 transition-all uppercase">Trimite Cererea</button>
+                                <button type="button" className="w-full py-4 bg-[#5a1018] text-white font-bold rounded hover:bg-opacity-80 transition-all uppercase tracking-widest">Trimite Cererea</button>
                             </form>
                         </div>
                     </div>
@@ -331,25 +339,46 @@
                     {/* Nav */}
                     <nav className={`sticky top-0 z-50 w-full transition-all ${scrolled ? 'bg-white shadow-md py-2' : 'bg-white py-4'}`}>
                         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-                            <div className="flex items-center gap-3 cursor-pointer" onClick={() => setActivePage('home')}>
-                                <div className="w-12 h-12 rounded bg-[#5a1018] flex items-center justify-center font-bold text-white text-xl">AN</div>
-                                <div className="flex flex-col leading-none">
-                                    <span className="text-xs font-bold text-[#1a1a1a]">DR. ALEXANDRU</span>
-                                    <span className="text-xl font-black text-[#5a1018]">NĂSTASE</span>
-                                </div>
+                            {/* Logo principal schimbat cu imaginea */}
+                            <div className="flex items-center cursor-pointer logo-container" onClick={() => setActivePage('home')}>
+                                <img src="logodrnastase.png" alt="Clinica Dr. Alexandru Năstase" />
                             </div>
+                            
+                            {/* Mobile Menu Toggle */}
+                            <button className="md:hidden text-[#1a1a1a]" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                                <Icon name={isMenuOpen ? "x" : "menu"} />
+                            </button>
+
                             <div className="hidden md:flex gap-8">
                                 {navItems.map(item => (
                                     <button 
                                         key={item.id} 
                                         onClick={() => setActivePage(item.id)}
-                                        className={`font-semibold hover:text-[#5a1018] ${activePage === item.id ? 'text-[#5a1018]' : 'text-gray-700'}`}
+                                        className={`font-semibold hover:text-[#5a1018] transition-colors ${activePage === item.id ? 'text-[#5a1018]' : 'text-gray-700'}`}
                                     >
                                         {item.label}
                                     </button>
                                 ))}
                             </div>
                         </div>
+
+                        {/* Meniu Mobil */}
+                        {isMenuOpen && (
+                            <div className="absolute top-full left-0 w-full bg-white shadow-xl border-t md:hidden flex flex-col p-6 gap-4 animate-fade-in">
+                                {navItems.map((item) => (
+                                    <button
+                                        key={item.id}
+                                        onClick={() => {
+                                            setActivePage(item.id);
+                                            setIsMenuOpen(false);
+                                        }}
+                                        className={`text-left text-lg font-medium ${activePage === item.id ? 'text-[#5a1018]' : 'text-[#1a1a1a]'}`}
+                                    >
+                                        {item.label}
+                                    </button>
+                                ))}
+                            </div>
+                        )}
                     </nav>
 
                     <main>
@@ -358,26 +387,36 @@
                         {activePage === 'pricing' && <Pricing />}
                         {activePage === 'contact' && <Contact />}
                         {activePage === 'implantology' && (
-                            <div className="py-24 text-center font-bold text-2xl">Pagina Implantologie în curs de actualizare...</div>
+                            <div className="py-24 text-center font-bold text-2xl animate-fade-in">Pagina Implantologie în curs de actualizare...</div>
                         )}
                     </main>
 
                     <footer className="bg-[#1a1a1a] text-white py-16 px-6">
                         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
-                            <div>
-                                <h4 className="text-lg font-bold mb-4">DR. ALEXANDRU NĂSTASE</h4>
+                            <div className="space-y-4">
+                                {/* Logo în footer */}
+                                <div className="logo-container brightness-0 invert opacity-90">
+                                    <img src="logodrnastase.png" alt="Logo Dr. Alexandru Năstase" style={{ height: '45px' }} />
+                                </div>
                                 <p className="text-gray-400 text-sm">Zâmbetul tău, misiunea noastră. Tratamente moderne în Mioveni.</p>
                             </div>
                             <div>
-                                <h4 className="text-lg font-bold mb-4">Program</h4>
-                                <p className="text-gray-400 text-sm">Luni-Vineri: 09:00 - 21:00</p>
-                                <p className="text-[#5a1018] text-sm">Weekend: Închis</p>
+                                <h4 className="text-lg font-bold mb-4 text-[#5a1018]">Program</h4>
+                                <div className="text-gray-400 text-sm space-y-1">
+                                    <p>Luni-Vineri: 09:00 - 21:00</p>
+                                    <p>Sâmbătă-Duminică: <span className="text-[#5a1018] font-bold">Închis</span></p>
+                                </div>
                             </div>
                             <div>
-                                <h4 className="text-lg font-bold mb-4">Contact</h4>
-                                <p className="text-gray-400 text-sm">0771 292 813</p>
-                                <p className="text-gray-400 text-sm">B-dul Dacia, Bl. V1, Mioveni</p>
+                                <h4 className="text-lg font-bold mb-4 text-[#5a1018]">Contact</h4>
+                                <div className="text-gray-400 text-sm space-y-2">
+                                    <p className="flex items-center gap-2"><Icon name="phone" size={14} /> 0771 292 813</p>
+                                    <p className="flex items-center gap-2"><Icon name="map-pin" size={14} /> B-dul Dacia, Bl. V1, Mioveni</p>
+                                </div>
                             </div>
+                        </div>
+                        <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-gray-800 text-center text-gray-500 text-xs">
+                            <p>© {new Date().getFullYear()} Clinica Dentară Dr. Alexandru Năstase. Toate drepturile rezervate.</p>
                         </div>
                     </footer>
                 </div>
