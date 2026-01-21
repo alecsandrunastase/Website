@@ -35,23 +35,52 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Stiluri pentru Logo - Mărite pentru vizibilitate optimă */
+        /* LOGO FIX: Mărit fără a afecta înălțimea meniului */
+        .logo-wrapper {
+            position: relative;
+            height: 60px; /* Aceasta controlează spațiul alocat în meniu */
+            width: 220px; /* Lățime fixă pentru rezervare spațiu */
+        }
+
         .logo-nav {
-            height: 90px; /* Dimensiune mărită conform solicitării */
+            position: absolute;
+            top: -25px; /* Îl ridicăm puțin ca să pară centrat vertical în bară */
+            left: 0;
+            height: 120px; /* Dimensiune foarte mare și vizibilă */
             width: auto;
             object-fit: contain;
-            transition: height 0.3s ease;
+            z-index: 60;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+        }
+
+        /* Când dăm scroll, micșorăm logo-ul subtil dar rămâne mai mare decât meniul */
+        .nav-scrolled .logo-nav {
+            height: 90px;
+            top: -15px;
         }
 
         .logo-footer {
-            height: 80px;
+            height: 90px;
             width: auto;
             object-fit: contain;
         }
 
+        /* Menținem bara de meniu la o înălțime fixă */
+        .main-nav {
+            height: 85px; 
+            display: flex;
+            align-items: center;
+        }
+
         @media (max-width: 768px) {
+            .logo-wrapper {
+                width: 150px;
+                height: 50px;
+            }
             .logo-nav {
-                height: 60px;
+                height: 70px;
+                top: -10px;
             }
         }
     </style>
@@ -337,7 +366,7 @@
             );
 
             return (
-                <div className="min-h-screen bg-white">
+                <div className={`min-h-screen bg-white ${scrolled ? 'nav-scrolled' : ''}`}>
                     {/* Top Bar */}
                     <div className={`hidden md:flex justify-between items-center px-8 py-2 bg-[#5a1018] text-white text-sm transition-all duration-300 ${scrolled ? 'h-0 py-0 overflow-hidden opacity-0' : 'h-10'}`}>
                         <div className="flex gap-6">
@@ -349,11 +378,11 @@
                         </div>
                     </div>
 
-                    {/* Nav */}
-                    <nav className={`sticky top-0 z-50 w-full transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-2' : 'bg-white py-4'}`}>
-                        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-                            {/* Logo principal - Light Mode (Light BG) */}
-                            <div className="flex items-center cursor-pointer" onClick={() => setActivePage('home')}>
+                    {/* Nav - Înălțime fixă (main-nav) */}
+                    <nav className={`sticky top-0 z-50 w-full transition-all duration-300 ${scrolled ? 'bg-white shadow-md' : 'bg-white'}`}>
+                        <div className="max-w-7xl mx-auto px-6 main-nav justify-between">
+                            {/* Logo Wrapper cu poziționare absolută pentru a nu împinge meniul */}
+                            <div className="logo-wrapper cursor-pointer" onClick={() => setActivePage('home')}>
                                 <img 
                                     src="logodrnastase.png" 
                                     alt="Clinica Dr. Alexandru Năstase" 
@@ -362,11 +391,13 @@
                             </div>
                             
                             {/* Mobile Menu Toggle */}
-                            <button className="md:hidden text-[#1a1a1a]" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                                <Icon name={isMenuOpen ? "x" : "menu"} />
-                            </button>
+                            <div className="md:hidden flex items-center">
+                                <button className="text-[#1a1a1a]" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                                    <Icon name={isMenuOpen ? "x" : "menu"} />
+                                </button>
+                            </div>
 
-                            <div className="hidden md:flex gap-8 items-center">
+                            <div className="hidden md:flex gap-8 items-center h-full">
                                 {navItems.map(item => (
                                     <button 
                                         key={item.id} 
@@ -412,13 +443,13 @@
                     <footer className="bg-[#1a1a1a] text-white py-16 px-6">
                         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-center md:items-start">
                             <div className="space-y-6">
-                                {/* Logo alb pentru footer (Dark BG) */}
+                                {/* Logo alb pentru footer */}
                                 <img 
                                     src="clinicadrnastaselogowhite.png" 
                                     alt="Logo Dr. Alexandru Năstase" 
                                     className="logo-footer"
                                 />
-                                <p className="text-gray-400 text-sm">Zâmbetul tău, misiunea noastră. Tratamente moderne în Mioveni.</p>
+                                <p className="text-gray-400 text-sm font-medium">Zâmbetul tău, misiunea noastră. Tratamente moderne în Mioveni.</p>
                             </div>
                             <div>
                                 <h4 className="text-lg font-bold mb-4 text-[#5a1018]">Program</h4>
