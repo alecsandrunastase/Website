@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dr. Alexandru Năstase - Clinică Stomatologică Mioveni</title>
 
-    <!-- SPA Routing Fix (pentru GitHub Pages refresh cu 404.html) -->
+    <!-- SPA Routing Fix -->
     <script>
       (function () {
         const redirect = sessionStorage.redirect;
@@ -103,13 +103,14 @@
     <script type="text/babel">
         const { useState, useEffect } = React;
         
-        const Icon = ({ name, size = 24, className = "" }) => {
+        // Componentă Icon actualizată pentru a accepta props suplimentare (ex: fill)
+        const Icon = ({ name, size = 24, className = "", ...props }) => {
             useEffect(() => {
                 if (window.lucide) {
                     window.lucide.createIcons();
                 }
             }, [name]);
-            return <i data-lucide={name} style={{ width: size, height: size }} className={className}></i>;
+            return <i data-lucide={name} style={{ width: size, height: size }} className={className} {...props}></i>;
         };
 
         const App = () => {
@@ -172,7 +173,6 @@
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                            {/* Dr. Alexandru Năstase */}
                             <div className="space-y-6 group text-center cursor-pointer">
                                 <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-lg relative">
                                     <div className="absolute inset-0 bg-[#5a1018] opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
@@ -188,7 +188,6 @@
                                 </div>
                             </div>
 
-                            {/* Asistent 1 */}
                             <div className="space-y-6 group text-center cursor-pointer">
                                 <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-lg relative">
                                     <div className="absolute inset-0 bg-[#5a1018] opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
@@ -204,7 +203,6 @@
                                 </div>
                             </div>
 
-                            {/* Asistent 2 */}
                             <div className="space-y-6 group text-center cursor-pointer">
                                 <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-lg relative">
                                     <div className="absolute inset-0 bg-[#5a1018] opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
@@ -231,13 +229,13 @@
                             <div className="flex justify-center items-center gap-2 mb-4">
                                 <span className="text-[#5a1018] font-bold text-sm tracking-widest uppercase">Părerea Pacienților</span>
                             </div>
-                            <h2 className="text-4xl font-bold text-[#1a1a1a] mb-6">Recenzii Google My Business</h2>
+                            <h2 className="text-4xl font-bold text-[#1a1a1a] mb-6">Recenzii Google</h2>
                             <div className="flex justify-center gap-1 text-yellow-400 mb-2">
-                                <Icon name="star" size={24} fill="currentColor" />
-                                <Icon name="star" size={24} fill="currentColor" />
-                                <Icon name="star" size={24} fill="currentColor" />
-                                <Icon name="star" size={24} fill="currentColor" />
-                                <Icon name="star" size={24} fill="currentColor" />
+                                <Icon name="star" size={24} fill="currentColor" className="text-yellow-400" />
+                                <Icon name="star" size={24} fill="currentColor" className="text-yellow-400" />
+                                <Icon name="star" size={24} fill="currentColor" className="text-yellow-400" />
+                                <Icon name="star" size={24} fill="currentColor" className="text-yellow-400" />
+                                <Icon name="star" size={24} fill="currentColor" className="text-yellow-400" />
                             </div>
                             <p className="text-gray-500 font-medium">Rating 5.0 din 5 stele</p>
                         </div>
@@ -265,11 +263,11 @@
                                         <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" width="24" height="24" alt="Google" />
                                     </div>
                                     <div className="flex gap-1 text-yellow-400 mb-4">
-                                        <Icon name="star" size={16} fill="currentColor" />
-                                        <Icon name="star" size={16} fill="currentColor" />
-                                        <Icon name="star" size={16} fill="currentColor" />
-                                        <Icon name="star" size={16} fill="currentColor" />
-                                        <Icon name="star" size={16} fill="currentColor" />
+                                        <Icon name="star" size={16} fill="currentColor" className="text-yellow-400" />
+                                        <Icon name="star" size={16} fill="currentColor" className="text-yellow-400" />
+                                        <Icon name="star" size={16} fill="currentColor" className="text-yellow-400" />
+                                        <Icon name="star" size={16} fill="currentColor" className="text-yellow-400" />
+                                        <Icon name="star" size={16} fill="currentColor" className="text-yellow-400" />
                                     </div>
                                     <p className="text-gray-600 mb-6 leading-relaxed text-sm">"{r.text}"</p>
                                     <div className="flex items-center gap-4">
@@ -357,8 +355,6 @@
                     </div>
                 </section>
             );
-
-            // --- Componente Pagini ---
 
             const Home = () => (
                 <div>
