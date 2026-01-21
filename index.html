@@ -179,7 +179,7 @@
                                     <img 
                                         src="drnastase.png" 
                                         alt="Dr. Alexandru Năstase" 
-                                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105" 
+                                        className="w-full h-full object-cover transition-all duration-700 transform group-hover:scale-105" 
                                     />
                                 </div>
                                 <div>
@@ -195,7 +195,7 @@
                                     <img 
                                         src="asistent.png" 
                                         alt="Asistent Medical" 
-                                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105" 
+                                        className="w-full h-full object-cover transition-all duration-700 transform group-hover:scale-105" 
                                     />
                                 </div>
                                 <div>
@@ -211,7 +211,7 @@
                                     <img 
                                         src="asitent2.png" 
                                         alt="Asistent Medical" 
-                                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105" 
+                                        className="w-full h-full object-cover transition-all duration-700 transform group-hover:scale-105" 
                                     />
                                 </div>
                                 <div>
@@ -589,7 +589,7 @@
                                     <input 
                                         type="text" 
                                         placeholder="Caută serviciul dorit..." 
-                                        className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-full focus:ring-2 focus:ring-[#5a1018] outline-none transition-all"
+                                        className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-full focus:ring-2 focus:ring-[#5a1018] outline-none"
                                         value={searchTerm}
                                         onChange={(e) => setSearchTerm(e.target.value)}
                                     />
@@ -603,7 +603,7 @@
                                         </div>
                                         <div className="divide-y divide-gray-50">
                                             {cat.items.map((item, i) => (
-                                                <div key={i} className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-6 py-4 hover:bg-gray-50 transition-colors">
+                                                <div key={i} className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-6 py-4 hover:bg-gray-50">
                                                     <span className="text-[#1a1a1a] font-medium text-sm sm:text-base">{item.name}</span>
                                                     <span className="text-[#5a1018] font-bold bg-[#5a1018]/5 px-3 py-1 rounded-full whitespace-nowrap mt-2 sm:mt-0">{item.price}</span>
                                                 </div>
@@ -641,13 +641,15 @@
             return (
                 <div className="min-h-screen bg-white">
                     {/* Top Bar - Static */}
-                    <div className="hidden md:flex justify-between items-center px-8 py-2 bg-[#5a1018] text-white text-sm h-10">
-                        <div className="flex gap-6">
-                            <span className="flex items-center gap-2"><Icon name="phone" size={14} /> 0771 292 813</span>
-                            <span className="flex items-center gap-2"><Icon name="mail" size={14} /> contact@dr-alexandrunastase.ro</span>
-                        </div>
-                        <div className="flex gap-4">
-                            <span className="flex items-center gap-2"><Icon name="map-pin" size={14} /> Mioveni, Argeș</span>
+                    <div className="hidden md:block bg-[#5a1018] text-white text-sm">
+                        <div className="max-w-7xl mx-auto px-6 h-10 flex justify-between items-center">
+                            <div className="flex gap-6">
+                                <span className="flex items-center gap-2"><Icon name="phone" size={14} /> 0771 292 813</span>
+                                <span className="flex items-center gap-2"><Icon name="mail" size={14} /> contact@dr-alexandrunastase.ro</span>
+                            </div>
+                            <div className="flex gap-4">
+                                <span className="flex items-center gap-2"><Icon name="map-pin" size={14} /> Mioveni, Argeș</span>
+                            </div>
                         </div>
                     </div>
 
@@ -711,7 +713,7 @@
 
                     {/* Footer - Dark BG */}
                     <footer className="bg-[#1a1a1a] text-white py-16 px-6">
-                        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-center md:items-start">
+                        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 items-start">
                             <div className="space-y-6">
                                 <img 
                                     src="clinicadrnastaselogowhite.png" 
@@ -720,6 +722,24 @@
                                 />
                                 <p className="text-gray-400 text-sm font-medium">Zâmbetul tău, misiunea noastră. Tratamente moderne în Mioveni.</p>
                             </div>
+                            
+                            {/* Coloana Navigare */}
+                            <div>
+                                <h4 className="text-lg font-bold mb-4 text-[#5a1018]">Navigare Rapidă</h4>
+                                <ul className="text-gray-400 text-sm space-y-2">
+                                    {navItems.map(item => (
+                                        <li key={item.id}>
+                                            <button 
+                                                onClick={() => navigate(item.id)}
+                                                className="hover:text-white transition-colors text-left"
+                                            >
+                                                {item.label}
+                                            </button>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+
                             <div>
                                 <h4 className="text-lg font-bold mb-4 text-[#5a1018]">Program</h4>
                                 <div className="text-gray-400 text-sm space-y-1">
@@ -727,6 +747,7 @@
                                     <p>Sâmbătă-Duminică: <span className="text-[#5a1018] font-bold">Închis</span></p>
                                 </div>
                             </div>
+                            
                             <div>
                                 <h4 className="text-lg font-bold mb-4 text-[#5a1018]">Contact</h4>
                                 <div className="text-gray-400 text-sm space-y-2">
