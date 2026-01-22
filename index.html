@@ -184,19 +184,19 @@
                 };
 
                 return (
-                    <section className="py-24 bg-gray-50">
+                    <section className="py-24 bg-[#5a1018] text-white">
                         <div className="max-w-7xl mx-auto px-6">
                             <div className="text-center mb-16">
                                 <div className="flex justify-center items-center gap-2 mb-4">
-                                    <span className="text-[#5a1018] font-bold text-sm tracking-widest uppercase">Portofoliu</span>
+                                    <span className="text-white/80 font-bold text-sm tracking-widest uppercase">Portofoliu</span>
                                 </div>
-                                <h2 className="text-4xl font-bold text-[#1a1a1a] mb-6">Cazuri & Transformări</h2>
-                                <p className="text-gray-500 font-medium">Zâmbete reale, rezultate care vorbesc de la sine.</p>
+                                <h2 className="text-4xl font-bold text-white mb-6">Cazuri & Transformări</h2>
+                                <p className="text-gray-200 font-medium">Zâmbete reale, rezultate care vorbesc de la sine.</p>
                             </div>
 
                             <div className="relative max-w-5xl mx-auto">
-                                {/* Container cu inaltime fixa pentru a acomoda diverse formate de poze */}
-                                <div className="overflow-hidden rounded-2xl shadow-2xl bg-[#f0f0f0] h-[600px] flex items-center justify-center relative">
+                                {/* Container imagini */}
+                                <div className="overflow-hidden rounded-2xl shadow-2xl bg-white h-[600px] flex items-center justify-center relative">
                                     <div className="absolute inset-0 flex items-center justify-center p-4">
                                         <img 
                                             src={cases[currentIndex].img} 
@@ -205,13 +205,13 @@
                                         />
                                     </div>
                                     
-                                    {/* Titlu suprapus discret in partea de jos */}
+                                    {/* Titlu suprapus */}
                                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 text-center">
                                         <h4 className="text-white text-xl font-bold tracking-wide">{cases[currentIndex].title}</h4>
                                     </div>
                                 </div>
 
-                                {/* Navigation Arrows - Outside container for better visibility */}
+                                {/* Navigation Arrows */}
                                 <button 
                                     onClick={prevSlide}
                                     className="absolute -left-4 md:-left-16 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-100 text-[#5a1018] p-4 rounded-full shadow-xl transition-all transform hover:scale-110 z-20 border border-gray-100"
@@ -225,13 +225,13 @@
                                     <Icon name="chevron-right" size={28} />
                                 </button>
 
-                                {/* Dots */}
+                                {/* Dots - Acum albe pentru contrast */}
                                 <div className="flex justify-center gap-2 mt-8">
                                     {cases.map((_, idx) => (
                                         <button 
                                             key={idx}
                                             onClick={() => setCurrentIndex(idx)}
-                                            className={`w-3 h-3 rounded-full transition-all duration-300 ${idx === currentIndex ? 'bg-[#5a1018] w-8' : 'bg-gray-300 hover:bg-gray-400'}`}
+                                            className={`w-3 h-3 rounded-full transition-all duration-300 ${idx === currentIndex ? 'bg-white w-8' : 'bg-white/30 hover:bg-white/50'}`}
                                         />
                                     ))}
                                 </div>
@@ -722,7 +722,7 @@
 
             return (
                 <div className="min-h-screen bg-white">
-                    {/* Top Bar - Static */}
+                    {/* Top Bar - Static - ALINIAT */}
                     <div className="hidden md:block bg-[#5a1018] text-white text-sm">
                         <div className="max-w-7xl mx-auto px-6 h-10 flex justify-between items-center">
                             <div className="flex gap-6">
@@ -793,7 +793,7 @@
                         )}
                     </main>
 
-                    {/* Footer - Dark BG */}
+                    {/* Footer - Dark BG - CU MENIU NAVIGARE */}
                     <footer className="bg-[#1a1a1a] text-white py-16 px-6">
                         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 items-start">
                             <div className="space-y-6">
