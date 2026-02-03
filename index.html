@@ -257,8 +257,6 @@
                 { id: 'contact', label: 'Contact' }
             ];
 
-            // --- Componente Noi ---
-
             const TransformationsCarousel = () => {
                 const [currentIndex, setCurrentIndex] = useState(0);
                 const cases = [
@@ -408,7 +406,7 @@
                                     </div>
                                     <div className="flex gap-6 items-start">
                                         <div className="bg-white p-3 rounded-lg text-[#5a1018] shrink-0"><Icon name="clock" size={20} /></div>
-                                        <div><h5 className="text-lg font-bold mb-1">Program de Lucru</h5><ul className="text-gray-400 text-sm space-y-1"><li className="flex justify-between w-48"><span>Luni, Marți, Joi:</span> <span className="text-white font-medium">08:00 - 20:00</span></li><li className="flex justify-between w-48"><span>Miercuri, Vineri:</span> <span className="text-white font-medium">08:00 - 16:30</span></li><li className="flex justify-between w-48"><span>Sâmbătă:</span> <span className="text-[#5a1018] font-bold">Închis</span></li><li className="flex justify-between w-48"><span>Duminică:</span> <span className="text-[#5a1018] font-bold">Închis</span></li></ul></div>
+                                        <div><h5 className="text-lg font-bold mb-1">Program de Lucru</h5><ul className="text-gray-400 text-sm space-y-1"><li className="flex justify-between w-48"><span>Luni, Marți, Joi:</span> <span className="text-white font-medium">08:00 - 20:00</span></li><li className="flex justify-between w-48"><span>Miercuri, Vineri:</span> <span className="text-white font-medium">08:00 - 16:30</span></li><li className="flex justify-between w-48"><span>Sâmbătă:</span> <span className="text-red-500 font-bold">Închis</span></li><li className="flex justify-between w-48"><span>Duminică:</span> <span className="text-red-500 font-bold">Închis</span></li></ul></div>
                                     </div>
                                 </div>
                             </div>
@@ -700,7 +698,7 @@
                     { category: "PEDODONȚIE (tratamente copii)", items: [{ name: "Extracție dinte temporar (mobil)", price: "150 lei" }, { name: "Extracție dinte temporar fără rizaliză (fără mobilitate)", price: "200 lei" }, { name: "Sigilare dentară dinte definitiv", price: "250 lei" }, { name: "Obturație dinte temporar", price: "250 lei" }, { name: "Tratament endodontic dinți temporari", price: "350 lei" }] },
                     { category: "TRATAMENTUL AFECȚIUNILOR PARODONȚIULUI MARGINAL", items: [{ name: "Chiuretaj parodontal în câmp închis/dinte", price: "100 lei" }, { name: "Imobilizare prin bandă de fibră de sticlă/dinte", price: "150 lei" }] },
                     { category: "CHIRURGIE", items: [{ name: "Extracție dinte parodontotic (mobil)", price: "150 lei" }, { name: "Extracție dinte monoradicular (frontal)", price: "250 lei" }, { name: "Extracție dinte pluriradicular (molar, premolar)", price: "250–350 lei" }, { name: "Extracție molar de minte", price: "300–450 lei" }, { name: "Grefă liberă țesut keratinizat (recoltare de pe cerul gurii)", price: "2500 lei" }, { name: "Rezecție apicală", price: "1000 lei" }, { name: "Extracție dinte inclus (în funcție de dificultate)", price: "500–800 lei" }, { name: "Extracție dinte semi-inclus (în funcție de dificultate)", price: "400–600 lei" }, { name: "Gingivectomie / arcadă", price: "800 lei" }] },
-                    { category: "IMPLANT – ETAPE INTERMEDIARE", items: [{ name: "Descoperire sau montare în timpul intervenției capac de vindecare implant", price: "250 lei" }, { name: "Descoperire sau montare în timpul intervenției MUA (bont protetic multi-unit) implant + capac", price: "450 lei" }] },
+                    { category: "IMPLANT – ETAPE INTERMEDIARE", items: [{ name: "Descoperire sau montare în timpul intervenției capac de vindecare implant", price: "250 lei" }, { name: "Descoperire sau montare în timpul intervenției MUA (bont protetic multi-unit) implant + capă", price: "450 lei" }] },
                     { category: "PROTETICĂ", items: [{ name: "Șlefuire (pilire) / dinte", price: "80–100 lei" }, { name: "Coroană metalo-ceramică total fizionomică", price: "650 lei" }, { name: "Coroană metalo-ceramică parțial fizionomică (3/4)", price: "550 lei" }, { name: "Coroană ZIRCONIU pe dinte", price: "950 lei" }, { name: "Coroană ZIRCONIU pe implant (inclusiv bontul protetic T-base)", price: "1350 lei" }, { name: "Bont implant custom ZIRCONIU", price: "500 lei" }, { name: "Coroană acrilică provizorie (laborator)", price: "200 lei" }, { name: "Dinte provizoriu pe implant (inclus bont protetic)", price: "500 lei" }, { name: "Intermediari (cei care sunt în aer) / buc", price: "200 lei" }, { name: "Coroană acrilică provizorie (cabinet)", price: "150 lei" }, { name: "Fațete dentare E-MAX", price: "1250 lei" }, { name: "RCR (pivot metalic)", price: "200 lei" }, { name: "Proteză acrilică totală/parțială CLASICĂ / arcadă", price: "2500 lei" }, { name: "Proteză totală/parțială ELASTICĂ / arcadă", price: "3000 lei" }, { name: "Proteză scheletată (include sisteme speciale) / arcadă", price: "5000 lei" }, { name: "Proteză Kemeny (1 dinte)", price: "300 lei" }, { name: "Adăugare dinte în proteză (se adaugă câte 100 lei pt fiecare dinte extra)", price: "100 lei + 100/extra" }, { name: "Ablație coroană dentară (îndepărtare-tăiere)/bucată", price: "100 lei" }, { name: "Ablație RCR (pivot)", price: "250 lei" }, { name: "Gutieră pentru bruxism, albire, contenție / arcadă", price: "500 lei" }, { name: "Rebazăre proteză", price: "400 lei" }, { name: "Reparație proteză", price: "400 lei" }, { name: "Lucrare pe implanturi (THIMBLE) – TITAN COMPOZIT", price: "13.500 lei" }, { name: "Lucrare pe implanturi (THIMBLE) – TITAN ZIRCONIU", price: "16.000 lei" }] },
                     { category: "IMPLANTOLOGIE", items: [{ name: "Implant (doar șurub) - JD sau INNO", price: "2000 lei" }, { name: "Adiție osoasă / implant", price: "2000 lei" }, { name: "Sinus lifting + adiție osoasă", price: "4000–5000 lei" }, { name: "Sistem FAST & FIXED (4 implanturi, dinți provizorii incluși)", price: "12.500 lei" }, { name: "Sistem FAST & FIXED (5 implanturi, dinți provizorii incluși)", price: "14.500 lei" }, { name: "Sistem FAST & FIXED (6 implanturi, dinți provizorii incluși)", price: "16.500 lei" }] },
                     { category: "ESTETICĂ", items: [{ name: "Aplicare bijuterii dentare (bijuterie inclusă)", price: "350 lei" }, { name: "Albire profesională cu lampă", price: "1300 lei" }, { name: "Albire endo/dinte", price: "300 lei" }] },
@@ -845,89 +843,180 @@
                                 </p>
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
-                                <div className="space-y-6">
-                                    <h3 className="text-2xl font-bold text-white">1. Ce sunt sistemele All-on-X?</h3>
-                                    <p className="text-gray-300">
-                                        Reprezintă o soluție modernă de reabilitare orală prin care o arcadă dentară completă este susținută de un număr redus de implanturi dentare (X = 4, 6 sau mai multe implanturi).
+                            {/* 1. Ce sunt sistemele All-on-X? (Text Stânga - Poză Dreapta) */}
+                            <div className="flex flex-col lg:flex-row gap-12 mb-24 items-center">
+                                <div className="flex-1 space-y-6">
+                                    <h3 className="text-3xl font-bold text-white">1. Ce sunt sistemele All-on-X?</h3>
+                                    <div className="h-1 w-20 bg-[#5a1018]"></div>
+                                    <p className="text-gray-300 text-lg leading-relaxed">
+                                        Sistemele All-on-X reprezintă o soluție modernă de reabilitare orală prin care o arcadă dentară completă este susținută de un număr redus de implanturi dentare. "X" reprezintă numărul de implanturi folosite: 4, 6 sau mai multe.
                                     </p>
-                                    <ul className="list-disc pl-5 text-gray-300 space-y-1">
-                                        <li>All-on-4</li>
-                                        <li>All-on-6</li>
-                                        <li>All-on-8</li>
-                                    </ul>
+                                    <div className="flex gap-4 flex-wrap">
+                                        <span className="px-4 py-2 bg-white/10 rounded-full text-sm font-bold border border-white/20">All-on-4</span>
+                                        <span className="px-4 py-2 bg-white/10 rounded-full text-sm font-bold border border-white/20">All-on-6</span>
+                                        <span className="px-4 py-2 bg-white/10 rounded-full text-sm font-bold border border-white/20">All-on-8</span>
+                                    </div>
                                 </div>
-                                <div className="space-y-6">
-                                     <h3 className="text-2xl font-bold text-white">2. Cui se adresează?</h3>
-                                     <ul className="space-y-2 text-gray-300">
-                                        <li className="flex items-start gap-2"><Icon name="check" size={18} className="mt-1 text-[#5a1018]" /> Pacienților cu dinți lipsă total sau aproape total</li>
-                                        <li className="flex items-start gap-2"><Icon name="check" size={18} className="mt-1 text-[#5a1018]" /> Persoanelor care poartă proteze mobile instabile</li>
-                                        <li className="flex items-start gap-2"><Icon name="check" size={18} className="mt-1 text-[#5a1018]" /> Pacienților cu pierdere osoasă moderată și severă</li>
-                                        <li className="flex items-start gap-2"><Icon name="check" size={18} className="mt-1 text-[#5a1018]" /> Celor care își doresc dinți ficși într-un timp scurt</li>
+                                <div className="flex-1 relative h-[400px] w-full rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                                    <img 
+                                        src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=1000&auto=format&fit=crop" 
+                                        alt="Ce sunt sistemele All-on-X" 
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* 2. Cui se adresează? (Poză Stânga - Text Dreapta) */}
+                            <div className="flex flex-col lg:flex-row gap-12 mb-24 items-center">
+                                <div className="flex-1 order-2 lg:order-1 relative h-[400px] w-full rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                                    <img 
+                                        src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?q=80&w=1000&auto=format&fit=crop" 
+                                        alt="Pacient fericit" 
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
+                                <div className="flex-1 order-1 lg:order-2 space-y-6">
+                                     <h3 className="text-3xl font-bold text-white">2. Cui se adresează?</h3>
+                                     <div className="h-1 w-20 bg-[#5a1018]"></div>
+                                     <ul className="space-y-4 text-gray-300">
+                                        <li className="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5 hover:border-[#5a1018] transition-colors">
+                                            <div className="bg-[#5a1018] p-2 rounded-full"><Icon name="user" size={20} className="text-white" /></div>
+                                            <span className="text-lg">Pacienților cu dinți lipsă total sau aproape total</span>
+                                        </li>
+                                        <li className="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5 hover:border-[#5a1018] transition-colors">
+                                            <div className="bg-[#5a1018] p-2 rounded-full"><Icon name="frown" size={20} className="text-white" /></div>
+                                            <span className="text-lg">Persoanelor care poartă proteze mobile instabile</span>
+                                        </li>
+                                        <li className="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5 hover:border-[#5a1018] transition-colors">
+                                            <div className="bg-[#5a1018] p-2 rounded-full"><Icon name="activity" size={20} className="text-white" /></div>
+                                            <span className="text-lg">Pacienților cu pierdere osoasă moderată și severă</span>
+                                        </li>
+                                        <li className="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5 hover:border-[#5a1018] transition-colors">
+                                            <div className="bg-[#5a1018] p-2 rounded-full"><Icon name="clock" size={20} className="text-white" /></div>
+                                            <span className="text-lg">Celor care își doresc dinți ficși într-un timp scurt</span>
+                                        </li>
                                      </ul>
                                 </div>
                             </div>
 
-                             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
-                                <div className="space-y-6">
-                                    <h3 className="text-2xl font-bold text-white">3. Principiul de funcționare</h3>
-                                    <p className="text-gray-300">
-                                        Implanturile sunt inserate strategic în osul maxilar/mandibular. Cele posterioare sunt adesea înclinate pentru a evita sinusurile sau nervii.
+                             {/* 3. Principiul de funcționare (Text Stânga - Poză Dreapta) */}
+                             <div className="flex flex-col lg:flex-row gap-12 mb-24 items-center">
+                                <div className="flex-1 space-y-6">
+                                    <h3 className="text-3xl font-bold text-white">3. Principiul de funcționare</h3>
+                                    <div className="h-1 w-20 bg-[#5a1018]"></div>
+                                    <p className="text-gray-300 text-lg leading-relaxed">
+                                        Implanturile sunt inserate strategic în osul maxilar sau mandibular. O inovație cheie este că implanturile posterioare sunt adesea înclinate pentru a evita structurile anatomice sensibile (sinusurile sau nervii).
                                     </p>
-                                    <p className="text-gray-300">
-                                        Peste implanturi se fixează o lucrare protetică fixă (provizorie, cu care pacientul stă de obicei între 4 și 6 luni, urmând ca apoi să primească o lucrare protetică fixă, definitivă).
-                                    </p>
+                                    <div className="p-6 bg-white/10 rounded-xl border-l-4 border-[#5a1018]">
+                                        <p className="text-gray-200 italic">
+                                            "Peste implanturi se fixează o lucrare protetică fixă provizorie, cu care pacientul stă de obicei între 4 și 6 luni, urmând ca apoi să primească lucrarea definitivă."
+                                        </p>
+                                    </div>
                                 </div>
-                                <div className="space-y-6">
-                                     <h3 className="text-2xl font-bold text-white">4. Tipuri de sisteme</h3>
-                                     <ul className="space-y-3 text-gray-300">
-                                        <li><strong className="text-white">All-on-4:</strong> soluție minim invazivă, cost mai redus.</li>
-                                        <li><strong className="text-white">All-on-6:</strong> stabilitate și distribuție mai bună a forțelor (indicat mai ales la maxilar).</li>
-                                        <li><strong className="text-white">All-on-8:</strong> utilizat în cazuri speciale.</li>
-                                     </ul>
-                                     <p className="text-sm text-gray-400 italic">Alegerea depinde de calitatea osului, anatomia pacientului, forțele masticatorii și buget.</p>
+                                <div className="flex-1 relative h-[400px] w-full rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                                    <img 
+                                        src="https://plus.unsplash.com/premium_photo-1661775756810-82dbd209fc95?q=80&w=1000&auto=format&fit=crop" 
+                                        alt="Principiul de functionare implant" 
+                                        className="w-full h-full object-cover"
+                                    />
                                 </div>
                             </div>
 
-                            <div className="bg-white/5 rounded-2xl p-8 border border-white/10 mb-16">
-                                <h3 className="text-2xl font-bold text-white mb-6 text-center">5. Avantajele sistemelor All-on-X</h3>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                             {/* 4. Tipuri de sisteme (Poză Stânga - Text Dreapta) */}
+                             <div className="flex flex-col lg:flex-row gap-12 mb-24 items-center">
+                                <div className="flex-1 order-2 lg:order-1 relative h-[400px] w-full rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                                    <img 
+                                        src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?q=80&w=1000&auto=format&fit=crop" 
+                                        alt="Tipuri de sisteme" 
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
+                                <div className="flex-1 order-1 lg:order-2 space-y-8">
+                                     <h3 className="text-3xl font-bold text-white">4. Tipuri de sisteme All-on-X</h3>
+                                     <div className="h-1 w-20 bg-[#5a1018]"></div>
+                                     
+                                     <div className="space-y-6">
+                                        <div className="group">
+                                            <h4 className="text-xl font-bold text-[#5a1018] mb-2 group-hover:text-white transition-colors">All-on-4</h4>
+                                            <p className="text-gray-400">Soluție minim invazivă, cost mai redus. Ideală pentru cazurile standard.</p>
+                                        </div>
+                                        <div className="group">
+                                            <h4 className="text-xl font-bold text-[#5a1018] mb-2 group-hover:text-white transition-colors">All-on-6</h4>
+                                            <p className="text-gray-400">Stabilitate și distribuție mai bună a forțelor. Indicat mai ales la maxilar, unde osul este mai "moale".</p>
+                                        </div>
+                                        <div className="group">
+                                            <h4 className="text-xl font-bold text-[#5a1018] mb-2 group-hover:text-white transition-colors">All-on-8</h4>
+                                            <p className="text-gray-400">Utilizat în cazuri speciale, pentru o siguranță maximă.</p>
+                                        </div>
+                                     </div>
+                                     <p className="text-sm text-gray-500 border-t border-white/10 pt-4 mt-4">
+                                        * Alegerea depinde de calitatea osului, anatomia pacientului, forțele masticatorii și buget.
+                                     </p>
+                                </div>
+                            </div>
+
+                            {/* 5. Avantaje */}
+                            <div className="bg-white/5 rounded-3xl p-10 border border-white/10 mb-24 relative overflow-hidden">
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-[#5a1018]/20 rounded-full filter blur-3xl -mr-32 -mt-32"></div>
+                                <h3 className="text-3xl font-bold text-white mb-10 text-center relative z-10">5. Avantajele sistemelor All-on-X</h3>
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
                                     {[
-                                        "Lucrari protetice fixe, provizorii, în 24h",
+                                        "Lucrari protetice fixe în 24h",
                                         "Fără proteze mobile",
                                         "Funcție masticatorie îmbunătățită",
                                         "Estetică superioară",
                                         "Creșterea calității vieții",
                                         "În 99% din cazuri fără adiții osoase"
                                     ].map((adv, i) => (
-                                        <div key={i} className="flex items-center gap-3">
-                                            <div className="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center text-green-500"><Icon name="check" size={14} /></div>
-                                            <span className="text-gray-300">{adv}</span>
+                                        <div key={i} className="flex flex-col items-center text-center p-6 bg-black/20 rounded-xl hover:bg-[#5a1018]/20 transition-colors border border-white/5">
+                                            <div className="w-12 h-12 rounded-full bg-[#5a1018] flex items-center justify-center text-white mb-4 shadow-lg"><Icon name="check" size={24} /></div>
+                                            <span className="text-gray-200 font-medium text-lg">{adv}</span>
                                         </div>
                                     ))}
                                 </div>
                             </div>
 
-                             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                                <div className="space-y-6">
-                                    <h3 className="text-2xl font-bold text-white">6. Etapele tratamentului</h3>
-                                    <ol className="list-decimal pl-5 text-gray-300 space-y-2">
-                                        <li>Consultație și investigații (CBCT)</li>
-                                        <li>Planificare digitală</li>
-                                        <li>Inserarea implanturilor</li>
-                                        <li>Lucrare provizorie fixă</li>
-                                        <li>Perioadă de osteointegrare 4-6 luni</li>
-                                        <li>Lucrare definitivă</li>
-                                    </ol>
+                             {/* 6. Etapele Tratamentului - Timeline Vizual */}
+                             <div className="mb-24">
+                                <h3 className="text-3xl font-bold text-white mb-12 text-center">6. Etapele tratamentului</h3>
+                                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                                    {[
+                                        { step: "01", title: "Consult & CBCT", icon: "clipboard-check" },
+                                        { step: "02", title: "Planificare Digitală", icon: "monitor" },
+                                        { step: "03", title: "Inserare Implanturi", icon: "microscope" },
+                                        { step: "04", title: "Lucrare Provizorie", icon: "sparkles" },
+                                        { step: "05", title: "Vindecare 4-6 Luni", icon: "heart" },
+                                        { step: "06", title: "Lucrare Definitivă", icon: "trophy" }
+                                    ].map((s, i) => (
+                                        <div key={i} className="relative group">
+                                            <div className="bg-white/5 border border-white/10 p-6 rounded-xl hover:bg-[#5a1018] transition-all duration-300 h-full flex flex-col items-center text-center transform hover:-translate-y-2 cursor-default">
+                                                <div className="text-4xl font-black text-white/10 mb-4 group-hover:text-white/20">{s.step}</div>
+                                                <div className="mb-4 text-[#5a1018] group-hover:text-white">
+                                                    <Icon name={s.icon} size={32} />
+                                                </div>
+                                                <h5 className="font-bold text-sm text-gray-200 group-hover:text-white uppercase tracking-wider">{s.title}</h5>
+                                            </div>
+                                            {/* Arrow for desktop only, hide on last item */}
+                                            {i < 5 && (
+                                                <div className="hidden lg:block absolute top-1/2 -right-6 -translate-y-1/2 z-10 text-white/20">
+                                                    <Icon name="chevron-right" size={24} />
+                                                </div>
+                                            )}
+                                        </div>
+                                    ))}
                                 </div>
-                                <div className="space-y-6">
-                                     <h3 className="text-2xl font-bold text-white">7. Dezavantaje și limitări</h3>
-                                     <ul className="list-disc pl-5 text-gray-300 space-y-2">
-                                        <li>Cost inițial mai ridicat</li>
-                                        <li>Necesită igienă orală riguroasă</li>
-                                        <li>Nu este indicat în toate cazurile (afecțiuni sistemice severe, multiple comorbidități)</li>
-                                     </ul>
-                                </div>
+                            </div>
+
+                            {/* 7. Dezavantaje */}
+                            <div className="max-w-4xl mx-auto bg-black/40 rounded-2xl p-8 border-l-4 border-gray-500">
+                                 <h3 className="text-xl font-bold text-gray-300 mb-4 flex items-center gap-2">
+                                     <Icon name="info" size={20} /> Dezavantaje și limitări
+                                 </h3>
+                                 <ul className="space-y-2 text-gray-400">
+                                    <li className="flex items-start gap-2"><span className="text-gray-500">•</span> Cost inițial mai ridicat comparativ cu protezele mobile.</li>
+                                    <li className="flex items-start gap-2"><span className="text-gray-500">•</span> Necesită o igienă orală riguroasă și controale periodice.</li>
+                                    <li className="flex items-start gap-2"><span className="text-gray-500">•</span> Nu este indicat în toate cazurile (afecțiuni sistemice severe, multiple comorbidități).</li>
+                                 </ul>
                             </div>
 
                         </div>
@@ -1017,7 +1106,7 @@
                                 <SocialLinks className="mt-4" iconSize={20} />
                             </div>
                             <div><h4 className="text-lg font-bold mb-4 text-white">Navigare Rapidă</h4><ul className="text-gray-400 text-sm space-y-2">{navItems.map(item => (<li key={item.id}><button onClick={() => navigate(item.id)} className="hover:text-white transition-colors text-left">{item.label}</button></li>))}</ul></div>
-                            <div><h4 className="text-lg font-bold mb-4 text-white">Program</h4><div className="text-gray-400 text-sm space-y-1"><p>Luni, Marți, Joi: 08:00 - 20:00</p><p>Miercuri, Vineri: 08:00 - 16:30</p><p>Sâmbătă-Duminică: <span className="text-[#5a1018] font-bold">Închis</span></p></div></div>
+                            <div><h4 className="text-lg font-bold mb-4 text-white">Program</h4><div className="text-gray-400 text-sm space-y-1"><p>Luni, Marți, Joi: 08:00 - 20:00</p><p>Miercuri, Vineri: 08:00 - 16:30</p><p>Sâmbătă-Duminică: <span className="text-red-500 font-bold">Închis</span></p></div></div>
                             <div><h4 className="text-lg font-bold mb-4 text-white">Contact</h4><div className="text-gray-400 text-sm space-y-2"><p className="flex items-center gap-2"><Icon name="phone" size={14} /> 0771 292 813</p><p className="flex items-center gap-2"><Icon name="map-pin" size={14} /> B-dul Dacia, Bl. V1, Mioveni</p></div></div>
                         </div>
                         <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-gray-800 text-center text-gray-500 text-xs"><p>© {new Date().getFullYear()} Clinica Dentară Dr. Alexandru Năstase. Toate drepturile rezervate.</p></div>
