@@ -1107,9 +1107,16 @@ const Implantology = () => (
                     </div>
                 </div>
 
+            </div>
+        </section>
+
+        {/* SECTION 5 & 6: AVANTAJE & ETAPELE - NEW BACKGROUND COLOR */}
+        <section className="py-24" style={{backgroundColor: '#5A0F18'}}>
+            <div className="max-w-7xl mx-auto px-6">
+
                 {/* 5. Avantaje */}
                 <div className="bg-white/5 rounded-3xl p-10 border border-white/10 mb-24 relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-[#5a1018]/20 rounded-full filter blur-3xl -mr-32 -mt-32"></div>
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full filter blur-3xl -mr-32 -mt-32"></div>
                     <h3 className="text-3xl font-bold text-white mb-10 text-center relative z-10">5. Avantajele sistemelor All-on-X</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
                         {[
@@ -1120,9 +1127,9 @@ const Implantology = () => (
                             "Creșterea calității vieții",
                             "În 99% din cazuri fără adiții osoase"
                         ].map((adv, i) => (
-                            <div key={i} className="flex flex-col items-center text-center p-6 bg-black/20 rounded-xl hover:bg-[#5a1018]/20 transition-colors border border-white/5">
-                                <div className="w-12 h-12 rounded-full bg-[#5a1018] flex items-center justify-center text-white mb-4 shadow-lg"><Icon name="check" size={24} /></div>
-                                <span className="text-gray-200 font-medium text-lg">{adv}</span>
+                            <div key={i} className="flex flex-col items-center text-center p-6 bg-white/10 rounded-xl hover:bg-white/20 transition-colors border border-white/10">
+                                <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-[#5A0F18] mb-4 shadow-lg"><Icon name="check" size={24} /></div>
+                                <span className="text-gray-100 font-medium text-lg">{adv}</span>
                             </div>
                         ))}
                     </div>
@@ -1141,16 +1148,16 @@ const Implantology = () => (
                             { step: "06", title: "Lucrare Definitivă", icon: "trophy" }
                         ].map((s, i) => (
                             <div key={i} className="relative group">
-                                <div className="bg-white/5 border border-white/10 p-6 rounded-xl hover:bg-[#5a1018] transition-all duration-300 h-full flex flex-col items-center text-center transform hover:-translate-y-2 cursor-default">
-                                    <div className="text-4xl font-black text-white/10 mb-4 group-hover:text-white/20">{s.step}</div>
-                                    <div className="mb-4 text-[#5a1018] group-hover:text-white">
+                                <div className="bg-white/10 border border-white/20 p-6 rounded-xl hover:bg-white/20 transition-all duration-300 h-full flex flex-col items-center text-center transform hover:-translate-y-2 cursor-default">
+                                    <div className="text-4xl font-black text-white/20 mb-4 group-hover:text-white/30">{s.step}</div>
+                                    <div className="mb-4 text-white group-hover:text-gray-200">
                                         <Icon name={s.icon} size={32} />
                                     </div>
-                                    <h5 className="font-bold text-sm text-gray-200 group-hover:text-white uppercase tracking-wider">{s.title}</h5>
+                                    <h5 className="font-bold text-sm text-gray-100 group-hover:text-white uppercase tracking-wider">{s.title}</h5>
                                 </div>
                                 {/* Arrow for desktop only, hide on last item */}
                                 {i < 5 && (
-                                    <div className="hidden lg:block absolute top-1/2 -right-6 -translate-y-1/2 z-10 text-white/20">
+                                    <div className="hidden lg:block absolute top-1/2 -right-6 -translate-y-1/2 z-10 text-white/30">
                                         <Icon name="chevron-right" size={24} />
                                     </div>
                                 )}
@@ -1158,6 +1165,13 @@ const Implantology = () => (
                         ))}
                     </div>
                 </div>
+
+            </div>
+        </section>
+
+        {/* SECTION 3 (CONTINUED): DEZAVANTAJE */}
+        <section className="py-24 bg-[#1a1a1a] text-white">
+            <div className="max-w-7xl mx-auto px-6">
 
                 {/* 7. Dezavantaje */}
                 <div className="max-w-4xl mx-auto bg-black/40 rounded-2xl p-8 border-l-4 border-gray-500">
@@ -1217,6 +1231,7 @@ const Implantology = () => (
             </div>
         </section>
     </div>
+);
 );
             const Contact = () => (
                 <div>
