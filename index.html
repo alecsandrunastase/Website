@@ -314,18 +314,23 @@
                 );
             };
 
-           const TeamSection = () => {
+          const TeamSection = () => {
     const [currentSlide, setCurrentSlide] = React.useState(0);
 
-    const team = [
+    const doctors = [
         { name: "Dr. Alexandru Năstase", role: "Stomatologie Generală, Implantologie Orală, Chirurgie", img: "Dr. Alexandru Nastase Stomatologie generala, implantologie orala, chirurgie .jpeg" },
         { name: "Dr. Florin Boboc", role: "Ortodontie", img: "Dr. Florin Boboc - ortondontie.jpeg" },
-        { name: "Dr. Valentina Racu", role: "Stomatologie Generală, Pedodontie", img: "Dr. Valentina Racu - stomatologie generala + pedodontie.jpeg" },
+        { name: "Dr. Valentina Racu", role: "Stomatologie Generală, Pedodontie", img: "Dr. Valentina Racu - stomatologie generala + pedodontie.jpeg" }
+    ];
+
+    const assistants = [
         { name: "Asistenta Cristescu Alexandra", role: "Asistent Medical", img: "Asistenta Cristescu Alexandra.jpeg" },
         { name: "Asistent Rizea Cristina", role: "Asistent Medical", img: "Asistent Rizea Cristina.jpeg" },
         { name: "Asistent Ivan Cristina", role: "Asistent Medical", img: "Asistent Ivan Cristina.jpeg" },
         { name: "Asistent Grosu Anda", role: "Asistent Medical", img: "Asistent Grosu Anda.jpeg" }
     ];
+
+    const team = [...doctors, ...assistants];
 
     const nextSlide = () => {
         setCurrentSlide((prev) => (prev + 1) % team.length);
@@ -346,20 +351,45 @@
                     <p className="text-gray-500 font-medium">Experiență și grijă pentru fiecare pacient</p>
                 </div>
 
-                {/* Desktop Grid View */}
-                <div className="hidden lg:grid grid-cols-1 md:grid-cols-3 gap-12">
-                    {team.map((m, i) => (
-                        <div key={i} className="space-y-6 group text-center cursor-pointer">
-                            <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-lg relative">
-                                <div className="absolute inset-0 bg-[#5a1018] opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
-                                <img src={`/${m.img}`} alt={m.name} className="w-full h-full object-cover transition-all duration-700 transform group-hover:scale-105" />
-                            </div>
-                            <div>
-                                <h4 className="text-2xl font-bold text-[#1a1a1a] mb-1">{m.name}</h4>
-                                <p className="text-[#5a1018] font-bold text-xs uppercase tracking-widest">{m.role}</p>
-                            </div>
+                {/* Desktop View */}
+                <div className="hidden lg:block space-y-16">
+                    {/* Doctors - 3 Columns */}
+                    <div>
+                        <h3 className="text-2xl font-bold text-[#1a1a1a] mb-8 text-center">Doctori</h3>
+                        <div className="grid grid-cols-3 gap-12">
+                            {doctors.map((m, i) => (
+                                <div key={i} className="space-y-6 group text-center cursor-pointer">
+                                    <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-lg relative">
+                                        <div className="absolute inset-0 bg-[#5a1018] opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
+                                        <img src={`/${m.img}`} alt={m.name} className="w-full h-full object-cover transition-all duration-700 transform group-hover:scale-105" />
+                                    </div>
+                                    <div>
+                                        <h4 className="text-2xl font-bold text-[#1a1a1a] mb-1">{m.name}</h4>
+                                        <p className="text-[#5a1018] font-bold text-xs uppercase tracking-widest">{m.role}</p>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
-                    ))}
+                    </div>
+
+                    {/* Assistants - 4 Columns */}
+                    <div>
+                        <h3 className="text-2xl font-bold text-[#1a1a1a] mb-8 text-center">Asistenți Medicali</h3>
+                        <div className="grid grid-cols-4 gap-12">
+                            {assistants.map((m, i) => (
+                                <div key={i} className="space-y-6 group text-center cursor-pointer">
+                                    <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-lg relative">
+                                        <div className="absolute inset-0 bg-[#5a1018] opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
+                                        <img src={`/${m.img}`} alt={m.name} className="w-full h-full object-cover transition-all duration-700 transform group-hover:scale-105" />
+                                    </div>
+                                    <div>
+                                        <h4 className="text-xl font-bold text-[#1a1a1a] mb-1">{m.name}</h4>
+                                        <p className="text-[#5a1018] font-bold text-xs uppercase tracking-widest">{m.role}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
 
                 {/* Mobile Carousel View */}
@@ -419,7 +449,6 @@
         </section>
     );
 };
-
             const ReviewsSection = () => (
                 <section className="py-24 bg-gray-50">
                     <div className="max-w-7xl mx-auto px-6">
