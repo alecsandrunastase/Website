@@ -314,33 +314,111 @@
                 );
             };
 
-            const TeamSection = () => (
-                <section className="py-24 bg-white border-b border-gray-50">
-                    <div className="max-w-7xl mx-auto px-6">
-                        <div className="text-center mb-16">
-                            <div className="flex justify-center items-center gap-2 mb-4">
-                                <span className="text-[#5a1018] font-bold text-sm tracking-widest uppercase">Echipa Noastră</span>
+           const TeamSection = () => {
+    const [currentSlide, setCurrentSlide] = React.useState(0);
+
+    const team = [
+        { name: "Dr. Alexandru Năstase", role: "Stomatologie Generală, Implantologie Orală, Chirurgie", img: "Dr. Alexandru Nastase Stomatologie generala, implantologie orala, chirurgie .jpeg" },
+        { name: "Dr. Florin Boboc", role: "Ortodontie", img: "Dr. Florin Boboc - ortondontie.jpeg" },
+        { name: "Dr. Valentina Racu", role: "Stomatologie Generală, Pedodontie", img: "Dr. Valentina Racu - stomatologie generala + pedodontie.jpeg" },
+        { name: "Asistenta Cristescu Alexandra", role: "Asistent Medical", img: "Asistenta Cristescu Alexandra.jpeg" },
+        { name: "Asistent Rizea Cristina", role: "Asistent Medical", img: "Asistent Rizea Cristina.jpeg" },
+        { name: "Asistent Ivan Cristina", role: "Asistent Medical", img: "Asistent Ivan Cristina.jpeg" },
+        { name: "Asistent Grosu Anda", role: "Asistent Medical", img: "Asistent Grosu Anda.jpeg" }
+    ];
+
+    const nextSlide = () => {
+        setCurrentSlide((prev) => (prev + 1) % team.length);
+    };
+
+    const prevSlide = () => {
+        setCurrentSlide((prev) => (prev - 1 + team.length) % team.length);
+    };
+
+    return (
+        <section className="py-24 bg-white border-b border-gray-50">
+            <div className="max-w-7xl mx-auto px-6">
+                <div className="text-center mb-16">
+                    <div className="flex justify-center items-center gap-2 mb-4">
+                        <span className="text-[#5a1018] font-bold text-sm tracking-widest uppercase">Echipa Noastră</span>
+                    </div>
+                    <h2 className="text-4xl font-bold text-[#1a1a1a] mb-6">Profesioniști Dedicați</h2>
+                    <p className="text-gray-500 font-medium">Experiență și grijă pentru fiecare pacient</p>
+                </div>
+
+                {/* Desktop Grid View */}
+                <div className="hidden lg:grid grid-cols-1 md:grid-cols-3 gap-12">
+                    {team.map((m, i) => (
+                        <div key={i} className="space-y-6 group text-center cursor-pointer">
+                            <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-lg relative">
+                                <div className="absolute inset-0 bg-[#5a1018] opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
+                                <img src={`/${m.img}`} alt={m.name} className="w-full h-full object-cover transition-all duration-700 transform group-hover:scale-105" />
                             </div>
-                            <h2 className="text-4xl font-bold text-[#1a1a1a] mb-6">Profesioniști Dedicați</h2>
-                            <p className="text-gray-500 font-medium">Experiență și grijă pentru fiecare pacient</p>
+                            <div>
+                                <h4 className="text-2xl font-bold text-[#1a1a1a] mb-1">{m.name}</h4>
+                                <p className="text-[#5a1018] font-bold text-xs uppercase tracking-widest">{m.role}</p>
+                            </div>
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                            {[{name: "Dr. Alexandru Năstase", role: "Chirurgie & Implantologie", img: "drnastase.png"}, {name: "Elena Popescu", role: "Asistent Medical", img: "asistent.png"}, {name: "Andreea Dumitru", role: "Asistent Medical", img: "asitent2.png"}].map((m, i) => (
-                                <div key={i} className="space-y-6 group text-center cursor-pointer">
-                                    <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-lg relative">
-                                        <div className="absolute inset-0 bg-[#5a1018] opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
-                                        <img src={m.img} alt={m.name} className="w-full h-full object-cover transition-all duration-700 transform group-hover:scale-105" />
-                                    </div>
-                                    <div>
-                                        <h4 className="text-2xl font-bold text-[#1a1a1a] mb-1">{m.name}</h4>
-                                        <p className="text-[#5a1018] font-bold text-xs uppercase tracking-widest">{m.role}</p>
-                                    </div>
-                                </div>
+                    ))}
+                </div>
+
+                {/* Mobile Carousel View */}
+                <div className="lg:hidden">
+                    <div className="relative">
+                        <div className="space-y-6 group text-center">
+                            <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-lg relative">
+                                <div className="absolute inset-0 bg-[#5a1018] opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
+                                <img 
+                                    src={`/${team[currentSlide].img}`} 
+                                    alt={team[currentSlide].name} 
+                                    className="w-full h-full object-cover transition-all duration-700 transform group-hover:scale-105" 
+                                />
+                            </div>
+                            <div>
+                                <h4 className="text-2xl font-bold text-[#1a1a1a] mb-1">{team[currentSlide].name}</h4>
+                                <p className="text-[#5a1018] font-bold text-xs uppercase tracking-widest">{team[currentSlide].role}</p>
+                            </div>
+                        </div>
+
+                        {/* Navigation Buttons */}
+                        <button 
+                            onClick={prevSlide}
+                            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 bg-[#5a1018] text-white p-3 rounded-full hover:bg-[#4a0d14] transition-all"
+                        >
+                            <Icon name="chevron-left" size={24} />
+                        </button>
+                        <button 
+                            onClick={nextSlide}
+                            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 bg-[#5a1018] text-white p-3 rounded-full hover:bg-[#4a0d14] transition-all"
+                        >
+                            <Icon name="chevron-right" size={24} />
+                        </button>
+
+                        {/* Carousel Indicators */}
+                        <div className="flex justify-center gap-2 mt-8">
+                            {team.map((_, i) => (
+                                <button
+                                    key={i}
+                                    onClick={() => setCurrentSlide(i)}
+                                    className={`h-2 rounded-full transition-all ${
+                                        i === currentSlide 
+                                            ? 'bg-[#5a1018] w-8' 
+                                            : 'bg-gray-300 w-2'
+                                    }`}
+                                />
                             ))}
                         </div>
+
+                        {/* Slide Counter */}
+                        <div className="text-center mt-6 text-gray-500 text-sm">
+                            {currentSlide + 1} / {team.length}
+                        </div>
                     </div>
-                </section>
-            );
+                </div>
+            </div>
+        </section>
+    );
+};
 
             const ReviewsSection = () => (
                 <section className="py-24 bg-gray-50">
