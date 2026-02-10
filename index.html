@@ -741,7 +741,7 @@
                 );
             };
 
-           const Implantology = () => (
+const Implantology = () => (
     <div className="page-fade-in">
         {/* SECTION 1: HERO */}
         <section className="relative h-[70vh] flex items-center bg-gray-900 overflow-hidden">
@@ -875,14 +875,23 @@
                     </div>
                 </div>
 
-                {/* 2. Cui se adresează? (Poză Stânga - Text Dreapta) */}
+                {/* 2. Cui se adresează? (Grid de 2 poze Stânga - Text Dreapta) */}
                 <div className="flex flex-col lg:flex-row gap-12 mb-24 items-center">
-                    <div className="flex-1 order-2 lg:order-1 relative h-[400px] w-full rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-                        <img 
-                            src="/jddental.webp" 
-                            alt="Pacient fericit" 
-                            className="w-full h-full object-cover"
-                        />
+                    <div className="flex-1 order-2 lg:order-1 grid grid-cols-2 gap-4 h-[400px]">
+                        <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                            <img 
+                                src="/cuiiseadreseaza1.jpeg" 
+                                alt="Cui se adresează - Partea 1" 
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
+                        <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                            <img 
+                                src="/cuiiseadreseaza2.jpeg" 
+                                alt="Cui se adresează - Partea 2" 
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
                     </div>
                     <div className="flex-1 order-1 lg:order-2 space-y-6">
                          <h3 className="text-3xl font-bold text-white">2. Cui se adresează?</h3>
@@ -908,7 +917,7 @@
                     </div>
                 </div>
 
-                {/* 3. Principiul de funcționare (Text Stânga - Poză Dreapta) */}
+                {/* 3. Principiul de funcționare (Text Stânga - Grid de 4 poze Dreapta) */}
                 <div className="flex flex-col lg:flex-row gap-12 mb-24 items-center">
                     <div className="flex-1 space-y-6">
                         <h3 className="text-3xl font-bold text-white">3. Principiul de funcționare</h3>
@@ -922,12 +931,35 @@
                             </p>
                         </div>
                     </div>
-                    <div className="flex-1 relative h-[400px] w-full rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-                        <img 
-                            src="/sisteme.webp" 
-                            alt="Principiul de functionare implant" 
-                            className="w-full h-full object-cover"
-                        />
+                    <div className="flex-1 grid grid-cols-2 gap-4 h-[450px]">
+                        <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                            <img 
+                                src="/principiuldefunctionare.jpeg" 
+                                alt="Principiul de funcționare - 1" 
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
+                        <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                            <img 
+                                src="/principuuldefunctionare2.jpeg" 
+                                alt="Principiul de funcționare - 2" 
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
+                        <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                            <img 
+                                src="/principiudefunctionare3.jpeg" 
+                                alt="Principiul de funcționare - 3" 
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
+                        <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                            <img 
+                                src="/principiudefunctionare4.jpeg" 
+                                alt="Principiul de funcționare - 4" 
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
                     </div>
                 </div>
 
@@ -1058,8 +1090,8 @@
                     </div>
                     <div className="order-1 lg:order-2 h-[450px] rounded-2xl overflow-hidden shadow-2xl relative group">
                          <img 
-                            src="https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=1932&auto=format&fit=crop" 
-                            alt="Chirurgie Dentară" 
+                            src="/solutiipentrucazuricomplexe.jpeg" 
+                            alt="Soluții pentru cazuri complexe" 
                             className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                         />
                         <div className="absolute inset-0 bg-[#5a1018]/10 group-hover:bg-transparent transition-all"></div>
