@@ -848,57 +848,390 @@
                 );
             };
 
-// For SECTION 2 - JD Dental (single image, just make it full width)
-<div className="flex-1 relative rounded-2xl overflow-hidden shadow-2xl h-auto">
-    <img 
-        src="/implanturijddental.jpg" 
-        alt="Implant Dentar JD" 
-        className="w-full h-auto object-cover"
-    />
-    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-    <div className="absolute bottom-8 left-8 text-white">
-        <p className="font-bold text-2xl">Soluția Ideală</p>
-        <p className="text-sm opacity-90">Pentru cazuri complexe și atrofii severe.</p>
-    </div>
-</div>
+const Implantology = () => (
+    <div className="page-fade-in">
+        {/* SECTION 1: HERO */}
+        <section className="relative h-[70vh] flex items-center bg-gray-900 overflow-hidden">
+            <div className="absolute inset-0 opacity-50">
+                 <img 
+                    src="https://images.unsplash.com/photo-1629909615184-74f495363b67?q=80&w=2069" 
+                    alt="Implantologie Digitală" 
+                    className="w-full h-full object-cover"
+                />
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
+            <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
+                <div className="max-w-3xl space-y-6">
+                    <div className="inline-block bg-[#5a1018] px-4 py-2 text-white font-bold text-xs uppercase tracking-widest rounded-sm">
+                        Centru de Excelență
+                    </div>
+                    <h1 className="text-5xl md:text-7xl font-black text-white leading-tight">
+                        Implantologie<br/>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">Minim Invazivă</span>
+                    </h1>
+                    <p className="text-gray-200 text-lg leading-relaxed max-w-xl">
+                        Soluții de ultimă generație pentru înlocuirea dinților lipsă. De la un singur implant până la reabilitări totale a arcadelor dentare într-o singură zi.
+                    </p>
+                    <button onClick={() => navigate('contact')} className="px-10 py-4 bg-white text-[#5a1018] font-bold rounded shadow-lg hover:bg-gray-100 transition-all uppercase text-xs tracking-widest mt-4">
+                        Programează o Consultație
+                    </button>
+                </div>
+            </div>
+        </section>
 
-// For SECTION 3 - Image grids (2, 2, 4, 2 images) - UPDATE ALL:
-<div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-4">
-    <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-        <img 
-            src="/cesuntimplanturile1.jpeg" 
-            alt="Ce sunt sistemele All-on-X - Partea 1" 
-            className="w-full h-auto object-cover"
-        />
-    </div>
-    <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-        <img 
-            src="/cesuntimplanturile2.jpeg" 
-            alt="Ce sunt sistemele All-on-X - Partea 2" 
-            className="w-full h-auto object-cover"
-        />
-    </div>
-</div>
+        {/* SECTION 2: SOLUȚII PREMIUM (JD Implants) */}
+        <section className="py-24 bg-white">
+            <div className="max-w-7xl mx-auto px-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div className="space-y-8">
+                        <div>
+                            <h3 className="text-[#5a1018] font-bold tracking-widest uppercase text-sm mb-2">Tehnologie Avansată</h3>
+                            <h2 className="text-4xl font-bold text-[#1a1a1a]">Implanturi Italienești JD Dental</h2>
+                        </div>
+                        <div className="text-gray-600 leading-relaxed space-y-4">
+                            <p>
+                                Utilizăm implanturi italienești marca <strong>JD Dental</strong>, recunoscute pentru inovația în implantologia neconvențională. Acestea permit abordarea cazurilor complexe unde oferta osoasă este limitată.
+                            </p>
+                            <ul className="space-y-2">
+                                <li className="flex items-start gap-2">
+                                    <div className="mt-1 w-2 h-2 rounded-full bg-[#5a1018]"></div>
+                                    <span>Implanturi de mari dimensiuni și arhitectură specială.</span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <div className="mt-1 w-2 h-2 rounded-full bg-[#5a1018]"></div>
+                                    <span>Plasare în zone cheie: pterigoidiene, trans-sinusale, nazale.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="space-y-4">
+                            <div className="flex gap-4">
+                                <div className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-[#5a1018] shrink-0">
+                                    <Icon name="check-circle" />
+                                </div>
+                                <div>
+                                    <h4 className="font-bold text-lg">Integrare Rapidă</h4>
+                                    <p className="text-sm text-gray-500">Suprafețe tratate special pentru o osteointegrare accelerată și sigură.</p>
+                                </div>
+                            </div>
+                            <div className="flex gap-4">
+                                <div className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-[#5a1018] shrink-0">
+                                    <Icon name="trending-up" />
+                                </div>
+                                <div>
+                                    <h4 className="font-bold text-lg">Predictibilitate pe Termen Lung</h4>
+                                    <p className="text-sm text-gray-500">Stabilitate excelentă și rezultate durabile în timp.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                         <img 
+                            src="/implanturijddental.jpg" 
+                            alt="Implant Dentar JD" 
+                            className="w-full h-auto object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div className="absolute bottom-8 left-8 text-white">
+                            <p className="font-bold text-2xl">Soluția Ideală</p>
+                            <p className="text-sm opacity-90">Pentru cazuri complexe și atrofii severe.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-// For SECTION 4 - Complex cases images
-<div className="order-1 lg:order-2 grid grid-cols-1 lg:grid-cols-2 gap-4">
-    <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
-        <img 
-            src="/solutiipentrucazuricomplexe.jpeg" 
-            alt="Soluții pentru cazuri complexe - 1" 
-            className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700"
-        />
-        <div className="absolute inset-0 bg-[#5a1018]/10 group-hover:bg-transparent transition-all"></div>
+        {/* SECTION 3: ALL-ON-X (SISTEME COMPLETE) */}
+        <section className="py-24 bg-[#1a1a1a] text-white">
+            <div className="max-w-7xl mx-auto px-6">
+                <div className="text-center mb-16">
+                    <h2 className="text-4xl font-bold mb-4">Sistemele All-on-X – Soluția modernă pentru edentația totală</h2>
+                    <p className="text-gray-400 max-w-3xl mx-auto">
+                        Reabilitare orală completă prin care o arcadă dentară este susținută de un număr redus de implanturi (4, 6 sau mai multe).
+                    </p>
+                </div>
+
+                {/* 1. Ce sunt sistemele All-on-X? (Text Stânga - Grid de 2 poze Dreapta) */}
+                <div className="flex flex-col lg:flex-row gap-12 mb-24 items-center">
+                    <div className="flex-1 space-y-6">
+                        <h3 className="text-3xl font-bold text-white">1. Ce sunt sistemele All-on-X?</h3>
+                        <div className="h-1 w-20 bg-[#5a1018]"></div>
+                        <p className="text-gray-300 text-lg leading-relaxed">
+                            Sistemele All-on-X reprezintă o soluție modernă de reabilitare orală prin care o arcadă dentară completă este susținută de un număr redus de implanturi dentare. "X" reprezintă numărul de implanturi folosite: 4, 6 sau mai multe.
+                        </p>
+                        <div className="flex gap-4 flex-wrap">
+                            <span className="px-4 py-2 bg-white/10 rounded-full text-sm font-bold border border-white/20">All-on-4</span>
+                            <span className="px-4 py-2 bg-white/10 rounded-full text-sm font-bold border border-white/20">All-on-6</span>
+                            <span className="px-4 py-2 bg-white/10 rounded-full text-sm font-bold border border-white/20">All-on-8</span>
+                        </div>
+                    </div>
+                    <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-4">
+                        <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                            <img 
+                                src="/cesuntimplanturile1.jpeg" 
+                                alt="Ce sunt sistemele All-on-X - Partea 1" 
+                                className="w-full h-auto object-cover"
+                            />
+                        </div>
+                        <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                            <img 
+                                src="/cesuntimplanturile2.jpeg" 
+                                alt="Ce sunt sistemele All-on-X - Partea 2" 
+                                className="w-full h-auto object-cover"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                {/* 2. Cui se adresează? (Grid de 2 poze Stânga - Text Dreapta) */}
+                <div className="flex flex-col lg:flex-row gap-12 mb-24 items-center">
+                    <div className="flex-1 order-2 lg:order-1 grid grid-cols-1 lg:grid-cols-2 gap-4">
+                        <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                            <img 
+                                src="/cuiiseadreseaza1.jpeg" 
+                                alt="Cui se adresează - Partea 1" 
+                                className="w-full h-auto object-cover"
+                            />
+                        </div>
+                        <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                            <img 
+                                src="/cuiiseadreseaza2.jpeg" 
+                                alt="Cui se adresează - Partea 2" 
+                                className="w-full h-auto object-cover"
+                            />
+                        </div>
+                    </div>
+                    <div className="flex-1 order-1 lg:order-2 space-y-6">
+                         <h3 className="text-3xl font-bold text-white">2. Cui se adresează?</h3>
+                         <div className="h-1 w-20 bg-[#5a1018]"></div>
+                         <ul className="space-y-4 text-gray-300">
+                            <li className="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5 hover:border-[#5a1018] transition-colors">
+                                <div className="bg-[#5a1018] p-2 rounded-full"><Icon name="user" size={20} className="text-white" /></div>
+                                <span className="text-lg">Pacienților cu dinți lipsă total sau aproape total</span>
+                            </li>
+                            <li className="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5 hover:border-[#5a1018] transition-colors">
+                                <div className="bg-[#5a1018] p-2 rounded-full"><Icon name="frown" size={20} className="text-white" /></div>
+                                <span className="text-lg">Persoanelor care poartă proteze mobile instabile</span>
+                            </li>
+                            <li className="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5 hover:border-[#5a1018] transition-colors">
+                                <div className="bg-[#5a1018] p-2 rounded-full"><Icon name="activity" size={20} className="text-white" /></div>
+                                <span className="text-lg">Pacienților cu pierdere osoasă moderată și severă</span>
+                            </li>
+                            <li className="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5 hover:border-[#5a1018] transition-colors">
+                                <div className="bg-[#5a1018] p-2 rounded-full"><Icon name="clock" size={20} className="text-white" /></div>
+                                <span className="text-lg">Celor care își doresc dinți ficși într-un timp scurt</span>
+                            </li>
+                         </ul>
+                    </div>
+                </div>
+
+                {/* 3. Principiul de funcționare (Text Stânga - Grid de 4 poze Dreapta) */}
+                <div className="flex flex-col lg:flex-row gap-12 mb-24 items-center">
+                    <div className="flex-1 space-y-6">
+                        <h3 className="text-3xl font-bold text-white">3. Principiul de funcționare</h3>
+                        <div className="h-1 w-20 bg-[#5a1018]"></div>
+                        <p className="text-gray-300 text-lg leading-relaxed">
+                            Implanturile sunt inserate strategic în osul maxilar sau mandibular. O inovație cheie este că implanturile posterioare sunt adesea înclinate pentru a evita structurile anatomice sensibile (sinusurile sau nervii).
+                        </p>
+                        <div className="p-6 bg-white/10 rounded-xl border-l-4 border-[#5a1018]">
+                            <p className="text-gray-200 italic">
+                                "Peste implanturi se fixează o lucrare protetică fixă provizorie, cu care pacientul stă de obicei între 4 și 6 luni, urmând ca apoi să primească lucrarea definitivă."
+                            </p>
+                        </div>
+                    </div>
+                    <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-4">
+                        <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                            <img 
+                                src="/principiuldefunctionare.jpeg" 
+                                alt="Principiul de funcționare - 1" 
+                                className="w-full h-auto object-cover"
+                            />
+                        </div>
+                        <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                            <img 
+                                src="/principuuldefunctionare2.jpeg" 
+                                alt="Principiul de funcționare - 2" 
+                                className="w-full h-auto object-cover"
+                            />
+                        </div>
+                        <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                            <img 
+                                src="/principiudefunctionare3.jpeg" 
+                                alt="Principiul de funcționare - 3" 
+                                className="w-full h-auto object-cover"
+                            />
+                        </div>
+                        <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                            <img 
+                                src="/principiudefunctionare4.jpeg" 
+                                alt="Principiul de funcționare - 4" 
+                                className="w-full h-auto object-cover"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                {/* 4. Tipuri de sisteme (Poză Stânga - Text Dreapta) */}
+                <div className="flex flex-col lg:flex-row gap-12 mb-24 items-center">
+                    <div className="flex-1 order-2 lg:order-1 relative w-full rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                        <video 
+                            src="/Untitled design (16).mp4" 
+                            alt="Tipuri de sisteme" 
+                            className="w-full h-auto object-cover"
+                            autoPlay={false}
+                            muted
+                            loop
+                            controls
+                        />
+                    </div>
+                    <div className="flex-1 order-1 lg:order-2 space-y-8">
+                         <h3 className="text-3xl font-bold text-white">4. Tipuri de sisteme All-on-X</h3>
+                         <div className="h-1 w-20 bg-[#5a1018]"></div>
+                         
+                         <div className="space-y-6">
+                            <div className="group">
+                                <h4 className="text-xl font-bold text-[#5a1018] mb-2 group-hover:text-white transition-colors">All-on-4</h4>
+                                <p className="text-gray-400">Soluție minim invazivă, cost mai redus. Ideală pentru cazurile standard.</p>
+                            </div>
+                            <div className="group">
+                                <h4 className="text-xl font-bold text-[#5a1018] mb-2 group-hover:text-white transition-colors">All-on-6</h4>
+                                <p className="text-gray-400">Stabilitate și distribuție mai bună a forțelor. Indicat mai ales la maxilar, unde osul este mai "moale".</p>
+                            </div>
+                            <div className="group">
+                                <h4 className="text-xl font-bold text-[#5a1018] mb-2 group-hover:text-white transition-colors">All-on-8</h4>
+                                <p className="text-gray-400">Utilizat în cazuri speciale, pentru o siguranță maximă.</p>
+                            </div>
+                         </div>
+                         <p className="text-sm text-gray-500 border-t border-white/10 pt-4 mt-4">
+                            * Alegerea depinde de calitatea osului, anatomia pacientului, forțele masticatorii și buget.
+                         </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        {/* SECTION 5 & 6: AVANTAJE & ETAPELE - NEW BACKGROUND COLOR */}
+        <section className="py-24" style={{backgroundColor: '#5A0F18'}}>
+            <div className="max-w-7xl mx-auto px-6">
+
+                {/* 5. Avantaje */}
+                <div className="bg-white/5 rounded-3xl p-10 border border-white/10 mb-24 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full filter blur-3xl -mr-32 -mt-32"></div>
+                    <h3 className="text-3xl font-bold text-white mb-10 text-center relative z-10">5. Avantajele sistemelor All-on-X</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
+                        {[
+                            "Lucrari protetice fixe în 24h",
+                            "Fără proteze mobile",
+                            "Funcție masticatorie îmbunătățită",
+                            "Estetică superioară",
+                            "Creșterea calității vieții",
+                            "În 99% din cazuri fără adiții osoase"
+                        ].map((adv, i) => (
+                            <div key={i} className="flex flex-col items-center text-center p-6 bg-white/10 rounded-xl hover:bg-white/20 transition-colors border border-white/10">
+                                <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-[#5A0F18] mb-4 shadow-lg"><Icon name="check" size={24} /></div>
+                                <span className="text-gray-100 font-medium text-lg">{adv}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* 6. Etapele Tratamentului - Timeline Vizual */}
+                <div className="mb-24">
+                    <h3 className="text-3xl font-bold text-white mb-12 text-center">6. Etapele tratamentului</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                        {[
+                            { step: "01", title: "Consult & CBCT", icon: "clipboard-check" },
+                            { step: "02", title: "Planificare Digitală", icon: "monitor" },
+                            { step: "03", title: "Inserare Implanturi", icon: "microscope" },
+                            { step: "04", title: "Lucrare Provizorie", icon: "sparkles" },
+                            { step: "05", title: "Vindecare 4-6 Luni", icon: "heart" },
+                            { step: "06", title: "Lucrare Definitivă", icon: "trophy" }
+                        ].map((s, i) => (
+                            <div key={i} className="relative group">
+                                <div className="bg-white/10 border border-white/20 p-6 rounded-xl hover:bg-white/20 transition-all duration-300 h-full flex flex-col items-center text-center transform hover:-translate-y-2 cursor-default">
+                                    <div className="text-4xl font-black text-white/20 mb-4 group-hover:text-white/30">{s.step}</div>
+                                    <div className="mb-4 text-white group-hover:text-gray-200">
+                                        <Icon name={s.icon} size={32} />
+                                    </div>
+                                    <h5 className="font-bold text-sm text-gray-100 group-hover:text-white uppercase tracking-wider">{s.title}</h5>
+                                </div>
+                                {/* Arrow for desktop only, hide on last item */}
+                                {i < 5 && (
+                                    <div className="hidden lg:block absolute top-1/2 -right-6 -translate-y-1/2 z-10 text-white/30">
+                                        <Icon name="chevron-right" size={24} />
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        {/* SECTION 3 (CONTINUED): DEZAVANTAJE */}
+        <section className="py-24 bg-[#1a1a1a] text-white">
+            <div className="max-w-7xl mx-auto px-6">
+
+                {/* 7. Dezavantaje */}
+                <div className="max-w-4xl mx-auto bg-black/40 rounded-2xl p-8 border-l-4 border-gray-500">
+                     <h3 className="text-xl font-bold text-gray-300 mb-4 flex items-center gap-2">
+                         <Icon name="info" size={20} /> Dezavantaje și limitări
+                     </h3>
+                     <ul className="space-y-2 text-gray-400">
+                        <li className="flex items-start gap-2"><span className="text-gray-500">•</span> Cost inițial mai ridicat comparativ cu protezele mobile.</li>
+                        <li className="flex items-start gap-2"><span className="text-gray-500">•</span> Necesită o igienă orală riguroasă și controale periodice.</li>
+                        <li className="flex items-start gap-2"><span className="text-gray-500">•</span> Nu este indicat în toate cazurile (afecțiuni sistemice grave, multiple comorbidități).</li>
+                     </ul>
+                </div>
+
+            </div>
+        </section>
+
+        {/* SECTION 4: CHIRURGIE AVANSATĂ & REGENERARE */}
+        <section className="py-24 bg-gray-50">
+            <div className="max-w-7xl mx-auto px-6">
+                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div className="order-2 lg:order-1 space-y-6">
+                         <div>
+                            <h3 className="text-[#5a1018] font-bold tracking-widest uppercase text-sm mb-2">Chirurgie Avansată</h3>
+                            <h2 className="text-3xl font-bold text-[#1a1a1a]">Soluții pentru cazuri complexe (Atrofie Osoasă)</h2>
+                        </div>
+                        <p className="text-gray-600 leading-relaxed">
+                            Datorită sistemelor <strong>All-on-X</strong>, putem realiza reabilitări totale chiar și pentru arcade cu atrofii osoase severe, <span className="font-bold text-[#1a1a1a]">fără a fi nevoie de adiții osoase</span> complicate.
+                        </p>
+                        <p className="text-gray-600 leading-relaxed">
+                            Implanturile speciale (pterigoidiene, nazale, trans-sinusale) ne permit să ancorăm lucrările în zone de os nativ dens, evitând procedurile de sinus lift și adiție de os care prelungesc tratamentul.
+                        </p>
+                        <div className="p-4 bg-white rounded-lg border-l-4 border-[#5a1018] shadow-sm">
+                            <p className="text-sm text-gray-500 italic">
+                                Notă: Adițiile de os și sinus lift-ul sunt considerate proceduri basic în clinica noastră, fiind utilizate doar atunci când situația specifică o impune, dar prioritatea noastră este evitarea lor prin tehnici avansate.
+                            </p>
+                        </div>
+                    </div>
+                    <div className="order-1 lg:order-2 grid grid-cols-1 lg:grid-cols-2 gap-4">
+                        <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
+                             <img 
+                                src="/solutiipentrucazuricomplexe.jpeg" 
+                                alt="Soluții pentru cazuri complexe - 1" 
+                                className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700"
+                            />
+                            <div className="absolute inset-0 bg-[#5a1018]/10 group-hover:bg-transparent transition-all"></div>
+                        </div>
+                        <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
+                             <img 
+                                src="/caxcomplexblacknwhite.png" 
+                                alt="Soluții pentru cazuri complexe - 2" 
+                                className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700"
+                            />
+                            <div className="absolute inset-0 bg-[#5a1018]/10 group-hover:bg-transparent transition-all"></div>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+        </section>
     </div>
-    <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
-        <img 
-            src="/caxcomplexblacknwhite.png" 
-            alt="Soluții pentru cazuri complexe - 2" 
-            className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700"
-        />
-        <div className="absolute inset-0 bg-[#5a1018]/10 group-hover:bg-transparent transition-all"></div>
-    </div>
-</div>
+);
             const Contact = () => (
                 <div>
                     <FormSection />
