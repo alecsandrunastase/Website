@@ -257,62 +257,66 @@
                 { id: 'contact', label: 'Contact' }
             ];
 
-            const TransformationsCarousel = () => {
-                const [currentIndex, setCurrentIndex] = useState(0);
-                const cases = [
-                    { img: "caz1.jpg", title: "Cazuri Dr. Alexandru Năstase" },
-                    { img: "caz2.jpg", title: "Cazuri Dr. Alexandru Năstase" },
-                    { img: "caz3.jpg", title: "Cazuri Dr. Alexandru Năstase" },
-                    { img: "caz4.jpg", title: "Cazuri Dr. Alexandru Năstase" },
-                    { img: "caz5.jpg", title: "Cazuri Dr. Alexandru Năstase" },
-                    { img: "caz6.jpg", title: "Cazuri Dr. Alexandru Năstase" },
-                    { img: "caz8.jpg", title: "Cazuri Dr. Alexandru Năstase" }
-                ];
+        const TransformationsCarousel = () => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const cases = [
+        { img: "All on 5 maxilar, lucrare definitiva pe structura titan si coroane zirconiu.jpeg", title: "All on 5 - Structură titan și coroane zirconiu" },
+        { img: "All on 6 maxilar - lucrare protetica provizorie, fixa.jpeg", title: "All on 6 - Lucrare protetică fixă" },
+        { img: "caz 2 sisteme de tip all on x.jpeg", title: "Caz 2 - Sistem all on x" },
+        { img: "caz all on 6, bimaxilar, lucrari protetice fixe provizorii.jpeg", title: "Caz all on 6 - Lucrări protetice bimaxilare" },
+        { img: "caz1 sisteme de tip all on x.jpeg", title: "Caz 1 - Sistem all on x" },
+        { img: "caz3sisteme de tip all on x.jpeg", title: "Caz 3 - Sistem all on x" },
+        { img: "cazfatete.jpeg", title: "Caz - Fațete dentare" },
+        { img: "Coroane pe dinti naturali.jpeg", title: "Coroane pe dinți naturali" },
+        { img: "Coroane zirconiu pe dinti naturali.jpeg", title: "Coroane zirconiu pe dinți naturali" },
+        { img: "lucrari provizorii si definitive.jpeg", title: "Lucrări provizorii și definitive" },
+        { img: "Reabilitare cu fatete dentare si implanturi dentare.jpeg", title: "Reabilitare cu fațete și implanturi dentare" }
+    ];
 
-                const nextSlide = () => {
-                    setCurrentIndex((prevIndex) => (prevIndex + 1) % cases.length);
-                };
+    const nextSlide = () => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % cases.length);
+    };
 
-                const prevSlide = () => {
-                    setCurrentIndex((prevIndex) => (prevIndex - 1 + cases.length) % cases.length);
-                };
+    const prevSlide = () => {
+        setCurrentIndex((prevIndex) => (prevIndex - 1 + cases.length) % cases.length);
+    };
 
-                return (
-                    <section className="py-24 bg-[#5a1018] text-white">
-                        <div className="max-w-7xl mx-auto px-6">
-                            <div className="text-center mb-16">
-                                <div className="flex justify-center items-center gap-2 mb-4">
-                                    <span className="text-white/80 font-bold text-sm tracking-widest uppercase">Portofoliu</span>
-                                </div>
-                                <h2 className="text-4xl font-bold text-white mb-6">Cazuri & Transformări</h2>
-                                <p className="text-gray-200 font-medium">Zâmbete reale, rezultate care vorbesc de la sine.</p>
-                            </div>
+    return (
+        <section className="py-24 bg-[#5a1018] text-white">
+            <div className="max-w-7xl mx-auto px-6">
+                <div className="text-center mb-16">
+                    <div className="flex justify-center items-center gap-2 mb-4">
+                        <span className="text-white/80 font-bold text-sm tracking-widest uppercase">Portofoliu</span>
+                    </div>
+                    <h2 className="text-4xl font-bold text-white mb-6">Cazuri & Transformări</h2>
+                    <p className="text-gray-200 font-medium">Zâmbete reale, rezultate care vorbesc de la sine.</p>
+                </div>
 
-                            <div className="relative max-w-5xl mx-auto">
-                                <div className="overflow-hidden rounded-2xl shadow-2xl bg-white h-[600px] flex items-center justify-center relative">
-                                    <div className="absolute inset-0 flex items-center justify-center p-4">
-                                        <img 
-                                            src={cases[currentIndex].img} 
-                                            alt={cases[currentIndex].title} 
-                                            className="max-h-full max-w-full object-contain shadow-lg"
-                                        />
-                                    </div>
-                                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 text-center">
-                                        <h4 className="text-white text-xl font-bold tracking-wide">{cases[currentIndex].title}</h4>
-                                    </div>
-                                </div>
-                                <button onClick={prevSlide} className="absolute -left-4 md:-left-16 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-100 text-[#5a1018] p-4 rounded-full shadow-xl transition-all transform hover:scale-110 z-20 border border-gray-100"><Icon name="chevron-left" size={28} /></button>
-                                <button onClick={nextSlide} className="absolute -right-4 md:-right-16 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-100 text-[#5a1018] p-4 rounded-full shadow-xl transition-all transform hover:scale-110 z-20 border border-gray-100"><Icon name="chevron-right" size={28} /></button>
-                                <div className="flex justify-center gap-2 mt-8">
-                                    {cases.map((_, idx) => (
-                                        <button key={idx} onClick={() => setCurrentIndex(idx)} className={`w-3 h-3 rounded-full transition-all duration-300 ${idx === currentIndex ? 'bg-white w-8' : 'bg-white/30 hover:bg-white/50'}`} />
-                                    ))}
-                                </div>
-                            </div>
+                <div className="relative max-w-5xl mx-auto">
+                    <div className="overflow-hidden rounded-2xl shadow-2xl bg-white h-[600px] flex items-center justify-center relative">
+                        <div className="absolute inset-0 flex items-center justify-center p-4">
+                            <img 
+                                src={cases[currentIndex].img} 
+                                alt={cases[currentIndex].title} 
+                                className="max-h-full max-w-full object-contain shadow-lg"
+                            />
                         </div>
-                    </section>
-                );
-            };
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 text-center">
+                            <h4 className="text-white text-xl font-bold tracking-wide">{cases[currentIndex].title}</h4>
+                        </div>
+                    </div>
+                    <button onClick={prevSlide} className="absolute -left-4 md:-left-16 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-100 text-[#5a1018] p-4 rounded-full shadow-xl transition-all transform hover:scale-110 z-20 border border-gray-100"><Icon name="chevron-left" size={28} /></button>
+                    <button onClick={nextSlide} className="absolute -right-4 md:-right-16 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-100 text-[#5a1018] p-4 rounded-full shadow-xl transition-all transform hover:scale-110 z-20 border border-gray-100"><Icon name="chevron-right" size={28} /></button>
+                    <div className="flex justify-center gap-2 mt-8">
+                        {cases.map((_, idx) => (
+                            <button key={idx} onClick={() => setCurrentIndex(idx)} className={`w-3 h-3 rounded-full transition-all duration-300 ${idx === currentIndex ? 'bg-white w-8' : 'bg-white/30 hover:bg-white/50'}`} />
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+};
 
           const TeamSection = () => {
     const [currentSlide, setCurrentSlide] = React.useState(0);
