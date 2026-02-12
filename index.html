@@ -322,11 +322,11 @@
     const [currentSlide, setCurrentSlide] = React.useState(0);
 
     const doctors = [
-    { name: "Dr. Alexandru Năstase", role: "Stomatologie Generală, Implantologie Orală, Chirurgie", img: "Dr. Alexandru Nastase Stomatologie generala, implantologie orala, chirurgie .jpeg" },
-    { name: "Dr. Florin Boboc", role: "Ortodontie", img: "Dr. Florin Boboc - ortondontie.jpeg" },
-    { name: "Dr. Valentina Racu", role: "Stomatologie Generală, Pedodontie", img: "Dr. Valentina Racu - stomatologie generala + pedodontie.jpeg" },
-    { name: "Dr. Anca Stuparu", role: "Ortodontie și Ortopiedie Dento-Facială", img: "Dr. Anca Stuparu - ortodontie si ortopiedie dento-faciala.jpeg" }
-];
+        { name: "Dr. Alexandru Năstase", role: "Stomatologie Generală, Implantologie Orală, Chirurgie", img: "Dr. Alexandru Nastase Stomatologie generala, implantologie orala, chirurgie .jpeg" },
+        { name: "Dr. Florin Boboc", role: "Ortodontie", img: "Dr. Florin Boboc - ortondontie.jpeg" },
+        { name: "Dr. Valentina Racu", role: "Stomatologie Generală, Pedodontie", img: "Dr. Valentina Racu - stomatologie generala + pedodontie.jpeg" },
+        { name: "Dr. Anca Stuparu", role: "Ortodontie și Ortopiedie Dento-Facială", img: "Dr. Anca Stuparu - ortodontie si otropedie dento-faciala.jpeg" }
+    ];
 
     const assistants = [
         { name: "Asistenta Cristescu Alexandra", role: "Asistent Medical", img: "Asistenta Cristescu Alexandra.jpeg" },
@@ -358,10 +358,10 @@
 
                 {/* Desktop View */}
                 <div className="hidden lg:block space-y-16">
-                    {/* Doctors - 3 Columns */}
+                    {/* Doctors - 4 Columns */}
                     <div>
                         <h3 className="text-2xl font-bold text-[#1a1a1a] mb-8 text-center">Doctori</h3>
-                        <div className="grid grid-cols-3 gap-12">
+                        <div className="grid grid-cols-4 gap-12">
                             {doctors.map((m, i) => (
                                 <div key={i} className="space-y-6 group text-center cursor-pointer">
                                     <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-lg relative">
@@ -369,7 +369,7 @@
                                         <img src={`/${m.img}`} alt={m.name} className="w-full h-full object-cover transition-all duration-700 transform group-hover:scale-105" />
                                     </div>
                                     <div>
-                                        <h4 className="text-2xl font-bold text-[#1a1a1a] mb-1">{m.name}</h4>
+                                        <h4 className="text-xl font-bold text-[#1a1a1a] mb-1">{m.name}</h4>
                                         <p className="text-[#5a1018] font-bold text-xs uppercase tracking-widest">{m.role}</p>
                                     </div>
                                 </div>
