@@ -674,131 +674,131 @@
                 </div>
             );
 
-            const Home = () => (
-                <div>
-                    <section className="relative min-h-[90vh] flex items-center bg-white overflow-hidden">
-                        {/* Background Design Elements - Blobs */}
-                        <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
-                            <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] bg-[#5a1018]/5 rounded-full blur-3xl"></div>
-                            <div className="absolute top-[20%] right-[10%] w-[30%] h-[30%] bg-[#5a1018]/10 rounded-full blur-3xl"></div>
-                            
-                            {/* NEW: Geometric Lines & Patterns */}
-                            <svg className="absolute top-0 left-0 w-full h-full opacity-[0.4]" xmlns="http://www.w3.org/2000/svg">
-                                <defs>
-                                    <pattern id="small-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                                        <circle cx="2" cy="2" r="1" className="text-gray-200" fill="currentColor" />
-                                    </pattern>
-                                </defs>
-                                <rect width="100%" height="100%" fill="url(#small-grid)" />
-                            </svg>
-                            
-                            {/* NEW: Decorative Icons - TEETH */}
-                            <div className="absolute top-[15%] left-[5%] text-[#5a1018]/5 animate-float-slow hidden lg:block">
-                                <ToothIcon size={64} />
-                            </div>
-                            <div className="absolute bottom-[20%] left-[45%] text-[#5a1018]/5 animate-float-medium hidden lg:block">
-                                <ToothIcon size={80} className="rotate-12" />
-                            </div>
-                            <div className="absolute top-[10%] right-[40%] text-[#5a1018]/5 animate-spin-slow hidden lg:block">
-                                <ToothIcon size={120} className="-rotate-12" />
-                            </div>
-
-                             {/* NEW: Curved Line */}
-                            <svg className="absolute bottom-0 left-0 w-full h-[200px] text-gray-50 opacity-40 pointer-events-none" viewBox="0 0 1440 320" preserveAspectRatio="none">
-                                <path fill="none" stroke="#5a1018" strokeWidth="0.5" strokeDasharray="10 10" d="M0,160L48,170.7C96,181,192,203,288,202.7C384,203,480,181,576,165.3C672,149,768,139,864,154.7C960,171,1056,213,1152,218.7C1248,224,1344,192,1392,176L1440,160"></path>
-                            </svg>
-                        </div>
-
-                        {/* Main Content Grid */}
-                        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10 w-full h-full pt-20 lg:pt-0">
-                            
-                            {/* Text Area */}
-                            <div className="space-y-8 animate-fade-in">
-                                <div className="inline-flex items-center gap-2 bg-[#5a1018]/10 px-4 py-2 rounded-full">
-                                    <span className="w-2 h-2 rounded-full bg-[#5a1018] animate-pulse"></span>
-                                    <span className="text-[#5a1018] font-bold text-xs uppercase tracking-widest">Clinică Dentară Mioveni</span>
-                                </div>
-                                
-                                <h1 className="text-5xl lg:text-7xl font-black text-[#1a1a1a] leading-tight">
-                                    Zâmbetul tău,<br/>
-                                    <span className="relative inline-block">
-                                        <span className="relative z-10 text-[#5a1018]">promisiunea noastră.</span>
-                                        <span className="absolute bottom-2 left-0 w-full h-3 bg-[#5a1018]/20 -z-0"></span>
-                                    </span>
-                                </h1>
-                                
-                                <p className="text-lg text-gray-600 leading-relaxed max-w-lg">
-                                    Redescoperă încrederea în sine cu tratamente stomatologice premium. Tehnologie digitală, implantologie avansată și o echipă dedicată confortului tău.
-                                </p>
-                                
-                                <div className="flex flex-col sm:flex-row gap-4">
-                                    <button onClick={() => navigate('contact')} className="px-8 py-4 bg-[#5a1018] text-white font-bold rounded-xl shadow-lg shadow-[#5a1018]/30 hover:bg-[#3d0b10] hover:scale-105 transition-all uppercase text-xs tracking-widest flex items-center justify-center gap-2">
-                                        <Icon name="calendar" size={18} />
-                                        Programează-te
-                                    </button>
-                                    <button onClick={() => navigate('pricing')} className="px-8 py-4 bg-white border-2 border-gray-100 text-[#1a1a1a] font-bold rounded-xl hover:border-[#5a1018] hover:text-[#5a1018] transition-all uppercase text-xs tracking-widest flex items-center justify-center gap-2">
-                                        Vezi Tarife
-                                    </button>
-                                </div>
-
-                                <div className="flex items-center gap-4 pt-4 text-sm font-medium text-gray-500">
-                                    <div className="flex -space-x-2">
-                                        {[1,2,3,4].map(i => (
-                                            <div key={i} className="w-8 h-8 rounded-full bg-gray-200 border-2 border-white overflow-hidden flex items-center justify-center text-[10px] font-bold text-gray-500">
-                                                {i}+
-                                            </div>
-                                        ))}
-                                    </div>
-                                    <p>Peste <span className="text-[#1a1a1a] font-bold">8.000+</span> pacienți fericiți</p>
-                                </div>
-                            </div>
-
-                            {/* Image Area with Floating Cards */}
-                            <div className="relative hidden lg:block h-[750px]">
-                                {/* Main Image */}
-                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[80%] bg-[#f0f0f0] rounded-[2rem] overflow-hidden rotate-3 shadow-2xl transition-transform duration-700 hover:rotate-0">
-                                     <img 
-                                        src="pozacabinet.webp" 
-                                        alt="Dr. Alexandru Năstase Clinic" 
-                                        className="w-full h-full object-cover object-left"
-                                    />
-                                </div>
-
-                                {/* Floating Card 1 */}
-                                <div className="absolute top-[20%] left-0 bg-white p-4 rounded-2xl shadow-xl animate-float-slow border border-gray-50">
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
-                                            <Icon name="award" size={20} />
-                                        </div>
-                                        <div>
-                                            <p className="text-xs text-gray-400 font-bold uppercase">Experiență</p>
-                                            <p className="text-[#1a1a1a] font-bold">12+ Ani</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Floating Card 2 */}
-                                <div className="absolute bottom-[20%] right-0 bg-white p-4 rounded-2xl shadow-xl animate-float-medium border border-gray-50">
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
-                                            <Icon name="cpu" size={20} />
-                                        </div>
-                                        <div>
-                                            <p className="text-xs text-gray-400 font-bold uppercase">Tehnologie</p>
-                                            <p className="text-[#1a1a1a] font-bold">Digitală 3D</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <TeamSection />
-                    <TransformationsCarousel />
-                    <ReviewsSection />
-                    <MapSection />
+           const Home = () => (
+    <div>
+        <section className="relative min-h-[90vh] flex items-center bg-white overflow-hidden">
+            {/* Background Design Elements - Blobs */}
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+                <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] bg-[#5a1018]/5 rounded-full blur-3xl"></div>
+                <div className="absolute top-[20%] right-[10%] w-[30%] h-[30%] bg-[#5a1018]/10 rounded-full blur-3xl"></div>
+                
+                {/* NEW: Geometric Lines & Patterns */}
+                <svg className="absolute top-0 left-0 w-full h-full opacity-[0.4]" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <pattern id="small-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                            <circle cx="2" cy="2" r="1" className="text-gray-200" fill="currentColor" />
+                        </pattern>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#small-grid)" />
+                </svg>
+                
+                {/* NEW: Decorative Icons - TEETH */}
+                <div className="absolute top-[15%] left-[5%] text-[#5a1018]/5 animate-float-slow hidden lg:block">
+                    <ToothIcon size={64} />
                 </div>
-            );
+                <div className="absolute bottom-[20%] left-[45%] text-[#5a1018]/5 animate-float-medium hidden lg:block">
+                    <ToothIcon size={80} className="rotate-12" />
+                </div>
+                <div className="absolute top-[10%] right-[40%] text-[#5a1018]/5 animate-spin-slow hidden lg:block">
+                    <ToothIcon size={120} className="-rotate-12" />
+                </div>
+
+                 {/* NEW: Curved Line */}
+                <svg className="absolute bottom-0 left-0 w-full h-[200px] text-gray-50 opacity-40 pointer-events-none" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                    <path fill="none" stroke="#5a1018" strokeWidth="0.5" strokeDasharray="10 10" d="M0,160L48,170.7C96,181,192,203,288,202.7C384,203,480,181,576,165.3C672,149,768,139,864,154.7C960,171,1056,213,1152,218.7C1248,224,1344,192,1392,176L1440,160"></path>
+                </svg>
+            </div>
+
+            {/* Main Content Grid */}
+            <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10 w-full h-full pt-20 lg:pt-0">
+                
+                {/* Text Area */}
+                <div className="space-y-8 animate-fade-in">
+                    <div className="inline-flex items-center gap-2 bg-[#5a1018]/10 px-4 py-2 rounded-full">
+                        <span className="w-2 h-2 rounded-full bg-[#5a1018] animate-pulse"></span>
+                        <span className="text-[#5a1018] font-bold text-xs uppercase tracking-widest">Clinică Dentară Mioveni</span>
+                    </div>
+                    
+                    <h1 className="text-5xl lg:text-7xl font-black text-[#1a1a1a] leading-tight">
+                        Zâmbetul tău,<br/>
+                        <span className="relative inline-block">
+                            <span className="relative z-10 text-[#5a1018]">promisiunea noastră.</span>
+                            <span className="absolute bottom-2 left-0 w-full h-3 bg-[#5a1018]/20 -z-0"></span>
+                        </span>
+                    </h1>
+                    
+                    <p className="text-lg text-gray-600 leading-relaxed max-w-lg">
+                        Redescoperă încrederea în sine cu tratamente stomatologice premium. Tehnologie digitală, implantologie avansată și o echipă dedicată confortului tău.
+                    </p>
+                    
+                    <div className="flex flex-col sm:flex-row gap-4">
+                        <button onClick={() => navigate('contact')} className="px-8 py-4 bg-[#5a1018] text-white font-bold rounded-xl shadow-lg shadow-[#5a1018]/30 hover:bg-[#3d0b10] hover:scale-105 transition-all uppercase text-xs tracking-widest flex items-center justify-center gap-2">
+                            <Icon name="calendar" size={18} />
+                            Programează-te
+                        </button>
+                        <button onClick={() => navigate('pricing')} className="px-8 py-4 bg-white border-2 border-gray-100 text-[#1a1a1a] font-bold rounded-xl hover:border-[#5a1018] hover:text-[#5a1018] transition-all uppercase text-xs tracking-widest flex items-center justify-center gap-2">
+                            Vezi Tarife
+                        </button>
+                    </div>
+
+                    <div className="flex items-center gap-4 pt-4 text-sm font-medium text-gray-500">
+                        <div className="flex -space-x-2">
+                            {[1,2,3,4].map(i => (
+                                <div key={i} className="w-8 h-8 rounded-full bg-gray-200 border-2 border-white overflow-hidden flex items-center justify-center text-[10px] font-bold text-gray-500">
+                                    {i}+
+                                </div>
+                            ))}
+                        </div>
+                        <p>Peste <span className="text-[#1a1a1a] font-bold">8.000+</span> pacienți fericiți</p>
+                    </div>
+                </div>
+
+                {/* Image Area with Floating Cards */}
+                <div className="relative hidden lg:block h-[750px]">
+                    {/* Main Image */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[80%] bg-[#f0f0f0] rounded-[2rem] overflow-hidden rotate-3 shadow-2xl transition-transform duration-700 hover:rotate-0">
+                         <img 
+                            src="pozaclinicadinafara.jpeg" 
+                            alt="Dr. Alexandru Năstase Clinic" 
+                            className="w-full h-full object-cover object-left"
+                        />
+                    </div>
+
+                    {/* Floating Card 1 */}
+                    <div className="absolute top-[20%] left-0 bg-white p-4 rounded-2xl shadow-xl animate-float-slow border border-gray-50">
+                        <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                                <Icon name="award" size={20} />
+                            </div>
+                            <div>
+                                <p className="text-xs text-gray-400 font-bold uppercase">Experiență</p>
+                                <p className="text-[#1a1a1a] font-bold">12+ Ani</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Floating Card 2 */}
+                    <div className="absolute bottom-[20%] right-0 bg-white p-4 rounded-2xl shadow-xl animate-float-medium border border-gray-50">
+                        <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
+                                <Icon name="cpu" size={20} />
+                            </div>
+                            <div>
+                                <p className="text-xs text-gray-400 font-bold uppercase">Tehnologie</p>
+                                <p className="text-[#1a1a1a] font-bold">Digitală 3D</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <TeamSection />
+        <TransformationsCarousel />
+        <ReviewsSection />
+        <MapSection />
+    </div>
+);
 
             const Pricing = () => {
                 const [searchTerm, setSearchTerm] = useState('');
