@@ -1092,38 +1092,34 @@ const Implantology = () => (
             </p>
         </div>
     </div>
-    {/* Desktop version - Masonry Grid */}
-    <div className="flex-1 grid grid-cols-2 gap-4 hidden lg:grid">
-        {/* First image - larger */}
-        <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 col-span-1 row-span-2">
+    {/* Desktop version - 2x2 grid with flexible heights */}
+    <div className="flex-1 grid grid-cols-2 gap-4 hidden lg:grid h-[600px]">
+        <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
             <img 
                 src="/principiuldefunctionare.jpeg" 
                 alt="Principiul de funcționare - 1" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain bg-white"
             />
         </div>
-        {/* Second image - top right */}
         <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
             <img 
                 src="/principuuldefunctionare2.jpeg" 
                 alt="Principiul de funcționare - 2" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain bg-white"
             />
         </div>
-        {/* Fourth image - bottom right */}
+        <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+            <img 
+                src="/principiudefunctionare3.jpeg" 
+                alt="Principiul de funcționare - 3" 
+                className="w-full h-full object-contain bg-white"
+            />
+        </div>
         <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
             <img 
                 src="/principiudefunctionare4.jpeg" 
                 alt="Principiul de funcționare - 4" 
-                className="w-full h-full object-cover"
-            />
-        </div>
-        {/* Third image - bottom left */}
-        <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 col-span-2">
-            <img 
-                src="/principiudefunctionare3.jpeg" 
-                alt="Principiul de funcționare - 3" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain bg-white"
             />
         </div>
     </div>
