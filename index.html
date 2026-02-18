@@ -755,12 +755,12 @@
 
                 {/* Image Area with Floating Cards */}
                 <div className="relative hidden lg:block h-[750px]">
-                    {/* Main Image */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[80%] bg-[#f0f0f0] rounded-[2rem] overflow-hidden rotate-3 shadow-2xl transition-transform duration-700 hover:rotate-0">
+                    {/* Main Image - Still Frame */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[85%] bg-[#f0f0f0] rounded-[2rem] overflow-hidden shadow-2xl">
                          <img 
                             src="pozaclinicadinafara.jpeg" 
                             alt="Dr. Alexandru Năstase Clinic" 
-                            className="w-full h-full object-cover object-left"
+                            className="w-full h-full object-cover object-center"
                         />
                     </div>
 
@@ -799,7 +799,6 @@
         <MapSection />
     </div>
 );
-
             const Pricing = () => {
                 const [searchTerm, setSearchTerm] = useState('');
                 const priceListData = [
