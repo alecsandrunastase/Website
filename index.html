@@ -37,8 +37,8 @@
         "name": "Clinică Dentară Dr. Alexandru Năstase",
         "image": "https://www.clinicadentaranastase.ro/logo.png",
         "description": "Clinică dentară în Mioveni - Implant dentar, stomatologie generală, implantologie avansată cu tehnologie digitală 3D",
-        "telephone": "+40/XXX/XXX/XXXX",
-        "email": "contact@clinicadentaranastase.ro",
+        "telephone": "+40771292813",
+        "email": "alecsandru_nastase@yahoo.com",
         "url": "https://www.clinicadentaranastase.ro",
         "address": {
             "@type": "PostalAddress",
@@ -1460,66 +1460,61 @@ const Implantology = () => (
         </section>
     </div>
 );
-            const Contact = () => (
-                <div>
-                    <FormSection />
-                    <MapSection /> 
-                </div>
-            );
+            // If Contact is in the same file as App, place these imports at the top of that file:
+// import React, { useEffect } from "react";
 
-            return (
-                <div className="min-h-screen bg-white">
-                    {/* Top Bar */}
-                    <div className="hidden md:block bg-[#5a1018] text-white text-sm">
-                        <div className="max-w-7xl mx-auto px-6 h-10 flex justify-between items-center">
-                            <div className="flex gap-6"><span className="flex items-center gap-2"><Icon name="phone" size={14} /> 0771 292 813</span><span className="flex items-center gap-2"><Icon name="mail" size={14} /> alecsandru_nastase@yahoo.com</span></div>
-                            <div className="flex gap-4">
-                                <span className="flex items-center gap-2"><Icon name="map-pin" size={14} /> B-dul Dacia, Bl. V1, Mioveni, Argeș</span>
-                                <SocialLinks className="ml-4" />
-                            </div>
-                        </div>
-                    </div>
+const Contact = () => {
+  React.useEffect(() => {
+    // Prevent adding the script multiple times if the user navigates back/forth
+    const existing = document.querySelector(
+      'script[src="https://link.msgsndr.com/js/form_embed.js"]'
+    );
+    if (existing) return;
 
-                    {/* Nav */}
-                    <nav className="sticky top-0 z-50 w-full bg-white shadow-md">
-                        <div className="max-w-7xl mx-auto px-6 main-nav justify-between">
-                            <div className="logo-wrapper cursor-pointer" onClick={() => navigate('home')}><img src="logodrnastase.png" alt="Clinica Dr. Alexandru Năstase" className="logo-nav" /></div>
-                            <div className="md:hidden flex items-center"><button className="text-[#1a1a1a]" onClick={() => setIsMenuOpen(!isMenuOpen)}><Icon name={isMenuOpen ? "x" : "menu"} /></button></div>
-                            <div className="hidden md:flex gap-8 items-center h-full">{navItems.map(item => (<button key={item.id} onClick={() => navigate(item.id)} className={`font-semibold text-lg hover:text-[#5a1018] transition-colors ${activePage === item.id ? 'text-[#5a1018]' : 'text-gray-700'}`}>{item.label}</button>))}</div>
-                        </div>
-                        {isMenuOpen && (<div className="absolute top-full left-0 w-full bg-white shadow-xl border-t md:hidden flex flex-col p-6 gap-4">{navItems.map((item) => (<button key={item.id} onClick={() => navigate(item.id)} className={`text-left text-lg font-medium ${activePage === item.id ? 'text-[#5a1018]' : 'text-[#1a1a1a]'}`}>{item.label}</button>))}</div>)}
-                    </nav>
+    const script = document.createElement("script");
+    script.src = "https://link.msgsndr.com/js/form_embed.js";
+    script.async = true;
+    document.body.appendChild(script);
 
-                    <main>
-                        {activePage === 'home' && <Home />}
-                        {activePage === 'about' && <About />}
-                        {activePage === 'pricing' && <Pricing />}
-                        {activePage === 'contact' && <Contact />}
-                        {activePage === 'implantology' && <Implantology />}
-                    </main>
+    return () => {
+      // Optional: remove script on unmount.
+      // If you prefer it to stay loaded globally, delete this cleanup.
+      script.remove();
+    };
+  }, []);
 
-                    <StickyWidgets />
+  return (
+    <div>
+      {/* Replaced <FormSection /> with the embedded iframe form */}
+      <section className="w-full">
+        {/* Give it an explicit height so "height:100%" works */}
+        <div style={{ width: "100%", height: 773 }}>
+          <iframe
+            src="https://api.leadconnectorhq.com/widget/form/Jrv38uwrcvkwmF5B92Dp"
+            style={{
+              width: "100%",
+              height: "100%",
+              border: "none",
+              borderRadius: 3,
+            }}
+            id="inline-Jrv38uwrcvkwmF5B92Dp"
+            data-layout="{'id':'INLINE'}"
+            data-trigger-type="alwaysShow"
+            data-trigger-value=""
+            data-activation-type="alwaysActivated"
+            data-activation-value=""
+            data-deactivation-type="neverDeactivate"
+            data-deactivation-value=""
+            data-form-name="Formular Website (Contact) - Clinica Dr. Nastase"
+            data-height="773"
+            data-layout-iframe-id="inline-Jrv38uwrcvkwmF5B92Dp"
+            data-form-id="Jrv38uwrcvkwmF5B92Dp"
+            title="Formular Website (Contact) - Clinica Dr. Nastase"
+          />
+        </div>
+      </section>
 
-                    {/* Footer */}
-                    <footer className="bg-[#1a1a1a] text-white py-16 px-6">
-                        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 items-start">
-                            <div className="space-y-6">
-                                <img src="clinicadrnastaselogowhite.png" alt="Logo Dr. Alexandru Năstase" className="logo-footer" />
-                                <p className="text-gray-400 text-sm font-medium">Zâmbetul tău, promisiunea noastră. Tratamente moderne în Mioveni.</p>
-                                <SocialLinks className="mt-4" iconSize={20} />
-                            </div>
-                            <div><h4 className="text-lg font-bold mb-4 text-white">Navigare Rapidă</h4><ul className="text-gray-400 text-sm space-y-2">{navItems.map(item => (<li key={item.id}><button onClick={() => navigate(item.id)} className="hover:text-white transition-colors text-left">{item.label}</button></li>))}</ul></div>
-                            <div><h4 className="text-lg font-bold mb-4 text-white">Program</h4><div className="text-gray-400 text-sm space-y-1"><p>Luni, Marți, Joi: 08:00 - 20:00</p><p>Miercuri, Vineri: 08:00 - 16:30</p><p>Sâmbătă-Duminică: <span className="text-red-500 font-bold">Închis</span></p></div></div>
-                            <div><h4 className="text-lg font-bold mb-4 text-white">Contact</h4><div className="text-gray-400 text-sm space-y-2"><p className="flex items-center gap-2"><Icon name="phone" size={14} /> 0771 292 813</p><p className="flex items-center gap-2"><Icon name="map-pin" size={14} /> B-dul Dacia, Bl. V1, Mioveni</p></div></div>
-                        </div>
-                        <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-gray-800 text-center text-gray-500 text-xs"><p>© {new Date().getFullYear()} Clinica Dentară Dr. Alexandru Năstase. Toate drepturile rezervate.</p></div>
-                    </footer>
-                </div>
-            );
-        };
-
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
-    </script>
-</body>
-</html>
+      <MapSection />
+    </div>
+  );
+};
