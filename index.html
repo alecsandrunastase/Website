@@ -128,6 +128,7 @@
     
     <!-- Babel pentru JSX -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script>Babel.registerPreset('react-classic', { presets: [[Babel.availablePresets['react'], { runtime: 'classic' }]] });</script>
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -240,8 +241,7 @@
 
     <div id="root"></div>
 
-    <script type="text/babel" data-presets="react">
-    /** @jsx React.createElement */
+    <script type="text/babel" data-presets="react-classic">
         const { useState, useEffect } = React;
         
         const Icon = ({ name, size = 24, className = "", ...props }) => {
