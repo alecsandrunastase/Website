@@ -1515,9 +1515,9 @@ const Implantology = () => (
                         <div className="max-w-7xl mx-auto px-6 main-nav justify-between">
                             <div className="logo-wrapper cursor-pointer" onClick={() => navigate('home')}><img src="logodrnastase.png" alt="Clinica Dr. Alexandru Năstase" className="logo-nav" /></div>
                             <div className="md:hidden flex items-center"><button className="text-[#1a1a1a]" onClick={() => setIsMenuOpen(!isMenuOpen)}><Icon name={isMenuOpen ? "x" : "menu"} /></button></div>
-                            <div className="hidden md:flex gap-8 items-center h-full">{navItems.map(item => (<button key={item.id} onClick={() => navigate(item.id)} className={`font-semibold text-lg hover:text-[#5a1018] transition-colors ${activePage === item.id ? 'text-[#5a1018]' : 'text-gray-700'}`}>{item.label}</button>))}</div>
+                            <div className="hidden md:flex gap-8 items-center h-full">{navItems.map(item => (<button key={item.id} onClick={() => navigate(item.id)} className={`font-semibold text-lg hover:text-[#5a1018] transition-colors ${activePage === item.id ? 'text-[#5a1018]' : 'text-gray-700'}`}>{item.label}</button>))}<a href="/blog/" className="font-semibold text-lg text-gray-700 hover:text-[#5a1018] transition-colors">Blog</a></div>
                         </div>
-                        {isMenuOpen && (<div className="absolute top-full left-0 w-full bg-white shadow-xl border-t md:hidden flex flex-col p-6 gap-4">{navItems.map((item) => (<button key={item.id} onClick={() => navigate(item.id)} className={`text-left text-lg font-medium ${activePage === item.id ? 'text-[#5a1018]' : 'text-[#1a1a1a]'}`}>{item.label}</button>))}</div>)}
+                        {isMenuOpen && (<div className="absolute top-full left-0 w-full bg-white shadow-xl border-t md:hidden flex flex-col p-6 gap-4">{navItems.map((item) => (<button key={item.id} onClick={() => navigate(item.id)} className={`text-left text-lg font-medium ${activePage === item.id ? 'text-[#5a1018]' : 'text-[#1a1a1a]'}`}>{item.label}</button>))}<a href="/blog/" className="text-left text-lg font-medium text-[#1a1a1a]">Blog</a></div>)}
                     </nav>
 
                     <main>
@@ -1538,7 +1538,7 @@ const Implantology = () => (
                                 <p className="text-gray-400 text-sm font-medium">Zâmbetul tău, promisiunea noastră. Tratamente moderne în Mioveni.</p>
                                 <SocialLinks className="mt-4" iconSize={20} />
                             </div>
-                            <div><h4 className="text-lg font-bold mb-4 text-white">Navigare Rapidă</h4><ul className="text-gray-400 text-sm space-y-2">{navItems.map(item => (<li key={item.id}><button onClick={() => navigate(item.id)} className="hover:text-white transition-colors text-left">{item.label}</button></li>))}</ul></div>
+                            <div><h4 className="text-lg font-bold mb-4 text-white">Navigare Rapidă</h4><ul className="text-gray-400 text-sm space-y-2">{navItems.map(item => (<li key={item.id}><button onClick={() => navigate(item.id)} className="hover:text-white transition-colors text-left">{item.label}</button></li>))}<li><a href="/blog/" className="hover:text-white transition-colors text-left">Blog</a></li></ul></div>
                             <div><h4 className="text-lg font-bold mb-4 text-white">Program</h4><div className="text-gray-400 text-sm space-y-1"><p>Luni, Marți, Joi: 08:00 - 20:00</p><p>Miercuri, Vineri: 08:00 - 16:30</p><p>Sâmbătă-Duminică: <span className="text-red-500 font-bold">Închis</span></p></div></div>
                             <div><h4 className="text-lg font-bold mb-4 text-white">Contact</h4><div className="text-gray-400 text-sm space-y-2"><p className="flex items-center gap-2"><Icon name="phone" size={14} /> 0771 292 813</p><p className="flex items-center gap-2"><Icon name="map-pin" size={14} /> B-dul Dacia, Bl. V1, Mioveni</p></div></div>
                         </div>
