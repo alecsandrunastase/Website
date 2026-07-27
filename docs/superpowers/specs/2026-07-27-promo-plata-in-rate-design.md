@@ -1,6 +1,7 @@
 # Promoție „Plata în rate 0,99%/lună" — bară de anunț + secțiune promo
 
 **Data:** 2026-07-27 · **Aprobat:** Varianta 1 (mockup interactiv, aprobat de Andreea)
+**Status:** live în producție din 2026-07-27 (commits `688a9fd`, `351b71f`)
 
 ## Scop
 Promoția din flyer-ul clientului (plata în rate, dobândă 0,99%/lună, valabilă până la
@@ -10,8 +11,10 @@ fără pop-up, modern și responsive.
 ## Componente (ambele în `index.html`, React inline existent)
 
 ### 1. `PromoBar`
-- Poziție: primul element din layout-ul `App`, deasupra Top Bar-ului existent.
-- Vizibilă pe toate paginile, inclusiv mobil (Top Bar-ul actual e `hidden md:block`).
+- Poziție: imediat sub meniul de navigare (`</nav>`), deasupra `<main>`.
+  Inițial fusese pusă deasupra Top Bar-ului vișiniu, dar se pierdea lângă el —
+  sub meniul alb are contrast și iese în evidență (feedback Andreea, aplicat în `351b71f`).
+- Vizibilă pe toate paginile, inclusiv mobil.
 - Conținut: „⚡ PLATA ÎN RATE — dobândă 0,99%/lună · până la 30 septembrie" + buton
   „Programează-te" → `navigate('contact')`.
 - Stil: gradient vișiniu (`#3d0b10` → `#5a1018` → `#7a1a24`), accente aurii pe cifre.
