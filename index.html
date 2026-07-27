@@ -1552,7 +1552,6 @@ const Implantology = () => (
 
             return (
                 <div className="min-h-screen bg-white">
-                    <PromoBar />
                     {/* Top Bar */}
                     <div className="hidden md:block bg-[#5a1018] text-white text-sm">
                         <div className="max-w-7xl mx-auto px-6 h-10 flex justify-between items-center">
@@ -1573,6 +1572,8 @@ const Implantology = () => (
                         </div>
                         {isMenuOpen && (<div className="absolute top-full left-0 w-full bg-white shadow-xl border-t md:hidden flex flex-col p-6 gap-4">{navItems.map((item) => (<button key={item.id} onClick={() => navigate(item.id)} className={`text-left text-lg font-medium ${activePage === item.id ? 'text-[#5a1018]' : 'text-[#1a1a1a]'}`}>{item.label}</button>))}<a href="/blog/" className="text-left text-lg font-medium text-[#1a1a1a]">Blog</a></div>)}
                     </nav>
+
+                    <PromoBar />
 
                     <main>
                         {activePage === 'home' && <Home />}
