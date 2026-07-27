@@ -365,6 +365,58 @@
                 { id: 'contact', label: 'Contact' }
             ];
 
+            // Promoția „Plata în rate" expiră automat după această dată
+            const PROMO_DEADLINE = new Date('2026-09-30T23:59:59');
+            const promoActive = new Date() <= PROMO_DEADLINE;
+
+            const PromoBar = () => {
+                const [closed, setClosed] = useState(() => sessionStorage.getItem('promoBarInchis') === '1');
+                if (!promoActive || closed) return null;
+                const close = () => { sessionStorage.setItem('promoBarInchis', '1'); setClosed(true); };
+                return (
+                    <div className="relative bg-gradient-to-r from-[#3d0b10] via-[#5a1018] to-[#7a1a24] text-white text-center text-sm py-2.5 pl-4 pr-10">
+                        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
+                            <span className="font-medium">⚡ <strong className="font-extrabold">PLATA ÎN RATE</strong> — dobândă <strong className="text-[#ffd873] font-extrabold">0,99%/lună</strong> · până la <strong>30 septembrie</strong></span>
+                            <button onClick={() => navigate('contact')} className="bg-white text-[#5a1018] text-xs font-bold px-4 py-1 rounded-full hover:bg-gray-100 transition-colors whitespace-nowrap">Programează-te</button>
+                        </div>
+                        <button onClick={close} aria-label="Închide anunțul" className="absolute right-3 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors"><Icon name="x" size={16} /></button>
+                    </div>
+                );
+            };
+
+            const PromoSection = () => {
+                if (!promoActive) return null;
+                return (
+                    <section className="py-6 md:py-10 bg-white">
+                        <div className="max-w-7xl mx-auto px-6">
+                            <div className="rounded-[2rem] overflow-hidden bg-gradient-to-br from-[#3d0b10] via-[#5a1018] to-[#7a1a24] text-white shadow-2xl">
+                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center p-8 md:p-12">
+                                    <div className="space-y-5">
+                                        <span className="inline-block bg-[#c9a227] text-[#2a1500] text-[11px] font-extrabold uppercase tracking-widest px-4 py-1.5 rounded-full">Ofertă limitată</span>
+                                        <h2 className="text-3xl md:text-5xl font-black leading-tight">Plata în rate,<br/>dobândă <span className="text-[#ffd873]">0,99%<span className="text-xl md:text-2xl">/lună</span></span></h2>
+                                        <p className="text-white/85 leading-relaxed max-w-lg">Suntem specializați în reabilitări totale pe implanturi, sisteme de tip <strong>All-on-X</strong> cu încărcare imediată. Zâmbetul nou nu mai trebuie amânat.</p>
+                                        <div className="inline-flex items-center gap-2 bg-black/25 px-4 py-2 rounded-xl text-sm font-semibold"><Icon name="clock" size={16} /> Promoție valabilă până la finalul lunii septembrie</div>
+                                        <div>
+                                            <button onClick={() => navigate('contact')} className="mt-2 px-8 py-4 bg-white text-[#5a1018] font-bold rounded-xl uppercase text-xs tracking-widest hover:bg-gray-100 hover:scale-105 transition-all">Vreau o consultație</button>
+                                        </div>
+                                    </div>
+                                    <div className="flex gap-4 justify-center">
+                                        <div className="bg-white rounded-2xl p-2 pb-3 w-[46%] max-w-[220px] shadow-2xl -rotate-2 text-center">
+                                            <img src="implant-inainte.jpeg" alt="Înainte de reabilitarea pe implanturi" className="w-full rounded-xl object-cover aspect-[3/4]" loading="lazy" />
+                                            <p className="text-[#5a1018] text-[11px] font-extrabold uppercase tracking-widest mt-2">Înainte</p>
+                                        </div>
+                                        <div className="bg-white rounded-2xl p-2 pb-3 w-[46%] max-w-[220px] shadow-2xl rotate-2 text-center">
+                                            <img src="implant-dupa.jpeg" alt="După reabilitarea pe implanturi" className="w-full rounded-xl object-cover aspect-[3/4]" loading="lazy" />
+                                            <p className="text-[#5a1018] text-[11px] font-extrabold uppercase tracking-widest mt-2">După</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                );
+            };
+
         const TransformationsCarousel = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const cases = [
@@ -899,6 +951,7 @@ const FormSection = () => (
             </div>
         </section>
 
+        <PromoSection />
         <TeamSection />
         <TransformationsCarousel />
         <ReviewsSection />
@@ -1499,6 +1552,7 @@ const Implantology = () => (
 
             return (
                 <div className="min-h-screen bg-white">
+                    <PromoBar />
                     {/* Top Bar */}
                     <div className="hidden md:block bg-[#5a1018] text-white text-sm">
                         <div className="max-w-7xl mx-auto px-6 h-10 flex justify-between items-center">
