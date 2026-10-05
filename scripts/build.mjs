@@ -3,6 +3,7 @@
 //   - assets/app.<hash>.js (React compilat, fără Babel în browser)
 //   - assets/site.<hash>.css (Tailwind compilat, fără CDN)
 //   - sitemap.xml (pagini + toate articolele din blog/, cu lastmod din git)
+//   - llms.txt (rezumat pentru motoarele AI) și post-procesarea SEO a blogului (scripts/blog-seo.mjs)
 // La final verifică invarianții SEO și eșuează dacă vreunul e încălcat.
 import { build } from 'esbuild';
 import { execFileSync } from 'node:child_process';
@@ -10,7 +11,9 @@ import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { SITE_URL, BUSINESS, PAGES } from '../src/site.config.mjs';
+import { SITE_URL, BUSINESS, PAGES, INDEXNOW_KEY } from '../src/site.config.mjs';
+import { dentistNode, DENTIST_ID, ADDRESS_TEXT } from './schema.mjs';
+import { readBlogPosts, postprocessBlog } from './blog-seo.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const r = (...p) => path.join(ROOT, ...p);
@@ -20,11 +23,19 @@ fs.mkdirSync(TMP, { recursive: true });
 const hash = (buf) => createHash('sha256').update(buf).digest('hex').slice(0, 10);
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
+// 0. Articolele din blog: alimentează secțiunile „Din blog” și sunt post-procesate SEO
+const posts = readBlogPosts(ROOT);
+const blogChanged = postprocessBlog(ROOT, posts);
+const DEFINE = {
+    'process.env.NODE_ENV': '"production"',
+    '__BLOG_POSTS__': JSON.stringify(posts.map(({ slug, title, description, hero }) => ({ slug, title, description, hero }))),
+};
+
 // 1. JS pentru browser
 const client = await build({
     entryPoints: [r('src/client.jsx')], bundle: true, minify: true, format: 'esm',
     jsx: 'automatic', write: false, target: 'es2019', legalComments: 'none',
-    define: { 'process.env.NODE_ENV': '"production"' },
+    define: DEFINE,
 });
 const js = client.outputFiles[0].contents;
 
@@ -45,45 +56,22 @@ const ssrFile = path.join(TMP, 'app.ssr.mjs');
 await build({
     entryPoints: [r('src/app.jsx')], bundle: true, format: 'esm', platform: 'node',
     jsx: 'automatic', outfile: ssrFile, external: ['react', 'react-dom'],
-    define: { 'process.env.NODE_ENV': '"production"' },
+    define: DEFINE,
 });
-const { App, ROUTES } = await import(pathToFileURL(ssrFile).href + `?t=${Date.now()}`);
+const { App, ROUTES, PRICE_LIST, slugify } = await import(pathToFileURL(ssrFile).href + `?t=${Date.now()}`);
 const React = (await import('react')).default;
 const { renderToString } = await import('react-dom/server');
 
 const schemaFor = (route) => {
-    const id = `${SITE_URL}/#clinica`;
-    const dentist = {
-        '@type': 'Dentist',
-        '@id': id,
-        name: BUSINESS.name,
-        url: `${SITE_URL}/`,
-        logo: `${SITE_URL}/logodrnastase.png`,
-        image: [`${SITE_URL}/pozaclinicadinafara.jpeg`, `${SITE_URL}/og-image.jpg`],
-        telephone: BUSINESS.telephone,
-        email: BUSINESS.email,
-        priceRange: '$$',
-        address: { '@type': 'PostalAddress', ...BUSINESS.address },
-        geo: { '@type': 'GeoCoordinates', ...BUSINESS.geo },
-        hasMap: BUSINESS.mapsUrl,
-        areaServed: ['Mioveni', 'Pitești', 'Colibași', 'Argeș'].map((name) => ({ '@type': 'City', name })),
-        openingHoursSpecification: BUSINESS.hours.map((h) => ({
-            '@type': 'OpeningHoursSpecification', dayOfWeek: h.days, opens: h.opens, closes: h.closes,
-        })),
-        medicalSpecialty: ['Dentistry', 'Implantology', 'Orthodontics', 'Pedodontics'],
-        founder: { '@type': 'Physician', name: 'Dr. Alexandru Năstase' },
-        foundingDate: '2013',
-        sameAs: BUSINESS.sameAs,
-    };
     const page = {
         '@type': 'WebPage',
         '@id': `${SITE_URL}${route}#webpage`,
         url: `${SITE_URL}${route}`,
         inLanguage: 'ro-RO',
-        about: { '@id': id },
-        publisher: { '@id': id },
+        about: { '@id': DENTIST_ID },
+        publisher: { '@id': DENTIST_ID },
     };
-    return JSON.stringify({ '@context': 'https://schema.org', '@graph': [dentist, page] }).replace(/</g, '\\u003c');
+    return JSON.stringify({ '@context': 'https://schema.org', '@graph': [dentistNode(), page] }).replace(/</g, '\\u003c');
 };
 
 const template = fs.readFileSync(r('src/template.html'), 'utf8');
@@ -131,6 +119,39 @@ fs.writeFileSync(r('sitemap.xml'),
     urls.map((u) => `  <url>\n    <loc>${u.loc}</loc>\n    <lastmod>${u.lastmod}</lastmod>\n    <priority>${u.priority}</priority>\n  </url>`).join('\n') +
     '\n</urlset>\n');
 
+// 4b. llms.txt (llmstxt.org): ce e clinica, unde e, ce face și cât costă — pentru ChatGPT, Perplexity etc.
+const dayRo = { Monday: 'luni', Tuesday: 'marți', Wednesday: 'miercuri', Thursday: 'joi', Friday: 'vineri', Saturday: 'sâmbătă', Sunday: 'duminică' };
+const priceOf = (needle) => PRICE_LIST.flatMap((c) => c.items).find((i) => i.name.includes(needle))?.price;
+const llms = `# ${BUSINESS.name}
+
+> Clinică stomatologică în Mioveni, județul Argeș: implant dentar, dinți ficși pe implanturi (All-on-X / Fast & Fixed), stomatologie generală, protetică, ortodonție și stomatologie pentru copii. Medic coordonator: Dr. Alexandru Năstase, activ în Mioveni din 2013.
+
+- Adresă: ${ADDRESS_TEXT}
+- Telefon / WhatsApp: 0771 292 813
+- Email: ${BUSINESS.email}
+- Program: ${BUSINESS.hours.map((h) => `${h.days.map((d) => dayRo[d]).join(', ')} ${h.opens}–${h.closes}`).join('; ')}; sâmbătă și duminică închis
+- Profil Google Maps: ${BUSINESS.mapsUrl}
+- Zonă deservită: ${BUSINESS.areaServed.join(', ')}
+
+## Pagini principale
+
+${written.map((w) => `- [${w.meta.title}](${SITE_URL}${w.route}): ${w.meta.description}`).join('\n')}
+
+## Prețuri orientative (lei)
+
+- Consultație, plan de tratament și deviz: ${priceOf('Consultație, plan')}
+- Implant dentar (șurub JD sau INNO): ${priceOf('Implant (doar șurub)')}
+- Dinți ficși Fast & Fixed pe 4 implanturi, cu dinți provizorii: ${priceOf('FAST & FIXED (4')}
+- Dinți ficși Fast & Fixed pe 6 implanturi, cu dinți provizorii: ${priceOf('FAST & FIXED (6')}
+- Coroană zirconiu pe implant: ${priceOf('ZIRCONIU pe implant')}
+- Lista completă: ${SITE_URL}/servicii-si-preturi/
+
+## Articole (blog)
+
+${posts.map((p) => `- [${p.title}](${SITE_URL}/blog/${p.slug}/): ${p.description}`).join('\n')}
+`;
+fs.writeFileSync(r('llms.txt'), llms);
+
 // 5. Invarianți SEO — independenți de versiunea veche a site-ului
 const errors = [];
 for (const w of written) {
@@ -151,6 +172,15 @@ for (const u of urls) {
     const rel = u.loc.slice(SITE_URL.length + 1);
     if (!fs.existsSync(r(rel, 'index.html')) && !fs.existsSync(r(rel || 'index.html'))) errors.push(`sitemap: ${u.loc} nu are fișier`);
 }
+if (llms.includes('undefined')) errors.push('llms.txt: un preț nu a fost găsit în PRICE_LIST (verifică denumirile din build.mjs)');
+if (!fs.existsSync(r(`${INDEXNOW_KEY}.txt`))) errors.push(`lipsește fișierul cheii IndexNow ${INDEXNOW_KEY}.txt`);
+for (const html of [...written.map((w) => w.out), ...posts.map((p) => fs.readFileSync(r('blog', p.slug, 'index.html'), 'utf8'))]) {
+    for (const m of html.matchAll(/href="(\/[^"#?]*)/g)) {
+        const target = decodeURI(m[1]);
+        if (target.startsWith('/assets/') || /\.[a-z0-9]+$/i.test(target)) continue;
+        if (!fs.existsSync(r(target.slice(1), 'index.html'))) errors.push(`link intern rupt: ${m[1]}`);
+    }
+}
 for (const f of ['og-image.jpg', 'logodrnastase.png', 'pozaclinicadinafara.jpeg']) {
     if (!fs.existsSync(r(f))) errors.push(`lipsește ${f} (referit în meta/schema)`);
 }
@@ -158,4 +188,5 @@ if (errors.length) {
     console.error('Build eșuat — invarianți SEO încălcați:\n  ' + errors.join('\n  '));
     process.exit(1);
 }
+console.log(`Blog post-procesat: ${blogChanged.length} fișiere modificate`);
 console.log(`OK: ${written.length} pagini, ${urls.length} URL-uri în sitemap, ${jsName} (${(js.length / 1024).toFixed(0)} KB), ${cssName} (${(css.length / 1024).toFixed(0)} KB)`);

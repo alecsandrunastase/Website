@@ -13,7 +13,13 @@ Site static servit de GitHub Pages direct din `main` (domeniu www.clinicadrnasta
 
 ## Blogul
 
-`blog/` e publicat automat (commit-uri „content: publică articolul …”) și nu trece prin build. Sitemap-ul se regenerează singur din folderele din `blog/` prin Action.
+`blog/` e publicat automat de platforma `peak-med-reports` (commit-uri „content: publică articolul …”), care poate re-randa oricând și articolele vechi cu șablonul ei. De aceea build-ul aplică peste blog o post-procesare idempotentă (`scripts/blog-seo.mjs`): GTM, adresa canonică, schema Dentist completă, titluri locale, linkuri contextuale spre servicii și bloc „Articole similare”. Nu edita manual articolele — se pierde la următoarea publicare; schimbă regulile din `blog-seo.mjs`.
+
+## Indexare
+
+- `sitemap.xml` și `llms.txt` se generează la build.
+- IndexNow (Bing/ChatGPT Search; Google nu participă): Action-ul așteaptă publicarea pe Pages, apoi rulează `scripts/indexnow.mjs` cu paginile modificate. Cheia e în `src/site.config.mjs` și în fișierul `<cheie>.txt` din rădăcină.
+- `robots.txt` e scris de mână (permite explicit crawlerele AI).
 
 ## Promoții
 

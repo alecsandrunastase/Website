@@ -13,6 +13,7 @@ on:
       - 'package.json'
       - 'package-lock.json'
       - 'tailwind.config.cjs'
+      - 'robots.txt'
       - 'index.html'
       - 'despre-noi/**'
       - 'implantologie/**'
@@ -60,12 +61,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A index.html despre-noi implantologie servicii-si-preturi contact assets sitemap.xml
+          git add -A index.html despre-noi implantologie servicii-si-preturi contact assets sitemap.xml llms.txt blog
           if git diff --cached --quiet; then
             echo "Nimic de actualizat."
             exit 0
           fi
-          git commit -m "build: regenerează paginile statice și sitemap-ul"
+          git commit -m "build: regenerează paginile statice, blogul post-procesat, sitemap-ul și llms.txt"
           for i in 1 2 3; do
             if git pull --rebase origin main && git push origin HEAD:main; then
               # Push-urile făcute cu GITHUB_TOKEN nu pornesc mereu build-ul Pages; îl cerem explicit.
@@ -77,3 +78,26 @@ jobs:
           exit 1
         env:
           GH_TOKEN: ${{ github.token }}
+
+      - name: Așteaptă publicarea pe GitHub Pages
+        run: |
+          sha=$(git rev-parse HEAD)
+          for i in $(seq 1 60); do
+            read -r status commit < <(gh api "repos/${{ github.repository }}/pages/builds/latest" --jq '"\(.status) \(.commit)"' || echo "error none")
+            echo "Pages: $status $commit (aștept $sha)"
+            if [ "$commit" = "$sha" ] && [ "$status" = "built" ]; then exit 0; fi
+            if [ "$commit" = "$sha" ] && [ "$status" = "errored" ]; then exit 1; fi
+            sleep 10
+          done
+          echo "::warning::Pages nu a publicat commit-ul în 10 minute; IndexNow nu a fost trimis."
+          exit 1
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Anunță paginile modificate prin IndexNow
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            node scripts/indexnow.mjs --all
+          elif [ "${{ github.event.before }}" != "0000000000000000000000000000000000000000" ]; then
+            node scripts/indexnow.mjs "${{ github.event.before }}"
+          fi

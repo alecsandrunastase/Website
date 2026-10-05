@@ -95,6 +95,30 @@ const StickyWidgets = () => (
     </div>
 );
 
+// Lista de prețuri — folosită de pagina Servicii & Prețuri și de llms.txt (scripts/build.mjs).
+export const PRICE_LIST = [
+            { category: "CONSULTAȚIE", items: [{ name: "Consultație, plan de tratament + deviz estimativ", price: "250 lei" }] },
+            { category: "PROFILAXIE", items: [{ name: "Igienizare profesională (detartraj + periaj profesional + airflow – ambele arcade)", price: "350–400 lei" }, { name: "Fluorizare dentară/dinte", price: "30 lei" }] },
+            { category: "TRATAMENTUL ODONTAL", items: [{ name: "Obturație foto 1 suprafață", price: "250 lei" }, { name: "Obturație foto 2 suprafețe", price: "300 lei" }, { name: "Obturație foto 3 suprafețe", price: "350 lei" }, { name: "Reconstrucție coronară mare", price: "400 lei" }] },
+            { category: "TRATAMENTUL AFECȚIUNILOR PULPARE", items: [{ name: "Extirpare (scoatere nerv) – monoradiculari + pluriradiculari", price: "300 lei" }, { name: "Obturație canal definitivă (inclusiv plombă sau/și pivot fibră) – monoradiculari (inclusiv premolari)", price: "700 lei" }, { name: "Obturație canal definitivă (inclusiv plombă sau/și pivot fibră) – pluriradiculari (molari)", price: "850 lei" }, { name: "Pivot fibră de sticlă", price: "200 lei" }] },
+            { category: "PEDODONȚIE (tratamente copii)", items: [{ name: "Extracție dinte temporar (mobil)", price: "150 lei" }, { name: "Extracție dinte temporar fără rizaliză (fără mobilitate)", price: "200 lei" }, { name: "Sigilare dentară dinte definitiv", price: "250 lei" }, { name: "Obturație dinte temporar", price: "250 lei" }, { name: "Tratament endodontic dinți temporari", price: "350 lei" }] },
+            { category: "TRATAMENTUL AFECȚIUNILOR PARODONȚIULUI MARGINAL", items: [{ name: "Chiuretaj parodontal în câmp închis/dinte", price: "100 lei" }, { name: "Imobilizare prin bandă de fibră de sticlă/dinte", price: "150 lei" }] },
+            { category: "CHIRURGIE", items: [{ name: "Extracție dinte parodontotic (mobil)", price: "150 lei" }, { name: "Extracție dinte monoradicular (frontal)", price: "250 lei" }, { name: "Extracție dinte pluriradicular (molar, premolar)", price: "250–350 lei" }, { name: "Extracție molar de minte", price: "300–450 lei" }, { name: "Grefă liberă țesut keratinizat (recoltare de pe cerul gurii)", price: "2500 lei" }, { name: "Rezecție apicală", price: "1000 lei" }, { name: "Extracție dinte inclus (în funcție de dificultate)", price: "500–800 lei" }, { name: "Extracție dinte semi-inclus (în funcție de dificultate)", price: "400–600 lei" }, { name: "Gingivectomie / arcadă", price: "800 lei" }] },
+            { category: "IMPLANT – ETAPE INTERMEDIARE", items: [{ name: "Descoperire sau montare în timpul intervenției capă de vindecare implant", price: "250 lei" }, { name: "Descoperire sau montare în timpul intervenției MUA (bont protetic multi-unit) implant + capă", price: "450 lei" }] },
+            { category: "PROTETICĂ", items: [{ name: "Șlefuire (pilire) / dinte", price: "80–100 lei" }, { name: "Coroană metalo-ceramică total fizionomică", price: "650 lei" }, { name: "Coroană metalo-ceramică parțial fizionomică (3/4)", price: "550 lei" }, { name: "Coroană ZIRCONIU pe dinte", price: "950 lei" }, { name: "Coroană ZIRCONIU pe implant (inclusiv bontul protetic T-base)", price: "1350 lei" }, { name: "Bont implant custom ZIRCONIU", price: "500 lei" }, { name: "Coroană acrilică provizorie (laborator)", price: "200 lei" }, { name: "Dinte provizoriu pe implant: 500 lei (inclus bont protetic), intermediarii (cei care sunt in aer) 200 lei/buc", price: "500 lei" }, { name: "Coroană acrilică provizorie (cabinet)", price: "150 lei" }, { name: "Fațete dentare E-MAX", price: "1250 lei" }, { name: "RCR (pivot metalic)", price: "200 lei" }, { name: "Proteză acrilică totală/parțială CLASICĂ / arcadă", price: "2500 lei" }, { name: "Proteză totală/parțială ELASTICĂ / arcadă", price: "3000 lei" }, { name: "Proteză scheletată (include sisteme speciale) / arcadă", price: "5000 lei" }, { name: "Proteza Kemeny (se adauga cate 100 lei/ dinte pentru fiecare dinte adaugat in plus) ", price: "300 lei/1 DINTE" }, { name: "Ablație coroană dentară (îndepărtare-tăiere)/bucată", price: "100 lei" }, { name: "Ablație RCR (pivot)", price: "250 lei" }, { name: "Gutieră pentru bruxism, albire, contenție / arcadă", price: "500 lei" }, { name: "Rebazăre proteză", price: "400 lei" }, { name: "Reparație proteză", price: "400 lei" }, { name: "Lucrare pe implanturi (THIMBLE) – TITAN COMPOZIT", price: "13.500 lei" }, { name: "Lucrare pe implanturi (THIMBLE) – TITAN ZIRCONIU", price: "16.000 lei" }] },
+            { category: "IMPLANTOLOGIE", items: [{ name: "Implant (doar șurub) - JD sau INNO", price: "2000 lei" }, { name: "Adiție osoasă / implant", price: "2000 lei" }, { name: "Sinus lifting + adiție osoasă", price: "4000–5000 lei" }, { name: "Sistem FAST & FIXED (4 implanturi, dinți provizorii incluși)", price: "12.500 lei" }, { name: "Sistem FAST & FIXED (5 implanturi, dinți provizorii incluși)", price: "14.500 lei" }, { name: "Sistem FAST & FIXED (6 implanturi, dinți provizorii incluși)", price: "16.500 lei" }] },
+            { category: "ESTETICĂ", items: [{ name: "Aplicare bijuterii dentare (bijuterie inclusă)", price: "350 lei" }, { name: "Albire profesională cu lampă", price: "1300 lei" }, { name: "Albire endo/dinte", price: "300 lei" }] },
+            { category: "ORTODONȚIE", items: [{ name: "Consultație medic ortodont", price: "100 lei" }, { name: "Model studiu și plan de tratament", price: "150 lei" }, { name: "Fotografii intraorale și de portret", price: "100 lei" }, { name: "Aparat fix metalic (clasic) / arcadă", price: "2300 lei" }, { name: "Aparat fix metalic (Damon) / arcadă", price: "4000 lei" }, { name: "Aparat fix Damon Clear / arcadă", price: "5000 lei" }, { name: "Aparat fix ceramic / arcadă", price: "3500 lei" }, { name: "Aparat fix safir / arcadă", price: "4000 lei" }, { name: "Aparat fix segmentar metalic / arcadă", price: "1300 lei" }, { name: "Aparat fix segmentar ceramic / arcadă", price: "1800 lei" }, { name: "Aparat fix segmentar safir / arcadă", price: "2000 lei" }, { name: "Control lunar aparat fix / arcadă", price: "100 lei" }, { name: "Control lunar aparat fix (ambele arcade)", price: "200 lei" }, { name: "Aparat mobil / arcadă", price: "800 lei" }, { name: "Aparat mobil twin-block", price: "1200 lei" }, { name: "Control aparat mobil / arcadă", price: "50 lei" }, { name: "Bară linguală", price: "500 lei" }, { name: "Disjunctor", price: "1500 lei" }, { name: "Pendulum", price: "700 lei" }, { name: "Retainer fix colat", price: "500 lei" }, { name: "Headgear", price: "400 lei" }, { name: "Aparat contenție", price: "400 lei" }, { name: "Masca Delaire", price: "1000 lei" }, { name: "Gutieră contenție", price: "500 lei" }] }
+        ];
+
+// „IMPLANT – ETAPE INTERMEDIARE” -> „implant-etape-intermediare” (ancore pe pagina de prețuri)
+export const slugify = (text) => text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+const GOOGLE_MAPS_URL = 'https://www.google.com/maps?cid=2936626613435078668';
+// eslint-disable-next-line no-undef
+const BLOG_POSTS = typeof __BLOG_POSTS__ !== 'undefined' ? __BLOG_POSTS__ : [];
+
 // Fiecare pagină are un URL real, generat ca fișier static de scripts/build.mjs.
 export const ROUTES = {
     'home': '/',
@@ -243,7 +267,7 @@ setCurrentIndex((prevIndex) => (prevIndex - 1 + cases.length) % cases.length);
             <div className="flex justify-center items-center gap-2 mb-4">
                 <span className="text-white/80 font-bold text-sm tracking-widest uppercase">Portofoliu</span>
             </div>
-            <h2 className="text-4xl font-bold text-white mb-6">Cazuri & Transformări</h2>
+            <h2 className="text-4xl font-bold text-white mb-6">Cazuri tratate în clinica din Mioveni</h2>
             <p className="text-gray-200 font-medium">Zâmbete reale, rezultate care vorbesc de la sine.</p>
         </div>
 
@@ -307,7 +331,7 @@ setCurrentSlide((prev) => (prev - 1 + team.length) % team.length);
             <div className="flex justify-center items-center gap-2 mb-4">
                 <span className="text-[#5a1018] font-bold text-sm tracking-widest uppercase">Echipa Noastră</span>
             </div>
-            <h2 className="text-4xl font-bold text-[#1a1a1a] mb-6">Profesioniști Dedicați</h2>
+            <h2 className="text-4xl font-bold text-[#1a1a1a] mb-6">Medicii stomatologi din Mioveni</h2>
             <p className="text-gray-500 font-medium">Experiență și grijă pentru fiecare pacient</p>
         </div>
 
@@ -315,7 +339,7 @@ setCurrentSlide((prev) => (prev - 1 + team.length) % team.length);
         <div className="hidden lg:block space-y-16">
             {/* Doctors - 4 Columns */}
             <div>
-                <h3 className="text-2xl font-bold text-[#1a1a1a] mb-8 text-center">Doctori</h3>
+                <h3 className="text-2xl font-bold text-[#1a1a1a] mb-8 text-center">Medici dentiști</h3>
                 <div className="grid grid-cols-4 gap-12">
                     {doctors.map((m, i) => (
                         <div key={i} className="space-y-6 group text-center cursor-pointer">
@@ -373,13 +397,13 @@ setCurrentSlide((prev) => (prev - 1 + team.length) % team.length);
                 {/* Navigation Buttons */}
                 <button 
                     onClick={prevSlide}
-                    className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 bg-[#5a1018] text-white p-3 rounded-full hover:bg-[#4a0d14] transition-all"
+                    className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-12 bg-[#5a1018] text-white p-3 rounded-full hover:bg-[#4a0d14] transition-all"
                 >
                     <Icon name="chevron-left" size={24} />
                 </button>
                 <button 
                     onClick={nextSlide}
-                    className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 bg-[#5a1018] text-white p-3 rounded-full hover:bg-[#4a0d14] transition-all"
+                    className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-12 bg-[#5a1018] text-white p-3 rounded-full hover:bg-[#4a0d14] transition-all"
                 >
                     <Icon name="chevron-right" size={24} />
                 </button>
@@ -416,7 +440,7 @@ setCurrentSlide((prev) => (prev - 1 + team.length) % team.length);
                     <div className="flex justify-center items-center gap-2 mb-4">
                         <span className="text-[#5a1018] font-bold text-sm tracking-widest uppercase">Părerea Pacienților</span>
                     </div>
-                    <h2 className="text-4xl font-bold text-[#1a1a1a] mb-6">Recenzii Google</h2>
+                    <h2 className="text-4xl font-bold text-[#1a1a1a] mb-6">Recenziile pacienților din Mioveni</h2>
                     <div className="flex justify-center gap-1 text-yellow-400 mb-2">
                         <Icon name="star" size={24} fill="currentColor" className="text-yellow-400" />
                         <Icon name="star" size={24} fill="currentColor" className="text-yellow-400" />
@@ -424,7 +448,7 @@ setCurrentSlide((prev) => (prev - 1 + team.length) % team.length);
                         <Icon name="star" size={24} fill="currentColor" className="text-yellow-400" />
                         <Icon name="star" size={24} fill="currentColor" className="text-yellow-400" />
                     </div>
-                    <p className="text-gray-500 font-medium">Rating 5.0 din 5 stele</p>
+                    <p className="text-gray-500 font-medium">Nota <span className="text-[#1a1a1a] font-bold">4,9 din 5</span> pe Google · <a href={GOOGLE_MAPS_URL} target="_blank" rel="noopener noreferrer" className="text-[#5a1018] font-bold underline underline-offset-4 hover:text-[#3d0b10]">vezi toate recenziile</a></p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {[
@@ -460,7 +484,7 @@ setCurrentSlide((prev) => (prev - 1 + team.length) % team.length);
                     <div className="bg-[#1a1a1a] text-white p-12 lg:p-16 flex flex-col justify-center">
                         <div className="space-y-2 mb-10">
                             <h4 className="text-white font-bold tracking-widest uppercase text-sm">Locație & Contact</h4>
-                            <HeadingTag className="text-3xl md:text-4xl font-bold">Te așteptăm în<br/>clinica noastră.</HeadingTag>
+                            <HeadingTag className="text-3xl md:text-4xl font-bold">Te așteptăm la<br/>dentist în Mioveni.</HeadingTag>
                         </div>
                         <div className="space-y-8">
                             <div className="flex gap-6 items-start">
@@ -528,6 +552,80 @@ const FormSection = () => (
   </section>
 );
 
+    // --- Secțiuni de legătură internă (servicii + articole din blog) ---
+
+    const SERVICES = [
+        { icon: "award", title: "Implant dentar în Mioveni", href: "/implantologie/", cta: "Despre implantul dentar",
+          text: "Înlocuirea unui dinte lipsă cu implanturi italiene JD Dental sau INNO, cu planificare pe tomografie 3D și etape explicate de la prima consultație." },
+        { icon: "sparkles", title: "Dinți ficși pe implanturi (All-on-X)", href: "/implantologie/#dinti-ficsi", cta: "Despre dantura fixă",
+          text: "Dantură fixă pe 4, 5 sau 6 implanturi pentru pacienții care și-au pierdut dinții sau nu mai vor proteză mobilă." },
+        { icon: "check-circle", title: "Stomatologie generală", href: "/servicii-si-preturi/#tratamentul-odontal", cta: "Prețuri tratamente",
+          text: "Consultație, igienizare profesională, obturații și tratamente de canal, ca dinții naturali să rămână sănătoși cât mai mult timp." },
+        { icon: "trophy", title: "Coroane, fațete și proteze", href: "/servicii-si-preturi/#protetica", cta: "Prețuri protetică",
+          text: "Coroane din zirconiu, fațete E-MAX, lucrări pe implanturi și proteze, realizate împreună cu laboratorul de tehnică dentară." },
+        { icon: "activity", title: "Ortodonție – aparat dentar", href: "/servicii-si-preturi/#ortodontie", cta: "Prețuri ortodonție",
+          text: "Aparate dentare fixe metalice, ceramice, safir sau Damon și aparate mobile pentru copii, cu medici specialiști în ortodonție." },
+        { icon: "heart", title: "Stomatologie pentru copii", href: "/servicii-si-preturi/#pedodontie-tratamente-copii", cta: "Prețuri pedodonție",
+          text: "Sigilări, obturații și tratamente pentru dinții temporari, într-un ritm potrivit celor mici." },
+    ];
+
+    const ServicesSection = () => (
+        <section className="py-24 bg-gray-50">
+            <div className="max-w-7xl mx-auto px-6">
+                <div className="text-center mb-16">
+                    <div className="flex justify-center items-center gap-2 mb-4">
+                        <span className="text-[#5a1018] font-bold text-sm tracking-widest uppercase">Ce tratăm</span>
+                    </div>
+                    <h2 className="text-4xl font-bold text-[#1a1a1a] mb-6">Servicii stomatologice în Mioveni</h2>
+                    <p className="text-gray-600 max-w-3xl mx-auto">Toate tratamentele se fac în aceeași clinică dentară din Mioveni, de la consultație și igienizare până la implant dentar și dinți ficși.</p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {SERVICES.map((s) => (
+                        <a key={s.title} href={s.href} className="group bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all flex flex-col">
+                            <div className="w-12 h-12 bg-[#5a1018]/10 text-[#5a1018] rounded-xl flex items-center justify-center mb-6"><Icon name={s.icon} size={24} /></div>
+                            <h3 className="text-xl font-bold text-[#1a1a1a] mb-3">{s.title}</h3>
+                            <p className="text-gray-600 leading-relaxed mb-6">{s.text}</p>
+                            <span className="mt-auto inline-flex items-center gap-2 text-[#5a1018] font-bold text-sm">{s.cta} <Icon name="arrow-right" size={16} className="group-hover:translate-x-1 transition-transform" /></span>
+                        </a>
+                    ))}
+                </div>
+                <p className="text-center text-gray-600 mt-12 max-w-3xl mx-auto">Ne găsești pe Bulevardul Dacia, Bl. V1, Sc. E+F, în Mioveni. La clinică vin pacienți din Mioveni, Colibași, Pitești, Mărăcineni, Bascov și din toată zona Argeșului. <NavLink id="contact" className="text-[#5a1018] font-bold underline underline-offset-4">Programează o consultație</NavLink>.</p>
+            </div>
+        </section>
+    );
+
+    // Articolele vin din blog/ la build (scripts/build.mjs -> __BLOG_POSTS__), cele mai noi primele.
+    const BlogArticles = ({ title, intro, match, limit = 3, dark = false }) => {
+        const posts = BLOG_POSTS.filter((p) => !match || match.test(`${p.slug} ${p.title}`)).slice(0, limit);
+        if (posts.length === 0) return null;
+        return (
+            <section className={`py-24 ${dark ? 'bg-[#1a1a1a]' : 'bg-white'}`}>
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="text-center mb-16">
+                        <div className="flex justify-center items-center gap-2 mb-4">
+                            <span className="text-[#5a1018] font-bold text-sm tracking-widest uppercase">Din blog</span>
+                        </div>
+                        <h2 className={`text-4xl font-bold mb-6 ${dark ? 'text-white' : 'text-[#1a1a1a]'}`}>{title}</h2>
+                        {intro && <p className={`max-w-3xl mx-auto ${dark ? 'text-gray-400' : 'text-gray-600'}`}>{intro}</p>}
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {posts.map((p) => (
+                            <a key={p.slug} href={`/blog/${p.slug}/`} className="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all flex flex-col">
+                                {p.hero && <img src={p.hero} alt={p.title} className="w-full h-48 object-cover" loading="lazy" />}
+                                <div className="p-6 flex flex-col flex-1">
+                                    <h3 className="font-bold text-lg text-[#1a1a1a] leading-snug mb-3">{p.title}</h3>
+                                    {p.description && <p className="text-sm text-gray-600 leading-relaxed mb-4">{p.description}</p>}
+                                    <span className="mt-auto inline-flex items-center gap-2 text-[#5a1018] font-bold text-sm">Citește articolul <Icon name="arrow-right" size={16} className="group-hover:translate-x-1 transition-transform" /></span>
+                                </div>
+                            </a>
+                        ))}
+                    </div>
+                    <p className="text-center mt-12"><a href="/blog/" className={`font-bold underline underline-offset-4 ${dark ? 'text-white' : 'text-[#5a1018]'}`}>Toate articolele despre sănătatea dentară</a></p>
+                </div>
+            </section>
+        );
+    };
+
     // --- Pagini ---
 
     const About = () => (
@@ -542,7 +640,7 @@ const FormSection = () => (
                                 <span className="text-[#5a1018] font-bold tracking-[0.2em] uppercase text-xs">Povestea Noastră</span>
                             </div>
                             <h1 className="text-4xl md:text-5xl font-black text-[#1a1a1a] leading-tight">
-                                Peste 10 Ani de<br/> Excelență Medicală
+                                Clinica Dr. Năstase,<br/> peste 10 ani în Mioveni
                             </h1>
                             <p className="text-gray-600 leading-relaxed text-lg">
                                 Clinica Dr. Năstase este rezultatul a peste 10 ani de activitate medicală continuă, construită pe profesionalism, experiență clinică solidă și respect față de fiecare pacient care ne trece pragul.
@@ -596,7 +694,7 @@ const FormSection = () => (
             <section className="py-24 bg-white">
                 <div className="max-w-7xl mx-auto px-6 text-center">
                      <div className="mb-16">
-                        <h2 className="text-3xl md:text-4xl font-black text-[#1a1a1a] mb-6">O Echipă Unită</h2>
+                        <h2 className="text-3xl md:text-4xl font-black text-[#1a1a1a] mb-6">Echipa clinicii stomatologice din Mioveni</h2>
                         <p className="text-gray-500 max-w-2xl mx-auto">
                             Echipa noastră este completată de medici cu experiență și o colaborare de lungă durată. În prezent, în clinica noastră activează:
                         </p>
@@ -611,6 +709,8 @@ const FormSection = () => (
                     </div>
                 </div>
             </section>
+
+             <BlogArticles title="Sfaturi de la medicii clinicii" intro="Articole scrise de echipa noastră din Mioveni, despre prevenție, implanturi și alegerea medicului stomatolog." />
 
              {/* Call to Action */}
              <section className="py-24 bg-[#5a1018] text-white text-center">
@@ -665,19 +765,19 @@ const FormSection = () => (
         <div className="space-y-8 animate-fade-in">
             <div className="inline-flex items-center gap-2 bg-[#5a1018]/10 px-4 py-2 rounded-full">
                 <span className="w-2 h-2 rounded-full bg-[#5a1018] animate-pulse"></span>
-                <span className="text-[#5a1018] font-bold text-xs uppercase tracking-widest">Clinică Dentară Mioveni</span>
+                <span className="text-[#5a1018] font-bold text-xs uppercase tracking-widest">Zâmbetul tău, promisiunea noastră</span>
             </div>
             
-            <h1 className="text-5xl lg:text-7xl font-black text-[#1a1a1a] leading-tight">
-                Zâmbetul tău,<br/>
+            <h1 className="text-[2.6rem] sm:text-5xl lg:text-7xl font-black text-[#1a1a1a] leading-tight">
+                Clinică stomatologică<br/>
                 <span className="relative inline-block">
-                    <span className="relative z-10 text-[#5a1018]">promisiunea noastră.</span>
+                    <span className="relative z-10 text-[#5a1018]">în Mioveni.</span>
                     <span className="absolute bottom-2 left-0 w-full h-3 bg-[#5a1018]/20 -z-0"></span>
                 </span>
             </h1>
             
             <p className="text-lg text-gray-600 leading-relaxed max-w-lg">
-                Redescoperă încrederea în sine cu tratamente stomatologice premium. Tehnologie digitală, implantologie avansată și o echipă dedicată confortului tău.
+                Implant dentar, dinți ficși pe implanturi (All-on-X), stomatologie generală, ortodonție și tratamente pentru copii, la Clinica Dentară Dr. Alexandru Năstase din Mioveni, Argeș. Planificare digitală 3D și o echipă dedicată confortului tău.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
@@ -708,7 +808,7 @@ const FormSection = () => (
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[85%] bg-[#f0f0f0] rounded-[2rem] overflow-hidden shadow-2xl">
                  <img 
                     src="/pozaclinicadinafara.jpeg" 
-                    alt="Dr. Alexandru Năstase Clinic" 
+                    alt="Clinica Dentară Dr. Alexandru Năstase, Bulevardul Dacia, Mioveni" 
                     className="w-full h-full object-cover"
                     style={{ objectPosition: '35% center' }}
                 />
@@ -744,28 +844,17 @@ const FormSection = () => (
 </section>
 
 <PromoSection />
+<ServicesSection />
 <TeamSection />
 <TransformationsCarousel />
+<BlogArticles title="Întrebări frecvente despre implant dentar și dinți ficși" intro="Răspunsuri scrise de medicii clinicii la întrebările pe care ni le pun pacienții din Mioveni și Pitești." />
 <ReviewsSection />
 <MapSection />
     </div>
 );
     const Pricing = () => {
         const [searchTerm, setSearchTerm] = useState('');
-        const priceListData = [
-            { category: "CONSULTAȚIE", items: [{ name: "Consultație, plan de tratament + deviz estimativ", price: "250 lei" }] },
-            { category: "PROFILAXIE", items: [{ name: "Igienizare profesională (detartraj + periaj profesional + airflow – ambele arcade)", price: "350–400 lei" }, { name: "Fluorizare dentară/dinte", price: "30 lei" }] },
-            { category: "TRATAMENTUL ODONTAL", items: [{ name: "Obturație foto 1 suprafață", price: "250 lei" }, { name: "Obturație foto 2 suprafețe", price: "300 lei" }, { name: "Obturație foto 3 suprafețe", price: "350 lei" }, { name: "Reconstrucție coronară mare", price: "400 lei" }] },
-            { category: "TRATAMENTUL AFECȚIUNILOR PULPARE", items: [{ name: "Extirpare (scoatere nerv) – monoradiculari + pluriradiculari", price: "300 lei" }, { name: "Obturație canal definitivă (inclusiv plombă sau/și pivot fibră) – monoradiculari (inclusiv premolari)", price: "700 lei" }, { name: "Obturație canal definitivă (inclusiv plombă sau/și pivot fibră) – pluriradiculari (molari)", price: "850 lei" }, { name: "Pivot fibră de sticlă", price: "200 lei" }] },
-            { category: "PEDODONȚIE (tratamente copii)", items: [{ name: "Extracție dinte temporar (mobil)", price: "150 lei" }, { name: "Extracție dinte temporar fără rizaliză (fără mobilitate)", price: "200 lei" }, { name: "Sigilare dentară dinte definitiv", price: "250 lei" }, { name: "Obturație dinte temporar", price: "250 lei" }, { name: "Tratament endodontic dinți temporari", price: "350 lei" }] },
-            { category: "TRATAMENTUL AFECȚIUNILOR PARODONȚIULUI MARGINAL", items: [{ name: "Chiuretaj parodontal în câmp închis/dinte", price: "100 lei" }, { name: "Imobilizare prin bandă de fibră de sticlă/dinte", price: "150 lei" }] },
-            { category: "CHIRURGIE", items: [{ name: "Extracție dinte parodontotic (mobil)", price: "150 lei" }, { name: "Extracție dinte monoradicular (frontal)", price: "250 lei" }, { name: "Extracție dinte pluriradicular (molar, premolar)", price: "250–350 lei" }, { name: "Extracție molar de minte", price: "300–450 lei" }, { name: "Grefă liberă țesut keratinizat (recoltare de pe cerul gurii)", price: "2500 lei" }, { name: "Rezecție apicală", price: "1000 lei" }, { name: "Extracție dinte inclus (în funcție de dificultate)", price: "500–800 lei" }, { name: "Extracție dinte semi-inclus (în funcție de dificultate)", price: "400–600 lei" }, { name: "Gingivectomie / arcadă", price: "800 lei" }] },
-            { category: "IMPLANT – ETAPE INTERMEDIARE", items: [{ name: "Descoperire sau montare în timpul intervenției capă de vindecare implant", price: "250 lei" }, { name: "Descoperire sau montare în timpul intervenției MUA (bont protetic multi-unit) implant + capă", price: "450 lei" }] },
-            { category: "PROTETICĂ", items: [{ name: "Șlefuire (pilire) / dinte", price: "80–100 lei" }, { name: "Coroană metalo-ceramică total fizionomică", price: "650 lei" }, { name: "Coroană metalo-ceramică parțial fizionomică (3/4)", price: "550 lei" }, { name: "Coroană ZIRCONIU pe dinte", price: "950 lei" }, { name: "Coroană ZIRCONIU pe implant (inclusiv bontul protetic T-base)", price: "1350 lei" }, { name: "Bont implant custom ZIRCONIU", price: "500 lei" }, { name: "Coroană acrilică provizorie (laborator)", price: "200 lei" }, { name: "Dinte provizoriu pe implant: 500 lei (inclus bont protetic), intermediarii (cei care sunt in aer) 200 lei/buc", price: "500 lei" }, { name: "Coroană acrilică provizorie (cabinet)", price: "150 lei" }, { name: "Fațete dentare E-MAX", price: "1250 lei" }, { name: "RCR (pivot metalic)", price: "200 lei" }, { name: "Proteză acrilică totală/parțială CLASICĂ / arcadă", price: "2500 lei" }, { name: "Proteză totală/parțială ELASTICĂ / arcadă", price: "3000 lei" }, { name: "Proteză scheletată (include sisteme speciale) / arcadă", price: "5000 lei" }, { name: "Proteza Kemeny (se adauga cate 100 lei/ dinte pentru fiecare dinte adaugat in plus) ", price: "300 lei/1 DINTE" }, { name: "Ablație coroană dentară (îndepărtare-tăiere)/bucată", price: "100 lei" }, { name: "Ablație RCR (pivot)", price: "250 lei" }, { name: "Gutieră pentru bruxism, albire, contenție / arcadă", price: "500 lei" }, { name: "Rebazăre proteză", price: "400 lei" }, { name: "Reparație proteză", price: "400 lei" }, { name: "Lucrare pe implanturi (THIMBLE) – TITAN COMPOZIT", price: "13.500 lei" }, { name: "Lucrare pe implanturi (THIMBLE) – TITAN ZIRCONIU", price: "16.000 lei" }] },
-            { category: "IMPLANTOLOGIE", items: [{ name: "Implant (doar șurub) - JD sau INNO", price: "2000 lei" }, { name: "Adiție osoasă / implant", price: "2000 lei" }, { name: "Sinus lifting + adiție osoasă", price: "4000–5000 lei" }, { name: "Sistem FAST & FIXED (4 implanturi, dinți provizorii incluși)", price: "12.500 lei" }, { name: "Sistem FAST & FIXED (5 implanturi, dinți provizorii incluși)", price: "14.500 lei" }, { name: "Sistem FAST & FIXED (6 implanturi, dinți provizorii incluși)", price: "16.500 lei" }] },
-            { category: "ESTETICĂ", items: [{ name: "Aplicare bijuterii dentare (bijuterie inclusă)", price: "350 lei" }, { name: "Albire profesională cu lampă", price: "1300 lei" }, { name: "Albire endo/dinte", price: "300 lei" }] },
-            { category: "ORTODONȚIE", items: [{ name: "Consultație medic ortodont", price: "100 lei" }, { name: "Model studiu și plan de tratament", price: "150 lei" }, { name: "Fotografii intraorale și de portret", price: "100 lei" }, { name: "Aparat fix metalic (clasic) / arcadă", price: "2300 lei" }, { name: "Aparat fix metalic (Damon) / arcadă", price: "4000 lei" }, { name: "Aparat fix Damon Clear / arcadă", price: "5000 lei" }, { name: "Aparat fix ceramic / arcadă", price: "3500 lei" }, { name: "Aparat fix safir / arcadă", price: "4000 lei" }, { name: "Aparat fix segmentar metalic / arcadă", price: "1300 lei" }, { name: "Aparat fix segmentar ceramic / arcadă", price: "1800 lei" }, { name: "Aparat fix segmentar safir / arcadă", price: "2000 lei" }, { name: "Control lunar aparat fix / arcadă", price: "100 lei" }, { name: "Control lunar aparat fix (ambele arcade)", price: "200 lei" }, { name: "Aparat mobil / arcadă", price: "800 lei" }, { name: "Aparat mobil twin-block", price: "1200 lei" }, { name: "Control aparat mobil / arcadă", price: "50 lei" }, { name: "Bară linguală", price: "500 lei" }, { name: "Disjunctor", price: "1500 lei" }, { name: "Pendulum", price: "700 lei" }, { name: "Retainer fix colat", price: "500 lei" }, { name: "Headgear", price: "400 lei" }, { name: "Aparat contenție", price: "400 lei" }, { name: "Masca Delaire", price: "1000 lei" }, { name: "Gutieră contenție", price: "500 lei" }] }
-        ];
+        const priceListData = PRICE_LIST;
 
         const filteredList = priceListData.map(category => ({
             ...category,
@@ -777,7 +866,7 @@ const FormSection = () => (
             <section className="py-24 bg-white min-h-screen">
                 <div className="max-w-5xl mx-auto px-6">
                     <div className="text-center mb-12">
-                        <h1 className="text-4xl font-bold text-[#1a1a1a] mb-4">Servicii & Prețuri</h1>
+                        <h1 className="text-4xl font-bold text-[#1a1a1a] mb-4">Servicii & Prețuri stomatologie Mioveni</h1>
                         <p className="text-gray-500 mb-8 italic">Transparență totală în investiția pentru sănătatea dumneavoastră orală.</p>
                         <div className="relative max-w-md mx-auto">
                             <Icon name="search" size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
@@ -786,8 +875,8 @@ const FormSection = () => (
                     </div>
                     <div className="space-y-10">
                         {filteredList.map((cat, idx) => (
-                            <div key={idx} className="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm">
-                                <div className="bg-[#1a1a1a] text-white px-6 py-4 flex justify-between items-center"><h4 className="font-bold text-lg uppercase tracking-wide">{cat.category}</h4></div>
+                            <div key={idx} id={slugify(cat.category)} className="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm scroll-mt-24">
+                                <div className="bg-[#1a1a1a] text-white px-6 py-4 flex justify-between items-center"><h2 className="font-bold text-lg uppercase tracking-wide">{cat.category}</h2></div>
                                 <div className="divide-y divide-gray-50">
                                     {cat.items.map((item, i) => (
                                         <div key={i} className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-6 py-4 hover:bg-gray-50"><span className="text-[#1a1a1a] font-medium text-sm sm:text-base">{item.name}</span><span className="text-[#5a1018] font-bold bg-[#5a1018]/5 px-3 py-1 rounded-full whitespace-nowrap mt-2 sm:mt-0">{item.price}</span></div>
@@ -798,6 +887,7 @@ const FormSection = () => (
                     </div>
                 </div>
             </section>
+            <BlogArticles title="Cât costă tratamentul și ce include prețul" intro="Ghiduri despre costul unui implant dentar, etapele tratamentului și alegerea între tratament de canal și implant." match={/costa|etape|canal|analize/} />
             <Contact />
             </div>
         );
@@ -806,7 +896,7 @@ const FormSection = () => (
 const Implantology = () => (
     <div className="page-fade-in">
 {/* SECTION 1: HERO */}
-<section className="relative h-[70vh] flex items-center bg-gray-900 overflow-hidden">
+<section className="relative min-h-[70vh] py-16 flex items-center bg-gray-900 overflow-hidden">
     <div className="absolute inset-0 opacity-50">
          <img 
             src="https://images.unsplash.com/photo-1629909615184-74f495363b67?q=70&w=1600&auto=format&fit=crop"
@@ -821,14 +911,14 @@ const Implantology = () => (
     <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
         <div className="max-w-3xl space-y-6">
             <div className="inline-block bg-[#5a1018] px-4 py-2 text-white font-bold text-xs uppercase tracking-widest rounded-sm">
-                Centru de Excelență
+                Implantologie în Mioveni
             </div>
-            <h1 className="text-5xl md:text-7xl font-black text-white leading-tight">
-                Implantologie<br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">Minim Invazivă</span>
+            <h1 className="text-[2.6rem] sm:text-5xl md:text-7xl font-black text-white leading-tight">
+                Implant dentar<br/>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">și dinți ficși în Mioveni</span>
             </h1>
             <p className="text-gray-200 text-lg leading-relaxed max-w-xl">
-                Soluții de ultimă generație pentru înlocuirea dinților lipsă. De la un singur implant până la reabilitări totale a arcadelor dentare într-o singură zi.
+                Soluții moderne pentru înlocuirea dinților lipsă: de la un singur implant dentar până la dantură fixă pe implanturi (All-on-X), cu lucrare provizorie fixă încă din primele zile, atunci când situația osoasă permite.
             </p>
             <NavLink id="contact" className="inline-block text-center px-10 py-4 bg-white text-[#5a1018] font-bold rounded shadow-lg hover:bg-gray-100 transition-all uppercase text-xs tracking-widest mt-4">
                 Programează o Consultație
@@ -843,8 +933,8 @@ const Implantology = () => (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
                 <div>
-                    <h3 className="text-[#5a1018] font-bold tracking-widest uppercase text-sm mb-2">Tehnologie Avansată</h3>
-                    <h2 className="text-4xl font-bold text-[#1a1a1a]">Implanturi Italienești JD Dental</h2>
+                    <h3 className="text-[#5a1018] font-bold tracking-widest uppercase text-sm mb-2">Implanturi dentare în Mioveni</h3>
+                    <h2 className="text-4xl font-bold text-[#1a1a1a]">Implanturi dentare italiene JD Dental</h2>
                 </div>
                 <div className="text-gray-600 leading-relaxed space-y-4">
                     <p>
@@ -911,10 +1001,10 @@ const Implantology = () => (
 </section>
 
 {/* SECTION 3: ALL-ON-X (SISTEME COMPLETE) */}
-<section className="py-24 bg-[#1a1a1a] text-white">
+<section id="dinti-ficsi" className="py-24 bg-[#1a1a1a] text-white scroll-mt-24">
     <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Sistemele All-on-X – Soluția modernă pentru edentația totală</h2>
+            <h2 className="text-4xl font-bold mb-4">Dinți ficși în Mioveni: dantură fixă pe implanturi All-on-X</h2>
             <p className="text-gray-400 max-w-3xl mx-auto">
                 Reabilitare orală completă prin care o arcadă dentară este susținută de un număr redus de implanturi (4, 6 sau mai multe).
             </p>
@@ -923,7 +1013,7 @@ const Implantology = () => (
         {/* 1. Ce sunt sistemele All-on-X? (Text + Small Image Left - Big Image Right) */}
         <div className="flex flex-col lg:flex-row gap-12 mb-24">
             <div className="flex-1 space-y-6">
-                <h3 className="text-3xl font-bold text-white">1. Ce sunt sistemele All-on-X?</h3>
+                <h3 className="text-3xl font-bold text-white">1. Ce sunt sistemele All-on-X (dinții ficși pe implanturi)?</h3>
                 <div className="h-1 w-20 bg-[#5a1018]"></div>
                 <p className="text-gray-300 text-lg leading-relaxed">
                     Sistemele All-on-X reprezintă o soluție modernă de reabilitare orală prin care o arcadă dentară completă este susținută de un număr redus de implanturi dentare. "X" reprezintă numărul de implanturi folosite: 4, 6 sau mai multe.
@@ -1189,7 +1279,7 @@ const Implantology = () => (
 
         {/* 6. Etapele Tratamentului - Timeline Vizual */}
         <div className="mb-24">
-            <h3 className="text-3xl font-bold text-white mb-12 text-center">6. Etapele tratamentului</h3>
+            <h3 className="text-3xl font-bold text-white mb-12 text-center">6. Etapele tratamentului pentru dinți ficși</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
                 {[
                     { step: "01", title: "Consult & CBCT", icon: "clipboard-check" },
@@ -1247,11 +1337,14 @@ const Implantology = () => (
             {/* Left column - Text + Small Image below */}
             <div className="flex-1 space-y-6">
                 <div>
-                    <h3 className="text-[#5a1018] font-bold tracking-widest uppercase text-sm mb-2">Chirurgie Avansată</h3>
-                    <h2 className="text-3xl font-bold text-[#1a1a1a]">Soluții pentru cazuri complexe (Atrofie Osoasă)</h2>
+                    <h3 className="text-[#5a1018] font-bold tracking-widest uppercase text-sm mb-2">Atrofie osoasă</h3>
+                    <h2 className="text-3xl font-bold text-[#1a1a1a]">Implant dentar când nu ai suficient os</h2>
                 </div>
                 <p className="text-gray-600 leading-relaxed">
                     Datorită sistemelor <strong>All-on-X</strong>, putem realiza reabilitări totale chiar și pentru arcade cu atrofii osoase severe, <span className="font-bold text-[#1a1a1a]">fără a fi nevoie de adiții osoase</span> complicate.
+                </p>
+                <p className="text-gray-600 leading-relaxed">
+                    Când adiția osoasă sau sinus lift-ul sunt totuși necesare, îți explicăm pas cu pas ce presupun, în ghidul nostru despre <a href="/blog/aditie-osoasa-sinus-lift-implant-dentar/" className="text-[#5a1018] font-bold underline underline-offset-4">adiție osoasă și sinus lift pentru implant dentar</a>.
                 </p>
                 <p className="text-gray-600 leading-relaxed">
                     Implanturile speciale (pterigoidiene, nazale, trans-sinusale) ne permit să ancorăm lucrările în zone de os nativ dens, evitând procedurile de sinus lift și adiție de os care prelungesc tratamentul.
@@ -1312,7 +1405,7 @@ const Implantology = () => (
             <div className="flex justify-center items-center gap-2 mb-4">
                 <span className="text-[#5a1018] font-bold text-sm tracking-widest uppercase">Rezultate Reale</span>
             </div>
-            <h2 className="text-4xl font-bold text-[#1a1a1a] mb-6">Înainte și După</h2>
+            <h2 className="text-4xl font-bold text-[#1a1a1a] mb-6">Înainte și după: implanturi și dinți ficși</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">Transformări reale ale pacienților noștri, obținute prin tratamente de implantologie și reabilitare orală.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
@@ -1334,8 +1427,10 @@ const Implantology = () => (
             </div>
         </div>
         <p className="text-center text-gray-400 text-sm mt-8 max-w-2xl mx-auto">Cazuri reale tratate în clinica Dr. Năstase. Rezultatele pot varia în funcție de particularitățile fiecărui pacient.</p>
+        <p className="text-center text-gray-600 mt-6 max-w-2xl mx-auto">Prețurile pentru implant dentar, adiție osoasă și sistemele de dinți ficși Fast &amp; Fixed sunt pe pagina <a href="/servicii-si-preturi/#implantologie" className="text-[#5a1018] font-bold underline underline-offset-4">Servicii &amp; Prețuri</a>.</p>
     </div>
 </section>
+<BlogArticles title="Ghiduri despre implantul dentar și dinții ficși" intro="Tot ce întreabă pacienții noștri înainte de tratament: etape, analize, durere, os insuficient și costuri." match={/implant|all-on|ficsi|osoasa|etape|analize|chirurgie|dinte-lipsa|canal/} limit={6} />
     </div>
 );
     // Pe pagina /contact/ titlul hărții e H1; când secțiunea e inclusă în alte pagini rămâne H2.
@@ -1343,6 +1438,7 @@ const Implantology = () => (
         <div>
             <FormSection />
             <MapSection HeadingTag={isPage ? "h1" : "h2"} />
+            {isPage && <ServicesSection />}
         </div>
     );
 
