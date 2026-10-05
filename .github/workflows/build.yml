@@ -1,0 +1,79 @@
+# Regenerează paginile statice și sitemap-ul după fiecare push pe main
+# (inclusiv articolele publicate automat în blog/) și le comite înapoi.
+# GitHub Pages servește apoi fișierele generate direct din main.
+name: Build site
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'blog/**'
+      - 'scripts/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'tailwind.config.cjs'
+      - 'index.html'
+      - 'despre-noi/**'
+      - 'implantologie/**'
+      - 'servicii-si-preturi/**'
+      - 'contact/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: build-site
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # lastmod din sitemap vine din istoricul git
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Oprește-te dacă cineva a editat direct fișierele generate
+        if: github.event_name == 'push' && github.event.before != '0000000000000000000000000000000000000000'
+        run: |
+          changed=$(git diff --name-only "${{ github.event.before }}" "${{ github.sha }}")
+          generated=$(echo "$changed" | grep -E '^(index\.html|(despre-noi|implantologie|servicii-si-preturi|contact)/index\.html)$' || true)
+          source=$(echo "$changed" | grep -E '^src/' || true)
+          if [ -n "$generated" ] && [ -z "$source" ] && [ "${{ github.actor }}" != "github-actions[bot]" ]; then
+            echo "::error::Au fost editate direct fișiere generate: $generated. Modificările trebuie făcute în src/app.jsx (sau src/site.config.mjs), altfel build-ul le suprascrie. Nu am rulat build-ul, ca să nu se piardă."
+            exit 1
+          fi
+
+      - run: npm run build
+
+      - name: Comite fișierele generate
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A index.html despre-noi implantologie servicii-si-preturi contact assets sitemap.xml
+          if git diff --cached --quiet; then
+            echo "Nimic de actualizat."
+            exit 0
+          fi
+          git commit -m "build: regenerează paginile statice și sitemap-ul"
+          for i in 1 2 3; do
+            if git pull --rebase origin main && git push origin HEAD:main; then
+              # Push-urile făcute cu GITHUB_TOKEN nu pornesc mereu build-ul Pages; îl cerem explicit.
+              gh api -X POST "repos/${{ github.repository }}/pages/builds" || true
+              exit 0
+            fi
+            sleep 5
+          done
+          exit 1
+        env:
+          GH_TOKEN: ${{ github.token }}
