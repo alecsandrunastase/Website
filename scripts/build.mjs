@@ -14,6 +14,10 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { SITE_URL, BUSINESS, PAGES, INDEXNOW_KEY } from '../src/site.config.mjs';
 import { dentistNode, DENTIST_ID, ADDRESS_TEXT } from './schema.mjs';
 import { readBlogPosts, postprocessBlog } from './blog-seo.mjs';
+import implantDentar from '../src/content/implant-dentar-mioveni.mjs';
+import dintiFicsi from '../src/content/dinti-ficsi-mioveni.mjs';
+
+const CONTENT = { implant: implantDentar, fixed: dintiFicsi };
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const r = (...p) => path.join(ROOT, ...p);
@@ -62,16 +66,42 @@ const { App, ROUTES, PRICE_LIST, slugify } = await import(pathToFileURL(ssrFile)
 const React = (await import('react')).default;
 const { renderToString } = await import('react-dom/server');
 
-const schemaFor = (route) => {
+// Textul din content (**bold**, [link](/x)) devine text simplu în schema.
+const plain = (t) => t.replace(/\*\*([^*]+)\*\*/g, '$1').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+
+const schemaFor = (id, route) => {
+    const content = CONTENT[id];
     const page = {
-        '@type': 'WebPage',
+        '@type': content ? 'MedicalWebPage' : 'WebPage',
         '@id': `${SITE_URL}${route}#webpage`,
         url: `${SITE_URL}${route}`,
+        name: PAGES[id].title,
         inLanguage: 'ro-RO',
         about: { '@id': DENTIST_ID },
         publisher: { '@id': DENTIST_ID },
     };
-    return JSON.stringify({ '@context': 'https://schema.org', '@graph': [dentistNode(), page] }).replace(/</g, '\\u003c');
+    const graph = [dentistNode(), page];
+    if (content) {
+        const s = content.schema;
+        page.lastReviewed = s.lastReviewed;
+        page.reviewedBy = { '@type': 'Physician', name: s.reviewer.name, description: s.reviewer.description, worksFor: { '@id': DENTIST_ID } };
+        page.mainEntity = { '@type': 'MedicalProcedure', name: s.procedure.name, alternateName: s.procedure.alternateName, procedureType: 'https://schema.org/SurgicalProcedure', bodyLocation: 'Maxilar și mandibulă', howPerformed: s.procedure.howPerformed };
+        page.breadcrumb = { '@id': `${SITE_URL}${route}#breadcrumb` };
+        graph.push({
+            '@type': 'BreadcrumbList', '@id': `${SITE_URL}${route}#breadcrumb`,
+            itemListElement: [
+                { '@type': 'ListItem', position: 1, name: 'Acasă', item: `${SITE_URL}/` },
+                { '@type': 'ListItem', position: 2, name: 'Implantologie', item: `${SITE_URL}/implantologie/` },
+                { '@type': 'ListItem', position: 3, name: content.hero.h1, item: `${SITE_URL}${route}` },
+            ],
+        });
+        const faq = content.sections.find((x) => x.type === 'faq');
+        if (faq) graph.push({
+            '@type': 'FAQPage', '@id': `${SITE_URL}${route}#faq`,
+            mainEntity: faq.items.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: plain(f.a) } })),
+        });
+    }
+    return JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c');
 };
 
 const template = fs.readFileSync(r('src/template.html'), 'utf8');
@@ -85,7 +115,8 @@ for (const [id, route] of Object.entries(ROUTES)) {
         .replaceAll('{{TITLE}}', esc(meta.title))
         .replaceAll('{{DESCRIPTION}}', esc(meta.description))
         .replaceAll('{{CANONICAL}}', canonical)
-        .replace('{{SCHEMA}}', () => schemaFor(route))
+        .replace('{{SCHEMA}}', () => schemaFor(id, route))
+        .replace('{{ROBOTS}}', meta.noindex ? 'noindex, follow' : 'index, follow')
         .replace('{{CSS}}', cssName)
         .replace('{{JS}}', jsName)
         .replace('{{ROOT}}', () => html);
@@ -102,7 +133,7 @@ const gitDate = (...paths) => {
     } catch { return ''; }
 };
 const today = new Date().toISOString().slice(0, 10);
-const urls = written.map((w) => ({
+const urls = written.filter((w) => !w.meta.noindex).map((w) => ({
     loc: `${SITE_URL}${w.route}`,
     lastmod: gitDate('src') || today,
     priority: w.route === '/' ? '1.0' : '0.9',
@@ -135,7 +166,7 @@ const llms = `# ${BUSINESS.name}
 
 ## Pagini principale
 
-${written.map((w) => `- [${w.meta.title}](${SITE_URL}${w.route}): ${w.meta.description}`).join('\n')}
+${written.filter((w) => !w.meta.noindex).map((w) => `- [${w.meta.title}](${SITE_URL}${w.route}): ${w.meta.description}`).join('\n')}
 
 ## Prețuri orientative (lei)
 
@@ -171,6 +202,19 @@ for (const w of written) {
 for (const u of urls) {
     const rel = u.loc.slice(SITE_URL.length + 1);
     if (!fs.existsSync(r(rel, 'index.html')) && !fs.existsSync(r(rel || 'index.html'))) errors.push(`sitemap: ${u.loc} nu are fișier`);
+}
+// Conformitate CMSR + stil pe conținutul paginilor de serviciu (case-insensitive, vezi skill-ul pagina-seo-geo)
+const BANNED = [/—/, /\bgratuit/i, /\bofert[ăae]/i, /\bpromo[țt]i/i, /\bpachet/i, /\breducer/i, /\bdiscount/i, /\bde la \d/i,
+    /\brate\b(?! de supravie)/i, /\bgarant(at|ăm|ie|ia)/i, /cel mai bun/i, /\bpremium\b/i, /ultim[ăa] genera[țt]ie/i, /\bexcelen[țt]/i, /\b100\s?%/i, /\bideal/i];
+for (const [id, content] of Object.entries(CONTENT)) {
+    const text = JSON.stringify(content) + PAGES[id].title + PAGES[id].description;
+    for (const re of BANNED) if (re.test(text)) errors.push(`${id}: formulare interzisă (CMSR/stil): ${re}`);
+    const pending = (text.match(/\(de confirmat\)/g) || []).length;
+    if (pending && !PAGES[id].noindex) errors.push(`${id}: ${pending} marcaje „(de confirmat)” — pagina nu poate fi indexabilă până nu sunt rezolvate`);
+    if (pending) console.log(`${id}: ${pending} marcaje „(de confirmat)” (pagina e noindex)`);
+}
+for (const w of written) {
+    if (w.meta.noindex && !w.out.includes('content="noindex, follow"')) errors.push(`${w.file}: lipsește meta robots noindex`);
 }
 if (llms.includes('undefined')) errors.push('llms.txt: un preț nu a fost găsit în PRICE_LIST (verifică denumirile din build.mjs)');
 if (!fs.existsSync(r(`${INDEXNOW_KEY}.txt`))) errors.push(`lipsește fișierul cheii IndexNow ${INDEXNOW_KEY}.txt`);

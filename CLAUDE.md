@@ -9,6 +9,8 @@ Site static servit de GitHub Pages direct din `main` (domeniu www.clinicadrnasta
 - `src/template.html`, `src/styles.css` — head-ul paginii și CSS-ul (Tailwind compilat).
 - `npm run build` generează `index.html`, `despre-noi/`, `implantologie/`, `servicii-si-preturi/`, `contact/`, `assets/` și `sitemap.xml`, apoi verifică invarianții SEO (un H1, lungimi title/description, JSON-LD valid, resurse existente).
 
+Paginile de serviciu `/implant-dentar-mioveni/` și `/dinti-ficsi-mioveni/` au textul în `src/content/*.mjs` (randat de `src/service-page.jsx`; același obiect alimentează schema FAQPage/MedicalProcedure). `noindex: true` în `PAGES` le ține în afara indexului, sitemap-ului, llms.txt și IndexNow cât timp clientul le revizuiește. Build-ul refuză scoaterea noindex cât timp textul mai conține „(de confirmat)” și verifică formulările interzise CMSR (em dash, „de la X lei”, „rate”, „garantat”, superlative). La aprobare: rezolvă marcajele, șterge `noindex`, adaugă paginile în meniu/linkuri interne și repoziționează `/implantologie/` ca pagină-hub (fără să mai țintească „implant dentar Mioveni” în title/H1).
+
 **Nu edita direct fișierele generate** — se suprascriu. GitHub Action-ul `.github/workflows/build.yml` rulează build-ul la fiecare push și refuză build-ul dacă fișierele generate au fost editate fără modificări în `src/`.
 
 ## Blogul

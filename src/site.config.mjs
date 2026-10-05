@@ -1,3 +1,6 @@
+import implantDentar from './content/implant-dentar-mioveni.mjs';
+import dintiFicsi from './content/dinti-ficsi-mioveni.mjs';
+
 // Date unice despre clinică. Trebuie să fie IDENTICE cu profilul Google Business
 // (nume, adresă, telefon, program) — orice diferență slăbește SEO-ul local.
 export const SITE_URL = 'https://www.clinicadrnastase.ro';
@@ -47,10 +50,15 @@ export const PAGES = {
     },
     pricing: {
         title: 'Prețuri Stomatologie Mioveni | Clinica Dr. Năstase',
-        description: 'Prețuri stomatologie în Mioveni: consultație 250 lei, implant dentar de la 2.000 lei, dinți ficși Fast & Fixed, tratamente de canal, ortodonție.',
+        description: 'Prețuri stomatologie Mioveni: consultație 250 lei, implant JD sau INNO 2.000 lei, 4 implanturi cu lucrare provizorie fixă 12.500 lei.',
     },
     contact: {
         title: 'Contact Dentist Mioveni | Clinica Dr. Năstase',
         description: 'Programări la dentist în Mioveni: Bulevardul Dacia, Bl. V1, Sc. E+F, Parter. Telefon și WhatsApp 0771 292 813. Luni–vineri, program extins.',
     },
+    // Pagini de serviciu dedicate. Textul și metadatele sunt în src/content/.
+    // noindex: true = clientul încă le revizuiește (accesibile doar prin link direct, scoase din
+    // sitemap, llms.txt și IndexNow). Șterge `noindex` după aprobare.
+    implant: { ...implantDentar.meta, noindex: true },
+    fixed: { ...dintiFicsi.meta, noindex: true },
 };

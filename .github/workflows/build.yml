@@ -19,6 +19,8 @@ on:
       - 'implantologie/**'
       - 'servicii-si-preturi/**'
       - 'contact/**'
+      - 'implant-dentar-mioveni/**'
+      - 'dinti-ficsi-mioveni/**'
   workflow_dispatch:
 
 permissions:
@@ -48,7 +50,7 @@ jobs:
         if: github.event_name == 'push' && github.event.before != '0000000000000000000000000000000000000000'
         run: |
           changed=$(git diff --name-only "${{ github.event.before }}" "${{ github.sha }}")
-          generated=$(echo "$changed" | grep -E '^(index\.html|(despre-noi|implantologie|servicii-si-preturi|contact)/index\.html)$' || true)
+          generated=$(echo "$changed" | grep -E '^(index\.html|(despre-noi|implantologie|servicii-si-preturi|contact|implant-dentar-mioveni|dinti-ficsi-mioveni)/index\.html)$' || true)
           source=$(echo "$changed" | grep -E '^src/' || true)
           if [ -n "$generated" ] && [ -z "$source" ] && [ "${{ github.actor }}" != "github-actions[bot]" ]; then
             echo "::error::Au fost editate direct fișiere generate: $generated. Modificările trebuie făcute în src/app.jsx (sau src/site.config.mjs), altfel build-ul le suprascrie. Nu am rulat build-ul, ca să nu se piardă."
@@ -61,7 +63,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A index.html despre-noi implantologie servicii-si-preturi contact assets sitemap.xml llms.txt blog
+          git add -A index.html despre-noi implantologie servicii-si-preturi contact implant-dentar-mioveni dinti-ficsi-mioveni assets sitemap.xml llms.txt blog
           if git diff --cached --quiet; then
             echo "Nimic de actualizat."
             exit 0

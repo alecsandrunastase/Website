@@ -7,6 +7,9 @@ import {
     Clock, Cpu, Frown, Info, Mail, MapPin, Phone, Search, Star, TrendingUp, User, X, Menu,
     ClipboardCheck, Heart, Microscope, Monitor, Sparkles, Trophy,
 } from 'lucide';
+import { ServicePage } from './service-page.jsx';
+import implantDentar from './content/implant-dentar-mioveni.mjs';
+import dintiFicsi from './content/dinti-ficsi-mioveni.mjs';
 
 const ICONS = {
     'activity': Activity, 'arrow-right': ArrowRight, 'award': Award, 'calendar': Calendar,
@@ -125,13 +128,16 @@ export const ROUTES = {
     'about': '/despre-noi/',
     'implantology': '/implantologie/',
     'pricing': '/servicii-si-preturi/',
-    'contact': '/contact/'
+    'contact': '/contact/',
+    // Pagini de serviciu dedicate (noindex până la aprobarea clientului — vezi PAGES în site.config.mjs)
+    'implant': '/implant-dentar-mioveni/',
+    'fixed': '/dinti-ficsi-mioveni/'
 };
 
 const pageFromPath = (path) => {
     if (path === '/' || path === '/index.html') return 'home';
     const routeEntry = Object.entries(ROUTES).find(([key, route]) => {
-        return route !== '/' && path.startsWith(route.replace(/\/$/, ''));
+        return route !== '/' && (path === route || path === route.replace(/\/$/, ''));
     });
     return routeEntry ? routeEntry[0] : 'home';
 };
@@ -1472,6 +1478,8 @@ const Implantology = () => (
                 {activePage === 'about' && <About />}
                 {activePage === 'pricing' && <Pricing />}
                 {activePage === 'contact' && <Contact isPage />}
+                {activePage === 'implant' && <ServicePage content={implantDentar} Icon={Icon} CtaLink={(p) => <NavLink id="contact" {...p} />} />}
+                {activePage === 'fixed' && <ServicePage content={dintiFicsi} Icon={Icon} CtaLink={(p) => <NavLink id="contact" {...p} />} />}
                 {activePage === 'implantology' && <Implantology />}
             </main>
 
