@@ -5,9 +5,9 @@ Pagini de revizuit (noindex, accesibile doar prin link direct):
 - https://www.clinicadrnastase.ro/implant-dentar-mioveni/
 - https://www.clinicadrnastase.ro/dinti-ficsi-mioveni/
 
-Pe pagini, informațiile neconfirmate apar evidențiate cu galben, cu textul „(de confirmat)”. Paginile nu pot fi indexate până nu sunt rezolvate toate marcajele (build-ul refuză).
+Paginile sunt finale: conțin doar informații confirmate din sursele clinicii (lista de prețuri, paginile Implantologie și Despre noi, blogul). Ce nu putea fi confirmat a fost scos de pe pagină, nu marcat. Întrebările de mai jos sunt pentru completări ulterioare: fiecare răspuns poate adăuga un detaliu util pe pagină.
 
-## Anexă: puncte deschise pentru clinică
+## Completări posibile (opțional)
 
 ### Implant dentar
 

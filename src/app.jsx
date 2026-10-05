@@ -1478,12 +1478,13 @@ const Implantology = () => (
                 {activePage === 'about' && <About />}
                 {activePage === 'pricing' && <Pricing />}
                 {activePage === 'contact' && <Contact isPage />}
-                {activePage === 'implant' && <ServicePage content={implantDentar} Icon={Icon} CtaLink={(p) => <NavLink id="contact" {...p} />} />}
-                {activePage === 'fixed' && <ServicePage content={dintiFicsi} Icon={Icon} CtaLink={(p) => <NavLink id="contact" {...p} />} />}
+                {activePage === 'implant' && <ServicePage content={implantDentar} Icon={Icon} />}
+                {activePage === 'fixed' && <ServicePage content={dintiFicsi} Icon={Icon} />}
                 {activePage === 'implantology' && <Implantology />}
             </main>
 
-            <StickyWidgets />
+            {/* Pe paginile de serviciu, pe telefon, bara fixă proprie înlocuiește butoanele flotante */}
+            {['implant', 'fixed'].includes(activePage) ? <div className="hidden md:block"><StickyWidgets /></div> : <StickyWidgets />}
 
             {/* Footer */}
             <footer className="bg-[#1a1a1a] text-white py-16 px-6">
