@@ -1,6 +1,6 @@
 # Revizuire: paginile Implant dentar și Dinți ficși (octombrie 2026)
 
-Pagini de revizuit (noindex, accesibile doar prin link direct):
+Stare: **finale, publicate cu noindex, în așteptarea aprobării clientului** (accesibile doar prin link direct):
 
 - https://www.clinicadrnastase.ro/implant-dentar-mioveni/
 - https://www.clinicadrnastase.ro/dinti-ficsi-mioveni/
@@ -29,8 +29,10 @@ Paginile sunt finale: conțin doar informații confirmate din sursele clinicii (
 
 ### Decizii care aparțin clinicii
 
-13. **Byline-ul:** „Conținut revizuit medical de Dr. Alexandru Năstase, medic stomatolog cu competență în implantologie orală”. Formularea titlului e cea corectă pentru CMSR?
-14. **La aprobare:** paginile intră în meniu (sub „Implantologie”), primesc linkuri de pe homepage, din blog și de pe pagina de prețuri, iar pagina `/implantologie/` devine pagina-hub cu cazurile înainte/după, ca să nu concureze cu paginile noi în Google.
+13. **Byline-ul:** acum scrie „Conținut revizuit medical de Dr. Alexandru Năstase, medic stomatolog”. Dacă medicul are un titlu în implantologie (specialist / atestat de studii complementare), ne trebuie formularea exactă din certificat, ca să-l adăugăm conform CMSR.
+14. **Lucrarea definitivă:** prețurile THIMBLE din listă (titan-compozit 13.500 lei, titan-zirconiu 16.000 lei) sunt pe arcadă, pentru All-on-X? Din ele se calculează totalurile de pe pagina de dinți ficși (26.000 / 28.500 / 32.500 lei).
+15. **Messenger:** numele de utilizator al paginii de Facebook, dacă vreți și butonul de Messenger lângă apel și WhatsApp.
+16. **La aprobare:** paginile intră în meniu (sub „Implantologie”), primesc linkuri de pe homepage, din blog și de pe pagina de prețuri, iar pagina `/implantologie/` devine pagina-hub cu cazurile înainte/după, ca să nu concureze cu paginile noi în Google. Pașii tehnici sunt în `CLAUDE.md`.
 
 ## Formulări neconforme CMSR găsite pe site-ul actual
 
