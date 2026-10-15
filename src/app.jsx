@@ -826,12 +826,19 @@ const FormSection = () => (
         <div className="relative hidden lg:block h-[750px]">
             {/* Main Image - Still Frame */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[85%] bg-[#f0f0f0] rounded-[2rem] overflow-hidden shadow-2xl">
-                 <img 
-                    src="/pozaclinicadinafara.jpeg" 
-                    alt="Clinica Dentară Dr. Alexandru Năstase, Bulevardul Dacia, Mioveni" 
-                    className="w-full h-full object-cover"
-                    style={{ objectPosition: '35% center' }}
-                />
+                 {/* Poza apare doar pe desktop (lg); pe telefon sursa e un pixel gol, ca să nu se descarce degeaba */}
+                 <picture>
+                    <source media="(max-width: 1023px)" srcSet="data:image/gif;base64,R0lGODlhAQABAIAAAAAAACH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                    <img 
+                        src="/img/lp/clinica-exterior.webp" 
+                        width="1200"
+                        height="900"
+                        fetchpriority="high"
+                        alt="Clinica Dentară Dr. Alexandru Năstase, Bulevardul Dacia, Mioveni" 
+                        className="w-full h-full object-cover"
+                        style={{ objectPosition: '35% center' }}
+                    />
+                 </picture>
             </div>
 
             {/* Floating Card 1 */}
@@ -920,8 +927,10 @@ const Implantology = () => (
 <section className="relative min-h-[70vh] py-16 flex items-center bg-gray-900 overflow-hidden">
     <div className="absolute inset-0 opacity-50">
          <img 
-            src="https://images.unsplash.com/photo-1629909615184-74f495363b67?q=70&w=1600&auto=format&fit=crop"
-            srcSet="https://images.unsplash.com/photo-1629909615184-74f495363b67?q=70&w=640&auto=format&fit=crop 640w, https://images.unsplash.com/photo-1629909615184-74f495363b67?q=70&w=1080&auto=format&fit=crop 1080w, https://images.unsplash.com/photo-1629909615184-74f495363b67?q=70&w=1600&auto=format&fit=crop 1600w"
+            src="/img/lp/implantologie-hero-1600.webp"
+            srcSet="/img/lp/implantologie-hero-640.webp 640w, /img/lp/implantologie-hero-1080.webp 1080w, /img/lp/implantologie-hero-1600.webp 1600w"
+            width="1600"
+            height="1069"
             sizes="100vw"
             fetchpriority="high"
             alt="Implantologie Digitală"
