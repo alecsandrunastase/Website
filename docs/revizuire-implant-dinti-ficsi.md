@@ -1,6 +1,6 @@
 # Revizuire: paginile Implant dentar și Dinți ficși (octombrie 2026)
 
-Stare: **finale, publicate cu noindex, în așteptarea aprobării clientului** (accesibile doar prin link direct):
+Stare: **aprobate de client și publicate (15.10.2026)**, indexabile:
 
 - https://www.clinicadrnastase.ro/implant-dentar-mioveni/
 - https://www.clinicadrnastase.ro/dinti-ficsi-mioveni/

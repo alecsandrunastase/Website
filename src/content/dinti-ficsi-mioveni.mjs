@@ -57,10 +57,10 @@ export default {
         {
             id: 'ce-sunt',
             type: 'product',
-            title: `Ce sunt ${PRODUCT}`,
+            title: 'Ce sunt Dinții Ficși Dr. Năstase',
             paragraphs: [
                 'Poate porți proteza în geantă când mergi la o masă în oraș. Poate ai renunțat la mere și la carne friptă, sau eviți să râzi cu gura deschisă.',
-                `${PRODUCT} sunt o lucrare care înlocuiește toți dinții de pe o arcadă și se prinde cu șuruburi pe 4, 5 sau 6 implanturi (sistemul **All-on-X**). Lucrarea nu se scoate acasă și nu acoperă cerul gurii, ca proteza mobilă. În lista de prețuri a clinicii, tratamentul apare sub numele **Fast & Fixed**.`,
+                `Dinții Ficși Dr. Năstase sunt o lucrare care înlocuiește toți dinții de pe o arcadă și se prinde cu șuruburi pe 4, 5 sau 6 implanturi (sistemul **All-on-X**). Lucrarea nu se scoate acasă și nu acoperă cerul gurii, ca proteza mobilă. În lista de prețuri a clinicii, tratamentul apare sub numele **Fast & Fixed**.`,
             ],
             benefits: [
                 { title: 'Planificați pe CT 3D', text: 'Tomografia arată volumul osului, nervii și sinusurile înainte de intervenție.', href: '#in-os' },
@@ -74,7 +74,7 @@ export default {
         {
             id: 'pentru-cine',
             type: 'candidates',
-            title: `${PRODUCT} sunt pentru tine dacă…`,
+            title: 'Dinții Ficși Dr. Năstase sunt pentru tine dacă…',
             intro: 'Nu contează de câți ani porți proteză sau de când ai amânat. Contează cât os ai acum, iar asta se vede pe tomografie.',
             items: [
                 { title: 'Proteza mobilă se mișcă', text: 'Te jenează la vorbit sau trebuie lipită cu adeziv în fiecare dimineață.' },

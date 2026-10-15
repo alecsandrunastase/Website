@@ -11,6 +11,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { dentistNode, ADDRESS_TEXT } from './schema.mjs';
 
+// Programul din footer-ul blogului (platforma îl are în configurarea ei; aici îl aliniem cu site-ul).
+const SCHEDULE_HTML = '\n          <p>Luni - Vineri: 08:00 - 20:00</p>\n          <p>Sâmbătă-Duminică: Închis</p>\n        ';
+
 const GTM_ID = 'GTM-TKMVX5F6';
 const GTM_HEAD = `  <!-- pm-seo:gtm -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -26,9 +29,9 @@ const GTM_BODY = `  <!-- pm-seo:gtm --><noscript><iframe src="https://www.google
 // Paginile de servicii și cuvintele care le declanșează (ordinea = prioritate).
 // \b nu tratează ș/ț ca litere, de aceea marginile sunt (?<!\p{L}) / (?!\p{L}).
 const SERVICE_LINKS = [
-    { href: '/implantologie/#dinti-ficsi', label: 'Dinți ficși pe implanturi în Mioveni',
+    { href: '/dinti-ficsi-mioveni/', label: 'Dinți ficși pe implanturi în Mioveni',
       text: /(?<!\p{L})(dinți(i)? ficși|dantur[ăa] fix[ăa]|All-on-X|All-on-4|All-on-6)(?!\p{L})/iu },
-    { href: '/implantologie/', label: 'Implant dentar în Mioveni',
+    { href: '/implant-dentar-mioveni/', label: 'Implant dentar în Mioveni',
       text: /(?<!\p{L})(implant(ul)? dentar|implanturi(le)? dentare)(?!\p{L})/iu },
     { href: '/servicii-si-preturi/', label: 'Prețuri stomatologie Mioveni',
       text: /(?<!\p{L})(prețul|prețurile|costul)(?!\p{L})/iu },
@@ -91,6 +94,11 @@ const fixCommon = (html) => {
     }
     // meniu: /implantologie -> /implantologie/
     html = html.replace(/href="\/(despre-noi|implantologie|servicii-si-preturi|contact)"/g, 'href="/$1/"');
+    // linkurile contextuale vechi (înainte de paginile dedicate) -> paginile de serviciu
+    html = html.replace(/data-pm-link href="\/implantologie\/#dinti-ficsi"/g, 'data-pm-link href="/dinti-ficsi-mioveni/"');
+    html = html.replace(/data-pm-link href="\/implantologie\/"/g, 'data-pm-link href="/implant-dentar-mioveni/"');
+    // programul actual al clinicii în footer
+    html = html.replace(/(>Program<\/h4>\s*<div class="text-gray-400 text-sm space-y-1">)[\s\S]*?(<\/div>)/, `$1${SCHEDULE_HTML}$2`);
     // adresa canonică în footer / top bar
     html = html.replace(/(<p>)[^<]*Dacia[^<]*(<\/p>)/g, `$1${esc(ADDRESS_TEXT)}$2`);
     html = html.replace(/(<\/svg>\s*)(?:B-dul|Bld\.|Bulevardul) Dacia[^<]*(<\/span>)/g, `$1${esc(ADDRESS_TEXT)}$2`);
@@ -142,7 +150,7 @@ const relatedBlock = (post, posts) => {
         .map(({ p }) => p);
     const text = norm(`${post.slug} ${post.title}`);
     const services = SERVICE_LINKS.filter((s) => s.text.test(post.title) || s.text.test(post.description)).slice(0, 2);
-    if (!services.some((s) => s.href === '/implantologie/') && /implant|os|canal|dinte/.test(text)) services.push(SERVICE_LINKS[1]);
+    if (!services.some((s) => s.href === SERVICE_LINKS[1].href) && /implant|os|canal|dinte/.test(text)) services.push(SERVICE_LINKS[1]);
     const serviceList = [...services, { href: '/contact/', label: 'Programări la clinica din Mioveni' }];
     return `    <!-- pm-seo:related:start -->
     <nav class="mt-12 rounded-2xl border border-gray-100 bg-white p-6" aria-label="Servicii în Mioveni">

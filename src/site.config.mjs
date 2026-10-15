@@ -24,8 +24,8 @@ export const BUSINESS = {
     // Link-ul canonic către profilul Google Business (CID-ul fișei)
     mapsUrl: 'https://www.google.com/maps?cid=2936626613435078668',
     hours: [
-        { days: ['Monday', 'Tuesday', 'Thursday'], opens: '08:00', closes: '20:00' },
-        { days: ['Wednesday', 'Friday'], opens: '08:00', closes: '16:30' },
+        // Program actualizat la cererea clinicii (15.10.2026). Trebuie identic și în profilul Google.
+        { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '08:00', closes: '20:00' },
     ],
     sameAs: [
         'https://www.facebook.com/profile.php?id=100063570342590',
@@ -44,9 +44,10 @@ export const PAGES = {
         title: 'Despre noi – Dentist în Mioveni | Clinica Dr. Năstase',
         description: 'Peste 10 ani de stomatologie în Mioveni. Cunoaște medicii dentiști, ortodonții și asistentele Clinicii Dentare Dr. Alexandru Năstase.',
     },
+    // Pagină-hub: NU ține „implant dentar Mioveni” / „dinți ficși Mioveni” (le dețin paginile dedicate).
     implantology: {
-        title: 'Implant Dentar și Dinți Ficși Mioveni | Dr. Năstase',
-        description: 'Implant dentar și dantură fixă pe implanturi (All-on-X) în Mioveni: planificare 3D, implanturi JD Dental, soluții pentru os insuficient, cazuri reale.',
+        title: 'Implantologie Mioveni: Implanturi JD și All-on-X',
+        description: 'Implantologie la Clinica Dr. Năstase din Mioveni: implanturi JD Dental și INNO, sisteme All-on-X, soluții pentru os puțin și cazuri înainte și după.',
     },
     pricing: {
         title: 'Prețuri Stomatologie Mioveni | Clinica Dr. Năstase',
@@ -54,11 +55,10 @@ export const PAGES = {
     },
     contact: {
         title: 'Contact Dentist Mioveni | Clinica Dr. Năstase',
-        description: 'Programări la dentist în Mioveni: Bulevardul Dacia, Bl. V1, Sc. E+F, Parter. Telefon și WhatsApp 0771 292 813. Luni–vineri, program extins.',
+        description: 'Programări la dentist în Mioveni: Bulevardul Dacia, Bl. V1, Sc. E+F, Parter. Telefon și WhatsApp 0771 292 813. Luni-vineri 08:00-20:00.',
     },
-    // Pagini de serviciu dedicate. Textul și metadatele sunt în src/content/.
-    // noindex: true = clientul încă le revizuiește (accesibile doar prin link direct, scoase din
-    // sitemap, llms.txt și IndexNow). Șterge `noindex` după aprobare.
-    implant: { ...implantDentar.meta, noindex: true },
-    fixed: { ...dintiFicsi.meta, noindex: true },
+    // Pagini de serviciu dedicate (aprobate de client, publicate 15.10.2026). Textul și metadatele sunt în src/content/.
+    // Pentru o pagină nouă în revizuire, adaugă `noindex: true`: o scoate din index, sitemap, llms.txt și IndexNow.
+    implant: { ...implantDentar.meta },
+    fixed: { ...dintiFicsi.meta },
 };

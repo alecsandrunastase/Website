@@ -179,7 +179,10 @@ export const App = ({ initialPath }) => {
     const navItems = [
         { id: 'home', label: 'Acasă' },
         { id: 'about', label: 'Despre noi' },
-        { id: 'implantology', label: 'Implantologie' },
+        { id: 'implantology', label: 'Implantologie', children: [
+            { id: 'implant', label: 'Implant dentar' },
+            { id: 'fixed', label: 'Dinți ficși pe implanturi' },
+        ] },
         { id: 'pricing', label: 'Servicii & Prețuri' },
         { id: 'contact', label: 'Contact' }
     ];
@@ -503,7 +506,7 @@ setCurrentSlide((prev) => (prev - 1 + team.length) % team.length);
                             </div>
                             <div className="flex gap-6 items-start">
                                 <div className="bg-white p-3 rounded-lg text-[#5a1018] shrink-0"><Icon name="clock" size={20} /></div>
-                                <div><h5 className="text-lg font-bold mb-1">Program de Lucru</h5><ul className="text-gray-400 text-sm space-y-1"><li className="flex justify-between w-48"><span>Luni, Marți, Joi:</span> <span className="text-white font-medium">08:00 - 20:00</span></li><li className="flex justify-between w-48"><span>Miercuri, Vineri:</span> <span className="text-white font-medium">08:00 - 16:30</span></li><li className="flex justify-between w-48"><span>Sâmbătă:</span> <span className="text-red-500 font-bold">Închis</span></li><li className="flex justify-between w-48"><span>Duminică:</span> <span className="text-red-500 font-bold">Închis</span></li></ul></div>
+                                <div><h5 className="text-lg font-bold mb-1">Program de Lucru</h5><ul className="text-gray-400 text-sm space-y-1"><li className="flex justify-between w-48"><span>Luni - Vineri:</span> <span className="text-white font-medium">08:00 - 20:00</span></li><li className="flex justify-between w-48"><span>Sâmbătă:</span> <span className="text-red-500 font-bold">Închis</span></li><li className="flex justify-between w-48"><span>Duminică:</span> <span className="text-red-500 font-bold">Închis</span></li></ul></div>
                             </div>
                         </div>
                     </div>
@@ -561,9 +564,9 @@ const FormSection = () => (
     // --- Secțiuni de legătură internă (servicii + articole din blog) ---
 
     const SERVICES = [
-        { icon: "award", title: "Implant dentar în Mioveni", href: "/implantologie/", cta: "Despre implantul dentar",
+        { icon: "award", title: "Implant dentar în Mioveni", href: "/implant-dentar-mioveni/", cta: "Despre implantul dentar",
           text: "Înlocuirea unui dinte lipsă cu implanturi italiene JD Dental sau INNO, cu planificare pe tomografie 3D și etape explicate de la prima consultație." },
-        { icon: "sparkles", title: "Dinți ficși pe implanturi (All-on-X)", href: "/implantologie/#dinti-ficsi", cta: "Despre dantura fixă",
+        { icon: "sparkles", title: "Dinți ficși pe implanturi (All-on-X)", href: "/dinti-ficsi-mioveni/", cta: "Despre dinții ficși",
           text: "Dantură fixă pe 4, 5 sau 6 implanturi pentru pacienții care și-au pierdut dinții sau nu mai vor proteză mobilă." },
         { icon: "check-circle", title: "Stomatologie generală", href: "/servicii-si-preturi/#tratamentul-odontal", cta: "Prețuri tratamente",
           text: "Consultație, igienizare profesională, obturații și tratamente de canal, ca dinții naturali să rămână sănătoși cât mai mult timp." },
@@ -874,6 +877,7 @@ const FormSection = () => (
                     <div className="text-center mb-12">
                         <h1 className="text-4xl font-bold text-[#1a1a1a] mb-4">Servicii & Prețuri stomatologie Mioveni</h1>
                         <p className="text-gray-500 mb-8 italic">Transparență totală în investiția pentru sănătatea dumneavoastră orală.</p>
+                                <p className="text-gray-600 mb-8">Vrei totalul pentru un tratament complet? Vezi <a href="/implant-dentar-mioveni/#preturi" className="text-[#5a1018] font-bold underline underline-offset-4">implant dentar</a> (un dinte) și <a href="/dinti-ficsi-mioveni/#preturi" className="text-[#5a1018] font-bold underline underline-offset-4">dinți ficși</a> (o arcadă).</p>
                         <div className="relative max-w-md mx-auto">
                             <Icon name="search" size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
                             <input type="text" placeholder="Caută serviciul dorit..." className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-full focus:ring-2 focus:ring-[#5a1018] outline-none" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
@@ -917,14 +921,14 @@ const Implantology = () => (
     <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
         <div className="max-w-3xl space-y-6">
             <div className="inline-block bg-[#5a1018] px-4 py-2 text-white font-bold text-xs uppercase tracking-widest rounded-sm">
-                Implantologie în Mioveni
+                Implanturi JD Dental și INNO
             </div>
             <h1 className="text-[2.6rem] sm:text-5xl md:text-7xl font-black text-white leading-tight">
-                Implant dentar<br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">și dinți ficși în Mioveni</span>
+                Implantologie<br/>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">în clinica din Mioveni</span>
             </h1>
             <p className="text-gray-200 text-lg leading-relaxed max-w-xl">
-                Soluții moderne pentru înlocuirea dinților lipsă: de la un singur implant dentar până la dantură fixă pe implanturi (All-on-X), cu lucrare provizorie fixă încă din primele zile, atunci când situația osoasă permite.
+                Implanturi pentru un singur dinte sau pentru toată arcada, planificate pe tomografie 3D. Aici găsești implanturile pe care le folosim, sistemele All-on-X, soluțiile pentru os puțin și cazuri tratate în clinică.
             </p>
             <NavLink id="contact" className="inline-block text-center px-10 py-4 bg-white text-[#5a1018] font-bold rounded shadow-lg hover:bg-gray-100 transition-all uppercase text-xs tracking-widest mt-4">
                 Programează o Consultație
@@ -933,18 +937,37 @@ const Implantology = () => (
     </div>
 </section>
 
-{/* SECTION 2: SOLUȚII PREMIUM (JD Implants) */}
+{/* HUB: trimite spre cele două pagini dedicate (ele dețin keyword-urile „implant dentar Mioveni” și „dinți ficși Mioveni”) */}
+<section className="py-16 bg-gray-50">
+    <div className="max-w-7xl mx-auto px-6">
+        <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-8">Ce tratament cauți?</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+                { href: "/implant-dentar-mioveni/", title: "Implant dentar", text: "Pentru unul sau câțiva dinți lipsă: etapele tratamentului, prețurile și totalul pentru un dinte.", cta: "Vezi pagina despre implant dentar" },
+                { href: "/dinti-ficsi-mioveni/", title: "Dinți Ficși Dr. Năstase", text: "Pentru toată arcada: All-on-4, All-on-6, lucrarea provizorie și cea definitivă, costul pe arcadă.", cta: "Vezi pagina despre dinți ficși" },
+            ].map((t) => (
+                <a key={t.href} href={t.href} className="group block bg-white rounded-2xl border border-gray-100 p-8 hover:border-[#5a1018] hover:shadow-xl transition-all">
+                    <h3 className="text-2xl font-black text-[#1a1a1a]">{t.title}</h3>
+                    <p className="mt-3 text-gray-600 text-lg leading-relaxed">{t.text}</p>
+                    <span className="mt-6 inline-flex items-center gap-2 text-[#5a1018] font-bold">{t.cta} <Icon name="arrow-right" size={18} className="group-hover:translate-x-1 transition-transform" /></span>
+                </a>
+            ))}
+        </div>
+    </div>
+</section>
+
+{/* SECTION 2: Implanturile folosite (JD Dental) */}
 <section className="py-24 bg-white">
     <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
                 <div>
-                    <h3 className="text-[#5a1018] font-bold tracking-widest uppercase text-sm mb-2">Implanturi dentare în Mioveni</h3>
+                    <h3 className="text-[#5a1018] font-bold tracking-widest uppercase text-sm mb-2">Ce implanturi folosim</h3>
                     <h2 className="text-4xl font-bold text-[#1a1a1a]">Implanturi dentare italiene JD Dental</h2>
                 </div>
                 <div className="text-gray-600 leading-relaxed space-y-4">
                     <p>
-                        Utilizăm implanturi italienești marca <strong>JD Dental</strong>, recunoscute pentru inovația în implantologia neconvențională. Acestea permit abordarea cazurilor complexe unde oferta osoasă este limitată.
+                        Folosim implanturi italiene <strong>JD Dental</strong>, cu modele concepute pentru implantologia neconvențională. Acestea permit abordarea cazurilor complexe unde oferta osoasă este limitată.
                     </p>
                     <ul className="space-y-2">
                         <li className="flex items-start gap-2">
@@ -964,7 +987,7 @@ const Implantology = () => (
                         </div>
                         <div>
                             <h4 className="font-bold text-lg">Integrare Rapidă</h4>
-                            <p className="text-sm text-gray-500">Suprafețe tratate special pentru o osteointegrare accelerată și sigură.</p>
+                            <p className="text-sm text-gray-500">Suprafețe tratate pentru osteointegrare, adică sudarea implantului de os.</p>
                         </div>
                     </div>
                     <div className="flex gap-4">
@@ -973,7 +996,7 @@ const Implantology = () => (
                         </div>
                         <div>
                             <h4 className="font-bold text-lg">Predictibilitate pe Termen Lung</h4>
-                            <p className="text-sm text-gray-500">Stabilitate excelentă și rezultate durabile în timp.</p>
+                            <p className="text-sm text-gray-500">Planificare pe tomografie 3D înainte de fiecare intervenție.</p>
                         </div>
                     </div>
                 </div>
@@ -986,8 +1009,8 @@ const Implantology = () => (
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div className="absolute bottom-8 left-8 text-white">
-                    <p className="font-bold text-2xl">Soluția Ideală</p>
-                    <p className="text-sm opacity-90">Pentru cazuri complexe și atrofii severe.</p>
+                    <p className="font-bold text-2xl">Implanturi JD Dental</p>
+                    <p className="text-sm opacity-90">Și pentru cazurile cu os puțin.</p>
                 </div>
             </div>
             <div className="relative rounded-2xl overflow-hidden shadow-2xl lg:hidden">
@@ -998,8 +1021,8 @@ const Implantology = () => (
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div className="absolute bottom-8 left-8 text-white">
-                    <p className="font-bold text-2xl">Soluția Ideală</p>
-                    <p className="text-sm opacity-90">Pentru cazuri complexe și atrofii severe.</p>
+                    <p className="font-bold text-2xl">Implanturi JD Dental</p>
+                    <p className="text-sm opacity-90">Și pentru cazurile cu os puțin.</p>
                 </div>
             </div>
         </div>
@@ -1010,16 +1033,16 @@ const Implantology = () => (
 <section id="dinti-ficsi" className="py-24 bg-[#1a1a1a] text-white scroll-mt-24">
     <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Dinți ficși în Mioveni: dantură fixă pe implanturi All-on-X</h2>
+            <h2 className="text-4xl font-bold mb-4">Sistemele All-on-X: dantură fixă pe implanturi</h2>
             <p className="text-gray-400 max-w-3xl mx-auto">
-                Reabilitare orală completă prin care o arcadă dentară este susținută de un număr redus de implanturi (4, 6 sau mai multe).
+                Reabilitare orală completă prin care o arcadă dentară este susținută de un număr redus de implanturi (4, 6 sau mai multe). Prețurile, etapele și cazurile sunt pe pagina <a href="/dinti-ficsi-mioveni/" className="text-white font-bold underline underline-offset-4">Dinți Ficși Dr. Năstase</a>.
             </p>
         </div>
 
         {/* 1. Ce sunt sistemele All-on-X? (Text + Small Image Left - Big Image Right) */}
         <div className="flex flex-col lg:flex-row gap-12 mb-24">
             <div className="flex-1 space-y-6">
-                <h3 className="text-3xl font-bold text-white">1. Ce sunt sistemele All-on-X (dinții ficși pe implanturi)?</h3>
+                <h3 className="text-3xl font-bold text-white">1. Ce sunt sistemele All-on-X?</h3>
                 <div className="h-1 w-20 bg-[#5a1018]"></div>
                 <p className="text-gray-300 text-lg leading-relaxed">
                     Sistemele All-on-X reprezintă o soluție modernă de reabilitare orală prin care o arcadă dentară completă este susținută de un număr redus de implanturi dentare. "X" reprezintă numărul de implanturi folosite: 4, 6 sau mai multe.
@@ -1238,7 +1261,7 @@ const Implantology = () => (
                  <div className="space-y-6">
                     <div className="group">
                         <h4 className="text-xl font-bold text-[#5a1018] mb-2 group-hover:text-white transition-colors">All-on-4</h4>
-                        <p className="text-gray-400">Soluție minim invazivă, cost mai redus. Ideală pentru cazurile standard.</p>
+                        <p className="text-gray-400">Mai puține implanturi, cost mai redus. Folosit des la mandibulă, unde osul e mai dens.</p>
                     </div>
                     <div className="group">
                         <h4 className="text-xl font-bold text-[#5a1018] mb-2 group-hover:text-white transition-colors">All-on-6</h4>
@@ -1246,7 +1269,7 @@ const Implantology = () => (
                     </div>
                     <div className="group">
                         <h4 className="text-xl font-bold text-[#5a1018] mb-2 group-hover:text-white transition-colors">All-on-8</h4>
-                        <p className="text-gray-400">Utilizat în cazuri speciale, pentru o siguranță maximă.</p>
+                        <p className="text-gray-400">Folosit în cazuri speciale, când forțele trebuie împărțite pe mai multe implanturi.</p>
                     </div>
                  </div>
                  <p className="text-sm text-gray-500 border-t border-white/10 pt-4 mt-4">
@@ -1268,12 +1291,12 @@ const Implantology = () => (
             <h3 className="text-3xl font-bold text-white mb-10 text-center relative z-10">5. Avantajele sistemelor All-on-X</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
                 {[
-                    "Lucrari protetice fixe în 24h",
+                    "Lucrare provizorie fixă în primele zile, dacă situația clinică permite",
                     "Fără proteze mobile",
                     "Funcție masticatorie îmbunătățită",
-                    "Estetică superioară",
+                    "Dinți din compozit sau zirconiu, pe structură din titan",
                     "Creșterea calității vieții",
-                    "În 99% din cazuri fără adiții osoase"
+                    "De multe ori fără adiție osoasă, decizia se ia pe tomografie"
                 ].map((adv, i) => (
                     <div key={i} className="flex flex-col items-center text-center p-6 bg-white/10 rounded-xl hover:bg-white/20 transition-colors border border-white/10">
                         <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-[#5A0F18] mb-4 shadow-lg"><Icon name="check" size={24} /></div>
@@ -1285,7 +1308,7 @@ const Implantology = () => (
 
         {/* 6. Etapele Tratamentului - Timeline Vizual */}
         <div className="mb-24">
-            <h3 className="text-3xl font-bold text-white mb-12 text-center">6. Etapele tratamentului pentru dinți ficși</h3>
+            <h3 className="text-3xl font-bold text-white mb-12 text-center">6. Etapele tratamentului</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
                 {[
                     { step: "01", title: "Consult & CBCT", icon: "clipboard-check" },
@@ -1344,7 +1367,7 @@ const Implantology = () => (
             <div className="flex-1 space-y-6">
                 <div>
                     <h3 className="text-[#5a1018] font-bold tracking-widest uppercase text-sm mb-2">Atrofie osoasă</h3>
-                    <h2 className="text-3xl font-bold text-[#1a1a1a]">Implant dentar când nu ai suficient os</h2>
+                    <h2 className="text-3xl font-bold text-[#1a1a1a]">Soluții când osul nu e suficient</h2>
                 </div>
                 <p className="text-gray-600 leading-relaxed">
                     Datorită sistemelor <strong>All-on-X</strong>, putem realiza reabilitări totale chiar și pentru arcade cu atrofii osoase severe, <span className="font-bold text-[#1a1a1a]">fără a fi nevoie de adiții osoase</span> complicate.
@@ -1411,7 +1434,7 @@ const Implantology = () => (
             <div className="flex justify-center items-center gap-2 mb-4">
                 <span className="text-[#5a1018] font-bold text-sm tracking-widest uppercase">Rezultate Reale</span>
             </div>
-            <h2 className="text-4xl font-bold text-[#1a1a1a] mb-6">Înainte și după: implanturi și dinți ficși</h2>
+            <h2 className="text-4xl font-bold text-[#1a1a1a] mb-6">Cazuri înainte și după</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">Transformări reale ale pacienților noștri, obținute prin tratamente de implantologie și reabilitare orală.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
@@ -1433,10 +1456,10 @@ const Implantology = () => (
             </div>
         </div>
         <p className="text-center text-gray-400 text-sm mt-8 max-w-2xl mx-auto">Cazuri reale tratate în clinica Dr. Năstase. Rezultatele pot varia în funcție de particularitățile fiecărui pacient.</p>
-        <p className="text-center text-gray-600 mt-6 max-w-2xl mx-auto">Prețurile pentru implant dentar, adiție osoasă și sistemele de dinți ficși Fast &amp; Fixed sunt pe pagina <a href="/servicii-si-preturi/#implantologie" className="text-[#5a1018] font-bold underline underline-offset-4">Servicii &amp; Prețuri</a>.</p>
+        <p className="text-center text-gray-600 mt-6 max-w-2xl mx-auto">Prețurile și totalul pe care îl plătești sunt pe paginile <a href="/implant-dentar-mioveni/#preturi" className="text-[#5a1018] font-bold underline underline-offset-4">implant dentar</a> și <a href="/dinti-ficsi-mioveni/#preturi" className="text-[#5a1018] font-bold underline underline-offset-4">Dinți Ficși Dr. Năstase</a>. Lista completă: <a href="/servicii-si-preturi/#implantologie" className="text-[#5a1018] font-bold underline underline-offset-4">Servicii &amp; Prețuri</a>.</p>
     </div>
 </section>
-<BlogArticles title="Ghiduri despre implantul dentar și dinții ficși" intro="Tot ce întreabă pacienții noștri înainte de tratament: etape, analize, durere, os insuficient și costuri." match={/implant|all-on|ficsi|osoasa|etape|analize|chirurgie|dinte-lipsa|canal/} limit={6} />
+<BlogArticles title="Ghiduri pentru pacienți, din blogul clinicii" intro="Tot ce întreabă pacienții noștri înainte de tratament: etape, analize, durere, os insuficient și costuri." match={/implant|all-on|ficsi|osoasa|etape|analize|chirurgie|dinte-lipsa|canal/} limit={6} />
     </div>
 );
     // Pe pagina /contact/ titlul hărții e H1; când secțiunea e inclusă în alte pagini rămâne H2.
@@ -1466,9 +1489,23 @@ const Implantology = () => (
                 <div className="max-w-7xl mx-auto px-6 main-nav justify-between">
                     <NavLink id="home" className="logo-wrapper block cursor-pointer"><img src="/logodrnastase.png" alt="Clinica Dentară Dr. Alexandru Năstase" className="logo-nav" /></NavLink>
                     <div className="md:hidden flex items-center"><button className="text-[#1a1a1a]" onClick={() => setIsMenuOpen(!isMenuOpen)}><Icon name={isMenuOpen ? "x" : "menu"} /></button></div>
-                    <div className="hidden md:flex gap-8 items-center h-full">{navItems.map(item => (<NavLink key={item.id} id={item.id} className={`font-semibold text-lg hover:text-[#5a1018] transition-colors ${activePage === item.id ? 'text-[#5a1018]' : 'text-gray-700'}`}>{item.label}</NavLink>))}<a href="/blog/" className="font-semibold text-lg text-gray-700 hover:text-[#5a1018] transition-colors">Blog</a></div>
+                    <div className="hidden md:flex gap-8 items-center h-full">{navItems.map(item => {
+                        const active = activePage === item.id || (item.children || []).some(ch => ch.id === activePage);
+                        const link = <NavLink id={item.id} className={`font-semibold text-lg hover:text-[#5a1018] transition-colors ${active ? 'text-[#5a1018]' : 'text-gray-700'}`}>{item.label}</NavLink>;
+                        if (!item.children) return <React.Fragment key={item.id}>{link}</React.Fragment>;
+                        return (
+                            <div key={item.id} className="relative group h-full flex items-center">
+                                {link}
+                                <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 hidden group-hover:block group-focus-within:block z-50">
+                                    <div className="bg-white rounded-xl shadow-xl border border-gray-100 py-2 min-w-[260px]">
+                                        {item.children.map(ch => (<NavLink key={ch.id} id={ch.id} className={`block px-5 py-3 text-base font-semibold hover:bg-gray-50 hover:text-[#5a1018] ${activePage === ch.id ? 'text-[#5a1018]' : 'text-gray-700'}`}>{ch.label}</NavLink>))}
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    })}<a href="/blog/" className="font-semibold text-lg text-gray-700 hover:text-[#5a1018] transition-colors">Blog</a></div>
                 </div>
-                {isMenuOpen && (<div className="absolute top-full left-0 w-full bg-white shadow-xl border-t md:hidden flex flex-col p-6 gap-4">{navItems.map((item) => (<NavLink key={item.id} id={item.id} className={`text-left text-lg font-medium ${activePage === item.id ? 'text-[#5a1018]' : 'text-[#1a1a1a]'}`}>{item.label}</NavLink>))}<a href="/blog/" className="text-left text-lg font-medium text-[#1a1a1a]">Blog</a></div>)}
+                {isMenuOpen && (<div className="absolute top-full left-0 w-full bg-white shadow-xl border-t md:hidden flex flex-col p-6 gap-4">{navItems.map((item) => (<React.Fragment key={item.id}><NavLink id={item.id} className={`text-left text-lg font-medium ${activePage === item.id ? 'text-[#5a1018]' : 'text-[#1a1a1a]'}`}>{item.label}</NavLink>{(item.children || []).map(ch => (<NavLink key={ch.id} id={ch.id} className={`text-left text-base font-medium pl-4 py-1 -my-2 ${activePage === ch.id ? 'text-[#5a1018]' : 'text-gray-600'}`}>{ch.label}</NavLink>))}</React.Fragment>))}<a href="/blog/" className="text-left text-lg font-medium text-[#1a1a1a]">Blog</a></div>)}
             </nav>
 
             <PromoBar />
@@ -1494,8 +1531,8 @@ const Implantology = () => (
                         <p className="text-gray-400 text-sm font-medium">Zâmbetul tău, promisiunea noastră. Tratamente moderne în Mioveni.</p>
                         <SocialLinks className="mt-4" iconSize={20} />
                     </div>
-                    <div><h4 className="text-lg font-bold mb-4 text-white">Navigare Rapidă</h4><ul className="text-gray-400 text-sm space-y-2">{navItems.map(item => (<li key={item.id}><NavLink id={item.id} className="hover:text-white transition-colors text-left">{item.label}</NavLink></li>))}<li><a href="/blog/" className="hover:text-white transition-colors text-left">Blog</a></li></ul></div>
-                    <div><h4 className="text-lg font-bold mb-4 text-white">Program</h4><div className="text-gray-400 text-sm space-y-1"><p>Luni, Marți, Joi: 08:00 - 20:00</p><p>Miercuri, Vineri: 08:00 - 16:30</p><p>Sâmbătă-Duminică: <span className="text-red-500 font-bold">Închis</span></p></div></div>
+                    <div><h4 className="text-lg font-bold mb-4 text-white">Navigare Rapidă</h4><ul className="text-gray-400 text-sm space-y-2">{navItems.flatMap(item => [item, ...(item.children || [])]).map(item => (<li key={item.id}><NavLink id={item.id} className="hover:text-white transition-colors text-left">{item.label}</NavLink></li>))}<li><a href="/blog/" className="hover:text-white transition-colors text-left">Blog</a></li></ul></div>
+                    <div><h4 className="text-lg font-bold mb-4 text-white">Program</h4><div className="text-gray-400 text-sm space-y-1"><p>Luni - Vineri: 08:00 - 20:00</p><p>Sâmbătă-Duminică: <span className="text-red-500 font-bold">Închis</span></p></div></div>
                     <div><h4 className="text-lg font-bold mb-4 text-white">Contact</h4><div className="text-gray-400 text-sm space-y-2"><p className="flex items-center gap-2"><Icon name="phone" size={14} /> 0771 292 813</p><p className="flex items-center gap-2"><Icon name="map-pin" size={14} /> Bulevardul Dacia, Bl. V1, Sc. E+F, Parter, Mioveni 115400, Argeș</p></div></div>
                 </div>
                 <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-gray-800 text-center text-gray-500 text-xs"><p>© {new Date().getFullYear()} Clinica Dentară Dr. Alexandru Năstase. Toate drepturile rezervate.</p></div>

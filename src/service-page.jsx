@@ -93,7 +93,7 @@ const Hero = ({ c, Icon }) => (
                     <CallButton Icon={Icon} />
                     <WhatsButton text={c.final.whatsapp} />
                 </div>
-                <p className="mt-4 text-sm text-white/60">Programări: luni, marți, joi 08:00-20:00 · miercuri, vineri 08:00-16:30</p>
+                <p className="mt-4 text-sm text-white/60">Programări: luni-vineri, 08:00-20:00</p>
                 <a href={MAPS} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex flex-wrap items-center gap-2 text-white/85 hover:text-white">
                     <span className="flex text-[#f5c542]">{[0, 1, 2, 3, 4].map((i) => <Icon key={i} name="star" size={16} fill="currentColor" />)}</span>
                     <span className="font-semibold">4,9 pe Google</span>
@@ -547,7 +547,7 @@ const Local = ({ s, Icon }) => (
                 <H2>Unde ne găsești în Mioveni</H2>
                 <dl className="mt-10 space-y-7 text-lg">
                     <div className="flex gap-4"><dt className="text-[#5a1018] mt-1"><Icon name="map-pin" size={24} /><span className="sr-only">Adresă</span></dt><dd><span className="font-bold text-[#1a1a1a]">Bulevardul Dacia, Bl. V1, Sc. E+F, Parter</span><br /><span className="text-[#3a3335]">Mioveni 115400, Argeș · la circa 12 km de Pitești</span></dd></div>
-                    <div className="flex gap-4"><dt className="text-[#5a1018] mt-1"><Icon name="clock" size={24} /><span className="sr-only">Program</span></dt><dd className="text-[#3a3335]"><span className="font-bold text-[#1a1a1a]">Luni, marți, joi:</span> 08:00-20:00<br /><span className="font-bold text-[#1a1a1a]">Miercuri, vineri:</span> 08:00-16:30<br />Sâmbătă și duminică: închis</dd></div>
+                    <div className="flex gap-4"><dt className="text-[#5a1018] mt-1"><Icon name="clock" size={24} /><span className="sr-only">Program</span></dt><dd className="text-[#3a3335]"><span className="font-bold text-[#1a1a1a]">Luni - vineri:</span> 08:00-20:00<br />Sâmbătă și duminică: închis</dd></div>
                     <div className="flex gap-4"><dt className="text-[#5a1018] mt-1"><Icon name="phone" size={24} /><span className="sr-only">Telefon</span></dt><dd><a href={TEL} className="font-bold text-[#1a1a1a] underline underline-offset-4 decoration-[#5a1018]/40">{PHONE}</a></dd></div>
                 </dl>
                 <div className="mt-10 rounded-[28px] overflow-hidden bg-[#f7f3f2]">

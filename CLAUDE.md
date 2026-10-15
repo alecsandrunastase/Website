@@ -11,7 +11,7 @@ Site static servit de GitHub Pages direct din `main` (domeniu www.clinicadrnasta
 
 ## Paginile de serviciu (implant dentar, dinți ficși)
 
-`/implant-dentar-mioveni/` și `/dinti-ficsi-mioveni/` — **stare (oct. 2026): finale, `noindex`, așteaptă aprobarea clientului.**
+`/implant-dentar-mioveni/` și `/dinti-ficsi-mioveni/` — **publicate (aprobate de client, 15.10.2026)**, indexabile, în meniu sub Implantologie. Ele dețin keyword-urile „implant dentar Mioveni” și „dinți ficși / dantură fixă Mioveni”.
 
 - Textul e în `src/content/implant-dentar-mioveni.mjs` și `src/content/dinti-ficsi-mioveni.mjs`; layoutul în `src/service-page.jsx` (o componentă pe tip de secțiune: `product`, `candidates`, `xray`, `compare`, `table`, `doare`, `timeline`, `doctor`, `money`, `guide`, `faq`, `local`). Același obiect alimentează schema (MedicalWebPage, MedicalProcedure, FAQPage, BreadcrumbList) din `scripts/build.mjs`.
 - Design pe brandul clinicii: vișiniu `#5a1018` (benzi, titluri), vin închis `#24060a` (hero, prețuri), roșul firmei de pe fațadă `#d0344c` DOAR pe butonul de apel, WhatsApp `#25D366`. Semnul grafic e conturul de dinte din logo (`Tooth`). Doar fotografii reale, optimizate în `img/lp/*.webp`.
@@ -20,12 +20,9 @@ Site static servit de GitHub Pages direct din `main` (domeniu www.clinicadrnasta
 - Build-ul verifică formulările interzise CMSR (em dash, „de la X lei”, „rate”, „garantat”, superlative) și refuză scoaterea `noindex` dacă textul conține „(de confirmat)”.
 - Întrebările deschise pentru clinică: `docs/revizuire-implant-dinti-ficsi.md` (inclusiv confirmarea că 13.500 / 16.000 lei sunt prețurile lucrării definitive pe arcadă, din care se calculează totalurile).
 
-**La aprobarea clientului:**
-1. Șterge `noindex: true` de la `implant` și `fixed` în `PAGES` (`src/site.config.mjs`) — paginile intră automat în sitemap, llms.txt și IndexNow.
-2. Adaugă-le în meniu (sub Implantologie) și în linkurile interne: `SERVICES` și secțiunea „Din blog” din `src/app.jsx`, regulile `SERVICE_LINKS` din `scripts/blog-seo.mjs` (implant dentar -> `/implant-dentar-mioveni/`, dinți ficși -> `/dinti-ficsi-mioveni/`).
-3. Repoziționează `/implantologie/` ca pagină-hub (cazuri, JD Dental, link spre cele două pagini), cu title/H1 care nu mai țintesc „implant dentar Mioveni” / „dinți ficși Mioveni”, ca să nu canibalizeze.
-4. Corectează pe `/implantologie/` formulările neconforme CMSR din tabelul din `docs/revizuire-implant-dinti-ficsi.md`.
-5. Cere indexarea în Search Console pentru cele două URL-uri.
+**Anti-canibalizare:** `/implantologie/` e pagină-hub (title „Implantologie Mioveni: Implanturi JD și All-on-X”, H1 „Implantologie în clinica din Mioveni”, bloc „Ce tratament cauți?” spre cele două pagini). Nu pune „implant dentar Mioveni” / „dinți ficși Mioveni” în title, H1 sau H2 pe alte pagini; linkurile interne cu aceste ancore merg spre paginile dedicate (`SERVICES` în `src/app.jsx`, `SERVICE_LINKS` în `scripts/blog-seo.mjs`).
+
+Pentru o pagină nouă care trebuie revizuită înainte de publicare: `noindex: true` în `PAGES` (o scoate din index, sitemap, llms.txt și IndexNow).
 
 **Nu edita direct fișierele generate** — se suprascriu. GitHub Action-ul `.github/workflows/build.yml` rulează build-ul la fiecare push și refuză build-ul dacă fișierele generate au fost editate fără modificări în `src/`.
 
@@ -38,6 +35,10 @@ Site static servit de GitHub Pages direct din `main` (domeniu www.clinicadrnasta
 - `sitemap.xml` și `llms.txt` se generează la build.
 - IndexNow (Bing/ChatGPT Search; Google nu participă): Action-ul așteaptă publicarea pe Pages, apoi rulează `scripts/indexnow.mjs` cu paginile modificate. Cheia e în `src/site.config.mjs` și în fișierul `<cheie>.txt` din rădăcină.
 - `robots.txt` e scris de mână (permite explicit crawlerele AI).
+
+## Programul clinicii
+
+Luni-vineri 08:00-20:00, sâmbătă-duminică închis (actualizat 15.10.2026). Sursa unică pentru schema și llms.txt e `BUSINESS.hours` din `src/site.config.mjs`; textul vizibil apare și în `src/app.jsx` (secțiunea hartă, footer), `src/service-page.jsx` (hero, „Unde ne găsești”) și în footer-ul blogului (`SCHEDULE_HTML` din `scripts/blog-seo.mjs`). La o schimbare de program, actualizează toate locurile și profilul Google.
 
 ## Promoții
 
