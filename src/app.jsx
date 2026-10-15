@@ -529,15 +529,18 @@ setCurrentSlide((prev) => (prev - 1 + team.length) % team.length);
         );
     };
     
-const FormSection = () => (
+// Pe /contact/ formularul e primul pe pagină, deci poza lui e elementul LCP: se încarcă imediat.
+const FormSection = ({ eager = false }) => (
   <section className="py-24 bg-gray-50">
     <div className="max-w-7xl mx-auto px-6">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
 {/* Left Image */}
 <div className="relative h-full min-h-[500px] rounded-2xl overflow-hidden shadow-2xl">
-  <img loading="lazy" decoding="async"
-    src="/receptieai.png"
+  <img loading={eager ? "eager" : "lazy"} decoding="async" fetchpriority={eager ? "high" : undefined}
+    src="/img/lp/cabinet-receptie.webp"
+    width="800"
+    height="1000"
     alt="Cabinet Dr. Alexandru Năstase"
     className="absolute inset-0 w-full h-full object-cover"
   />
@@ -1485,7 +1488,7 @@ const Implantology = () => (
     // Pe pagina /contact/ titlul hărții e H1; când secțiunea e inclusă în alte pagini rămâne H2.
     const Contact = ({ isPage = false }) => (
         <div>
-            <FormSection />
+            <FormSection eager={isPage} />
             <MapSection HeadingTag={isPage ? "h1" : "h2"} />
             {isPage && <ServicesSection />}
         </div>
