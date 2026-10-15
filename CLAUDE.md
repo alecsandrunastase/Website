@@ -9,6 +9,7 @@ Site static servit de GitHub Pages direct din `main` (domeniu www.clinicadrnasta
 - `src/template.html`, `src/styles.css` — head-ul paginii și CSS-ul (Tailwind compilat, pus direct în `<head>`, fără fișier separat care să blocheze afișarea).
 - `fonts/` — fontul Inter găzduit pe site (variabil, latin + subset cu ă ș ț). Nu reveni la Google Fonts: bloca afișarea textului pe mobil.
 - `npm run build` generează `index.html`, `despre-noi/`, `implantologie/`, `servicii-si-preturi/`, `contact/`, `assets/` (JS-ul) și `sitemap.xml`, apoi verifică invarianții SEO (un H1, lungimi title/description, JSON-LD valid, resurse existente).
+- Viteză: poza din hero are `fetchpriority="high"`, toate celelalte `loading="lazy"`. Pozele noi intră în `img/lp/` ca WebP, cu `width`/`height`, și se găsesc pe site, nu pe CDN-uri externe (PNG-ul de 1,9 MB de la formular ducea LCP-ul de pe /contact/ la 13 s).
 - Accesibilitate: toate paginile au 100 în Lighthouse. Butoanele doar cu iconiță primesc `aria-label`, titlurile nu sar niveluri (etichetele de deasupra unui titlu sunt `<p>`, nu `<h3>`/`<h4>`), textul gri pe fundal închis e cel puțin `text-gray-400`.
 
 ## Paginile de serviciu (implant dentar, dinți ficși)
