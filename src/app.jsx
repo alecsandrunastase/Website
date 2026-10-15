@@ -283,7 +283,7 @@ setCurrentIndex((prevIndex) => (prevIndex - 1 + cases.length) % cases.length);
         <div className="relative max-w-5xl mx-auto">
             <div className="overflow-hidden rounded-2xl shadow-2xl bg-white h-[600px] flex items-center justify-center relative">
                 <div className="absolute inset-0 flex items-center justify-center p-4">
-                    <img 
+                    <img loading="lazy" decoding="async" 
                         src={cases[currentIndex].img} 
                         alt={cases[currentIndex].title} 
                         className="max-h-full max-w-full object-contain shadow-lg"
@@ -356,7 +356,7 @@ setCurrentSlide((prev) => (prev - 1 + team.length) % team.length);
                         <div key={i} className="space-y-6 group text-center cursor-pointer">
                             <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-lg relative">
                                 <div className="absolute inset-0 bg-[#5a1018] opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
-                                <img src={`${m.img}`} alt={m.name} className="w-full h-full object-cover transition-all duration-700 transform group-hover:scale-105" />
+                                <img loading="lazy" decoding="async" src={`${m.img}`} alt={m.name} className="w-full h-full object-cover transition-all duration-700 transform group-hover:scale-105" />
                             </div>
                             <div>
                                 <h4 className="text-xl font-bold text-[#1a1a1a] mb-1">{m.name}</h4>
@@ -375,7 +375,7 @@ setCurrentSlide((prev) => (prev - 1 + team.length) % team.length);
                         <div key={i} className="space-y-6 group text-center cursor-pointer">
                             <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-lg relative">
                                 <div className="absolute inset-0 bg-[#5a1018] opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
-                                <img src={`${m.img}`} alt={m.name} className="w-full h-full object-cover transition-all duration-700 transform group-hover:scale-105" />
+                                <img loading="lazy" decoding="async" src={`${m.img}`} alt={m.name} className="w-full h-full object-cover transition-all duration-700 transform group-hover:scale-105" />
                             </div>
                             <div>
                                 <h4 className="text-xl font-bold text-[#1a1a1a] mb-1">{m.name}</h4>
@@ -393,7 +393,7 @@ setCurrentSlide((prev) => (prev - 1 + team.length) % team.length);
                 <div className="space-y-6 group text-center">
                     <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-lg relative">
                         <div className="absolute inset-0 bg-[#5a1018] opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
-                        <img 
+                        <img loading="lazy" decoding="async" 
                             src={`${team[currentSlide].img}`} 
                             alt={team[currentSlide].name} 
                             className="w-full h-full object-cover transition-all duration-700 transform group-hover:scale-105" 
@@ -536,7 +536,7 @@ const FormSection = () => (
 
 {/* Left Image */}
 <div className="relative h-full min-h-[500px] rounded-2xl overflow-hidden shadow-2xl">
-  <img
+  <img loading="lazy" decoding="async"
     src="/receptieai.png"
     alt="Cabinet Dr. Alexandru Năstase"
     className="absolute inset-0 w-full h-full object-cover"
@@ -688,7 +688,7 @@ const FormSection = () => (
 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
      <div className="order-2 lg:order-1 relative">
         <div className="aspect-[3/4] max-w-md mx-auto rounded-2xl overflow-hidden shadow-2xl">
-             <img src="/pozaalexdesprenoi.jpeg" alt="Dr. Alexandru Năstase" className="w-full h-full object-cover" />
+             <img loading="lazy" decoding="async" src="/pozaalexdesprenoi.jpeg" alt="Dr. Alexandru Năstase" className="w-full h-full object-cover" />
         </div>
      </div>
      <div className="space-y-8 order-1 lg:order-2">
@@ -1022,7 +1022,7 @@ const Implantology = () => (
                 </div>
             </div>
             <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl hidden lg:block">
-                 <img 
+                 <img loading="lazy" decoding="async" 
                     src="/implanturijddental.jpg" 
                     alt="Implant Dentar JD" 
                     className="w-full h-full object-cover"
@@ -1034,7 +1034,7 @@ const Implantology = () => (
                 </div>
             </div>
             <div className="relative rounded-2xl overflow-hidden shadow-2xl lg:hidden">
-                 <img 
+                 <img loading="lazy" decoding="async" 
                     src="/implanturijddental.jpg" 
                     alt="Implant Dentar JD" 
                     className="w-full h-auto object-cover"
@@ -1074,7 +1074,7 @@ const Implantology = () => (
                 </div>
                 {/* Small image below text - Desktop only */}
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 w-full hidden lg:block mt-6">
-                    <img 
+                    <img loading="lazy" decoding="async" 
                         src="/cesuntimplanturile2.jpeg" 
                         alt="Ce sunt sistemele All-on-X - Partea 2" 
                         className="w-full h-auto object-contain"
@@ -1084,7 +1084,7 @@ const Implantology = () => (
             {/* Big image right - Desktop only */}
             <div className="flex-1 hidden lg:block">
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 w-full h-[500px]">
-                    <img 
+                    <img loading="lazy" decoding="async" 
                         src="/cesuntimplanturile1.jpeg" 
                         alt="Ce sunt sistemele All-on-X - Partea 1" 
                         className="w-full h-full object-contain"
@@ -1094,14 +1094,14 @@ const Implantology = () => (
             {/* Mobile version */}
             <div className="flex-1 grid grid-cols-1 gap-4 lg:hidden">
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-                    <img 
+                    <img loading="lazy" decoding="async" 
                         src="/cesuntimplanturile1.jpeg" 
                         alt="Ce sunt sistemele All-on-X - Partea 1" 
                         className="w-full h-auto object-cover"
                     />
                 </div>
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-                    <img 
+                    <img loading="lazy" decoding="async" 
                         src="/cesuntimplanturile2.jpeg" 
                         alt="Ce sunt sistemele All-on-X - Partea 2" 
                         className="w-full h-auto object-cover"
@@ -1115,14 +1115,14 @@ const Implantology = () => (
             {/* Desktop version - 2 images stacked vertically */}
             <div className="flex-1 order-2 lg:order-1 flex flex-col gap-4 hidden lg:flex">
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 w-full h-[220px]">
-                    <img 
+                    <img loading="lazy" decoding="async" 
                         src="/cuiiseadreseaza1.jpeg" 
                         alt="Cui se adresează - Partea 1" 
                         className="w-full h-full object-cover"
                     />
                 </div>
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 w-full h-[220px]">
-                    <img 
+                    <img loading="lazy" decoding="async" 
                         src="/cuiiseadreseaza2.jpeg" 
                         alt="Cui se adresează - Partea 2" 
                         className="w-full h-full object-cover"
@@ -1132,14 +1132,14 @@ const Implantology = () => (
             {/* Mobile version */}
             <div className="flex-1 order-2 lg:order-1 grid grid-cols-1 gap-4 lg:hidden">
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-                    <img 
+                    <img loading="lazy" decoding="async" 
                         src="/cuiiseadreseaza1.jpeg" 
                         alt="Cui se adresează - Partea 1" 
                         className="w-full h-auto object-cover"
                     />
                 </div>
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-                    <img 
+                    <img loading="lazy" decoding="async" 
                         src="/cuiiseadreseaza2.jpeg" 
                         alt="Cui se adresează - Partea 2" 
                         className="w-full h-auto object-cover"
@@ -1187,28 +1187,28 @@ const Implantology = () => (
     {/* Desktop version - 2x2 grid with flexible heights */}
     <div className="flex-1 grid grid-cols-2 gap-4 hidden lg:grid h-[600px]">
 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-    <img 
+    <img loading="lazy" decoding="async" 
         src="/principiuldefunctionare.jpeg" 
         alt="Principiul de funcționare - 1" 
         className="w-full h-full object-contain bg-white"
     />
 </div>
 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-    <img 
+    <img loading="lazy" decoding="async" 
         src="/principuuldefunctionare2.jpeg" 
         alt="Principiul de funcționare - 2" 
         className="w-full h-full object-contain bg-white"
     />
 </div>
 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-    <img 
+    <img loading="lazy" decoding="async" 
         src="/principiudefunctionare3.jpeg" 
         alt="Principiul de funcționare - 3" 
         className="w-full h-full object-contain bg-white"
     />
 </div>
 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-    <img 
+    <img loading="lazy" decoding="async" 
         src="/principiudefunctionare4.jpeg" 
         alt="Principiul de funcționare - 4" 
         className="w-full h-full object-contain bg-white"
@@ -1218,28 +1218,28 @@ const Implantology = () => (
     {/* Mobile version */}
     <div className="flex-1 grid grid-cols-1 gap-4 lg:hidden">
 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-    <img 
+    <img loading="lazy" decoding="async" 
         src="/principiuldefunctionare.jpeg" 
         alt="Principiul de funcționare - 1" 
         className="w-full h-auto object-cover"
     />
 </div>
 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-    <img 
+    <img loading="lazy" decoding="async" 
         src="/principuuldefunctionare2.jpeg" 
         alt="Principiul de funcționare - 2" 
         className="w-full h-auto object-cover"
     />
 </div>
 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-    <img 
+    <img loading="lazy" decoding="async" 
         src="/principiudefunctionare3.jpeg" 
         alt="Principiul de funcționare - 3" 
         className="w-full h-auto object-cover"
     />
 </div>
 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-    <img 
+    <img loading="lazy" decoding="async" 
         src="/principiudefunctionare4.jpeg" 
         alt="Principiul de funcționare - 4" 
         className="w-full h-auto object-cover"
@@ -1405,7 +1405,7 @@ const Implantology = () => (
                 </div>
                 {/* Small image below text - Desktop only */}
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl group hidden lg:block mt-6">
-                    <img 
+                    <img loading="lazy" decoding="async" 
                         src="/solutiipentrucazuricomplexe.jpeg" 
                         alt="Soluții pentru cazuri complexe - 1" 
                         className="w-full h-auto object-contain transform group-hover:scale-105 transition-transform duration-700"
@@ -1416,7 +1416,7 @@ const Implantology = () => (
             {/* Right column - Big Image */}
             <div className="flex-1 hidden lg:block">
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl group h-[550px]">
-                    <img 
+                    <img loading="lazy" decoding="async" 
                         src="/caxcomplexblacknwhite.png" 
                         alt="Soluții pentru cazuri complexe - 2" 
                         className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-700"
@@ -1427,7 +1427,7 @@ const Implantology = () => (
             {/* Mobile version */}
             <div className="flex-1 grid grid-cols-1 gap-4 lg:hidden">
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
-                    <img 
+                    <img loading="lazy" decoding="async" 
                         src="/solutiipentrucazuricomplexe.jpeg" 
                         alt="Soluții pentru cazuri complexe - 1" 
                         className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700"
@@ -1435,7 +1435,7 @@ const Implantology = () => (
                     <div className="absolute inset-0 bg-[#5a1018]/10 group-hover:bg-transparent transition-all"></div>
                 </div>
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
-                    <img 
+                    <img loading="lazy" decoding="async" 
                         src="/caxcomplexblacknwhite.png" 
                         alt="Soluții pentru cazuri complexe - 2" 
                         className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700"
@@ -1459,7 +1459,7 @@ const Implantology = () => (
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             <div className="relative rounded-2xl overflow-hidden shadow-xl">
-                <img
+                <img loading="lazy" decoding="async"
                     src="/implant-inainte.jpeg"
                     alt="Pacient înainte de tratamentul de implantologie"
                     className="w-full h-[460px] object-cover object-center"
@@ -1467,7 +1467,7 @@ const Implantology = () => (
                 <div className="absolute top-4 left-4 bg-gray-900/80 text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded">Înainte</div>
             </div>
             <div className="relative rounded-2xl overflow-hidden shadow-xl">
-                <img
+                <img loading="lazy" decoding="async"
                     src="/implant-dupa.jpeg"
                     alt="Pacient după tratamentul de implantologie"
                     className="w-full h-[460px] object-cover object-center"
