@@ -6,8 +6,10 @@ Site static servit de GitHub Pages direct din `main` (domeniu www.clinicadrnasta
 
 - `src/app.jsx` — toate paginile (React). Aici se fac modificările de conținut/design.
 - `src/site.config.mjs` — date NAP (trebuie identice cu profilul Google Business) și title/description per pagină.
-- `src/template.html`, `src/styles.css` — head-ul paginii și CSS-ul (Tailwind compilat).
-- `npm run build` generează `index.html`, `despre-noi/`, `implantologie/`, `servicii-si-preturi/`, `contact/`, `assets/` și `sitemap.xml`, apoi verifică invarianții SEO (un H1, lungimi title/description, JSON-LD valid, resurse existente).
+- `src/template.html`, `src/styles.css` — head-ul paginii și CSS-ul (Tailwind compilat, pus direct în `<head>`, fără fișier separat care să blocheze afișarea).
+- `fonts/` — fontul Inter găzduit pe site (variabil, latin + subset cu ă ș ț). Nu reveni la Google Fonts: bloca afișarea textului pe mobil.
+- `npm run build` generează `index.html`, `despre-noi/`, `implantologie/`, `servicii-si-preturi/`, `contact/`, `assets/` (JS-ul) și `sitemap.xml`, apoi verifică invarianții SEO (un H1, lungimi title/description, JSON-LD valid, resurse existente).
+- Accesibilitate: toate paginile au 100 în Lighthouse. Butoanele doar cu iconiță primesc `aria-label`, titlurile nu sar niveluri (etichetele de deasupra unui titlu sunt `<p>`, nu `<h3>`/`<h4>`), textul gri pe fundal închis e cel puțin `text-gray-400`.
 
 ## Paginile de serviciu (implant dentar, dinți ficși)
 
@@ -29,6 +31,8 @@ Pentru o pagină nouă care trebuie revizuită înainte de publicare: `noindex: 
 ## Blogul
 
 `blog/` e publicat automat de platforma `peak-med-reports` (commit-uri „content: publică articolul …”), care poate re-randa oricând și articolele vechi cu șablonul ei. De aceea build-ul aplică peste blog o post-procesare idempotentă (`scripts/blog-seo.mjs`): GTM, adresa canonică, schema Dentist completă, titluri locale, linkuri contextuale spre servicii și bloc „Articole similare”. Nu edita manual articolele — se pierde la următoarea publicare; schimbă regulile din `blog-seo.mjs`.
+
+Articolele care țintesc exact căutarea unei pagini de serviciu intră în `CONSOLIDATED` din `blog-seo.mjs`: rămân pe blog, dar canonical-ul trimite spre pagina de serviciu și ies din sitemap, llms.txt, „Din blog” și „Articole similare”. Acum: „Dinți ficși în Mioveni: unde și cum decurge tratamentul” → `/dinti-ficsi-mioveni/`. Dacă platforma publică un articol nou cu „implant dentar Mioveni” / „dinți ficși Mioveni” în titlu, adaugă-l acolo.
 
 ## Indexare
 

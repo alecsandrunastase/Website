@@ -7,8 +7,10 @@
 //   - titluri cu caracter local
 //   - linkuri contextuale din text spre paginile de servicii
 //   - bloc „Servicii în Mioveni” + „Articole similare” la finalul fiecărui articol
+//   - canonical spre pagina de serviciu pentru articolele care îi dublează intenția (CONSOLIDATED)
 import fs from 'node:fs';
 import path from 'node:path';
+import { SITE_URL } from '../src/site.config.mjs';
 import { dentistNode, ADDRESS_TEXT } from './schema.mjs';
 
 // Programul din footer-ul blogului (platforma îl are în configurarea ei; aici îl aliniem cu site-ul).
@@ -37,6 +39,14 @@ const SERVICE_LINKS = [
       text: /(?<!\p{L})(prețul|prețurile|costul)(?!\p{L})/iu },
 ];
 const MAX_INLINE_LINKS = 3;
+
+// Articole care țintesc exact căutarea unei pagini de serviciu (ar concura cu ea în Google).
+// Rămân pe blog pentru cititori, dar canonical-ul trimite spre pagina de serviciu, ca Google să adune
+// semnalele acolo; ies din sitemap, llms.txt, „Din blog” și „Articole similare”.
+export const CONSOLIDATED = {
+    'dinti-ficsi-mioveni-tratament-aproape-de-casa': '/dinti-ficsi-mioveni/',
+};
+export const listedPosts = (posts) => posts.filter((p) => !CONSOLIDATED[p.slug]);
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const norm = (s) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
@@ -92,6 +102,8 @@ const fixCommon = (html) => {
         html = html.replace('</head>', `${GTM_HEAD}</head>`);
         html = html.replace(/(<body[^>]*>\n?)/, `$1${GTM_BODY}`);
     }
+    // canonical / og:url relative (platforma le scrie uneori așa) -> absolute
+    html = html.replace(/(<link rel="canonical" href="|<meta property="og:url" content=")\//g, `$1${SITE_URL}/`);
     // meniu: /implantologie -> /implantologie/
     html = html.replace(/href="\/(despre-noi|implantologie|servicii-si-preturi|contact)"/g, 'href="/$1/"');
     // linkurile contextuale vechi (înainte de paginile dedicate) -> paginile de serviciu
@@ -173,6 +185,7 @@ ${p.hero ? `          <img src="${p.hero}" alt="${esc(p.title)}" class="w-full h
 
 export const postprocessBlog = (root, posts) => {
     const changed = [];
+    const listed = listedPosts(posts);
     for (const post of posts) {
         const file = path.join(root, 'blog', post.slug, 'index.html');
         const before = fs.readFileSync(file, 'utf8');
@@ -183,7 +196,13 @@ export const postprocessBlog = (root, posts) => {
         html = html.replace(/(<div class="article-body">)([\s\S]*?)(\n    <\/div>\n)/, (m, a, body, b) => a + addInlineLinks(body) + b);
         // bloc servicii + articole similare, înaintea CTA-ului
         html = html.replace(/    <!-- pm-seo:related:start -->[\s\S]*?<!-- pm-seo:related:end -->\n/, '');
-        html = html.replace(/(\n)(    <div class="mt-12 rounded-2xl p-6 text-white")/, `$1${relatedBlock(post, posts)}$2`);
+        html = html.replace(/(\n)(    <div class="mt-12 rounded-2xl p-6 text-white")/, `$1${relatedBlock(post, listed)}$2`);
+        // articol consolidat într-o pagină de serviciu: canonical + og:url spre ea
+        const target = CONSOLIDATED[post.slug];
+        if (target) {
+            html = html.replace(/<link rel="canonical" href="[^"]*">/, `<link rel="canonical" href="${SITE_URL}${target}">`);
+            html = html.replace(/<meta property="og:url" content="[^"]*">/, `<meta property="og:url" content="${SITE_URL}${target}">`);
+        }
         if (html !== before) { fs.writeFileSync(file, html); changed.push(`blog/${post.slug}/index.html`); }
     }
     // pagina de listă a blogului

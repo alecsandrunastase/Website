@@ -56,17 +56,17 @@ const ToothIcon = ({ size = 24, className = "" }) => (
 const SocialLinks = ({ className = "", iconSize = 16 }) => {
     return (
         <div className={`flex items-center gap-4 ${className}`}>
-            <a href="https://www.facebook.com/profile.php?id=100063570342590" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity text-white">
+            <a href="https://www.facebook.com/profile.php?id=100063570342590" target="_blank" rel="noopener noreferrer" aria-label="Clinica pe Facebook" className="hover:opacity-80 transition-opacity text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" width={iconSize} height={iconSize} viewBox="0 0 24 24" fill="currentColor" stroke="none" className="w-full h-full">
                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.962.925-1.962 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                 </svg>
             </a>
-            <a href="https://www.instagram.com/alecsandru_nastase/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity text-white">
+            <a href="https://www.instagram.com/alecsandru_nastase/" target="_blank" rel="noopener noreferrer" aria-label="Dr. Alexandru Năstase pe Instagram" className="hover:opacity-80 transition-opacity text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" width={iconSize} height={iconSize} viewBox="0 0 24 24" fill="currentColor" stroke="none" className="w-full h-full">
                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                 </svg>
             </a>
-            <a href="https://maps.app.goo.gl/4JrmmQtSqfhUXhBM9" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity text-white">
+            <a href="https://maps.app.goo.gl/4JrmmQtSqfhUXhBM9" target="_blank" rel="noopener noreferrer" aria-label="Clinica pe Google Maps" className="hover:opacity-80 transition-opacity text-white">
                  <svg xmlns="http://www.w3.org/2000/svg" width={iconSize} height={iconSize} viewBox="0 0 24 24" fill="currentColor" stroke="none" className="w-full h-full">
                     <path d="M12.42 22.846C18.665 19.34 22 13.916 22 9.475 22 4.242 17.523 0 12 0S2 4.242 2 9.475c0 4.441 3.335 9.865 9.58 13.371.498.244 1.342.244 1.84 0zM12 14c-2.485 0-4.5-2.015-4.5-4.5S9.515 5 12 5s4.5 2.015 4.5 4.5S14.485 14 12 14z"/>
                  </svg>
@@ -290,14 +290,16 @@ setCurrentIndex((prevIndex) => (prevIndex - 1 + cases.length) % cases.length);
                     />
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 text-center">
-                    <h4 className="text-white text-xl font-bold tracking-wide">{cases[currentIndex].title}</h4>
+                    <h3 className="text-white text-xl font-bold tracking-wide">{cases[currentIndex].title}</h3>
                 </div>
             </div>
-            <button onClick={prevSlide} className="absolute -left-4 md:-left-16 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-100 text-[#5a1018] p-4 rounded-full shadow-xl transition-all transform hover:scale-110 z-20 border border-gray-100"><Icon name="chevron-left" size={28} /></button>
-            <button onClick={nextSlide} className="absolute -right-4 md:-right-16 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-100 text-[#5a1018] p-4 rounded-full shadow-xl transition-all transform hover:scale-110 z-20 border border-gray-100"><Icon name="chevron-right" size={28} /></button>
-            <div className="flex justify-center gap-2 mt-8">
+            <button onClick={prevSlide} aria-label="Cazul anterior" className="absolute -left-4 md:-left-16 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-100 text-[#5a1018] p-4 rounded-full shadow-xl transition-all transform hover:scale-110 z-20 border border-gray-100"><Icon name="chevron-left" size={28} /></button>
+            <button onClick={nextSlide} aria-label="Cazul următor" className="absolute -right-4 md:-right-16 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-100 text-[#5a1018] p-4 rounded-full shadow-xl transition-all transform hover:scale-110 z-20 border border-gray-100"><Icon name="chevron-right" size={28} /></button>
+            <div className="flex justify-center mt-8">
                 {cases.map((_, idx) => (
-                    <button key={idx} onClick={() => setCurrentIndex(idx)} className={`w-3 h-3 rounded-full transition-all duration-300 ${idx === currentIndex ? 'bg-white w-8' : 'bg-white/30 hover:bg-white/50'}`} />
+                    <button key={idx} onClick={() => setCurrentIndex(idx)} aria-label={`Cazul ${idx + 1}`} aria-current={idx === currentIndex ? 'true' : undefined} className="p-1.5">
+                        <span className={`block h-3 rounded-full transition-all duration-300 ${idx === currentIndex ? 'bg-white w-8' : 'w-3 bg-white/30 hover:bg-white/50'}`} />
+                    </button>
                 ))}
             </div>
         </div>
@@ -398,7 +400,7 @@ setCurrentSlide((prev) => (prev - 1 + team.length) % team.length);
                         />
                     </div>
                     <div>
-                        <h4 className="text-2xl font-bold text-[#1a1a1a] mb-1">{team[currentSlide].name}</h4>
+                        <h3 className="text-2xl font-bold text-[#1a1a1a] mb-1">{team[currentSlide].name}</h3>
                         <p className="text-[#5a1018] font-bold text-xs uppercase tracking-widest">{team[currentSlide].role}</p>
                     </div>
                 </div>
@@ -406,29 +408,35 @@ setCurrentSlide((prev) => (prev - 1 + team.length) % team.length);
                 {/* Navigation Buttons */}
                 <button 
                     onClick={prevSlide}
+                    aria-label="Membrul anterior al echipei"
                     className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-12 bg-[#5a1018] text-white p-3 rounded-full hover:bg-[#4a0d14] transition-all"
                 >
                     <Icon name="chevron-left" size={24} />
                 </button>
                 <button 
                     onClick={nextSlide}
+                    aria-label="Următorul membru al echipei"
                     className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-12 bg-[#5a1018] text-white p-3 rounded-full hover:bg-[#4a0d14] transition-all"
                 >
                     <Icon name="chevron-right" size={24} />
                 </button>
 
                 {/* Carousel Indicators */}
-                <div className="flex justify-center gap-2 mt-8">
+                <div className="flex justify-center mt-8">
                     {team.map((_, i) => (
                         <button
                             key={i}
                             onClick={() => setCurrentSlide(i)}
-                            className={`h-2 rounded-full transition-all ${
+                            aria-label={team[i].name}
+                            aria-current={i === currentSlide ? 'true' : undefined}
+                            className="p-2"
+                        >
+                            <span className={`block h-2 rounded-full transition-all ${
                                 i === currentSlide 
                                     ? 'bg-[#5a1018] w-8' 
                                     : 'bg-gray-300 w-2'
-                            }`}
-                        />
+                            }`} />
+                        </button>
                     ))}
                 </div>
 
@@ -472,7 +480,7 @@ setCurrentSlide((prev) => (prev - 1 + team.length) % team.length);
                             <p className="text-gray-600 mb-6 leading-relaxed text-sm">"{r.text}"</p>
                             <div className="flex items-center gap-4">
                                 <div className="w-10 h-10 bg-[#5a1018] rounded-full flex items-center justify-center text-white font-bold">{r.name.charAt(0)}</div>
-                                <div><h5 className="font-bold text-sm text-[#1a1a1a]">{r.name}</h5><p className="text-xs text-gray-400">{r.date}</p></div>
+                                <div><h3 className="font-bold text-sm text-[#1a1a1a]">{r.name}</h3><p className="text-xs text-gray-500">{r.date}</p></div>
                             </div>
                         </div>
                     ))}
@@ -486,27 +494,29 @@ setCurrentSlide((prev) => (prev - 1 + team.length) % team.length);
         </section>
     );
 
-    const MapSection = ({ HeadingTag = "h2" }) => (
+    const MapSection = ({ HeadingTag = "h2" }) => {
+        const SubTag = HeadingTag === "h1" ? "h2" : "h3";
+        return (
         <section className="py-24 bg-white">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                     <div className="bg-[#1a1a1a] text-white p-12 lg:p-16 flex flex-col justify-center">
                         <div className="space-y-2 mb-10">
-                            <h4 className="text-white font-bold tracking-widest uppercase text-sm">Locație & Contact</h4>
+                            <p className="text-white font-bold tracking-widest uppercase text-sm">Locație & Contact</p>
                             <HeadingTag className="text-3xl md:text-4xl font-bold">Te așteptăm la<br/>dentist în Mioveni.</HeadingTag>
                         </div>
                         <div className="space-y-8">
                             <div className="flex gap-6 items-start">
                                 <div className="bg-white p-3 rounded-lg text-[#5a1018] shrink-0"><Icon name="map-pin" size={20} /></div>
-                                <div><h5 className="text-lg font-bold mb-1">Adresă Mioveni</h5><p className="text-gray-400 text-sm leading-relaxed">Bulevardul Dacia, Bl. V1, Sc. E+F,<br/>Parter, Mioveni 115400, Argeș</p></div>
+                                <div><SubTag className="text-lg font-bold mb-1">Adresă Mioveni</SubTag><p className="text-gray-400 text-sm leading-relaxed">Bulevardul Dacia, Bl. V1, Sc. E+F,<br/>Parter, Mioveni 115400, Argeș</p></div>
                             </div>
                             <div className="flex gap-6 items-start">
                                 <div className="bg-white p-3 rounded-lg text-[#5a1018] shrink-0"><Icon name="phone" size={20} /></div>
-                                <div><h5 className="text-lg font-bold mb-1">Telefon Programări</h5><p className="text-xl font-bold text-white mb-1">0771 292 813</p><p className="text-gray-500 text-xs">Disponibil în timpul programului de lucru</p></div>
+                                <div><SubTag className="text-lg font-bold mb-1">Telefon Programări</SubTag><p className="text-xl font-bold text-white mb-1">0771 292 813</p><p className="text-gray-400 text-xs">Disponibil în timpul programului de lucru</p></div>
                             </div>
                             <div className="flex gap-6 items-start">
                                 <div className="bg-white p-3 rounded-lg text-[#5a1018] shrink-0"><Icon name="clock" size={20} /></div>
-                                <div><h5 className="text-lg font-bold mb-1">Program de Lucru</h5><ul className="text-gray-400 text-sm space-y-1"><li className="flex justify-between w-48"><span>Luni - Vineri:</span> <span className="text-white font-medium">08:00 - 20:00</span></li><li className="flex justify-between w-48"><span>Sâmbătă:</span> <span className="text-red-500 font-bold">Închis</span></li><li className="flex justify-between w-48"><span>Duminică:</span> <span className="text-red-500 font-bold">Închis</span></li></ul></div>
+                                <div><SubTag className="text-lg font-bold mb-1">Program de Lucru</SubTag><ul className="text-gray-400 text-sm space-y-1"><li className="flex justify-between w-48"><span>Luni - Vineri:</span> <span className="text-white font-medium">08:00 - 20:00</span></li><li className="flex justify-between w-48"><span>Sâmbătă:</span> <span className="text-red-500 font-bold">Închis</span></li><li className="flex justify-between w-48"><span>Duminică:</span> <span className="text-red-500 font-bold">Închis</span></li></ul></div>
                             </div>
                         </div>
                     </div>
@@ -516,7 +526,8 @@ setCurrentSlide((prev) => (prev - 1 + team.length) % team.length);
                 </div>
             </div>
         </section>
-    );
+        );
+    };
     
 const FormSection = () => (
   <section className="py-24 bg-gray-50">
@@ -681,7 +692,7 @@ const FormSection = () => (
         </div>
      </div>
      <div className="space-y-8 order-1 lg:order-2">
-        <h3 className="text-[#5a1018] font-bold tracking-widest uppercase text-sm">Fondator & Lead Surgeon</h3>
+        <p className="text-[#5a1018] font-bold tracking-widest uppercase text-sm">Fondator & Lead Surgeon</p>
         <h2 className="text-3xl md:text-4xl font-black text-[#1a1a1a]">Dr. Alexandru Năstase</h2>
         <p className="text-gray-600 leading-relaxed italic border-l-4 border-[#5a1018] pl-6">
             "Fiecare pacient este tratat cu atenție, empatie și responsabilitate, iar fiecare plan de tratament este adaptat nevoilor reale, nu soluțiilor standardizate."
@@ -802,7 +813,7 @@ const FormSection = () => (
             <div className="flex items-center gap-4 pt-4 text-sm font-medium text-gray-500">
                 <div className="flex -space-x-2">
                     {[1,2,3,4].map(i => (
-                        <div key={i} className="w-8 h-8 rounded-full bg-gray-200 border-2 border-white overflow-hidden flex items-center justify-center text-[10px] font-bold text-gray-500">
+                        <div key={i} aria-hidden="true" className="w-8 h-8 rounded-full bg-gray-200 border-2 border-white overflow-hidden flex items-center justify-center text-[10px] font-bold text-gray-600">
                             {i}+
                         </div>
                     ))}
@@ -986,7 +997,7 @@ const Implantology = () => (
                             <Icon name="check-circle" />
                         </div>
                         <div>
-                            <h4 className="font-bold text-lg">Integrare Rapidă</h4>
+                            <h3 className="font-bold text-lg">Integrare Rapidă</h3>
                             <p className="text-sm text-gray-500">Suprafețe tratate pentru osteointegrare, adică sudarea implantului de os.</p>
                         </div>
                     </div>
@@ -995,7 +1006,7 @@ const Implantology = () => (
                             <Icon name="trending-up" />
                         </div>
                         <div>
-                            <h4 className="font-bold text-lg">Predictibilitate pe Termen Lung</h4>
+                            <h3 className="font-bold text-lg">Predictibilitate pe Termen Lung</h3>
                             <p className="text-sm text-gray-500">Planificare pe tomografie 3D înainte de fiecare intervenție.</p>
                         </div>
                     </div>
@@ -1260,19 +1271,19 @@ const Implantology = () => (
                  
                  <div className="space-y-6">
                     <div className="group">
-                        <h4 className="text-xl font-bold text-[#5a1018] mb-2 group-hover:text-white transition-colors">All-on-4</h4>
+                        <h4 className="text-xl font-bold text-[#e9b4ba] mb-2 group-hover:text-white transition-colors">All-on-4</h4>
                         <p className="text-gray-400">Mai puține implanturi, cost mai redus. Folosit des la mandibulă, unde osul e mai dens.</p>
                     </div>
                     <div className="group">
-                        <h4 className="text-xl font-bold text-[#5a1018] mb-2 group-hover:text-white transition-colors">All-on-6</h4>
+                        <h4 className="text-xl font-bold text-[#e9b4ba] mb-2 group-hover:text-white transition-colors">All-on-6</h4>
                         <p className="text-gray-400">Stabilitate și distribuție mai bună a forțelor. Indicat mai ales la maxilar, unde osul este mai "moale".</p>
                     </div>
                     <div className="group">
-                        <h4 className="text-xl font-bold text-[#5a1018] mb-2 group-hover:text-white transition-colors">All-on-8</h4>
+                        <h4 className="text-xl font-bold text-[#e9b4ba] mb-2 group-hover:text-white transition-colors">All-on-8</h4>
                         <p className="text-gray-400">Folosit în cazuri speciale, când forțele trebuie împărțite pe mai multe implanturi.</p>
                     </div>
                  </div>
-                 <p className="text-sm text-gray-500 border-t border-white/10 pt-4 mt-4">
+                 <p className="text-sm text-gray-400 border-t border-white/10 pt-4 mt-4">
                     * Alegerea depinde de calitatea osului, anatomia pacientului, forțele masticatorii și buget.
                  </p>
             </div>
@@ -1320,11 +1331,11 @@ const Implantology = () => (
                 ].map((s, i) => (
                     <div key={i} className="relative group">
                         <div className="bg-white/10 border border-white/20 p-6 rounded-xl hover:bg-white/20 transition-all duration-300 h-full flex flex-col items-center text-center transform hover:-translate-y-2 cursor-default">
-                            <div className="text-4xl font-black text-white/20 mb-4 group-hover:text-white/30">{s.step}</div>
+                            <div aria-hidden="true" className="text-4xl font-black text-white/45 mb-4 group-hover:text-white/60">{s.step}</div>
                             <div className="mb-4 text-white group-hover:text-gray-200">
                                 <Icon name={s.icon} size={32} />
                             </div>
-                            <h5 className="font-bold text-sm text-gray-100 group-hover:text-white uppercase tracking-wider">{s.title}</h5>
+                            <h4 className="font-bold text-sm text-gray-100 group-hover:text-white uppercase tracking-wider">{s.title}</h4>
                         </div>
                         {/* Arrow for desktop only, hide on last item */}
                         {i < 5 && (
@@ -1455,7 +1466,7 @@ const Implantology = () => (
                 <div className="absolute top-4 left-4 bg-[#5a1018] text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded">După</div>
             </div>
         </div>
-        <p className="text-center text-gray-400 text-sm mt-8 max-w-2xl mx-auto">Cazuri reale tratate în clinica Dr. Năstase. Rezultatele pot varia în funcție de particularitățile fiecărui pacient.</p>
+        <p className="text-center text-gray-500 text-sm mt-8 max-w-2xl mx-auto">Cazuri reale tratate în clinica Dr. Năstase. Rezultatele pot varia în funcție de particularitățile fiecărui pacient.</p>
         <p className="text-center text-gray-600 mt-6 max-w-2xl mx-auto">Prețurile și totalul pe care îl plătești sunt pe paginile <a href="/implant-dentar-mioveni/#preturi" className="text-[#5a1018] font-bold underline underline-offset-4">implant dentar</a> și <a href="/dinti-ficsi-mioveni/#preturi" className="text-[#5a1018] font-bold underline underline-offset-4">Dinți Ficși Dr. Năstase</a>. Lista completă: <a href="/servicii-si-preturi/#implantologie" className="text-[#5a1018] font-bold underline underline-offset-4">Servicii &amp; Prețuri</a>.</p>
     </div>
 </section>
@@ -1487,8 +1498,8 @@ const Implantology = () => (
             {/* Nav */}
             <nav className="sticky top-0 z-50 w-full bg-white shadow-md">
                 <div className="max-w-7xl mx-auto px-6 main-nav justify-between">
-                    <NavLink id="home" className="logo-wrapper block cursor-pointer"><img src="/logodrnastase.png" alt="Clinica Dentară Dr. Alexandru Năstase" className="logo-nav" /></NavLink>
-                    <div className="md:hidden flex items-center"><button className="text-[#1a1a1a]" onClick={() => setIsMenuOpen(!isMenuOpen)}><Icon name={isMenuOpen ? "x" : "menu"} /></button></div>
+                    <NavLink id="home" className="logo-wrapper block cursor-pointer"><img src="/logodrnastase.png" width="500" height="500" alt="Clinica Dentară Dr. Alexandru Năstase" className="logo-nav" /></NavLink>
+                    <div className="md:hidden flex items-center"><button className="text-[#1a1a1a]" aria-label={isMenuOpen ? "Închide meniul" : "Deschide meniul"} aria-expanded={isMenuOpen} onClick={() => setIsMenuOpen(!isMenuOpen)}><Icon name={isMenuOpen ? "x" : "menu"} /></button></div>
                     <div className="hidden md:flex gap-8 items-center h-full">{navItems.map(item => {
                         const active = activePage === item.id || (item.children || []).some(ch => ch.id === activePage);
                         const link = <NavLink id={item.id} className={`font-semibold text-lg hover:text-[#5a1018] transition-colors ${active ? 'text-[#5a1018]' : 'text-gray-700'}`}>{item.label}</NavLink>;
@@ -1527,15 +1538,15 @@ const Implantology = () => (
             <footer className="bg-[#1a1a1a] text-white py-16 px-6">
                 <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 items-start">
                     <div className="space-y-6">
-                        <img src="/clinicadrnastaselogowhite.png" alt="Logo Dr. Alexandru Năstase" className="logo-footer" />
+                        <img src="/clinicadrnastaselogowhite.png" width="960" height="259" alt="Logo Dr. Alexandru Năstase" className="logo-footer" loading="lazy" />
                         <p className="text-gray-400 text-sm font-medium">Zâmbetul tău, promisiunea noastră. Tratamente moderne în Mioveni.</p>
                         <SocialLinks className="mt-4" iconSize={20} />
                     </div>
-                    <div><h4 className="text-lg font-bold mb-4 text-white">Navigare Rapidă</h4><ul className="text-gray-400 text-sm space-y-2">{navItems.flatMap(item => [item, ...(item.children || [])]).map(item => (<li key={item.id}><NavLink id={item.id} className="hover:text-white transition-colors text-left">{item.label}</NavLink></li>))}<li><a href="/blog/" className="hover:text-white transition-colors text-left">Blog</a></li></ul></div>
-                    <div><h4 className="text-lg font-bold mb-4 text-white">Program</h4><div className="text-gray-400 text-sm space-y-1"><p>Luni - Vineri: 08:00 - 20:00</p><p>Sâmbătă-Duminică: <span className="text-red-500 font-bold">Închis</span></p></div></div>
-                    <div><h4 className="text-lg font-bold mb-4 text-white">Contact</h4><div className="text-gray-400 text-sm space-y-2"><p className="flex items-center gap-2"><Icon name="phone" size={14} /> 0771 292 813</p><p className="flex items-center gap-2"><Icon name="map-pin" size={14} /> Bulevardul Dacia, Bl. V1, Sc. E+F, Parter, Mioveni 115400, Argeș</p></div></div>
+                    <div><h3 className="text-lg font-bold mb-4 text-white">Navigare Rapidă</h3><ul className="text-gray-400 text-sm space-y-2">{navItems.flatMap(item => [item, ...(item.children || [])]).map(item => (<li key={item.id}><NavLink id={item.id} className="hover:text-white transition-colors text-left">{item.label}</NavLink></li>))}<li><a href="/blog/" className="hover:text-white transition-colors text-left">Blog</a></li></ul></div>
+                    <div><h3 className="text-lg font-bold mb-4 text-white">Program</h3><div className="text-gray-400 text-sm space-y-1"><p>Luni - Vineri: 08:00 - 20:00</p><p>Sâmbătă-Duminică: <span className="text-red-500 font-bold">Închis</span></p></div></div>
+                    <div><h3 className="text-lg font-bold mb-4 text-white">Contact</h3><div className="text-gray-400 text-sm space-y-2"><p className="flex items-center gap-2"><Icon name="phone" size={14} /> 0771 292 813</p><p className="flex items-center gap-2"><Icon name="map-pin" size={14} /> Bulevardul Dacia, Bl. V1, Sc. E+F, Parter, Mioveni 115400, Argeș</p></div></div>
                 </div>
-                <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-gray-800 text-center text-gray-500 text-xs"><p>© {new Date().getFullYear()} Clinica Dentară Dr. Alexandru Năstase. Toate drepturile rezervate.</p></div>
+                <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-gray-800 text-center text-gray-400 text-xs"><p>© {new Date().getFullYear()} Clinica Dentară Dr. Alexandru Năstase. Toate drepturile rezervate.</p></div>
             </footer>
         </div>
     );

@@ -1,7 +1,7 @@
 // Generează site-ul static din src/:
 //   - index.html + despre-noi/, implantologie/, servicii-si-preturi/, contact/ (HTML pre-randat)
 //   - assets/app.<hash>.js (React compilat, fără Babel în browser)
-//   - assets/site.<hash>.css (Tailwind compilat, fără CDN)
+//   - CSS-ul Tailwind compilat, pus direct în <head> (fără CDN și fără fișier care să blocheze afișarea)
 //   - sitemap.xml (pagini + toate articolele din blog/, cu lastmod din git)
 //   - llms.txt (rezumat pentru motoarele AI) și post-procesarea SEO a blogului (scripts/blog-seo.mjs)
 // La final verifică invarianții SEO și eșuează dacă vreunul e încălcat.
@@ -13,7 +13,7 @@ import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { SITE_URL, BUSINESS, PAGES, INDEXNOW_KEY } from '../src/site.config.mjs';
 import { dentistNode, DENTIST_ID, ADDRESS_TEXT } from './schema.mjs';
-import { readBlogPosts, postprocessBlog } from './blog-seo.mjs';
+import { readBlogPosts, postprocessBlog, listedPosts } from './blog-seo.mjs';
 import implantDentar from '../src/content/implant-dentar-mioveni.mjs';
 import dintiFicsi from '../src/content/dinti-ficsi-mioveni.mjs';
 
@@ -30,9 +30,10 @@ const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g
 // 0. Articolele din blog: alimentează secțiunile „Din blog” și sunt post-procesate SEO
 const posts = readBlogPosts(ROOT);
 const blogChanged = postprocessBlog(ROOT, posts);
+const listed = listedPosts(posts); // fără articolele consolidate în paginile de serviciu
 const DEFINE = {
     'process.env.NODE_ENV': '"production"',
-    '__BLOG_POSTS__': JSON.stringify(posts.map(({ slug, title, description, hero }) => ({ slug, title, description, hero }))),
+    '__BLOG_POSTS__': JSON.stringify(listed.map(({ slug, title, description, hero }) => ({ slug, title, description, hero }))),
 };
 
 // 1. JS pentru browser
@@ -51,9 +52,7 @@ const css = fs.readFileSync(cssTmp);
 fs.mkdirSync(r('assets'), { recursive: true });
 for (const f of fs.readdirSync(r('assets'))) if (/^(app|site)\.[0-9a-f]{10}\.(js|css)$/.test(f)) fs.rmSync(r('assets', f));
 const jsName = `/assets/app.${hash(js)}.js`;
-const cssName = `/assets/site.${hash(css)}.css`;
 fs.writeFileSync(r(jsName.slice(1)), js);
-fs.writeFileSync(r(cssName.slice(1)), css);
 
 // 3. Pre-randare cu React pe server
 const ssrFile = path.join(TMP, 'app.ssr.mjs');
@@ -117,7 +116,7 @@ for (const [id, route] of Object.entries(ROUTES)) {
         .replaceAll('{{CANONICAL}}', canonical)
         .replace('{{SCHEMA}}', () => schemaFor(id, route))
         .replace('{{ROBOTS}}', meta.noindex ? 'noindex, follow' : 'index, follow')
-        .replace('{{CSS}}', cssName)
+        .replace('{{CSS}}', () => css.toString().trim())
         .replace('{{JS}}', jsName)
         .replace('{{ROOT}}', () => html);
     const file = route === '/' ? 'index.html' : path.join(route.slice(1), 'index.html');
@@ -141,7 +140,12 @@ const urls = written.filter((w) => !w.meta.noindex).map((w) => ({
 urls.push({ loc: `${SITE_URL}/blog/`, lastmod: gitDate('blog') || today, priority: '0.8' });
 const articles = fs.readdirSync(r('blog'), { withFileTypes: true })
     .filter((d) => d.isDirectory() && fs.existsSync(r('blog', d.name, 'index.html')))
-    .filter((d) => !/<meta[^>]+name="robots"[^>]+noindex/i.test(fs.readFileSync(r('blog', d.name, 'index.html'), 'utf8')))
+    .filter((d) => {
+        // fără articolele noindex și fără cele al căror canonical e altă pagină (CONSOLIDATED din blog-seo.mjs)
+        const html = fs.readFileSync(r('blog', d.name, 'index.html'), 'utf8');
+        const canonical = (html.match(/<link rel="canonical" href="([^"]*)"/) || [])[1];
+        return !/<meta[^>]+name="robots"[^>]+noindex/i.test(html) && (!canonical || new URL(canonical, SITE_URL).href === `${SITE_URL}/blog/${d.name}/`);
+    })
     .map((d) => ({ loc: `${SITE_URL}/blog/${d.name}/`, lastmod: gitDate(`blog/${d.name}`) || today, priority: '0.7' }))
     .sort((a, b) => b.lastmod.localeCompare(a.lastmod) || a.loc.localeCompare(b.loc));
 urls.push(...articles);
@@ -179,7 +183,7 @@ ${written.filter((w) => !w.meta.noindex).map((w) => `- [${w.meta.title}](${SITE_
 
 ## Articole (blog)
 
-${posts.map((p) => `- [${p.title}](${SITE_URL}/blog/${p.slug}/): ${p.description}`).join('\n')}
+${listed.map((p) => `- [${p.title}](${SITE_URL}/blog/${p.slug}/): ${p.description}`).join('\n')}
 `;
 fs.writeFileSync(r('llms.txt'), llms);
 
@@ -225,12 +229,12 @@ for (const html of [...written.map((w) => w.out), ...posts.map((p) => fs.readFil
         if (!fs.existsSync(r(target.slice(1), 'index.html'))) errors.push(`link intern rupt: ${m[1]}`);
     }
 }
-for (const f of ['og-image.jpg', 'logodrnastase.png', 'pozaclinicadinafara.jpeg']) {
-    if (!fs.existsSync(r(f))) errors.push(`lipsește ${f} (referit în meta/schema)`);
+for (const f of ['og-image.jpg', 'logodrnastase.png', 'pozaclinicadinafara.jpeg', 'fonts/inter-latin.woff2', 'fonts/inter-ro.woff2']) {
+    if (!fs.existsSync(r(f))) errors.push(`lipsește ${f} (referit în meta/schema/CSS)`);
 }
 if (errors.length) {
     console.error('Build eșuat — invarianți SEO încălcați:\n  ' + errors.join('\n  '));
     process.exit(1);
 }
 console.log(`Blog post-procesat: ${blogChanged.length} fișiere modificate`);
-console.log(`OK: ${written.length} pagini, ${urls.length} URL-uri în sitemap, ${jsName} (${(js.length / 1024).toFixed(0)} KB), ${cssName} (${(css.length / 1024).toFixed(0)} KB)`);
+console.log(`OK: ${written.length} pagini, ${urls.length} URL-uri în sitemap, ${jsName} (${(js.length / 1024).toFixed(0)} KB), CSS în pagină (${(css.length / 1024).toFixed(0)} KB)`);

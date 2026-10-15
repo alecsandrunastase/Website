@@ -210,7 +210,7 @@ export default {
                 { q: 'Se poate face All-on-4 dacă am puțin os?', a: 'De multe ori da, pentru că implanturile din spate se pun înclinat și folosesc osul rămas. Pentru os foarte puțin, clinica folosește implanturi JD Dental de dimensiuni speciale. Răspunsul pentru cazul tău îl dă tomografia.' },
                 { q: 'Pot face tratamentul pe ambele arcade?', a: 'Da. Arcadele se pot trata în aceeași zi sau în etape, în funcție de starea ta generală și de plan. Prețurile sunt pe arcadă, deci pentru ambele arcade se adună.' },
                 { q: 'Cât rezistă dinții ficși pe implanturi?', a: 'Implanturile bine integrate pot funcționa mulți ani, adesea decenii, cu igienă corectă și controale regulate. Dinții lucrării se pot uza în timp și se pot recondiționa.' },
-                { q: 'Pot face tratamentul dacă locuiesc în Pitești?', a: 'Da. Clinica e pe Bulevardul Dacia, Bl. V1, Sc. E+F, parter, în Mioveni, la circa 12 km de Pitești. Mai multe în articolul despre [dinți ficși aproape de casă](/blog/dinti-ficsi-mioveni-tratament-aproape-de-casa/).' },
+                { q: 'Pot face tratamentul dacă locuiesc în Pitești?', a: 'Da. Clinica e pe Bulevardul Dacia, Bl. V1, Sc. E+F, parter, în Mioveni, la circa 12 km de Pitești.' },
                 { q: 'Pentru un singur dinte lipsă se pune tot All-on-X?', a: 'Nu. Pentru unul sau câțiva dinți se folosesc implanturi individuale. Detaliile sunt pe pagina despre [implant dentar în Mioveni](/implant-dentar-mioveni/).' },
             ],
         },
