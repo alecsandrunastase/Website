@@ -21,9 +21,11 @@ Site static servit de GitHub Pages direct din `main` (domeniu www.clinicadrnasta
 - Pagina de dinți ficși are produs cu nume propriu, **„Dinți Ficși Dr. Năstase”**, identic în H1, secțiuni, chitanță, meta, schema și mesajul WhatsApp.
 - Conținutul e final: doar informații confirmate din sursele clinicii (lista de prețuri, Implantologie, Despre noi, blog). Ce nu se poate confirma nu se publică (nici ca marcaj). Byline: „medic stomatolog” până confirmă clinica titlul exact din certificat.
 - Build-ul verifică formulările interzise CMSR (em dash, „de la X lei”, „rate”, „garantat”, superlative) și refuză scoaterea `noindex` dacă textul conține „(de confirmat)”.
-- Întrebările deschise pentru clinică: `docs/revizuire-implant-dinti-ficsi.md` (inclusiv confirmarea că 13.500 / 16.000 lei sunt prețurile lucrării definitive pe arcadă, din care se calculează totalurile).
+- Fără mărci de implanturi, nicăieri (decizia clinicii, 02.11.2026; vrea să evite comparația cu concurenții și poate adăuga mai târziu altă gamă). Se scrie doar „implant standard” și „All-on-4/5/6 standard”. Build-ul refuză mărcile vechi în pagini și în llms.txt.
+- Lista de prețuri are „de la X lei” la All-on-4/5/6 standard, la cererea clinicii. Paginile de serviciu afișează aceleași sume fără „de la”, fiindcă formularea e interzisă de CMSR, cu nota că prețul final se stabilește după tomografie.
+- Întrebările deschise pentru clinică: `docs/revizuire-implant-dinti-ficsi.md`.
 
-**Anti-canibalizare:** `/implantologie/` e pagină-hub (title „Implantologie Mioveni: Implanturi JD și All-on-X”, H1 „Implantologie în clinica din Mioveni”, bloc „Ce tratament cauți?” spre cele două pagini). Nu pune „implant dentar Mioveni” / „dinți ficși Mioveni” în title, H1 sau H2 pe alte pagini; linkurile interne cu aceste ancore merg spre paginile dedicate (`SERVICES` în `src/app.jsx`, `SERVICE_LINKS` în `scripts/blog-seo.mjs`).
+**Anti-canibalizare:** `/implantologie/` e pagină-hub (title „Implantologie Mioveni: Implanturi și All-on-X”, H1 „Implantologie în clinica din Mioveni”, bloc „Ce tratament cauți?” spre cele două pagini). Nu pune „implant dentar Mioveni” / „dinți ficși Mioveni” în title, H1 sau H2 pe alte pagini; linkurile interne cu aceste ancore merg spre paginile dedicate (`SERVICES` în `src/app.jsx`, `SERVICE_LINKS` în `scripts/blog-seo.mjs`).
 
 Pentru o pagină nouă care trebuie revizuită înainte de publicare: `noindex: true` în `PAGES` (o scoate din index, sitemap, llms.txt și IndexNow).
 

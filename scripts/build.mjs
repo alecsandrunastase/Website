@@ -159,7 +159,7 @@ const dayRo = { Monday: 'luni', Tuesday: 'marți', Wednesday: 'miercuri', Thursd
 const priceOf = (needle) => PRICE_LIST.flatMap((c) => c.items).find((i) => i.name.includes(needle))?.price;
 const llms = `# ${BUSINESS.name}
 
-> Clinică stomatologică în Mioveni, județul Argeș: implant dentar, dinți ficși pe implanturi (All-on-X / Fast & Fixed), stomatologie generală, protetică, ortodonție și stomatologie pentru copii. Medic coordonator: Dr. Alexandru Năstase, activ în Mioveni din 2013.
+> Clinică stomatologică în Mioveni, județul Argeș: implant dentar, dinți ficși pe implanturi (All-on-X), stomatologie generală, protetică, ortodonție și stomatologie pentru copii. Medic coordonator: Dr. Alexandru Năstase, activ în Mioveni din 2013.
 
 - Adresă: ${ADDRESS_TEXT}
 - Telefon / WhatsApp: 0771 292 813
@@ -175,9 +175,9 @@ ${written.filter((w) => !w.meta.noindex).map((w) => `- [${w.meta.title}](${SITE_
 ## Prețuri orientative (lei)
 
 - Consultație, plan de tratament și deviz: ${priceOf('Consultație, plan')}
-- Implant dentar (șurub JD sau INNO): ${priceOf('Implant (doar șurub)')}
-- Dinți ficși Fast & Fixed pe 4 implanturi, cu dinți provizorii: ${priceOf('FAST & FIXED (4')}
-- Dinți ficși Fast & Fixed pe 6 implanturi, cu dinți provizorii: ${priceOf('FAST & FIXED (6')}
+- Implant dentar standard (șurub): ${priceOf('Implant standard')}
+- Dinți ficși All-on-4 standard, cu dinți provizorii: ${priceOf('All-on-4 standard')}
+- Dinți ficși All-on-6 standard, cu dinți provizorii: ${priceOf('All-on-6 standard')}
 - Coroană zirconiu pe implant: ${priceOf('ZIRCONIU pe implant')}
 - Lista completă: ${SITE_URL}/servicii-si-preturi/
 
@@ -219,6 +219,12 @@ for (const [id, content] of Object.entries(CONTENT)) {
 }
 for (const w of written) {
     if (w.meta.noindex && !w.out.includes('content="noindex, follow"')) errors.push(`${w.file}: lipsește meta robots noindex`);
+}
+// Clinica nu mai afișează mărci de implanturi (decizie 02.11.2026): nici în pagini, nici în llms.txt
+const BRANDS = /\bJD\b|\bINNO\b|JD Dental|jddental|Fast (&|&amp;) Fixed|FAST (&|&amp;) FIXED|THIMBLE/;
+for (const [file, text] of [...written.map((w) => [w.file, w.out]), ['llms.txt', llms]]) {
+    const hit = text.match(BRANDS);
+    if (hit) errors.push(`${file}: marcă de implant pe pagină („${hit[0]}”)`);
 }
 if (llms.includes('undefined')) errors.push('llms.txt: un preț nu a fost găsit în PRICE_LIST (verifică denumirile din build.mjs)');
 if (!fs.existsSync(r(`${INDEXNOW_KEY}.txt`))) errors.push(`lipsește fișierul cheii IndexNow ${INDEXNOW_KEY}.txt`);

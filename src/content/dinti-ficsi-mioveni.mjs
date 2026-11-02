@@ -2,7 +2,7 @@
 // Granița anti-canibalizare: aici e arcada completă pe implanturi. Implantul unitar aparține paginii
 // /implant-dentar-mioveni/ — doar link, fără H2 pe subiect.
 // Produsul are nume propriu („market of one”): Dinți Ficși Dr. Năstase — identic peste tot pe pagină.
-// Toate afirmațiile vin din sursele clinicii: lista de prețuri (PRICE_LIST din src/app.jsx, octombrie 2026),
+// Toate afirmațiile vin din sursele clinicii: lista de prețuri (PRICE_LIST din src/app.jsx, noiembrie 2026),
 // pagina Implantologie, pagina Despre noi și articolele de blog ale clinicii.
 
 const PRODUCT = 'Dinți Ficși Dr. Năstase';
@@ -10,14 +10,14 @@ const PRODUCT = 'Dinți Ficși Dr. Năstase';
 export default {
     meta: {
         title: 'Dinți Ficși Mioveni: Dantură Fixă pe Implanturi',
-        description: 'Dinți Ficși Dr. Năstase, Mioveni: 4 implanturi cu lucrare provizorie fixă 12.500 lei, 6 implanturi 16.500 lei, definitivă titan-zirconiu 16.000 lei.',
+        description: 'Dinți Ficși Dr. Năstase, Mioveni: All-on-4 standard 10.999 lei, All-on-6 standard 13.999 lei, lucrare definitivă de 12 dinți, titan-zirconiu 13.499 lei.',
     },
     schema: {
         lastReviewed: '2026-10-05',
         reviewer: { name: 'Dr. Alexandru Năstase', description: 'Medic stomatolog, fondatorul Clinicii Dentare Dr. Alexandru Năstase din Mioveni' },
         procedure: {
             name: PRODUCT,
-            alternateName: ['Dinți ficși pe implanturi', 'Dantură fixă pe implanturi', 'All-on-4', 'All-on-6', 'Fast & Fixed'],
+            alternateName: ['Dinți ficși pe implanturi', 'Dantură fixă pe implanturi', 'All-on-4', 'All-on-6'],
             howPerformed: 'Inserarea a 4-6 implanturi pe o arcadă, cu cele posterioare înclinate, urmată de o lucrare provizorie fixă și, după 4-6 luni de osteointegrare, de lucrarea definitivă pe structură din titan.',
         },
     },
@@ -33,8 +33,8 @@ export default {
         text: 'Fiecare pacient este tratat cu atenție, empatie și responsabilitate, iar fiecare plan de tratament este adaptat nevoilor reale, nu soluțiilor standardizate.',
         by: 'Dr. Alexandru Năstase, fondatorul clinicii',
     },
-    byline: 'Conținut revizuit medical de **Dr. Alexandru Năstase**, medic stomatolog · Actualizat: octombrie 2026',
-    facts: ['În Mioveni din 2013', 'Tomografie 3D înainte de orice implant', 'Implanturi JD Dental și INNO', 'Toate etapele în aceeași clinică'],
+    byline: 'Conținut revizuit medical de **Dr. Alexandru Năstase**, medic stomatolog · Actualizat: noiembrie 2026',
+    facts: ['În Mioveni din 2013', 'Tomografie 3D înainte de orice implant', 'Lucrare fixă pe 4-6 implanturi', 'Toate etapele în aceeași clinică'],
     anchors: [
         { href: '#cazuri', label: 'Cazuri' },
         { href: '#in-os', label: 'Cum arată în os' },
@@ -60,7 +60,7 @@ export default {
             title: 'Ce sunt Dinții Ficși Dr. Năstase',
             paragraphs: [
                 'Poate porți proteza în geantă când mergi la o masă în oraș. Poate ai renunțat la mere și la carne friptă, sau eviți să râzi cu gura deschisă.',
-                `Dinții Ficși Dr. Năstase sunt o lucrare care înlocuiește toți dinții de pe o arcadă și se prinde cu șuruburi pe 4, 5 sau 6 implanturi (sistemul **All-on-X**). Lucrarea nu se scoate acasă și nu acoperă cerul gurii, ca proteza mobilă. În lista de prețuri a clinicii, tratamentul apare sub numele **Fast & Fixed**.`,
+                `Dinții Ficși Dr. Năstase sunt o lucrare care înlocuiește toți dinții de pe o arcadă și se prinde cu șuruburi pe 4, 5 sau 6 implanturi (sistemul **All-on-X**). Lucrarea nu se scoate acasă și nu acoperă cerul gurii, ca proteza mobilă.`,
             ],
             benefits: [
                 { title: 'Planificați pe CT 3D', text: 'Tomografia arată volumul osului, nervii și sinusurile înainte de intervenție.', href: '#in-os' },
@@ -100,7 +100,7 @@ export default {
             title: 'Cum arată dinții ficși în os',
             text: [
                 'Asta e radiografia unui pacient al clinicii, după inserarea implanturilor: 6 implanturi la maxilar și 4 la mandibulă. Implanturile din spate sunt puse înclinat, ca să ocolească sinusurile și nervul mandibular și să folosească osul care a rămas.',
-                'Pentru cazurile cu os foarte puțin, clinica folosește și implanturi JD Dental de dimensiuni speciale, ancorate în zone de os dens: pterigoidiene, trans-sinusale sau nazale. Adiția osoasă și sinus lift-ul rămân variante, folosite doar când situația o impune.',
+                'Pentru cazurile cu os foarte puțin, clinica folosește și implanturi de dimensiuni speciale, ancorate în zone de os dens: pterigoidiene, trans-sinusale sau nazale. Adiția osoasă și sinus lift-ul rămân variante, folosite doar când situația o impune.',
             ],
             image: { src: '/img/lp/radiografie-all-on-x.webp', w: 1800, h: 1291, alt: 'Radiografie panoramică: 6 implanturi la maxilar și 4 la mandibulă, cele din spate înclinate' },
             annotations: [
@@ -117,11 +117,11 @@ export default {
             title: 'All-on-4, All-on-5 sau All-on-6?',
             intro: 'Numărul de implanturi se alege din tomografie, nu din listă. Pe larg, în ghidul despre [All-on-4 și All-on-6](/blog/all-on-4-all-on-6-pentru-cine-sunt-potrivite/).',
             columns: [
-                { name: 'All-on-4', price: '12.500 lei', text: 'Folosit des la mandibulă, unde osul e mai dens. Intervenție mai scurtă.' },
-                { name: 'All-on-5', price: '14.500 lei', text: 'Un implant în plus, când osul permite o distribuție mai bună a forțelor.' },
-                { name: 'All-on-6', price: '16.500 lei', text: 'Recomandat mai ales la maxilar, unde osul e mai spongios și sinusurile limitează spațiul din spate.' },
+                { name: 'All-on-4 standard', price: '10.999 lei', text: 'Folosit des la mandibulă, unde osul e mai dens. Intervenție mai scurtă.' },
+                { name: 'All-on-5 standard', price: '12.499 lei', text: 'Un implant în plus, când osul permite o distribuție mai bună a forțelor.' },
+                { name: 'All-on-6 standard', price: '13.999 lei', text: 'Recomandat mai ales la maxilar, unde osul e mai spongios și sinusurile limitează spațiul din spate.' },
             ],
-            note: 'Prețuri pe arcadă, cu lucrarea provizorie fixă inclusă.',
+            note: 'Prețuri pe arcadă, cu implanturi standard și lucrarea provizorie fixă incluse. Prețul final se stabilește după tomografie.',
             split: {
                 title: 'Lucrarea provizorie și lucrarea definitivă',
                 paragraphs: [
@@ -168,15 +168,15 @@ export default {
             type: 'money',
             mode: 'arch',
             title: 'Cât costă Dinții Ficși Dr. Năstase',
-            intro: 'Prețuri din lista actuală a clinicii, octombrie 2026, pe arcadă. Prețul final îl primești în planul de tratament scris, după consultație și tomografie.',
+            intro: 'Prețuri din lista actuală a clinicii, noiembrie 2026, pe arcadă, cu implanturi standard. Prețul final îl primești în planul de tratament scris, după consultație și tomografie.',
             configs: [
-                { id: 'a4', name: 'All-on-4', price: 12500, include: ['4 implanturi', 'Lucrarea provizorie fixă'] },
-                { id: 'a5', name: 'All-on-5', price: 14500, include: ['5 implanturi', 'Lucrarea provizorie fixă'] },
-                { id: 'a6', name: 'All-on-6', price: 16500, include: ['6 implanturi', 'Lucrarea provizorie fixă'] },
+                { id: 'a4', name: 'All-on-4 standard', price: 10999, include: ['4 implanturi standard', 'Lucrarea provizorie fixă'] },
+                { id: 'a5', name: 'All-on-5 standard', price: 12499, include: ['5 implanturi standard', 'Lucrarea provizorie fixă'] },
+                { id: 'a6', name: 'All-on-6 standard', price: 13999, include: ['6 implanturi standard', 'Lucrarea provizorie fixă'] },
             ],
             finals: [
-                { id: 'tc', name: 'Titan-compozit', price: 13500 },
-                { id: 'tz', name: 'Titan-zirconiu', price: 16000 },
+                { id: 'tc', name: 'Titan-compozit, 12 dinți', price: 11999 },
+                { id: 'tz', name: 'Titan-zirconiu, 12 dinți', price: 13499 },
             ],
             exclude: [
                 ['Consultație, plan de tratament și deviz', '250 lei'],
@@ -204,10 +204,10 @@ export default {
             type: 'faq',
             title: 'Întrebări frecvente despre dinții ficși',
             items: [
-                { q: 'Cât costă dinții ficși în Mioveni?', a: 'În clinica noastră, 4 implanturi cu lucrare provizorie fixă costă 12.500 lei pe arcadă, 5 implanturi 14.500 lei, iar 6 implanturi 16.500 lei. Lucrarea definitivă costă 13.500 lei (titan-compozit) sau 16.000 lei (titan-zirconiu).' },
+                { q: 'Cât costă dinții ficși în Mioveni?', a: 'În clinica noastră, All-on-4 standard, cu lucrare provizorie fixă, costă 10.999 lei pe arcadă, All-on-5 standard 12.499 lei, iar All-on-6 standard 13.999 lei. Lucrarea definitivă de 12 dinți costă 11.999 lei (titan-compozit) sau 13.499 lei (titan-zirconiu). Prețul final îl primești în planul scris, după tomografie.' },
                 { q: 'Cât de repede primesc dinții ficși după intervenție?', a: 'Lucrarea provizorie fixă se poate monta în primele zile după intervenție, dacă implanturile au stabilitatea necesară. Lucrarea definitivă se montează după 4-6 luni de osteointegrare. Decizia aparține medicului.' },
                 { q: 'Cât durează tot tratamentul?', a: 'De regulă 4-7 luni de la prima consultație până la lucrarea definitivă: câteva săptămâni de planificare, o zi pentru intervenție, 4-6 luni de vindecare cu lucrarea provizorie fixă și câteva săptămâni pentru lucrarea definitivă.' },
-                { q: 'Se poate face All-on-4 dacă am puțin os?', a: 'De multe ori da, pentru că implanturile din spate se pun înclinat și folosesc osul rămas. Pentru os foarte puțin, clinica folosește implanturi JD Dental de dimensiuni speciale. Răspunsul pentru cazul tău îl dă tomografia.' },
+                { q: 'Se poate face All-on-4 dacă am puțin os?', a: 'De multe ori da, pentru că implanturile din spate se pun înclinat și folosesc osul rămas. Pentru os foarte puțin, clinica folosește implanturi de dimensiuni speciale. Răspunsul pentru cazul tău îl dă tomografia.' },
                 { q: 'Pot face tratamentul pe ambele arcade?', a: 'Da. Arcadele se pot trata în aceeași zi sau în etape, în funcție de starea ta generală și de plan. Prețurile sunt pe arcadă, deci pentru ambele arcade se adună.' },
                 { q: 'Cât rezistă dinții ficși pe implanturi?', a: 'Implanturile bine integrate pot funcționa mulți ani, adesea decenii, cu igienă corectă și controale regulate. Dinții lucrării se pot uza în timp și se pot recondiționa.' },
                 { q: 'Pot face tratamentul dacă locuiesc în Pitești?', a: 'Da. Clinica e pe Bulevardul Dacia, Bl. V1, Sc. E+F, parter, în Mioveni, la circa 12 km de Pitești.' },

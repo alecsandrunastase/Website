@@ -18,21 +18,19 @@ Paginile sunt finale: conțin doar informații confirmate din sursele clinicii (
 
 ### Dinți ficși
 
-5. **„Fast & Fixed”:** e denumirea sistemului Bredent folosit? Putem menționa producătorul?
-6. **Sedarea:** e disponibilă în clinică? Dacă da, cu ce preț?
-7. **Lucrarea provizorie fixă:** în cât timp după intervenție se montează de regulă (am scris 24–72 de ore, dacă situația clinică permite)?
-8. **Bonturile multi-unit (MUA, 450 lei bucata):** sunt incluse în prețurile Fast & Fixed de 12.500 / 14.500 / 16.500 lei?
-9. **Lucrarea definitivă „THIMBLE”** titan-compozit 13.500 lei și titan-zirconiu 16.000 lei: sunt prețurile pentru o arcadă completă All-on-X?
-10. **Exemplele de cost total pe arcadă** (26.000 / 28.500 / 32.500 lei): mai trebuie adăugat ceva în afară de consultație și extracții?
-11. **Alimentația după intervenție:** recomandarea de 6–8 săptămâni fără alimente tari e corectă pentru protocolul clinicii?
-12. **Proteza pe capse (overdenture):** clinica o oferă? Cu ce preț?
+5. **Sedarea:** e disponibilă în clinică? Dacă da, cu ce preț?
+6. **Lucrarea provizorie fixă:** în cât timp după intervenție se montează de regulă (am scris 24–72 de ore, dacă situația clinică permite)?
+7. **Bonturile multi-unit (MUA, 450 lei bucata):** sunt incluse în prețurile All-on-4/5/6 standard de 10.999 / 12.499 / 13.999 lei?
+8. **Prețurile All-on „de la”:** ce anume ridică prețul peste valoarea afișată? (CMSR cere prețuri complete și clare, iar „prețuri începând de la” e un exemplu de formulare interzisă.)
+9. **Exemplele de cost total pe arcadă** (de la 22.998 lei pentru All-on-4 standard cu titan-compozit, până la 27.498 lei pentru All-on-6 standard cu titan-zirconiu): mai trebuie adăugat ceva în afară de consultație și extracții?
+10. **Alimentația după intervenție:** recomandarea de 6–8 săptămâni fără alimente tari e corectă pentru protocolul clinicii?
+11. **Proteza pe capse (overdenture):** clinica o oferă? Cu ce preț?
 
 ### Decizii care aparțin clinicii
 
-13. **Byline-ul:** acum scrie „Conținut revizuit medical de Dr. Alexandru Năstase, medic stomatolog”. Dacă medicul are un titlu în implantologie (specialist / atestat de studii complementare), ne trebuie formularea exactă din certificat, ca să-l adăugăm conform CMSR.
-14. **Lucrarea definitivă:** prețurile THIMBLE din listă (titan-compozit 13.500 lei, titan-zirconiu 16.000 lei) sunt pe arcadă, pentru All-on-X? Din ele se calculează totalurile de pe pagina de dinți ficși (26.000 / 28.500 / 32.500 lei).
-15. **Messenger:** numele de utilizator al paginii de Facebook, dacă vreți și butonul de Messenger lângă apel și WhatsApp.
-16. **La aprobare:** paginile intră în meniu (sub „Implantologie”), primesc linkuri de pe homepage, din blog și de pe pagina de prețuri, iar pagina `/implantologie/` devine pagina-hub cu cazurile înainte/după, ca să nu concureze cu paginile noi în Google. Pașii tehnici sunt în `CLAUDE.md`.
+12. **Byline-ul:** acum scrie „Conținut revizuit medical de Dr. Alexandru Năstase, medic stomatolog”. Dacă medicul are un titlu în implantologie (specialist / atestat de studii complementare), ne trebuie formularea exactă din certificat, ca să-l adăugăm conform CMSR.
+13. **Messenger:** numele de utilizator al paginii de Facebook, dacă vreți și butonul de Messenger lângă apel și WhatsApp.
+14. **La aprobare:** paginile intră în meniu (sub „Implantologie”), primesc linkuri de pe homepage, din blog și de pe pagina de prețuri, iar pagina `/implantologie/` devine pagina-hub cu cazurile înainte/după, ca să nu concureze cu paginile noi în Google. Pașii tehnici sunt în `CLAUDE.md`.
 
 ## Formulări neconforme CMSR găsite pe site-ul actual
 

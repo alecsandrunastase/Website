@@ -1,13 +1,13 @@
 // Pagina /implant-dentar-mioveni/ — cuvânt cheie principal: „implant dentar Mioveni”.
 // Granița anti-canibalizare: aici e implantul unitar sau pentru câțiva dinți. Arcada completă
 // (All-on-X, dinți ficși, dantură fixă) aparține paginii /dinti-ficsi-mioveni/ — doar link, fără H2 pe subiect.
-// Toate afirmațiile vin din sursele clinicii: lista de prețuri (PRICE_LIST din src/app.jsx, octombrie 2026),
+// Toate afirmațiile vin din sursele clinicii: lista de prețuri (PRICE_LIST din src/app.jsx, noiembrie 2026),
 // pagina Implantologie, pagina Despre noi și articolele de blog ale clinicii.
 
 export default {
     meta: {
         title: 'Implant Dentar Mioveni: Prețuri și Etape | Dr. Năstase',
-        description: 'Implant dentar în Mioveni: implant JD sau INNO 2.000 lei, coroană zirconiu pe implant 1.350 lei, consultație 250 lei. Planificare pe CT 3D, plan scris.',
+        description: 'Implant dentar în Mioveni: implant standard 2.000 lei, coroană zirconiu pe implant 1.350 lei, consultație 250 lei. Planificare pe CT 3D, plan scris.',
     },
     schema: {
         lastReviewed: '2026-10-05',
@@ -30,8 +30,8 @@ export default {
         text: 'Fiecare pacient este tratat cu atenție, empatie și responsabilitate, iar fiecare plan de tratament este adaptat nevoilor reale, nu soluțiilor standardizate.',
         by: 'Dr. Alexandru Năstase, fondatorul clinicii',
     },
-    byline: 'Conținut revizuit medical de **Dr. Alexandru Năstase**, medic stomatolog · Actualizat: octombrie 2026',
-    facts: ['În Mioveni din 2013', 'Implant JD Dental sau INNO: 2.000 lei', 'Tomografie 3D înainte de orice implant', 'Coroană din zirconiu pe implant'],
+    byline: 'Conținut revizuit medical de **Dr. Alexandru Năstase**, medic stomatolog · Actualizat: noiembrie 2026',
+    facts: ['În Mioveni din 2013', 'Implant standard: 2.000 lei', 'Tomografie 3D înainte de orice implant', 'Coroană din zirconiu pe implant'],
     anchors: [
         { href: '#preturi', label: 'Cât costă' },
         { href: '#etape', label: 'Etape' },
@@ -54,9 +54,9 @@ export default {
             type: 'money',
             mode: 'tooth',
             title: 'Cât costă un implant dentar în Mioveni',
-            intro: 'Prețuri din lista actuală a clinicii, octombrie 2026. Bifează ce se potrivește cazului tău și vezi totalul pentru un dinte. Prețul final îl primești în planul de tratament scris, după consultație și tomografie.',
+            intro: 'Prețuri din lista actuală a clinicii, noiembrie 2026. Bifează ce se potrivește cazului tău și vezi totalul pentru un dinte. Prețul final îl primești în planul de tratament scris, după consultație și tomografie.',
             base: [
-                ['Implant (șurubul) JD Dental sau INNO', 2000],
+                ['Implant standard (șurubul)', 2000],
                 ['Capă de vindecare', 250],
                 ['Coroană din zirconiu pe implant, cu bontul protetic T-base', 1350],
             ],
@@ -80,7 +80,7 @@ export default {
             paragraphs: [
                 'Un dinte lipsă nu doare. Doar te face să mesteci pe partea cealaltă, să zâmbești cu buzele strânse în poze și să tot amâni. Între timp, dinții vecini se înclină spre gol, iar osul din zonă se retrage încet.',
                 'Implantul dentar este o rădăcină artificială din titan, inserată în osul maxilarului sau al mandibulei. După câteva luni, osul crește în jurul lui și îl fixează stabil, proces numit **osteointegrare**. Pe implant se montează un bont protetic și o coroană, care preia forțele de mestecare ca un dinte natural.',
-                'Folosim implanturi italiene **JD Dental** și implanturi **INNO**. JD Dental are și implanturi de dimensiuni speciale, pentru zonele în care osul e puțin. Alegerea se face după tomografie.',
+                'Folosim **implanturi standard** și, pentru zonele în care osul e puțin, implanturi de dimensiuni speciale. Alegerea se face după tomografie.',
             ],
             benefits: [
                 { title: 'Dinții vecini rămân întregi', text: 'Spre deosebire de punte, implantul nu cere șlefuirea dinților sănătoși de lângă gol.', href: '#comparatie' },
@@ -161,7 +161,7 @@ export default {
             type: 'guide',
             title: 'Ce întreabă pacienții înainte de implant',
             items: [
-                { q: 'Ce fac dacă nu am suficient os?', a: 'Lipsa de os nu exclude implantul. Adiția osoasă se face uneori în aceeași ședință cu implantul, alteori cu câteva luni înainte. La maxilar, sinus lift-ul face loc implantului. Implanturile JD Dental de dimensiuni speciale pot evita adiția în anumite cazuri.' },
+                { q: 'Ce fac dacă nu am suficient os?', a: 'Lipsa de os nu exclude implantul. Adiția osoasă se face uneori în aceeași ședință cu implantul, alteori cu câteva luni înainte. La maxilar, sinus lift-ul face loc implantului. Implanturile de dimensiuni speciale pot evita adiția în anumite cazuri.' },
                 { q: 'De ce durează mai mult sus?', a: 'Osul maxilarului e mai spongios decât cel al mandibulei, deci implantul se fixează în 3-6 luni, față de 2-4 luni jos. Tot la maxilar, apropierea de sinus face mai des necesar un sinus lift.' },
                 { q: 'Ce pot mânca după intervenție?', a: 'În primele zile, alimente moi și călduțe, fără să mesteci pe partea operată. Până la coroana definitivă evită alimentele foarte tari pe zona implantului. Apoi mănânci normal.' },
                 { q: 'Cât rezistă un implant?', a: 'Un implant bine integrat și îngrijit poate funcționa mulți ani, adesea decenii. Durata depinde de igienă, de controale, de fumat și de bolile generale.' },
@@ -174,12 +174,12 @@ export default {
             type: 'faq',
             title: 'Întrebări frecvente despre implantul dentar',
             items: [
-                { q: 'Cât costă un implant dentar în Mioveni?', a: 'În clinica noastră, implantul JD Dental sau INNO costă 2.000 lei, capa de vindecare 250 lei și coroana din zirconiu pe implant 1.350 lei. Un dinte complet, fără adiție osoasă, costă 3.600 lei, plus consultația de 250 lei.' },
+                { q: 'Cât costă un implant dentar în Mioveni?', a: 'În clinica noastră, implantul standard costă 2.000 lei, capa de vindecare 250 lei și coroana din zirconiu pe implant 1.350 lei. Un dinte complet, fără adiție osoasă, costă 3.600 lei, plus consultația de 250 lei.' },
                 { q: 'Cât durează tot tratamentul cu implant?', a: 'De regulă 3-6 luni de la consultație până la coroana definitivă. Dacă e nevoie de adiție osoasă separată, durata poate ajunge la 8-12 luni. Etapele, în ghidul despre [etapele implantului dentar](/blog/etapele-implantului-dentar-durata-tratament/).' },
                 { q: 'Ce analize îmi trebuie înainte de implant?', a: 'Tomografia 3D (CBCT) e necesară pentru planificare. În funcție de istoricul medical, medicul poate cere analize de sânge. Lista completă e în ghidul despre [analizele înainte de implant](/blog/analize-inainte-de-implant-dentar/).' },
                 { q: 'Rămân fără dinte cât timp se integrează implantul?', a: 'În zona frontală, de obicei nu: se poate monta o lucrare provizorie, dacă situația clinică permite. În zonele laterale, golul temporar se discută la consultație.' },
                 { q: 'Se poate pune implantul în aceeași zi cu extracția?', a: 'Uneori da, dacă osul e suficient și nu există infecție activă. Decizia se ia după tomografie. Altfel, implantul se inserează după vindecare.' },
-                { q: 'Ce implanturi folosiți?', a: 'Implanturi italiene JD Dental și implanturi INNO, ambele la 2.000 lei. Pentru os puțin, JD Dental are implanturi de dimensiuni speciale, pentru zone pterigoidiene, trans-sinusale sau nazale.' },
+                { q: 'Ce implanturi folosiți?', a: 'Implanturi standard, la 2.000 lei. Pentru os puțin, clinica folosește și implanturi de dimensiuni speciale, pentru zone pterigoidiene, trans-sinusale sau nazale.' },
                 { q: 'Pot face implant dacă locuiesc în Pitești?', a: 'Da. Clinica e pe Bulevardul Dacia, Bl. V1, Sc. E+F, parter, în Mioveni, la circa 12 km de Pitești. Vin la noi pacienți din Pitești, Colibași, Mărăcineni și Bascov.' },
                 { q: 'Cum se îngrijește un implant?', a: 'Ca un dinte natural: periaj de două ori pe zi, ață sau periuțe interdentare și igienizări profesionale periodice. Pașii, în ghidul despre [igiena implantului dentar](/blog/igiena-implant-dentar-dupa-vacanta-de-vara/).' },
             ],

@@ -108,8 +108,8 @@ export const PRICE_LIST = [
             { category: "TRATAMENTUL AFECȚIUNILOR PARODONȚIULUI MARGINAL", items: [{ name: "Chiuretaj parodontal în câmp închis/dinte", price: "100 lei" }, { name: "Imobilizare prin bandă de fibră de sticlă/dinte", price: "150 lei" }] },
             { category: "CHIRURGIE", items: [{ name: "Extracție dinte parodontotic (mobil)", price: "150 lei" }, { name: "Extracție dinte monoradicular (frontal)", price: "250 lei" }, { name: "Extracție dinte pluriradicular (molar, premolar)", price: "250–350 lei" }, { name: "Extracție molar de minte", price: "300–450 lei" }, { name: "Grefă liberă țesut keratinizat (recoltare de pe cerul gurii)", price: "2500 lei" }, { name: "Rezecție apicală", price: "1000 lei" }, { name: "Extracție dinte inclus (în funcție de dificultate)", price: "500–800 lei" }, { name: "Extracție dinte semi-inclus (în funcție de dificultate)", price: "400–600 lei" }, { name: "Gingivectomie / arcadă", price: "800 lei" }] },
             { category: "IMPLANT – ETAPE INTERMEDIARE", items: [{ name: "Descoperire sau montare în timpul intervenției capă de vindecare implant", price: "250 lei" }, { name: "Descoperire sau montare în timpul intervenției MUA (bont protetic multi-unit) implant + capă", price: "450 lei" }] },
-            { category: "PROTETICĂ", items: [{ name: "Șlefuire (pilire) / dinte", price: "80–100 lei" }, { name: "Coroană metalo-ceramică total fizionomică", price: "650 lei" }, { name: "Coroană metalo-ceramică parțial fizionomică (3/4)", price: "550 lei" }, { name: "Coroană ZIRCONIU pe dinte", price: "950 lei" }, { name: "Coroană ZIRCONIU pe implant (inclusiv bontul protetic T-base)", price: "1350 lei" }, { name: "Bont implant custom ZIRCONIU", price: "500 lei" }, { name: "Coroană acrilică provizorie (laborator)", price: "200 lei" }, { name: "Dinte provizoriu pe implant: 500 lei (inclus bont protetic), intermediarii (cei care sunt in aer) 200 lei/buc", price: "500 lei" }, { name: "Coroană acrilică provizorie (cabinet)", price: "150 lei" }, { name: "Fațete dentare E-MAX", price: "1250 lei" }, { name: "RCR (pivot metalic)", price: "200 lei" }, { name: "Proteză acrilică totală/parțială CLASICĂ / arcadă", price: "2500 lei" }, { name: "Proteză totală/parțială ELASTICĂ / arcadă", price: "3000 lei" }, { name: "Proteză scheletată (include sisteme speciale) / arcadă", price: "5000 lei" }, { name: "Proteza Kemeny (se adauga cate 100 lei/ dinte pentru fiecare dinte adaugat in plus) ", price: "300 lei/1 DINTE" }, { name: "Ablație coroană dentară (îndepărtare-tăiere)/bucată", price: "100 lei" }, { name: "Ablație RCR (pivot)", price: "250 lei" }, { name: "Gutieră pentru bruxism, albire, contenție / arcadă", price: "500 lei" }, { name: "Rebazăre proteză", price: "400 lei" }, { name: "Reparație proteză", price: "400 lei" }, { name: "Lucrare pe implanturi (THIMBLE) – TITAN COMPOZIT", price: "13.500 lei" }, { name: "Lucrare pe implanturi (THIMBLE) – TITAN ZIRCONIU", price: "16.000 lei" }] },
-            { category: "IMPLANTOLOGIE", items: [{ name: "Implant (doar șurub) - JD sau INNO", price: "2000 lei" }, { name: "Adiție osoasă / implant", price: "2000 lei" }, { name: "Sinus lifting + adiție osoasă", price: "4000–5000 lei" }, { name: "Sistem FAST & FIXED (4 implanturi, dinți provizorii incluși)", price: "12.500 lei" }, { name: "Sistem FAST & FIXED (5 implanturi, dinți provizorii incluși)", price: "14.500 lei" }, { name: "Sistem FAST & FIXED (6 implanturi, dinți provizorii incluși)", price: "16.500 lei" }] },
+            { category: "PROTETICĂ", items: [{ name: "Șlefuire (pilire) / dinte", price: "80–100 lei" }, { name: "Coroană metalo-ceramică total fizionomică", price: "650 lei" }, { name: "Coroană metalo-ceramică parțial fizionomică (3/4)", price: "550 lei" }, { name: "Coroană ZIRCONIU pe dinte", price: "950 lei" }, { name: "Coroană ZIRCONIU pe implant (inclusiv bontul protetic T-base)", price: "1350 lei" }, { name: "Bont implant custom ZIRCONIU", price: "500 lei" }, { name: "Coroană acrilică provizorie (laborator)", price: "200 lei" }, { name: "Dinte provizoriu pe implant: 500 lei (inclus bont protetic), intermediarii (cei care sunt in aer) 200 lei/buc", price: "500 lei" }, { name: "Coroană acrilică provizorie (cabinet)", price: "150 lei" }, { name: "Fațete dentare E-MAX", price: "1250 lei" }, { name: "RCR (pivot metalic)", price: "200 lei" }, { name: "Proteză acrilică totală/parțială CLASICĂ / arcadă", price: "2500 lei" }, { name: "Proteză totală/parțială ELASTICĂ / arcadă", price: "3000 lei" }, { name: "Proteză scheletată (include sisteme speciale) / arcadă", price: "5000 lei" }, { name: "Proteza Kemeny (se adauga cate 100 lei/ dinte pentru fiecare dinte adaugat in plus) ", price: "300 lei/1 DINTE" }, { name: "Ablație coroană dentară (îndepărtare-tăiere)/bucată", price: "100 lei" }, { name: "Ablație RCR (pivot)", price: "250 lei" }, { name: "Gutieră pentru bruxism, albire, contenție / arcadă", price: "500 lei" }, { name: "Rebazăre proteză", price: "400 lei" }, { name: "Reparație proteză", price: "400 lei" }, { name: "Lucrare fixă titan compozit (12 dinți)", price: "11.999 lei" }, { name: "Lucrare fixă titan zirconiu (12 dinți)", price: "13.499 lei" }] },
+            { category: "IMPLANTOLOGIE", items: [{ name: "Implant standard (doar șurub)", price: "2000 lei" }, { name: "Adiție osoasă / implant", price: "2000 lei" }, { name: "Sinus lifting + adiție osoasă", price: "4000–5000 lei" }, { name: "All-on-4 standard (4 implanturi, dinți provizorii incluși)", price: "de la 10.999 lei" }, { name: "All-on-5 standard (5 implanturi, dinți provizorii incluși)", price: "de la 12.499 lei" }, { name: "All-on-6 standard (6 implanturi, dinți provizorii incluși)", price: "de la 13.999 lei" }] },
             { category: "ESTETICĂ", items: [{ name: "Aplicare bijuterii dentare (bijuterie inclusă)", price: "350 lei" }, { name: "Albire profesională cu lampă", price: "1300 lei" }, { name: "Albire endo/dinte", price: "300 lei" }] },
             { category: "ORTODONȚIE", items: [{ name: "Consultație medic ortodont", price: "100 lei" }, { name: "Model studiu și plan de tratament", price: "150 lei" }, { name: "Fotografii intraorale și de portret", price: "100 lei" }, { name: "Aparat fix metalic (clasic) / arcadă", price: "2300 lei" }, { name: "Aparat fix metalic (Damon) / arcadă", price: "4000 lei" }, { name: "Aparat fix Damon Clear / arcadă", price: "5000 lei" }, { name: "Aparat fix ceramic / arcadă", price: "3500 lei" }, { name: "Aparat fix safir / arcadă", price: "4000 lei" }, { name: "Aparat fix segmentar metalic / arcadă", price: "1300 lei" }, { name: "Aparat fix segmentar ceramic / arcadă", price: "1800 lei" }, { name: "Aparat fix segmentar safir / arcadă", price: "2000 lei" }, { name: "Control lunar aparat fix / arcadă", price: "100 lei" }, { name: "Control lunar aparat fix (ambele arcade)", price: "200 lei" }, { name: "Aparat mobil / arcadă", price: "800 lei" }, { name: "Aparat mobil twin-block", price: "1200 lei" }, { name: "Control aparat mobil / arcadă", price: "50 lei" }, { name: "Bară linguală", price: "500 lei" }, { name: "Disjunctor", price: "1500 lei" }, { name: "Pendulum", price: "700 lei" }, { name: "Retainer fix colat", price: "500 lei" }, { name: "Headgear", price: "400 lei" }, { name: "Aparat contenție", price: "400 lei" }, { name: "Masca Delaire", price: "1000 lei" }, { name: "Gutieră contenție", price: "500 lei" }] }
         ];
@@ -244,6 +244,7 @@ const TransformationsCarousel = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const cases = [
 { img: "/caz-all-on-x-bimaxilar-inainte-dupa.jpeg", title: "All-on-X Bimaxilar - Înainte și După" },
+{ img: "/img/lp/coroana-emax-inainte-dupa.webp", title: "Coroană E-MAX - Înainte și După" },
 { img: "/caz-reabilitare-completa-inainte-dupa.jpeg", title: "Reabilitare orală completă - Înainte și După" },
 { img: "/caz-nou-reabilitare-completa.jpeg", title: "Reabilitare orală completă - Înainte și După" },
 { img: "/caz-nou-implanturi-all-on-x.jpeg", title: "Reabilitare cu implanturi All-on-X - Înainte și După" },
@@ -579,7 +580,7 @@ const FormSection = ({ eager = false }) => (
 
     const SERVICES = [
         { icon: "award", title: "Implant dentar în Mioveni", href: "/implant-dentar-mioveni/", cta: "Despre implantul dentar",
-          text: "Înlocuirea unui dinte lipsă cu implanturi italiene JD Dental sau INNO, cu planificare pe tomografie 3D și etape explicate de la prima consultație." },
+          text: "Înlocuirea unui dinte lipsă cu un implant și o coroană, cu planificare pe tomografie 3D și etape explicate de la prima consultație." },
         { icon: "sparkles", title: "Dinți ficși pe implanturi (All-on-X)", href: "/dinti-ficsi-mioveni/", cta: "Despre dinții ficși",
           text: "Dantură fixă pe 4, 5 sau 6 implanturi pentru pacienții care și-au pierdut dinții sau nu mai vor proteză mobilă." },
         { icon: "check-circle", title: "Stomatologie generală", href: "/servicii-si-preturi/#tratamentul-odontal", cta: "Prețuri tratamente",
@@ -944,7 +945,7 @@ const Implantology = () => (
     <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
         <div className="max-w-3xl space-y-6">
             <div className="inline-block bg-[#5a1018] px-4 py-2 text-white font-bold text-xs uppercase tracking-widest rounded-sm">
-                Implanturi JD Dental și INNO
+                Implanturi și sisteme All-on-X
             </div>
             <h1 className="text-[2.6rem] sm:text-5xl md:text-7xl font-black text-white leading-tight">
                 Implantologie<br/>
@@ -979,18 +980,18 @@ const Implantology = () => (
     </div>
 </section>
 
-{/* SECTION 2: Implanturile folosite (JD Dental) */}
+{/* SECTION 2: Implanturile folosite (fără mărci: decizia clinicii, 02.11.2026) */}
 <section className="py-24 bg-white">
     <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
                 <div>
                     <h3 className="text-[#5a1018] font-bold tracking-widest uppercase text-sm mb-2">Ce implanturi folosim</h3>
-                    <h2 className="text-4xl font-bold text-[#1a1a1a]">Implanturi dentare italiene JD Dental</h2>
+                    <h2 className="text-4xl font-bold text-[#1a1a1a]">Implanturile folosite în clinică</h2>
                 </div>
                 <div className="text-gray-600 leading-relaxed space-y-4">
                     <p>
-                        Folosim implanturi italiene <strong>JD Dental</strong>, cu modele concepute pentru implantologia neconvențională. Acestea permit abordarea cazurilor complexe unde oferta osoasă este limitată.
+                        Folosim <strong>implanturi standard</strong> și modele concepute pentru implantologia neconvențională. Acestea permit abordarea cazurilor complexe unde oferta osoasă este limitată.
                     </p>
                     <ul className="space-y-2">
                         <li className="flex items-start gap-2">
@@ -1026,25 +1027,25 @@ const Implantology = () => (
             </div>
             <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl hidden lg:block">
                  <img loading="lazy" decoding="async" 
-                    src="/implanturijddental.jpg" 
-                    alt="Implant Dentar JD" 
+                    src="/img/lp/implanturi-dentare.webp" width="1000" height="1000" 
+                    alt="Modele de implanturi dentare" 
                     className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div className="absolute bottom-8 left-8 text-white">
-                    <p className="font-bold text-2xl">Implanturi JD Dental</p>
+                    <p className="font-bold text-2xl">Implanturi dentare</p>
                     <p className="text-sm opacity-90">Și pentru cazurile cu os puțin.</p>
                 </div>
             </div>
             <div className="relative rounded-2xl overflow-hidden shadow-2xl lg:hidden">
                  <img loading="lazy" decoding="async" 
-                    src="/implanturijddental.jpg" 
-                    alt="Implant Dentar JD" 
+                    src="/img/lp/implanturi-dentare.webp" width="1000" height="1000" 
+                    alt="Modele de implanturi dentare" 
                     className="w-full h-auto object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div className="absolute bottom-8 left-8 text-white">
-                    <p className="font-bold text-2xl">Implanturi JD Dental</p>
+                    <p className="font-bold text-2xl">Implanturi dentare</p>
                     <p className="text-sm opacity-90">Și pentru cazurile cu os puțin.</p>
                 </div>
             </div>

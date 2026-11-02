@@ -46,12 +46,12 @@ export const PAGES = {
     },
     // Pagină-hub: NU ține „implant dentar Mioveni” / „dinți ficși Mioveni” (le dețin paginile dedicate).
     implantology: {
-        title: 'Implantologie Mioveni: Implanturi JD și All-on-X',
-        description: 'Implantologie la Clinica Dr. Năstase din Mioveni: implanturi JD Dental și INNO, sisteme All-on-X, soluții pentru os puțin și cazuri înainte și după.',
+        title: 'Implantologie Mioveni: Implanturi și All-on-X',
+        description: 'Implantologie la Clinica Dr. Năstase din Mioveni: implanturi dentare, sisteme All-on-X, soluții pentru os puțin și cazuri înainte și după.',
     },
     pricing: {
         title: 'Prețuri Stomatologie Mioveni | Clinica Dr. Năstase',
-        description: 'Prețuri stomatologie Mioveni: consultație 250 lei, implant JD sau INNO 2.000 lei, 4 implanturi cu lucrare provizorie fixă 12.500 lei.',
+        description: 'Prețuri stomatologie Mioveni: consultație 250 lei, implant standard 2.000 lei, All-on-4 standard de la 10.999 lei. Lista completă.',
     },
     contact: {
         title: 'Contact Dentist Mioveni | Clinica Dr. Năstase',
