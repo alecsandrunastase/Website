@@ -19,6 +19,8 @@ export default {
         },
     },
     productName: null,
+    // afișul Black Friday în hero, până la 23.12.2026 (src/black-friday.jsx)
+    blackFridayPoster: true,
     hero: {
         h1: 'Implant dentar în Mioveni',
         h1Sub: null,

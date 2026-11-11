@@ -8,6 +8,7 @@ import {
     ClipboardCheck, Heart, Microscope, Monitor, Sparkles, Trophy,
 } from 'lucide';
 import { ServicePage } from './service-page.jsx';
+import { BlackFridayPoster, blackFridayActive } from './black-friday.jsx';
 import implantDentar from './content/implant-dentar-mioveni.mjs';
 import dintiFicsi from './content/dinti-ficsi-mioveni.mjs';
 
@@ -799,7 +800,7 @@ const FormSection = ({ eager = false }) => (
                     <span className="absolute bottom-2 left-0 w-full h-3 bg-[#5a1018]/20 -z-0"></span>
                 </span>
             </h1>
-            
+
             <p className="text-lg text-gray-600 leading-relaxed max-w-lg">
                 Implant dentar, dinți ficși pe implanturi (All-on-X), stomatologie generală, ortodonție și tratamente pentru copii, la Clinica Dentară Dr. Alexandru Năstase din Mioveni, Argeș. Planificare digitală 3D și o echipă dedicată confortului tău.
             </p>
@@ -824,6 +825,12 @@ const FormSection = ({ eager = false }) => (
                 </div>
                 <p>Peste <span className="text-[#1a1a1a] font-bold">8.000+</span> pacienți fericiți</p>
             </div>
+
+            {blackFridayActive && (
+                <div className="lg:hidden w-[280px] max-w-full mx-auto mb-12 bg-white p-2 rounded-2xl shadow-xl border border-gray-50 -rotate-2">
+                    <BlackFridayPoster hideMedia="(min-width: 1024px)" sizes="280px" className="w-full h-auto rounded-xl" />
+                </div>
+            )}
         </div>
 
         {/* Image Area with Floating Cards */}
@@ -870,6 +877,13 @@ const FormSection = ({ eager = false }) => (
                     </div>
                 </div>
             </div>
+
+            {/* Afișul Black Friday, ca al treilea card peste poza clinicii */}
+            {blackFridayActive && (
+                <div className="absolute bottom-[3%] -left-10 w-[270px] bg-white p-2 rounded-2xl shadow-2xl border border-gray-50 -rotate-3">
+                    <BlackFridayPoster hideMedia="(max-width: 1023px)" sizes="270px" className="w-full h-auto rounded-xl" />
+                </div>
+            )}
         </div>
     </div>
 </section>

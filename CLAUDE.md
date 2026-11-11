@@ -50,3 +50,5 @@ Luni-vineri 08:00-20:00, sâmbătă-duminică închis (actualizat 15.10.2026). S
 ## Promoții
 
 Bară sub meniu + secțiune nativă, cu expirare automată (`PROMO_DEADLINE` în `src/app.jsx`). Fără pop-up-uri.
+
+Black Friday 2026 (implant 1.500 lei, până la 23.12.2026): afișul clinicii (`img/lp/black-friday-implant-*.webp`) e un element în plus în hero, nu înlocuiește poza: pe pagina principală (card înclinat peste poza clinicii pe desktop, sub butoane pe telefon) și pe `/implant-dentar-mioveni/` (card peste poza doctorului, activat cu `blackFridayPoster: true` în conținut). Termenul și componenta sunt în `src/black-friday.jsx`. Dispare singur după `BLACK_FRIDAY_DEADLINE`, dar HTML-ul static îl păstrează până la următorul build: după 23.12 rulează workflow-ul („Run workflow”) sau fă un push.

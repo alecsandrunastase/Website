@@ -8,6 +8,7 @@
 //   - fotografii reale ale clinicii: medicul, echipa, cazurile, radiografia;
 //   - un singur moment memorabil pe pagină: radiografia adnotată (dinți ficși) / chitanța dintelui (implant).
 import React, { useEffect, useRef, useState } from 'react';
+import { BlackFridayPoster, blackFridayActive } from './black-friday.jsx';
 
 const PHONE = '0771 292 813';
 const TEL = 'tel:0771292813';
@@ -101,8 +102,16 @@ const Hero = ({ c, Icon }) => (
                 </a>
             </div>
             <figure className="relative mx-auto w-full max-w-sm lg:max-w-none">
-                <div className="relative rounded-[28px] overflow-hidden bg-[#3a0d14] aspect-[3/4]">
-                    <Img img={c.hero.image} eager className="absolute inset-0 w-full h-full object-cover object-top" sizes="(min-width: 1024px) 420px, 90vw" />
+                <div className="relative">
+                    <div className="relative rounded-[28px] overflow-hidden bg-[#3a0d14] aspect-[3/4]">
+                        <Img img={c.hero.image} eager className="absolute inset-0 w-full h-full object-cover object-top" sizes="(min-width: 1024px) 420px, 90vw" />
+                    </div>
+                    {/* Afișul Black Friday (doar unde conținutul îl cere), ca un card peste colțul pozei */}
+                    {c.blackFridayPoster && blackFridayActive && (
+                        <div className="absolute -left-1 bottom-4 lg:-left-6 w-[48%] lg:w-[220px] bg-white p-1.5 lg:p-2 rounded-2xl shadow-2xl -rotate-3">
+                            <BlackFridayPoster sizes="(min-width: 1024px) 220px, 48vw" className="w-full h-auto rounded-xl" />
+                        </div>
+                    )}
                 </div>
                 <blockquote className="mt-6 border-l-4 border-[#d0344c] pl-5">
                     <p className="text-lg leading-relaxed text-white/90">„{c.quote.text}”</p>
